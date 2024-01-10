@@ -4,6 +4,7 @@
     ./misc
     ./networking
     ./nix
+    ./programs
     ./security
     ./users
   ];
