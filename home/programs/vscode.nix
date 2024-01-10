@@ -123,6 +123,9 @@ in {
         fontFamily = "'monospace'";
         fontSize = 13;
         smoothScrolling = true;
+        defaultProfile = {
+          linux = "zsh";
+        };
       };
 
       window = {
