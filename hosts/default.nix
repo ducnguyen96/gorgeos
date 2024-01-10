@@ -12,6 +12,8 @@
       modules =
         [
           ./e14g2
+          ../modules/hardware/audio
+          ../modules/hardware/gpu/intel.nix
           self.nixosModules.hyprland
           {home-manager.users.duc.imports = homeImports."gorgeos";}
         ]
