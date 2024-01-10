@@ -95,7 +95,9 @@
     };
 
     monitor = [
-      ",highres,auto,2"
+      ",highres,auto,1"
+      "eDP-1, 1920x1080@60, 1920x0, 1"
+      "HDMI-A-1, 1920x1080@60, 0x0, 1"
     ];
 
     xwayland.force_zero_scaling = true;
