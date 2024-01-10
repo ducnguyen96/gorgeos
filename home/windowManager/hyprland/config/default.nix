@@ -100,6 +100,24 @@
       "HDMI-A-1, 1920x1080@60, 0x0, 1"
     ];
 
+    workspace = [
+      "eDP-1,1"
+      "eDP-1,3"
+      "eDP-1,5"
+      "eDP-1,7"
+      "eDP-1,9"
+      "DP-2,1"
+      "DP-2,3"
+      "DP-2,5"
+      "DP-2,7"
+      "DP-2,9"
+      "HDMI-A-1,2"
+      "HDMI-A-1,4"
+      "HDMI-A-1,6"
+      "HDMI-A-1,8"
+      "HDMI-A-1,0"
+    ];
+
     xwayland.force_zero_scaling = true;
     debug.disable_logs = false;
   };
