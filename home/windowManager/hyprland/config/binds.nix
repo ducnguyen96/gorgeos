@@ -23,7 +23,7 @@
   xdg-mime = "${pkgs.xdg-utils}/bin/xdg-mime";
   defaultApp = type: "${gtk-launch} $(${xdg-mime} query default ${type})";
 
-  terminal = "kitty";
+  terminal = config.home.sessionVariables.TERMINAL;
   browser = defaultApp "x-scheme-handler/https";
   editor = defaultApp "text/plain";
 in {
@@ -58,7 +58,7 @@ in {
           "SUPER, bracketleft, workspace, m-1"
           "SUPER, bracketright, workspace, m+1"
 
-          "SUPER, Return, exec, ${terminal}"
+          "SUPER, Return, exec, run-as-service ${terminal}"
           "SUPER, B, exec, ${browser}"
           "SUPER, E, exec, ${editor}"
           "SUPER, L, exec, ${pkgs.swaylock-effects}/bin/swaylock -S --grace 2"

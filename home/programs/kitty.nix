@@ -10,6 +10,45 @@
     shellIntegration.enableZshIntegration = true;
     theme = "Catppuccin-Macchiato";
 
+    settings = let
+      xcolors = pkgs.lib.colors.xcolors default.colorscheme.colors;
+    in {
+      active_tab_font_style = "bold";
+      background_opacity = "1.0";
+      bold_font = "auto";
+      bold_italic_font = "auto";
+      confirm_os_window_close = 0;
+      cursor_blink_interval = "-1";
+      cursor_shape = "underline";
+      cursor_stop_blinking_after = 0;
+      cursor_underline_thickness = "1.5";
+      disable_ligatures = "never";
+      editor = "nvim";
+      font_family = "monospace";
+      font_size = "11.0";
+      hide_window_decorations = "titlebar-only";
+      inactive_tab_font_style = "normal";
+      inactive_text_alpha = "1.0";
+      italic_font = "auto";
+      placement_strategy = "center";
+      resize_in_steps = "yes";
+      scrollback_lines = 10000;
+      tab_bar_edge = "bottom";
+      tab_bar_min_tabs = 1;
+      tab_bar_style = "powerline";
+      tab_powerline_style = "slanted";
+      tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+      touch_scroll_multiplier = "1.0";
+      wheel_scroll_multiplier = "5.0";
+      window_margin_width = 0;
+      window_padding_width = 15;
+
+      background = xcolors.black2;
+      selection_foreground = xcolors.black2;
+      cursor_text_color = xcolors.black2;
+      tab_bar_background = xcolors.black1;
+    };
+
     keybindings = {
       "ctrl+shift+v" = "paste_from_clipboard";
       "ctrl+shift+s" = "paste_from_selection";

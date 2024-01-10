@@ -47,6 +47,7 @@
       imports = [
         ./home/profiles
         ./hosts
+        ./lib
         ./modules
       ];
     };
