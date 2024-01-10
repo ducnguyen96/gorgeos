@@ -20,5 +20,6 @@ in {
 
   flake.nixosModules = {
     system = import ./system;
+    hyprland = import ./system/windowManager/hyprland.nix;
   };
 }

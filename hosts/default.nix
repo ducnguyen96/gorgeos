@@ -12,6 +12,8 @@
       modules =
         [
           ./e14g2
+          self.nixosModules.hyprland
+          {home-manager.users.duc.imports = homeImports."gorgeos";}
         ]
         ++ sharedModules;
     };
