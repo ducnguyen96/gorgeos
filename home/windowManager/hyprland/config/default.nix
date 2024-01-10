@@ -4,13 +4,7 @@
     ./binds.nix
   ];
 
-  wayland.windowManager.hyprland.settings = let
-    pointer = config.home.pointerCursor;
-  in {
-    exec-once = [
-      "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
-    ];
-
+  wayland.windowManager.hyprland.settings = {
     general = {
       gaps_in = 5;
       gaps_out = 5;
