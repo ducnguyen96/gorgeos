@@ -7,7 +7,10 @@
 }: {
   imports = [
     ./config
+    ./programs/waybar.nix
+    ./programs/swaylock.nix
   ];
+
   wayland.windowManager.hyprland = {
     enable = true;
 
