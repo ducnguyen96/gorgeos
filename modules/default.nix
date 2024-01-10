@@ -12,6 +12,16 @@ in {
     inherit module_args;
 
     sharedModules = [
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+        };
+      }
+
+      inputs.home-manager.nixosModule
+      inputs.hyprland.nixosModules.default
+
       module_args
 
       self.nixosModules.system
