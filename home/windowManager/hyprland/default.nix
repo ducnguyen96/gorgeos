@@ -9,6 +9,7 @@
     ./config
     ./programs/waybar.nix
     ./programs/swaylock.nix
+    ./programs/wofi.nix
   ];
 
   home.packages = with pkgs; [
@@ -17,16 +18,25 @@
     xdg-utils
   ];
 
-  programs.rofi.enable = true;
-
   wayland.windowManager.hyprland = {
     enable = true;
 
     systemd = {
       enable = true;
+      extraCommands = lib.mkBefore [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
+      ];
     };
 
     xwayland.enable = true;
+  };
+
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = ["graphical-session-pre.target"];
+    };
   };
 
   xdg = {
