@@ -45,6 +45,8 @@
     };
 
     overlays = [
+      inputs.nur.overlay
+
       (_final: prev: {
         lib =
           prev.lib
