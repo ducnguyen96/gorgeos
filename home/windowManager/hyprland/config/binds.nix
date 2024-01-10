@@ -70,7 +70,7 @@ in {
         ++ workspaces;
 
       bindr = [
-        "SUPER, SUPER_L, exec, pkill wofi  || run-as-service $(wofi -S drun)"
+        "SUPER, D, exec, pkill rofi  || run-as-service $(rofi -show drun)"
       ];
 
       binde = [

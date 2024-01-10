@@ -11,6 +11,8 @@
     ./programs/swaylock.nix
   ];
 
+  programs.rofi.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
 
