@@ -62,16 +62,13 @@ in {
           "SUPER, B, exec, ${browser}"
           "SUPER, E, exec, ${editor}"
           "SUPER, L, exec, ${pkgs.swaylock-effects}/bin/swaylock -S --grace 2"
+          "SUPER, D, exec, pkill wofi  || wofi -S drun"
 
           ", Print, exec, ${screenshotarea}"
           "CTRL, Print, exec, grimblast --notify --cursor copysave output"
           "ALT, Print, exec, grimblast --notify --cursor copysave screen"
         ]
         ++ workspaces;
-
-      bindr = [
-        "SUPER, D, exec, pkill wofi  || run-as-service $(wofi -S drun)"
-      ];
 
       binde = [
         ",XF86AudioRaiseVolume, exec, volumectl up 5"
