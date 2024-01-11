@@ -22,6 +22,29 @@
   };
 
   programs = {
+    eza.enable = true;
+    btop.enable = true;
+
+    dircolors = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableZshIntegration = true;
+    };
+
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    thefuck = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 
   services = {
