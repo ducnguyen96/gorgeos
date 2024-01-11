@@ -46,4 +46,6 @@
   security = {
     polkit.enable = true;
   };
+
+  services.xserver.desktopManager.runXdgAutostartIfNone = true;
 }
