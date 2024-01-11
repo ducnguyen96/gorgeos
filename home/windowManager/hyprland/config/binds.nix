@@ -42,6 +42,7 @@ in {
           "SUPER, M, exec, hyprctl keyword ${monocle} $(($(hyprctl getoption ${monocle} -j | jaq -r '.int') ^ 1))"
           "SUPER, Space, togglefloating,"
           "SUPERALT, ,resizeactive,"
+          "SUPER, tab, exec, hyprctl dispatch focuscurrentorlast"
 
           "SUPER, G, togglegroup,"
           "SUPERSHIFT, N, changegroupactive, f"
