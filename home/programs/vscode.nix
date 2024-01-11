@@ -138,9 +138,7 @@ in {
       workbench = {
         colorTheme = "Catppuccin Macchiato";
         iconTheme = "material-icon-theme";
-        panel.defaultLocation = "left";
         productIconTheme = "material-product-icons";
-        sideBar.location = "left";
       };
     };
   };
