@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ../../programs/kitty.nix
     ../../programs/vscode.nix
@@ -7,5 +7,9 @@
     ../../programs/fcitx5.nix
     ../../themes
     ../../windowManager/hyprland
+  ];
+
+  home.packages = with pkgs; [
+    pritunl-client
   ];
 }
