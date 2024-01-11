@@ -8,38 +8,38 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "uas" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/689c2735-f9fb-4ec8-b6bd-264162cef1e4";
+    { device = "/dev/disk/by-uuid/3c30a7ac-c34b-4313-9980-412a193788f6";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/3d264406-abc9-4b9c-8a8d-1aca25f19a90";
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/4a6ee261-5357-4ad1-8f05-20e35676518f";
 
   fileSystems."/.swapvol" =
-    { device = "/dev/disk/by-uuid/689c2735-f9fb-4ec8-b6bd-264162cef1e4";
+    { device = "/dev/disk/by-uuid/3c30a7ac-c34b-4313-9980-412a193788f6";
       fsType = "btrfs";
       options = [ "subvol=swap" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/DC2E-585A";
+    { device = "/dev/disk/by-uuid/12CE-A600";
       fsType = "vfat";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/689c2735-f9fb-4ec8-b6bd-264162cef1e4";
+    { device = "/dev/disk/by-uuid/3c30a7ac-c34b-4313-9980-412a193788f6";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/689c2735-f9fb-4ec8-b6bd-264162cef1e4";
+    { device = "/dev/disk/by-uuid/3c30a7ac-c34b-4313-9980-412a193788f6";
       fsType = "btrfs";
       options = [ "subvol=nix" ];
     };

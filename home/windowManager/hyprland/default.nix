@@ -10,12 +10,18 @@
     ./programs/waybar.nix
     ./programs/swaylock.nix
     ./programs/wofi.nix
+    ./services/dunst.nix
   ];
 
   home.packages = with pkgs; [
     config.wayland.windowManager.hyprland.package
 
     xdg-utils
+
+    dbus
+    libnotify
+    libcanberra-gtk3
+
   ];
 
   wayland.windowManager.hyprland = {
