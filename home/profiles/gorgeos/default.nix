@@ -11,5 +11,6 @@
 
   home.packages = with pkgs; [
     pritunl-client
+    authy
   ];
 }
