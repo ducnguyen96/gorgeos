@@ -53,6 +53,12 @@ in {
           "SUPER, up, movefocus, u"
           "SUPER, down, movefocus, d"
 
+          "$SUPER, H, movefocus, l"
+          "$SUPER, L, movefocus, r"
+          "$SUPER, J, movefocus, u"
+          "$SUPER, K, movefocus, d"
+          "ALT, Tab, movefocus, d"
+
           "SUPERSHIFT, grave, movetoworkspace, special"
           "SUPER, grave, togglespecialworkspace, eDP-1"
 
@@ -62,8 +68,9 @@ in {
           "SUPER, Return, exec, run-as-service ${terminal}"
           "SUPER, B, exec, ${browser}"
           "SUPER, E, exec, ${editor}"
-          "SUPER, L, exec, ${pkgs.swaylock-effects}/bin/swaylock -S --grace 2"
+          "SUPERSHIFT, L, exec, ${pkgs.swaylock-effects}/bin/swaylock -S --grace 2"
           "SUPER, D, exec, pkill wofi  || wofi -S drun"
+          "SUPER, ESCAPE, exec, wofi-power"
 
           ", Print, exec, ${screenshotarea}"
           "CTRL, Print, exec, grimblast --notify --cursor copysave output"

@@ -4,5 +4,8 @@
   config,
   ...
 }: {
-  imports = [./run-as-service.nix];
+  imports = [
+    ./run-as-service.nix
+    ./wofi-power.nix
+  ];
 }

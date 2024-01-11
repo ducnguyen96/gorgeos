@@ -57,7 +57,7 @@
 
     input = {
       kb_layout = "us";
-      kb_options = "caps:backspace";
+      kb_options = "caps:escape";
       follow_mouse = 1;
       sensitivity = 0;
       accel_profile = "flat";
