@@ -74,6 +74,7 @@
       tree = "${getExe eza} --tree --icons --tree";
       untar = "tar -xvf";
       untargz = "tar -xzf";
+      awsume = ". awsume";
     };
 
     plugins = [
