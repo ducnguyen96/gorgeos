@@ -43,6 +43,23 @@ in {
     mutableExtensionsDir = true;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
+      christian-kohler.path-intellisense
+      dbaeumer.vscode-eslint
+      eamodio.gitlens
+      editorconfig.editorconfig
+      esbenp.prettier-vscode
+      formulahendry.auto-close-tag
+      formulahendry.auto-rename-tag
+      foxundermoon.shell-format
+      github.copilot
+      github.copilot-chat
+      kamadorueda.alejandra
+      mkhl.direnv
+      pkief.material-icon-theme
+      pkief.material-product-icons
+      shardulm94.trailing-spaces
+      timonwong.shellcheck
+      yzhang.markdown-all-in-one
     ];
 
     userSettings = {
