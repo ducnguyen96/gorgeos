@@ -47,6 +47,7 @@ in {
           "battery"
           "clock#date"
           "clock"
+          "tray"
           "group/group-power"
         ];
         "custom/search" = {
