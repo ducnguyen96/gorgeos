@@ -38,6 +38,16 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
@@ -45,11 +55,34 @@
       systems = ["x86_64-linux"];
 
       imports = [
+        ./flake/pre-commit-hooks.nix
+        ./flake/treefmt.nix
+
         ./home/profiles
         ./hosts
         ./lib
         ./modules
         ./pkgs
       ];
+
+      perSystem = {
+        config,
+        pkgs,
+        ...
+      }: {
+        devShells.default = pkgs.mkShell {
+          shellHook = ''
+            ${config.pre-commit.installationScript}
+          '';
+
+          DIRENV_LOG_FORMAT = "";
+
+          packages = with pkgs; [
+            config.treefmt.build.wrapper
+          ];
+
+          inputsFrom = [config.treefmt.build.devShell];
+        };
+      };
     };
 }
