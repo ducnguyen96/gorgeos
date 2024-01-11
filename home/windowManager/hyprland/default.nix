@@ -14,6 +14,7 @@
   ];
 
   home.packages = with pkgs; [
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     config.wayland.windowManager.hyprland.package
 
     xdg-utils
