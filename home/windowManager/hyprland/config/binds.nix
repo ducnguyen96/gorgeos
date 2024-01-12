@@ -69,6 +69,7 @@ in {
           "SUPER, B, exec, ${browser}"
           "SUPER, E, exec, ${editor}"
           "SUPER, R, exec, ${terminal} -e ranger"
+          "SUPER, M, exec, ${terminal} -e ncmpcpp"
           "SUPERSHIFT, L, exec, ${pkgs.swaylock-effects}/bin/swaylock -S --grace 2"
           "SUPER, D, exec, pkill wofi  || wofi -S drun"
           "SUPER, ESCAPE, exec, wofi-power"
