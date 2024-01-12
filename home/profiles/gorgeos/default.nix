@@ -5,6 +5,7 @@
     ../../programs/firefox.nix
     ../../programs/media.nix
     ../../programs/fcitx5.nix
+    ../../programs/ranger.nix
     ../../dev
     ../../themes
     ../../windowManager/hyprland

@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./imv.nix
+  ];
+
   home.packages = with pkgs; [
     pulsemixer
   ];
