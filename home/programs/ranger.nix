@@ -7,12 +7,12 @@
     ranger
   ];
 
-  home.file."/home/${config.home.username}/.config/ranger/rc.conf".text = ''
+  home.file."${config.home.homeDirectory}/.config/ranger/rc.conf".text = ''
     set preview_images true
     set preview_images_method kitty
   '';
 
-  home.file."/home/${config.home.username}/.config/ranger/commands.py".text = ''
+  home.file."${config.home.homeDirectory}/.config/ranger/commands.py".text = ''
     import subprocess
     import json
     import atexit

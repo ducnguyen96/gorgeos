@@ -5,6 +5,8 @@
 }: {
   imports = [./hardware-configuration.nix];
 
+  networking.hostName = "e14g2";
+
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;

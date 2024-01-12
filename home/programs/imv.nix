@@ -8,7 +8,7 @@
     imv
   ];
 
-  home.file."/home/${config.home.username}/.config/imv/config".text = ''
+  home.file."${config.home.homeDirectory}/.config/imv/config".text = ''
     # Default config for imv
 
     [options]

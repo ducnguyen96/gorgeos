@@ -68,7 +68,7 @@
       untar = "tar -xvf";
       untargz = "tar -xzf";
       awsume = ". awsume";
-      ytmp3 = ''${lib.getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
+      ytmp3 = ''${lib.getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" -o "${config.home.homeDirectory}/Music/youtube/%(title)s.%(ext)s"'';
     };
 
     plugins = [
