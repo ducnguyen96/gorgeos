@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     pulsemixer
+    mpc-cli
   ];
 
   programs = {
