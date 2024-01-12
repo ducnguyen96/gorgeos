@@ -10,10 +10,11 @@
     dirHashes = {
       dl = "$HOME/Downloads";
       docs = "$HOME/Documents";
-      code = "$HOME/Documents/code";
-      dots = "$HOME/Documents/code/yuki";
+      code = "$HOME/Documents/Code";
+      dots = "$HOME/Documents/Code/gorgeos";
       pics = "$HOME/Pictures";
       vids = "$HOME/Videos";
+      mss = "$HOME/Music";
     };
 
     autocd = true;
@@ -41,6 +42,12 @@
       zstyle ':completion:*' use-cache on
       zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
       _comp_options+=(globdots)
+
+      bindkey "^[[1;5C" forward-word
+      bindkey "^[[1;5D" backward-word
+      bindkey '^H' backward-kill-word
+      bindkey '^[[1~' beginning-of-line
+      bindkey '^[[4~' end-of-line
     '';
 
     shellAliases = with lib;
@@ -49,25 +56,11 @@
       cat = "${getExe bat} --style=plain";
       du = getExe du-dust;
       fzf = getExe skim;
-      ga = "forgit_add";
-      gbd = "forgit_branch_delete";
-      gbl = "forgit_blame";
-      gcb = "forgit_checkout_branch";
-      gcf = "forgit_checkout_file";
-      gclean = "forgit_clean";
-      gco = "forgit_checkout_commit";
-      gcp = "forgit_cherry_pick";
-      gct = "forgit_checkout_tag";
-      gd = "forgit_diff";
-      gfu = "forgit_fixup";
-      gi = "forgit_ignore";
-      glo = "forgit_log";
-      grb = "forgit_rebase";
-      grc = "forgit_revert_commit";
-      grep = getExe ripgrep;
-      grh = "forgit_reset_head";
-      gsp = "forgit_stash_push";
-      gss = "forgit_stash_show";
+      g = "git";
+      ga = "git add";
+      gc = "git commit";
+      gp = "git push";
+      gs = "git status";
       la = "${getExe eza} -lah --tree";
       ls = "${getExe eza} -h --git --icons --color=auto --group-directories-first -s extension";
       ps = getExe procs;
@@ -75,6 +68,7 @@
       untar = "tar -xvf";
       untargz = "tar -xzf";
       awsume = ". awsume";
+      ytmp3 = ''${lib.getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
     };
 
     plugins = [
