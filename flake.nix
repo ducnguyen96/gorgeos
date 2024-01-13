@@ -1,6 +1,8 @@
 {
   description = "Gorgeos";
 
+  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/NUR";
@@ -59,40 +61,4 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
-
-      imports = [
-        ./flake/pre-commit-hooks.nix
-        ./flake/treefmt.nix
-
-        ./home/profiles
-        ./hosts
-        ./lib
-        ./modules
-        ./pkgs
-      ];
-
-      perSystem = {
-        config,
-        pkgs,
-        ...
-      }: {
-        devShells.default = pkgs.mkShell {
-          shellHook = ''
-            ${config.pre-commit.installationScript}
-          '';
-
-          DIRENV_LOG_FORMAT = "";
-
-          packages = with pkgs; [
-            config.treefmt.build.wrapper
-          ];
-
-          inputsFrom = [config.treefmt.build.devShell];
-        };
-      };
-    };
 }
