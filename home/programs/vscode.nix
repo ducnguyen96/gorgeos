@@ -31,10 +31,6 @@
     "text/x-python"
     "text/x-scss"
   ];
-
-  marketplace-extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
-    "4ops.terraform"
-  ];
 in {
   xdg.mimeApps.defaultApplications = builtins.listToAttrs (map (mimeType: {
       name = mimeType;
@@ -64,6 +60,7 @@ in {
       shardulm94.trailing-spaces
       timonwong.shellcheck
       yzhang.markdown-all-in-one
+      hashicorp.terraform
     ];
 
     userSettings = {
