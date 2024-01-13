@@ -185,5 +185,18 @@ in {
       "workbench.sideBar.location" = "left";
       "workbench.panel.defaultLocation" = "left";
     };
+
+    keybindings = [
+      {
+        "key" = "alt+left";
+        "command" = "workbench.action.navigateBack";
+        "when" = "canNavigateBack";
+      }
+      {
+        "key" = "alt+right";
+        "command" = "workbench.action.navigateForward";
+        "when" = "canNavigateForward";
+      }
+    ];
   };
 }
