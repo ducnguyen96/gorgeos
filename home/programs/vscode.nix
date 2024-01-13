@@ -1,5 +1,5 @@
 {
-  inputs,
+  default,
   pkgs,
   ...
 }: let
@@ -38,126 +38,152 @@ in {
     })
     mimeTypes);
 
-  programs.vscode = {
+  programs.vscode = let
+    xcolors = pkgs.lib.colors.xcolors default.colorscheme.colors;
+  in {
     enable = true;
     mutableExtensionsDir = true;
-    extensions = with pkgs.vscode-extensions; [
-      bbenoist.nix
-      christian-kohler.path-intellisense
-      dbaeumer.vscode-eslint
-      eamodio.gitlens
-      editorconfig.editorconfig
-      esbenp.prettier-vscode
-      formulahendry.auto-close-tag
-      formulahendry.auto-rename-tag
-      foxundermoon.shell-format
-      github.copilot
-      github.copilot-chat
-      kamadorueda.alejandra
-      mkhl.direnv
-      pkief.material-icon-theme
-      pkief.material-product-icons
-      shardulm94.trailing-spaces
-      timonwong.shellcheck
-      yzhang.markdown-all-in-one
-      hashicorp.terraform
-    ];
+    extensions =
+      (with pkgs.vscode-extensions; [
+        ])
+      ++ (with pkgs.vscode-marketplace-release; [
+        eamodio.gitlens
+      ])
+      ++ (with pkgs.vscode-marketplace; [
+        bbenoist.nix
+        catppuccin.catppuccin-vsc-icons
+        christian-kohler.path-intellisense
+        dbaeumer.vscode-eslint
+        editorconfig.editorconfig
+        esbenp.prettier-vscode
+        foxundermoon.shell-format
+        github.copilot
+        github.copilot-chat
+        kamadorueda.alejandra
+        mkhl.direnv
+        shardulm94.trailing-spaces
+        timonwong.shellcheck
+        yzhang.markdown-all-in-one
+        hashicorp.terraform
+        antfu.icons-carbon
+      ])
+      ++ [
+        (pkgs.catppuccin-vsc.override {
+          accent = "blue";
+          boldKeywords = true;
+          italicComments = true;
+          italicKeywords = true;
+          extraBordersEnabled = true;
+          workbenchMode = "default";
+          bracketMode = "rainbow";
+          colorOverrides = {
+            all = {
+              text = "${xcolors.white}";
+              base = "${xcolors.black2}";
+              mantle = "${xcolors.black1}";
+              crust = "${xcolors.black0}";
+            };
+          };
+          customUIColors = {
+            all = {
+              "statusBar.foreground" = "accent";
+              "statusBar.noFolderForeground" = "accent";
+            };
+          };
+        })
+      ];
 
     userSettings = {
-      "[c]".editor.defaultFormatter = "xaver.clang-format";
-      "[cpp]".editor.defaultFormatter = "xaver.clang-format";
-      "[css]".editor.defaultFormatter = "esbenp.prettier-vscode";
-      "[html]".editor.defaultFormatter = "esbenp.prettier-vscode";
-      "[javascript]".editor.defaultFormatter = "rvest.vs-code-prettier-eslint";
-      "[json]".editor.defaultFormatter = "esbenp.prettier-vscode";
-      "[jsonc]".editor.defaultFormatter = "rvest.vs-code-prettier-eslint";
-      "[lua]".editor.defaultFormatter = "johnnymorganz.stylua";
-      "[nix]".editor.defaultFormatter = "kamadorueda.alejandra";
-      "[python]".editor.defaultFormatter = "ms-python.black-formatter";
-      "[scss]".editor.defaultFormatter = "sibiraj-s.vscode-scss-formatter";
-      "[typescript]".editor.defaultFormatter = "rvest.vs-code-prettier-eslint";
+      "[c]"."editor.defaultFormatter" = "xaver.clang-format";
+      "[cpp]"."editor.defaultFormatter" = "xaver.clang-format";
+      "[css]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[html]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[javascript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[json]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[jsonc]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[less]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[nix]"."editor.defaultFormatter" = "kamadorueda.alejandra";
+      "[python]"."editor.defaultFormatter" = "ms-python.black-formatter";
+      "[scss]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
 
-      breadcrumbs.enabled = false;
-      editor = {
-        bracketPairColorization = {
-          enabled = true;
-          independentColorPoolPerBracketType = true;
-        };
-        cursorBlinking = "smooth";
-        cursorSmoothCaretAnimation = "on";
-        cursorWidth = 2;
-        find.addExtraSpaceOnTop = false;
-        fontFamily = "'monospace', monospace, 'Material Design Icons'";
-        fontLigatures = true;
-        fontSize = 13;
-        formatOnPaste = true;
-        formatOnSave = true;
-        formatOnType = true;
-        guides = {
-          bracketPairs = true;
-          indentation = true;
-        };
-        inlayHints.enabled = "off";
-        inlineSuggest.enabled = true;
-        largeFileOptimizations = false;
-        lineNumbers = "on";
-        linkedEditing = true;
-        maxTokenizationLineLength = 60000;
-        minimap.enabled = false;
-        overviewRulerBorder = false;
-        quickSuggestions.strings = true;
-        renderLineHighlight = "all";
-        renderWhitespace = "none";
-        smoothScrolling = true;
-        suggest.showStatusBar = true;
-        suggestSelection = "first";
+      "breadcrumbs.enabled" = true;
+      "breadcrumbs.symbolPath" = "last";
+
+      "editor.acceptSuggestionOnEnter" = "smart";
+      "editor.autoIndent" = "full";
+      "editor.bracketPairColorization.enabled" = true;
+      "editor.bracketPairColorization.independentColorPoolPerBracketType" = true;
+      "editor.cursorBlinking" = "smooth";
+      "editor.cursorSmoothCaretAnimation" = "on";
+      "editor.fontFamily" = "'monospace', monospace, 'Material Design Icons'";
+      "editor.fontLigatures" = true;
+      "editor.fontSize" = 13;
+      "editor.fontWeight" = "500";
+      "editor.formatOnPaste" = true;
+      "editor.formatOnSave" = true;
+      "editor.formatOnType" = true;
+      "editor.guides.bracketPairs" = true;
+      "editor.guides.indentation" = true;
+      "editor.inlayHints.enabled" = "onUnlessPressed";
+      "editor.inlayHints.padding" = true;
+      "editor.inlineSuggest.enabled" = true;
+      "editor.linkedEditing" = true;
+      "editor.lineHeight" = 22;
+      "editor.lineNumbers" = "on";
+      "editor.minimap.enabled" = false;
+      "editor.minimap.renderCharacters" = false;
+      "editor.renderLineHighlight" = "all";
+      "editor.renderWhitespace" = "none";
+      "editor.semanticHighlighting.enabled" = true;
+      "editor.showUnused" = true;
+      "editor.smoothScrolling" = true;
+      "editor.tabCompletion" = "on";
+      "editor.tabSize" = 2;
+      "editor.trimAutoWhitespace" = true;
+      "editor.wordWrap" = "on";
+
+      "files.autoSave" = "onFocusChange";
+      "files.insertFinalNewline" = true;
+      "files.trimTrailingWhitespace" = true;
+
+      "git.autofetch" = true;
+      "git.enableSmartCommit" = true;
+
+      "github.copilot.enable" = {
+        "*" = true;
+      };
+      "githubPullRequests.pullBranch" = "always";
+
+      "gitlens.views.repositories.files.layout" = "tree";
+
+      "gopls" = {
+        "ui.semanticTokens" = true;
       };
 
-      emmet.useInlineCompletions = true;
-      explorer = {
-        confirmDelete = true;
-        confirmDragAndDrop = false;
-      };
+      "terminal.integrated.cursorBlinking" = true;
+      "terminal.integrated.cursorStyle" = "line";
+      "terminal.integrated.cursorWidth" = 2;
+      "terminal.integrated.fontFamily" = "'monospace'";
+      "terminal.integrated.fontSize" = 13;
+      "terminal.integrated.minimumContrastRatio" = 1;
+      "terminal.integrated.smoothScrolling" = true;
+      "terminal.integrated.defaultProfile.linux" = "zsh";
 
-      files = {
-        eol = "\n";
-        insertFinalNewline = true;
-        trimTrailingWhitespace = true;
-      };
+      "window.autoDetectColorScheme" = true;
+      "window.menuBarVisibility" = "toggle";
+      "window.titleBarStyle" = "custom";
+      "window.zoomLevel" = 1;
 
-      git = {
-        autofetch = true;
-        confirmSync = false;
-        enableSmartCommit = true;
-      };
-
-      github.copilot.enable."*" = true;
-      security.workspace.trust.enabled = false;
-
-      terminal.integrated = {
-        cursorBlinking = true;
-        cursorStyle = "line";
-        cursorWidth = 2;
-        fontFamily = "'monospace'";
-        fontSize = 13;
-        smoothScrolling = true;
-        defaultProfile = {
-          linux = "zsh";
-        };
-      };
-
-      window = {
-        menuBarVisibility = "toggle";
-        nativeTabs = true;
-        titleBarStyle = "custom";
-        zoomLevel = 1;
-      };
-
-      workbench = {
-        colorTheme = "Catppuccin Macchiato";
-        iconTheme = "material-icon-theme";
-        productIconTheme = "material-product-icons";
-      };
+      "workbench.colorTheme" = "Catppuccin Macchiato";
+      "workbench.editor.enablePreview" = false;
+      "workbench.editor.enablePreviewFromQuickOpen" = false;
+      "workbench.iconTheme" = "catppuccin-macchiato";
+      "workbench.productIconTheme" = "icons-carbon";
+      "workbench.tree.renderIndentGuides" = "always";
+      "workbench.startupEditor" = "none";
+      "workbench.sideBar.location" = "left";
+      "workbench.panel.defaultLocation" = "left";
     };
   };
 }
