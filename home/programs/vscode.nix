@@ -197,6 +197,15 @@ in {
         "command" = "workbench.action.navigateForward";
         "when" = "canNavigateForward";
       }
+      {
+        "key" = "ctrl+g ctrl+d";
+        "command" = "editor.action.revealDefinition";
+        "when" = "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor";
+      }
+      {
+        "key" = "ctrl+g ctrl+l";
+        "command" = "workbench.action.gotoLine";
+      }
     ];
   };
 }
