@@ -97,6 +97,7 @@
     monitor = [
       "eDP-1, 1920x1080@60, 1920x0, 1"
       "HDMI-A-1, 1920x1080@60, 0x0, 1"
+      "DP-2, 1920x1080@60, -1920x0, 1"
     ];
 
     workspace = [
@@ -110,6 +111,11 @@
       "HDMI-A-1,6"
       "HDMI-A-1,8"
       "HDMI-A-1,0"
+      "DP-2,1"
+      "DP-2,3"
+      "DP-2,5"
+      "DP-2,7"
+      "DP-2,9"
     ];
 
     xwayland.force_zero_scaling = true;

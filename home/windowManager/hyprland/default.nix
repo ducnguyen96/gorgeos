@@ -9,7 +9,7 @@
     ./config
     ./programs/waybar.nix
     ./programs/swaylock.nix
-    ./programs/wofi.nix
+    #./programs/wofi.nix
     ./services/dunst.nix
   ];
 
@@ -22,7 +22,6 @@
     dbus
     libnotify
     libcanberra-gtk3
-
   ];
 
   wayland.windowManager.hyprland = {
