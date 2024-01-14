@@ -19,5 +19,17 @@
         ]
         ++ sharedModules;
     };
+
+    amd8700 = nixosSystem {
+      modules =
+        [
+          ./amd8700
+          ../modules/hardware/audio
+          ../modules/hardware/gpu/amd.nix
+          self.nixosModules.hyprland
+          {home-manager.users.duc.imports = homeImports."gorgeos";}
+        ]
+        ++ sharedModules;
+    };
   };
 }
