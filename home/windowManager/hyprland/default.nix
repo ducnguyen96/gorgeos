@@ -9,7 +9,7 @@
     ./config
     ./programs/waybar.nix
     ./programs/swaylock.nix
-    #./programs/wofi.nix
+    ./programs/wofi.nix
     ./services/dunst.nix
   ];
 
