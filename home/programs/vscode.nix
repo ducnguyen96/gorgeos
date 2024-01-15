@@ -186,6 +186,7 @@ in {
       "workbench.panel.defaultLocation" = "left";
     };
 
+    # https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf
     keybindings = [
       {
         "key" = "alt+left";
