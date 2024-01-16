@@ -12,7 +12,6 @@
     inputs.ags.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-db.hmModules.nix-index
-    inputs.nixvim.homeManagerModules.nixvim
   ];
 
   homeImports = {
