@@ -20,15 +20,23 @@
     ...
   }: {
     devShells.default = pkgs.mkShell {
+      DIRENV_LOG_FORMAT = "";
+
+      name = "yuki";
+
+      packages = with pkgs; [
+        alejandra
+        deadnix
+        git
+        nil
+        statix
+      ];
+
       shellHook = ''
         ${config.pre-commit.installationScript}
       '';
-
-      DIRENV_LOG_FORMAT = "";
-
-      packages = with pkgs; [
-        git
-      ];
     };
+
+    formatter = pkgs.alejandra;
   };
 }
