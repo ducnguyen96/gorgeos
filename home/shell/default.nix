@@ -14,6 +14,8 @@
   home = {
     packages = with pkgs; [
       yt-dlp
+      unzip
+      wget
     ];
 
     sessionVariables = {
