@@ -30,6 +30,7 @@
 > - **Terminal:**:
 >   - Kitty
 > - **Editor:**
+>   - Neovim
 >   - Visual Studio Code
 > - **Shell:**
 >   - Nodejs
