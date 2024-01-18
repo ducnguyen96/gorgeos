@@ -6,6 +6,7 @@
     ../../programs/media.nix
     ../../programs/fcitx5.nix
     ../../programs/ranger.nix
+    ../../programs/neovim
     ../../dev
     ../../themes
     ../../windowManager/hyprland
