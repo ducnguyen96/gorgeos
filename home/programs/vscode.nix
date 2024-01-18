@@ -38,6 +38,10 @@ in {
     })
     mimeTypes);
 
+  home.packages = with pkgs; [
+    shfmt # foxundermoon.shell-format's depedency
+  ];
+
   programs.vscode = let
     xcolors = pkgs.lib.colors.xcolors default.colorscheme.colors;
   in {
@@ -146,6 +150,10 @@ in {
       "files.autoSave" = "onFocusChange";
       "files.insertFinalNewline" = true;
       "files.trimTrailingWhitespace" = true;
+
+      "files.associations" = {
+        "*.inc" = "php";
+      };
 
       "git.autofetch" = true;
       "git.enableSmartCommit" = true;

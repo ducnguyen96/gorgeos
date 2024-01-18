@@ -10,6 +10,7 @@
   home.packages = with pkgs; [
     pulsemixer
     mpc-cli
+    easyeffects
   ];
 
   programs = {
