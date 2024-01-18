@@ -169,6 +169,8 @@ in {
         "ui.semanticTokens" = true;
       };
 
+      "shellformat.path" = "${pkgs.shfmt}/bin/shfmt";
+
       "terminal.integrated.cursorBlinking" = true;
       "terminal.integrated.cursorStyle" = "line";
       "terminal.integrated.cursorWidth" = 2;
