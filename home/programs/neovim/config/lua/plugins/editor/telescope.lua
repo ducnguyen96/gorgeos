@@ -10,6 +10,13 @@ return {
 			end,
 			desc = "List git branches",
 		},
+		{
+			"<leader>fg",
+			function()
+				require("telescope.builtin").live_grep()
+			end,
+			desc = "Live grep",
+		},
 	},
 	opts = function(_, opts)
 		if not Util.has("flash.nvim") then
