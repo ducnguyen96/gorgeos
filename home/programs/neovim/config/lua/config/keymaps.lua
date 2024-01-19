@@ -8,3 +8,10 @@ set("n", "<leader>wv", "<C-W>v", { desc = "Split window vertically", remap = tru
 set("n", "<leader>wh", "<C-W>s", { desc = "Split window horizontally", remap = true })
 
 set("i", "<C-BS>", "<C-W>", { desc = "Delete word backwards", silent = true })
+set("n", "<leader>cs", "<cmd>SymbolsOutline<cr>", { desc = "Show symbols outline", silent = true })
+
+-- insert new line without entering insert mode
+set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below", silent = true })
+
+-- save without formatting
+set("n", "<leader>cs", "<cmd>noautocmd wcr>", { desc = "Save without formatting", silent = true })

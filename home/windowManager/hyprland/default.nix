@@ -19,6 +19,7 @@
 
     xdg-utils
 
+    bc
     dbus
     libnotify
     libcanberra-gtk3

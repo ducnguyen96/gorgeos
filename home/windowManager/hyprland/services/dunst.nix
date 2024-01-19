@@ -6,38 +6,43 @@
   ...
 }: let
   volumectl = let
-    inherit (pkgs) pamixer dunst libcanberra-gtk3;
+    inherit (pkgs) dunst libcanberra-gtk3;
     _ = lib.getExe;
   in
     pkgs.writeShellScriptBin "volumectl" ''
+      sink="@DEFAULT_SINK@"
+      current_volume=$(wpctl get-volume $sink | grep -oE '[0-9]+\.[0-9]+')
+
       case "$1" in
       up)
-          ${_ pamixer} -i "$2"
-          ;;
+      	current_volume=$(echo "$current_volume + $2" | bc)
+      	wpctl set-volume $sink $current_volume
+      	;;
       down)
-          ${_ pamixer} -d "$2"
-          ;;
+      	current_volume=$(echo "$current_volume - $2" | bc)
+      	wpctl set-volume $sink $current_volume
+      	;;
       toggle-mute)
-          ${_ pamixer} -t
-          ;;
+      	wpctl set-mute $sink toggle
+      	;;
       esac
 
-      volume="$(${_ pamixer} --get-volume)"
-      isMuted="$(${_ pamixer} --get-mute)"
+      is_mute=$(wpctl get-volume $sink | grep -oE 'MUTED')
+      current_volume=$(echo "$current_volume * 100" | bc)
 
       if [ "$isMuted" = "true" ]; then
-          ${dunst}/bin/dunstify -r 2593 \
-              -u normal \
-              -a "VOLUMECTL" "Muted" \
-              -i audio-volume-muted-symbolic
+      	${dunst}/bin/dunstify -r 2593 \
+      		-u normal \
+      		-a "VOLUMECTL" "Muted" \
+      		-i audio-volume-muted-symbolic
       else
-          ${dunst}/bin/dunstify -r 2593 \
-              -u normal \
-              -a "VOLUMECTL" "Volume: " \
-              -h int:value:"$volume" \
-              -i audio-volume-high-symbolic
+      	${dunst}/bin/dunstify -r 2593 \
+      		-u normal \
+      		-a "VOLUMECTL" "Volume: " \
+      		-h int:value:"$current_volume" \
+      		-i audio-volume-high-symbolic
 
-          ${libcanberra-gtk3}/bin/canberra-gtk-play -i audio-volume-change -d "volumectl"
+      	${libcanberra-gtk3}/bin/canberra-gtk-play -i audio-volume-change -d "volumectl"
       fi
     '';
 

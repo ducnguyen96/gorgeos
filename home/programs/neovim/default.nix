@@ -4,6 +4,8 @@
   ...
 }: {
   home.packages = with pkgs; [
+    cmake
+    gnumake
     gcc
     lazygit
     fd
