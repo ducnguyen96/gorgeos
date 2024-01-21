@@ -46,8 +46,3 @@ set("n", "<leader>cs", "<cmd>SymbolsOutline<cr>", { desc = "Show symbols outline
 
 -- code keymaps
 set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below", silent = true })
-
--- terminal keymaps
-set("t", "<C-l>", "<C-\\><C-n><C-l>", { desc = "Clear terminal", silent = true })
-set("t", "<A-j>", "<C-\\><C-n><C-w>j", { desc = "Scroll terminal down", silent = true })
-set("t", "<A-k>", "<C-\\><C-n><C-w>k", { desc = "Scroll terminal up", silent = true })
