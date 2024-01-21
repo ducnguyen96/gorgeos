@@ -19,6 +19,8 @@
 
     nodejs
     nodePackages.prettier
+
+    php
   ];
 
   programs.neovim = {enable = true;};
