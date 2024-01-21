@@ -7,6 +7,7 @@ local set = vim.keymap.set
 
 harpoon:setup()
 
+-- harpoon keymaps
 set("n", "<leader>a", function()
 	harpoon:list():append()
 end)
@@ -27,7 +28,6 @@ set("n", "<C-s>", function()
 	harpoon:list():select(4)
 end)
 
--- Toggle previous & next buffers stored within Harpoon list
 set("n", "<C-S-P>", function()
 	harpoon:list():prev()
 end)
@@ -35,14 +35,19 @@ set("n", "<C-S-N>", function()
 	harpoon:list():next()
 end)
 
+-- window keymaps
 set("n", "<leader>wv", "<C-W>v", { desc = "Split window vertically", remap = true })
 set("n", "<leader>wh", "<C-W>s", { desc = "Split window horizontally", remap = true })
 
+-- editor keymaps
 set("i", "<C-BS>", "<C-W>", { desc = "Delete word backwards", silent = true })
+set("n", "<leader>cs", "<cmd>noautocmd w<cr>", { desc = "Save without formatting", silent = true })
 set("n", "<leader>cs", "<cmd>SymbolsOutline<cr>", { desc = "Show symbols outline", silent = true })
 
--- insert new line without entering insert mode
+-- code keymaps
 set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below", silent = true })
 
--- save without formatting
-set("n", "<leader>cs", "<cmd>noautocmd w<cr>", { desc = "Save without formatting", silent = true })
+-- terminal keymaps
+set("t", "<C-l>", "<C-\\><C-n><C-l>", { desc = "Clear terminal", silent = true })
+set("t", "<A-j>", "<C-\\><C-n><C-w>j", { desc = "Scroll terminal down", silent = true })
+set("t", "<A-k>", "<C-\\><C-n><C-w>k", { desc = "Scroll terminal up", silent = true })
