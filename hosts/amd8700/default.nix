@@ -5,7 +5,7 @@
 }: {
   imports = [./hardware-configuration.nix];
 
-  networking.hostName = "8700amd";
+  networking.hostName = "amd8700";
 
   boot = {
     loader = {

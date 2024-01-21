@@ -22,8 +22,6 @@
     devShells.default = pkgs.mkShell {
       DIRENV_LOG_FORMAT = "";
 
-      name = "yuki";
-
       packages = with pkgs; [
         alejandra
         deadnix
