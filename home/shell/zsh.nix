@@ -58,6 +58,7 @@
       fzf = getExe skim;
       g = "git";
       ga = "git add";
+      gab = "git add . && rebuild";
       gc = "git commit";
       gp = "git push";
       gs = "git status";
