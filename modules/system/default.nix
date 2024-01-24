@@ -8,6 +8,7 @@
     ./security
     ./users
     ./services
+    ./virtualization
   ];
 
   system.stateVersion = lib.mkDefault "24.05";
