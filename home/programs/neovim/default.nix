@@ -8,6 +8,7 @@
     "application/sql"
     "application/toml"
     "application/x-shellscript"
+    "application/x-php"
     "application/yaml"
     "text/css"
     "text/english"
@@ -30,6 +31,7 @@
     "text/x-makefile"
     "text/x-python"
     "text/x-scss"
+    "text/x-php"
   ];
 in {
   xdg.mimeApps.defaultApplications = builtins.listToAttrs (map (mimeType: {
@@ -56,6 +58,9 @@ in {
     nodePackages.prettier
 
     php
+
+    # copilot nvim
+    (python3.withPackages (ps: with ps; [python-dotenv requests pynvim prompt-toolkit]))
   ];
 
   programs.neovim = {

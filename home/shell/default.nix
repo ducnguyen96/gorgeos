@@ -16,6 +16,7 @@
       yt-dlp
       unzip
       wget
+      file
     ];
 
     sessionVariables = {
