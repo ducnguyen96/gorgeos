@@ -195,4 +195,19 @@ nixos-install --flake .#8570w
 
 It will take a while. Then after that you can reboot.
 
-## Daily useage
+## Daily usages
+### Rebuild
+
+```bash
+# note that rebuild script assume your flake is in the same directory as this repo which is ~/Documents/Code/gorgeos
+rebuild
+```
+### Delete system old generations
+```bash
+sudo nix-collect-garbage -d
+```
+### Delete home old generations
+```bash
+nix-collect-garbage -d
+```
+
