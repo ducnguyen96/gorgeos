@@ -1,4 +1,27 @@
-{config, ...}: {
+{
+  config,
+  osConfig,
+  ...
+}: let
+  monitor_left = osConfig.environment.variables."MONITOR_LEFT";
+  monitor_right = osConfig.environment.variables."MONITOR_RIGHT";
+
+  monitor_left_name = builtins.elemAt (builtins.split "," monitor_left) 0;
+  monitor_right_name = builtins.elemAt (builtins.split "," monitor_right) 0;
+
+  workspace = [
+    "${monitor_left_name},1"
+    "${monitor_left_name},3"
+    "${monitor_left_name},5"
+    "${monitor_left_name},7"
+    "${monitor_left_name},9"
+    "${monitor_right_name},2"
+    "${monitor_right_name},4"
+    "${monitor_right_name},6"
+    "${monitor_right_name},8"
+    "${monitor_right_name},0"
+  ];
+in {
   imports = [
     ./rules.nix
     ./binds.nix
@@ -94,29 +117,9 @@
       vrr = 0;
     };
 
-    monitor = [
-      "eDP-1, 1920x1080@60, 1920x0, 1"
-      "HDMI-A-1, 1920x1080@60, 0x0, 1"
-      "DP-2, 1920x1080@60, -1920x0, 1"
-    ];
+    monitor = [monitor_left monitor_right];
 
-    workspace = [
-      "eDP-1,1"
-      "eDP-1,3"
-      "eDP-1,5"
-      "eDP-1,7"
-      "eDP-1,9"
-      "HDMI-A-1,2"
-      "HDMI-A-1,4"
-      "HDMI-A-1,6"
-      "HDMI-A-1,8"
-      "HDMI-A-1,0"
-      "DP-2,1"
-      "DP-2,3"
-      "DP-2,5"
-      "DP-2,7"
-      "DP-2,9"
-    ];
+    workspace = workspace;
 
     xwayland.force_zero_scaling = true;
     debug.disable_logs = false;

@@ -58,9 +58,6 @@ in {
     nodePackages.prettier
 
     php
-
-    # copilot nvim
-    (python3.withPackages (ps: with ps; [python-dotenv requests pynvim prompt-toolkit]))
   ];
 
   programs.neovim = {

@@ -17,6 +17,7 @@
       unzip
       wget
       file
+      htop
     ];
 
     sessionVariables = {
