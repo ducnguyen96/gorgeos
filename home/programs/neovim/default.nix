@@ -63,6 +63,9 @@ in {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+
+    withPython3 = true;
+    extraPython3Packages = ps: with ps; [python-dotenv requests pynvim prompt-toolkit];
   };
 
   home.file."${config.home.homeDirectory}/.config/nvim/init.lua" = {
