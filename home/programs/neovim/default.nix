@@ -56,6 +56,7 @@ in {
 
     nodejs
     nodePackages.prettier
+    markdownlint-cli
 
     php
   ];
