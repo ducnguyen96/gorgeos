@@ -36,6 +36,15 @@
     MONITOR_RIGHT = "eDP-1, 1920x1080@60, 1920x0, 1";
   };
 
+  services = {
+    upower = {
+      enable = true;
+      percentageLow = 30;
+      percentageCritical = 20;
+      percentageAction = 10;
+      criticalPowerAction = "Hibernate";
+    };
+  };
   # networking.extraHosts = ''
   #   127.0.0.1 mapreport.dev.droopy.forwoodsafety.com
   # '';

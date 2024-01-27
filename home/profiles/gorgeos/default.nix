@@ -10,5 +10,6 @@
     ../../dev
     ../../themes
     ../../windowManager/hyprland
+    ../../services
   ];
 }
