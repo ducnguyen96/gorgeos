@@ -2,7 +2,6 @@
 
 <div align="center">
 
-<h1>A clone flake from <a href="https://github.com/rxyhn/yuki">yuki</a></h1>
 
 <a href="#">
   <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nixos.svg" width="750" height="300" alt="Banner"/>
@@ -19,6 +18,8 @@
 <br>
 
 </div>
+
+**NOTE**: This is a fork from [yuki](https://github.com/rxyhn/yuki)
 
 > **Profiles:**
 >
