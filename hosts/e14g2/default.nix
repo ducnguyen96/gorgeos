@@ -32,8 +32,8 @@
   };
 
   environment.variables = {
-    MONITOR_LEFT = "HDMI-A-1, 1920x1080@60, 0x0, 1";
-    MONITOR_RIGHT = "eDP-1, 1920x1080@60, 1920x0, 1";
+    MONITOR_LEFT = "HDMI-A-1, 1920x1080@60, 0x-1080, 1";
+    MONITOR_RIGHT = "eDP-1, 1920x1080@60, 0x0, 1";
   };
 
   services = {
