@@ -35,6 +35,7 @@
 >   - Visual Studio Code
 > - **Shell:**
 >   - Nodejs
+>   - Flutter
 
 ## :package: Repository Contents
 
