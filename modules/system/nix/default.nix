@@ -38,6 +38,7 @@
     config = {
       allowUnfree = true;
       allowBroken = true;
+      android_sdk.accept_license = true;
       permittedInsecurePackages = [
         "openssl-1.1.1u"
         "electron-25.9.0"
