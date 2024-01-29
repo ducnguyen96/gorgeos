@@ -10,16 +10,16 @@
   monitor_right_name = builtins.elemAt (builtins.split "," monitor_right) 0;
 
   workspace = [
-    "${monitor_left_name},1"
-    "${monitor_left_name},3"
-    "${monitor_left_name},5"
-    "${monitor_left_name},7"
-    "${monitor_left_name},9"
-    "${monitor_right_name},2"
-    "${monitor_right_name},4"
-    "${monitor_right_name},6"
-    "${monitor_right_name},8"
-    "${monitor_right_name},0"
+    "${monitor_left_name},2"
+    "${monitor_left_name},4"
+    "${monitor_left_name},6"
+    "${monitor_left_name},8"
+    "${monitor_left_name},0"
+    "${monitor_right_name},1"
+    "${monitor_right_name},3"
+    "${monitor_right_name},5"
+    "${monitor_right_name},7"
+    "${monitor_right_name},9"
   ];
 in {
   imports = [

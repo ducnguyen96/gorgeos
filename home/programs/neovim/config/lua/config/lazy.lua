@@ -22,7 +22,6 @@ require("lazy").setup({
 
 		{ import = "plugins.extras.code.copilot" },
 		{ import = "plugins.extras.editor" },
-		{ import = "plugins.extras.lang" },
 		{ import = "plugins.extras.lang.nix" },
 		{ import = "plugins.extras.lang.php" },
 		{ import = "plugins.extras.lang.svelte" },

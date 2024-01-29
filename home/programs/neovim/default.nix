@@ -33,14 +33,6 @@
     "text/x-scss"
     "text/x-php"
   ];
-
-  buildToolsVersion = "34.0.0";
-  androidComposition = pkgs.androidenv.composeAndroidPackages {
-    buildToolsVersions = [buildToolsVersion];
-    platformVersions = ["34"];
-    abiVersions = ["arm64-v8a" "armeabi-v7a"];
-  };
-  androidSdk = androidComposition.androidsdk;
 in {
   xdg.mimeApps.defaultApplications = builtins.listToAttrs (map (mimeType: {
       name = mimeType;
@@ -67,9 +59,6 @@ in {
     markdownlint-cli
 
     php
-
-    androidSdk
-    flutter
   ];
 
   programs.neovim = {
@@ -102,6 +91,4 @@ in {
 
     target = "${config.home.homeDirectory}/.local/share/applications/nvim.desktop";
   };
-
-  home.sessionVariables.ANDROID_SDK_ROOT = "${androidSdk}/libexec/android-sdk";
 }
