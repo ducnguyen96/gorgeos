@@ -43,6 +43,7 @@ end, { desc = "Select harpoon next item", silent = true })
 -- window keymaps
 set("n", "<leader>wv", "<C-W>v", { desc = "Split window vertically", remap = true })
 set("n", "<leader>wh", "<C-W>s", { desc = "Split window horizontally", remap = true })
+set("n", "<leader>wo", "<C-W>o", { desc = "Close all windows except current", remap = true })
 
 -- editor keymaps
 set("i", "<C-BS>", "<C-W>", { desc = "Delete word backwards", silent = true })

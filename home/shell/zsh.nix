@@ -11,7 +11,7 @@
       dl = "$HOME/Downloads";
       docs = "$HOME/Documents";
       code = "$HOME/Documents/Code";
-      dots = "$HOME/Documents/Code/gorgeos";
+      dots = "$HOME/Documents/Code/SideProjects/gorgeos";
       pics = "$HOME/Pictures";
       vids = "$HOME/Videos";
       mss = "$HOME/Music";
