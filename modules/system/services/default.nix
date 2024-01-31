@@ -12,7 +12,7 @@
     openssh = {
       enable = true;
       settings = {
-        KdbInteractiveAuthentication = false;
+        KbdInteractiveAuthentication = false;
         PasswordAuthentication = false;
         PermitRootLogin = "no";
       };

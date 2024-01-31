@@ -56,6 +56,9 @@
       cat = "${getExe bat} --style=plain";
       du = getExe du-dust;
       fzf = getExe skim;
+      r = "rebuild";
+      n = "nvim";
+      v = "nvim";
       g = "git";
       ga = "git add";
       gab = "git add . && rebuild";

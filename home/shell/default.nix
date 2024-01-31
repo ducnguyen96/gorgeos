@@ -19,6 +19,7 @@
       file
       htop
       scrcpy
+      rsync
       android-tools
     ];
 
