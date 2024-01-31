@@ -18,6 +18,8 @@
       wget
       file
       htop
+      scrcpy
+      android-tools
     ];
 
     sessionVariables = {
