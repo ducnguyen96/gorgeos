@@ -52,6 +52,10 @@
       enable = true;
       enableZshIntegration = true;
     };
+
+    ssh = {
+      enable = true;
+    };
   };
 
   services = {
