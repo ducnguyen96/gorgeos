@@ -56,6 +56,9 @@ in {
     # nix formatter
     alejandra
 
+    # lua formatter
+    stylua
+
     nodejs
     php
     go

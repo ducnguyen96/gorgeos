@@ -22,12 +22,13 @@ require("lazy").setup({
 
 		{ import = "plugins.extras.code.copilot" },
 		{ import = "plugins.extras.editor" },
-		{ import = "plugins.extras.lang.nix" },
-		{ import = "plugins.extras.lang.php" },
-		{ import = "plugins.extras.lang.svelte" },
 		{ import = "plugins.extras.util.project" },
 		{ import = "plugins.extras.util.harpoon" },
 		{ import = "plugins.extras.util" },
+		{ import = "plugins.extras.lang.nix" },
+		{ import = "plugins.extras.lang.php" },
+		{ import = "plugins.extras.lang.svelte" },
+		{ import = "plugins.extras.lang.lua" },
 	},
 	defaults = {
 		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
