@@ -14,8 +14,8 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
 		{ import = "lazyvim.plugins.extras.lang.json" },
 		{ import = "lazyvim.plugins.extras.lang.markdown" },
+		{ import = "lazyvim.plugins.extras.lang.go" },
 		-- import/override with your plugins
-		{ import = "plugins.LSP" },
 		{ import = "plugins.editor" },
 		{ import = "plugins.formatting" },
 		{ import = "plugins.ui" },

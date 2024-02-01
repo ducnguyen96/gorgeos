@@ -21,6 +21,7 @@
       scrcpy
       rsync
       android-tools
+      ventoy
     ];
 
     sessionVariables = {

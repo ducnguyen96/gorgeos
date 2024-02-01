@@ -41,6 +41,7 @@ in {
     mimeTypes);
 
   home.packages = with pkgs; [
+    # dependencies
     cmake
     gnumake
     gcc
@@ -48,17 +49,16 @@ in {
     fd
     ripgrep
     wl-clipboard
-    tree-sitter
-    stylua
+
+    # shell formatter
     shfmt
-    fish
+
+    # nix formatter
     alejandra
 
     nodejs
-    nodePackages.prettier
-    markdownlint-cli
-
     php
+    go
   ];
 
   programs.neovim = {
