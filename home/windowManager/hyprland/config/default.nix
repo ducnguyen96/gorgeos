@@ -109,7 +109,7 @@ in {
       disable_autoreload = true;
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
-      force_hypr_chan = true;
+      # force_hypr_chan = true;
       force_default_wallpaper = 0;
       key_press_enables_dpms = true;
       mouse_move_enables_dpms = true;
