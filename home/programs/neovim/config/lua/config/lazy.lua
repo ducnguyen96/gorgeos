@@ -16,6 +16,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.markdown" },
 		{ import = "lazyvim.plugins.extras.lang.go" },
 		{ import = "lazyvim.plugins.extras.lang.tailwind" },
+		{ import = "lazyvim.plugins.extras.util.project" },
 		-- import/override with your plugins
 		{ import = "plugins.editor" },
 		{ import = "plugins.formatting" },
@@ -23,7 +24,6 @@ require("lazy").setup({
 
 		{ import = "plugins.extras.code.copilot" },
 		{ import = "plugins.extras.editor" },
-		{ import = "plugins.extras.util.project" },
 		{ import = "plugins.extras.util.harpoon" },
 		{ import = "plugins.extras.util" },
 		{ import = "plugins.extras.lang.nix" },
