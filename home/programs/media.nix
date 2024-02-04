@@ -11,6 +11,7 @@
     pulsemixer
     mpc-cli
     easyeffects
+    google-chrome
   ];
 
   programs = {
