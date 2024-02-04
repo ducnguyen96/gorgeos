@@ -59,6 +59,9 @@ in {
     # lua formatter
     stylua
 
+    #markdown
+    markdownlint-cli
+
     nodejs
     php
     go

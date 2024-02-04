@@ -32,8 +32,8 @@
   };
 
   environment.variables = {
-    MONITOR_LEFT = "HDMI-A-1, 1920x1080@60, 0x0, 1";
-    MONITOR_RIGHT = "DP-2, 1920x1080@60, 1920x0, 1";
+    MONITOR_LEFT = "DP-2, 1920x1080@60, 0x0, 1";
+    MONITOR_RIGHT = "HDMI-A-1, 1920x1080@60, 1920x0, 1";
   };
 
   # networking.extraHosts = ''
