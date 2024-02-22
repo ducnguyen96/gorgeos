@@ -63,6 +63,7 @@ in {
     markdownlint-cli
 
     nodejs
+    nodePackages.firebase-tools
     php
     go
   ];

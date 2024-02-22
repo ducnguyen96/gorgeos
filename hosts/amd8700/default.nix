@@ -36,7 +36,7 @@
     MONITOR_RIGHT = "HDMI-A-1, 1920x1080@60, 1920x0, 1";
   };
 
-  # networking.extraHosts = ''
-  #   127.0.0.1 mapreport.dev.droopy.forwoodsafety.com
-  # '';
+  networking.extraHosts = ''
+    127.0.0.1 mapreport.dev.droopy.forwoodsafety.com
+  '';
 }

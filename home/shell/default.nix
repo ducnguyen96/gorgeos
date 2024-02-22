@@ -22,6 +22,8 @@
       rsync
       android-tools
       ventoy
+      usbutils
+      pfetch
     ];
 
     sessionVariables = {
@@ -57,6 +59,14 @@
 
     ssh = {
       enable = true;
+
+      extraConfig = ''
+        Host e14g2
+        User duc
+        Hostname 192.168.1.17
+        Port 22
+        IdentityFile ~/.ssh/id_ed25519
+      '';
     };
   };
 
