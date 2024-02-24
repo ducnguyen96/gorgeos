@@ -25,6 +25,8 @@
       cloudflare-warp
       usbutils
       pfetch
+      showmethekey
+      polkit_gnome
     ];
 
     sessionVariables = {
