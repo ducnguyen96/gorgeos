@@ -22,6 +22,7 @@
       rsync
       android-tools
       ventoy
+      cloudflare-warp
     ];
 
     sessionVariables = {
