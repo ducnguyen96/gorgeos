@@ -18,6 +18,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.tailwind" },
 		{ import = "lazyvim.plugins.extras.util.project" },
 		{ import = "lazyvim.plugins.extras.formatting.prettier" },
+		{ import = "lazyvim.plugins.extras.lang.terraform" },
 		-- import/override with your plugins
 		{ import = "plugins.editor" },
 		{ import = "plugins.formatting" },
