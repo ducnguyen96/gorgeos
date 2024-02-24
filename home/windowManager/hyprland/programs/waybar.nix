@@ -71,7 +71,7 @@ in {
         };
         network = {
           format-wifi = formatIcons "${xcolors.lavender}CC" "󰖩" + " {essid}";
-          format-ethernet = formatIcons "${xcolors.lavender}CC" "󰈀" + " {ipaddr}/{cidr}";
+          format-ethernet = formatIcons "${xcolors.lavender}CC" "󰈀" + " ethernet";
           format-disconnected = formatIcons "${xcolors.red}CC" "󰖪";
           tooltip-format = ''
             󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}
