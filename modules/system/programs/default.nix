@@ -15,5 +15,9 @@
         eval "$(${lib.getExe pkgs.starship} init zsh)"
       '';
     };
+
+    virt-manager = {
+      enable = true;
+    };
   };
 }
