@@ -34,6 +34,9 @@ in {
   programs.firefox = {
     enable = true;
     profiles.main = {
+      id = 0;
+      isDefault = true;
+
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
       ];
@@ -69,6 +72,8 @@ in {
     };
 
     profiles.cyberpredictit = {
+      id = 1;
+
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
       ];
