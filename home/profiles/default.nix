@@ -16,6 +16,7 @@
 
   homeImports = {
     "gorgeos" = [./gorgeos] ++ sharedModules;
+    "wsl" = [./wsl] ++ [../. ../shell/minimal.nix];
   };
 
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
@@ -28,6 +29,11 @@ in {
     homeConfigurations = withSystem "x86_64-linux" ({pkgs, ...}: {
       "gorgeos" = homeManagerConfiguration {
         modules = homeImports."gorgeos";
+        inherit pkgs;
+      };
+
+      "wsl" = homeManagerConfiguration {
+        modules = homeImports."wsl";
         inherit pkgs;
       };
     });
