@@ -16,7 +16,7 @@
 
   homeImports = {
     "gorgeos" = [./gorgeos] ++ sharedModules;
-    "wsl" = [./wsl] ++ [../. ../shell/minimal.nix];
+    "wsl" = [./wsl] ++ [../minimal.nix ../shell/minimal.nix];
   };
 
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
