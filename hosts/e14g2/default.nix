@@ -36,6 +36,11 @@
     MONITOR_RIGHT = "eDP-1, 1920x1080@60, 0x0, 1";
   };
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
   services = {
     upower = {
       enable = true;
@@ -43,6 +48,10 @@
       percentageCritical = 20;
       percentageAction = 10;
       criticalPowerAction = "Hibernate";
+    };
+
+    blueman = {
+      enable = true;
     };
   };
 

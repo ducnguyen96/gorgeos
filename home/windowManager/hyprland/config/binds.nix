@@ -76,6 +76,7 @@ in {
           "SUPER, ESCAPE, exec, wofi-power"
 
           ", Print, exec, ${screenshotarea}"
+          ", F10, exec, ${screenshotarea}"
           "CTRL, Print, exec, grimblast --notify --cursor copysave output"
           "ALT, Print, exec, grimblast --notify --cursor copysave screen"
         ]
