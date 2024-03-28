@@ -27,6 +27,7 @@
       pfetch
       showmethekey
       polkit_gnome
+      findutils.locate
     ];
 
     sessionVariables = {
