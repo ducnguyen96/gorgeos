@@ -41,6 +41,7 @@
       latex-bin
       latexmk
       preprint
+      changepage
       titlesec
       marvosym
       tools
