@@ -50,6 +50,11 @@
         IdentityFile ~/.ssh/id_ed25519
       '';
     };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 
   services = {
