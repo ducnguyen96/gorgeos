@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./scripts
 
@@ -12,24 +8,6 @@
   ];
 
   home = {
-    packages = with pkgs; [
-      yt-dlp
-      unzip
-      wget
-      file
-      htop
-      scrcpy
-      rsync
-      android-tools
-      ventoy
-      cloudflare-warp
-      usbutils
-      pfetch
-      showmethekey
-      polkit_gnome
-      findutils.locate
-    ];
-
     sessionVariables = {
       DIRENV_LOG_FORMAT = "";
       NIX_AUTO_RUN = "1";

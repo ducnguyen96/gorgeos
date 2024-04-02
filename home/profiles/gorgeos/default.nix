@@ -8,6 +8,7 @@
     ../../programs/ranger.nix
     ../../programs/texlive.nix
     ../../programs/neovim
+    ../../programs/utils.nix
     ../../dev
     ../../themes
     ../../windowManager/hyprland
