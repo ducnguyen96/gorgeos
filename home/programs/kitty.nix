@@ -109,8 +109,7 @@
       "alt+m" = "send_key minus";
       "alt+b" = "send_key home";
       "alt+n" = "send_key end";
-      "alt+u" = "send_key page_up";
-      "alt+d" = "send_key page_down";
+      "alt+u" = "send_key underscore";
     };
   };
 }
