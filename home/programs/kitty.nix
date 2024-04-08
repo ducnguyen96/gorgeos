@@ -109,7 +109,7 @@
       "alt+m" = "send_key minus";
       "alt+b" = "send_key home";
       "alt+n" = "send_key end";
-      "alt+u" = "send_key underscore";
+      "alt+shift+U" = "send_key underscore";
     };
   };
 }

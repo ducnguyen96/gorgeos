@@ -48,6 +48,12 @@ set("n", "<leader>wo", "<C-W>o", { desc = "Close all windows except current", re
 -- editor keymaps
 set("i", "<C-BS>", "<C-W>", { desc = "Delete word backwards", silent = true })
 set("n", "<leader>cs", "<cmd>SymbolsOutline<cr>", { desc = "Show symbols outline", silent = true })
+set("n", "<A-u>", ":m-2<CR>==", { desc = "move current line up", silent = true })
+set("v", "<A-u>", ":m-2<CR>gv=gv", { desc = "move current line up", silent = true })
+set("i", "<A-u>", "<Esc>:m-2<CR>==gi", { desc = "move current line up", silent = true })
+set("n", "<A-d>", ":m+<CR>==", { desc = "move current line down", silent = true })
+set("v", "<A-d>", ":m+<CR>gv=gv", { desc = "move current line down", silent = true })
+set("i", "<A-d>", "<Esc>:m+<CR>==gi", { desc = "move current line down", silent = true })
 
 -- code keymaps
 set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below", silent = true })
