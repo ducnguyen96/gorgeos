@@ -70,7 +70,7 @@ in {
           "SUPER, E, exec, ${editor}"
           "SUPER, R, exec, ${terminal} -e ranger"
           "SUPER, M, exec, ${terminal} -e ncmpcpp"
-          "SUPER, N, exec, ${terminal} -e nvim"
+          "SUPER, N, exec, ${terminal} -e nvim --listen /tmp/nvim-server.pipe"
           "SUPERSHIFT, L, exec, ${pkgs.swaylock-effects}/bin/swaylock -S --grace 2"
           "SUPER, D, exec, pkill wofi  || wofi -S drun"
           "SUPER, ESCAPE, exec, wofi-power"

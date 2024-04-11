@@ -57,8 +57,10 @@
       du = getExe du-dust;
       fzf = getExe skim;
       r = "rebuild";
-      n = "nvim";
-      v = "nvim";
+      n = "nvim --listen /tmp/nvim-server.pipe";
+      v = "nvim --listen /tmp/nvim-server.pipe";
+      vim = "nvim --listen /tmp/nvim-server.pipe";
+      nvim = "nvim --listen /tmp/nvim-server.pipe";
       g = "git";
       ga = "git add";
       gab = "git add . && rebuild";

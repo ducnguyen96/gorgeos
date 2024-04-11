@@ -53,6 +53,7 @@
         enabled = true;
         autoupdate = true;
       };
+      core.editor = "nvim";
     };
 
     ignores = [
