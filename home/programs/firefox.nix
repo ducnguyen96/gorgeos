@@ -22,6 +22,41 @@
     "x-scheme-handler/unknown"
     "x-scheme-handler/https"
   ];
+
+  generalSettings = {
+    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      ublock-origin
+    ];
+
+    settings = {
+      "browser.tabs.loadInBackground" = true;
+      "gfx.canvas.accelerated" = true;
+      "gfx.webrender.enabled" = true;
+      "gfx.x11-egl.force-enabled" = true;
+      "layers.acceleration.force-enabled" = true;
+      "media.av1.enabled" = false;
+      "media.ffmpeg.vaapi.enabled" = true;
+      "media.hardware-video-decoding.force-enabled" = true;
+      "media.rdd-ffmpeg.enabled" = true;
+      "widget.dmabuf.force-enabled" = true;
+      "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+      "svg.context-properties.content.enabled" = true;
+      "gnomeTheme.hideSingleTab" = true;
+      "gnomeTheme.bookmarksToolbarUnderTabs" = true;
+      "gnomeTheme.normalWidthTabs" = false;
+      "gnomeTheme.tabsAsHeaderbar" = false;
+    };
+
+    userChrome = ''
+      @import "${firefox-gnome-theme}/share/firefox-gnome-theme/userChrome.css";
+    '';
+
+    userContent = ''
+      @import "${firefox-gnome-theme}/share/firefox-gnome-theme/userContent.css";
+    '';
+
+    extraConfig = builtins.readFile "${firefox-gnome-theme}/share/firefox-gnome-theme/configuration/user.js";
+  };
 in {
   home.sessionVariables.BROWSER = "firefox";
 
@@ -37,75 +72,19 @@ in {
       id = 0;
       isDefault = true;
 
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        ublock-origin
-      ];
-
-      settings = {
-        "browser.tabs.loadInBackground" = true;
-        "gfx.canvas.accelerated" = true;
-        "gfx.webrender.enabled" = true;
-        "gfx.x11-egl.force-enabled" = true;
-        "layers.acceleration.force-enabled" = true;
-        "media.av1.enabled" = false;
-        "media.ffmpeg.vaapi.enabled" = true;
-        "media.hardware-video-decoding.force-enabled" = true;
-        "media.rdd-ffmpeg.enabled" = true;
-        "widget.dmabuf.force-enabled" = true;
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "svg.context-properties.content.enabled" = true;
-        "gnomeTheme.hideSingleTab" = true;
-        "gnomeTheme.bookmarksToolbarUnderTabs" = true;
-        "gnomeTheme.normalWidthTabs" = false;
-        "gnomeTheme.tabsAsHeaderbar" = false;
-      };
-
-      userChrome = ''
-        @import "${firefox-gnome-theme}/share/firefox-gnome-theme/userChrome.css";
-      '';
-
-      userContent = ''
-        @import "${firefox-gnome-theme}/share/firefox-gnome-theme/userContent.css";
-      '';
-
-      extraConfig = builtins.readFile "${firefox-gnome-theme}/share/firefox-gnome-theme/configuration/user.js";
+      inherit (generalSettings) extensions settings userChrome userContent extraConfig;
     };
 
     profiles.cyberpredictit = {
       id = 1;
 
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        ublock-origin
-      ];
+      inherit (generalSettings) extensions settings userChrome userContent extraConfig;
+    };
 
-      settings = {
-        "browser.tabs.loadInBackground" = true;
-        "gfx.canvas.accelerated" = true;
-        "gfx.webrender.enabled" = true;
-        "gfx.x11-egl.force-enabled" = true;
-        "layers.acceleration.force-enabled" = true;
-        "media.av1.enabled" = false;
-        "media.ffmpeg.vaapi.enabled" = true;
-        "media.hardware-video-decoding.force-enabled" = true;
-        "media.rdd-ffmpeg.enabled" = true;
-        "widget.dmabuf.force-enabled" = true;
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "svg.context-properties.content.enabled" = true;
-        "gnomeTheme.hideSingleTab" = true;
-        "gnomeTheme.bookmarksToolbarUnderTabs" = true;
-        "gnomeTheme.normalWidthTabs" = false;
-        "gnomeTheme.tabsAsHeaderbar" = false;
-      };
+    profiles.finance = {
+      id = 2;
 
-      userChrome = ''
-        @import "${firefox-gnome-theme}/share/firefox-gnome-theme/userChrome.css";
-      '';
-
-      userContent = ''
-        @import "${firefox-gnome-theme}/share/firefox-gnome-theme/userContent.css";
-      '';
-
-      extraConfig = builtins.readFile "${firefox-gnome-theme}/share/firefox-gnome-theme/configuration/user.js";
+      inherit (generalSettings) extensions settings userChrome userContent extraConfig;
     };
   };
 }
