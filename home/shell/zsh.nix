@@ -17,8 +17,11 @@
       mss = "$HOME/Music";
     };
 
+    autosuggestion = {
+      enable = true;
+    };
+
     autocd = true;
-    enableAutosuggestions = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
 
