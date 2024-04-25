@@ -1,8 +1,8 @@
 {
   virtualisation = {
-    waydroid = {
-      enable = true;
-    };
+    # waydroid = {
+    #   enable = true;
+    # };
 
     libvirtd = {
       enable = true;
