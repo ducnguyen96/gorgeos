@@ -21,7 +21,9 @@
 
   qt = {
     enable = true;
-    platformTheme = "qtct";
+    platformTheme = {
+      name = "qtct";
+    };
     style = {
       name = "Catppuccin-Macchiato-Dark";
       package = pkgs.catppuccin-kde.override {

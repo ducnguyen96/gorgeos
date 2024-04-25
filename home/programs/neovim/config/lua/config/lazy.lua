@@ -27,7 +27,6 @@ require("lazy").setup({
 		{ import = "plugins.ui" },
 
 		-- { import = "plugins.extras.code.copilot" },
-		{ import = "plugins.extras.editor" },
 		{ import = "plugins.extras.util.harpoon" },
 		{ import = "plugins.extras.util" },
 		{ import = "plugins.extras.lang.nix" },
