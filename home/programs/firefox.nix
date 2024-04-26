@@ -86,5 +86,11 @@ in {
 
       inherit (generalSettings) extensions settings userChrome userContent extraConfig;
     };
+
+    profiles.cyber2 = {
+      id = 3;
+
+      inherit (generalSettings) extensions settings userChrome userContent extraConfig;
+    };
   };
 }
