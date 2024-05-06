@@ -32,7 +32,7 @@ in {
       gaps_in = 5;
       gaps_out = 5;
       border_size = 1;
-      "col.active_border" = "rgba(88888888)";
+      "col.active_border" = "rgb(AC87C5)";
       "col.inactive_border" = "rgba(00000088)";
 
       allow_tearing = false;
