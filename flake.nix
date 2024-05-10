@@ -11,7 +11,6 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
 
   inputs = {
-    anyrun.url = "github:Kirottu/anyrun";
     catppuccin-vsc.url = "github:catppuccin/vscode";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-utils.url = "github:numtide/flake-utils";

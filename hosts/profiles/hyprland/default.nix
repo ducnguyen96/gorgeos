@@ -31,7 +31,6 @@
   };
 
   home-manager.sharedModules = [
-    inputs.anyrun.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
   ];
 

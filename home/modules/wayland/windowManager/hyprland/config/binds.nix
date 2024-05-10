@@ -95,7 +95,6 @@ in {
           "SUPER, M, exec, ${terminal} -e ncmpcpp"
           "SUPER, N, exec, ${terminal} -e nvim --listen /tmp/nvim-server.pipe"
           "SUPER, L, exec, ${pkgs.systemd}/bin/loginctl lock-session"
-          "SUPER, D, exec, pkill wofi  || wofi -S drun"
           "SUPER, ESCAPE, exec, wofi-power"
           "SUPER, O, exec, run-as-service wl-ocr"
 
@@ -110,7 +109,7 @@ in {
 
       bindr = [
         # Launchers
-        "SUPERSHIFT, D, exec, pkill .anyrun-wrapped || run-as-service anyrun"
+        "SUPER, D, exec, pkill wofi  || wofi -S drun"
       ];
 
       binde = [
