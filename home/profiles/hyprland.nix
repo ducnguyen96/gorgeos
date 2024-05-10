@@ -20,6 +20,7 @@
     ../modules/programs/nix-index-db.nix
     ../modules/programs/ranger.nix
     ../modules/programs/wofi.nix
+    ../modules/programs/wofi-power.nix
 
     ../modules/services/udiskie.nix
     ../modules/services/blueman-applet.nix
