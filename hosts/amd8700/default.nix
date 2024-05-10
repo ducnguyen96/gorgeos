@@ -1,13 +1,14 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [./hardware-configuration.nix];
 
   networking.hostName = "amd8700";
 
   boot = {
+    initrd = {
+      systemd.enable = true;
+      supportedFilesystems = ["ext4"];
+    };
+
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
@@ -21,33 +22,80 @@
     };
   };
 
-  virtualisation.docker = {
-    enable = true;
-    #storageDriver = "btrfs";
+  environment = {
+    systemPackages = with pkgs; [
+      acpi
+      alsa-utils
+      ffmpeg-full
+      libva
+      libva-utils
+      mesa
+      pciutils
+      v4l-utils
+      vulkan-tools
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
+    ];
 
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
+    variables = {
+      MONITOR_LEFT = "DP-2, 1920x1080@60, 0x0, 1";
+      MONITOR_RIGHT = "HDMI-A-1, 1920x1080@60, 1920x0, 1";
     };
   };
 
-  environment.variables = {
-    MONITOR_LEFT = "DP-2, 1920x1080@60, 0x0, 1";
-    MONITOR_RIGHT = "HDMI-A-1, 1920x1080@60, 1920x0, 1";
-  };
+  hardware = {
+    # Enable all firmware regardless of license.
+    enableAllFirmware = true;
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
+    # Enable firmware with a license allowing redistribution.
+    enableRedistributableFirmware = true;
+
+    # update the CPU microcode for Intel processors.
+    cpu.intel.updateMicrocode = true;
+
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
   };
 
   services = {
-    blueman = {
-      enable = true;
+    # Enable the ACPI daemon.
+    acpid.enable = true;
+
+    # Enable the auto-cpufreq daemon.
+    auto-cpufreq.enable = true;
+
+    # Enable periodic SSD TRIM of mounted partitions in background
+    fstrim.enable = true;
+
+    # Enable security levels for Thunderbolt 3 on GNU/Linux.
+    hardware.bolt.enable = true;
+
+    # Extra config options for systemd-logind.
+    logind = {
+      powerKey = "suspend";
+      lidSwitch = "suspend";
+      lidSwitchExternalPower = "lock";
     };
+
+    # Enable the Profile Sync daemon.
+    psd = {
+      enable = true;
+      resyncTimer = "10m";
+    };
+
+    # Enable power-profiles-daemon, a DBus daemon that allows changing system behavior based upon user-selected power profiles.
+    power-profiles-daemon.enable = true;
+
+    # Enable thermald, the temperature management daemon.
+    thermald.enable = true;
   };
 
-  networking.extraHosts = ''
-    127.0.0.1 mapreport.dev.droopy.forwoodsafety.com
-  '';
+  # Enable in-memory compressed devices and swap space provided by the zram kernel module.
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
 }

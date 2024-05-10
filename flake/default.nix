@@ -1,18 +1,15 @@
 {
   imports = [
     ./pre-commit-hooks.nix
+    ./modules
 
-    ../home/profiles
+    ../home
     ../hosts
     ../lib
-    ../modules
     ../pkgs
   ];
 
-  systems = [
-    "x86_64-linux"
-    "aarch64-linux"
-  ];
+  systems = ["x86_64-linux"];
 
   perSystem = {
     config,
@@ -27,7 +24,6 @@
         deadnix
         git
         nil
-        statix
       ];
 
       shellHook = ''

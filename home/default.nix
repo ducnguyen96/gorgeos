@@ -1,22 +1,37 @@
 {
-  home = {
-    username = "duc";
-    homeDirectory = "/home/duc";
-    extraOutputsToInstall = ["doc" "devdoc"];
-    stateVersion = "24.05";
+  inputs,
+  lib,
+  ...
+}: let
+  sharedModules = [
+    ./modules/programs/git.nix
+    ./modules/programs/ssh.nix
+    ./modules/programs/starship.nix
+    ./modules/programs/utils.nix
+    ./modules/programs/zsh.nix
+    ./modules/services/gnome-keyring.nix
+  ];
+
+  homeImports = {
+    "duc@hyprland" =
+      [
+        ./home.nix
+        ./profiles/hyprland.nix
+      ]
+      ++ lib.concatLists [sharedModules];
   };
 
-  manual = {
-    html.enable = false;
-    json.enable = false;
-    manpages.enable = false;
-  };
+  inherit (inputs.home-manager.lib) homeManagerConfiguration;
+  pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+in {
+  _module.args = {inherit homeImports;};
 
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
+  flake = {
+    homeConfigurations = {
+      "duc@hyprland" = homeManagerConfiguration {
+        inherit pkgs;
+        modules = homeImports."duc@hyprland";
+      };
     };
   };
-  programs.home-manager.enable = true;
 }

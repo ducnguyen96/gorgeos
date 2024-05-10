@@ -1,35 +1,42 @@
 {
-  self,
-  inputs,
   homeImports,
-  sharedModules,
+  inputs,
+  self,
+  themes,
   ...
-}: {
-  flake.nixosConfigurations = let
-    inherit (inputs.nixpkgs.lib) nixosSystem;
-  in {
-    e14g2 = nixosSystem {
-      modules =
-        [
-          ./e14g2
-          ../modules/hardware/audio
-          ../modules/hardware/gpu/intel.nix
-          self.nixosModules.hyprland
-          {home-manager.users.duc.imports = homeImports."gorgeos";}
-        ]
-        ++ sharedModules;
-    };
+}: let
+  inherit (inputs.nixpkgs.lib) nixosSystem;
 
+  modules = "${self}/modules/system";
+  hardware = modules + "/hardware";
+  profiles = "${self}/hosts/profiles";
+
+  specialArgs = {inherit inputs self themes;};
+in {
+  flake.nixosConfigurations = {
     amd8700 = nixosSystem {
-      modules =
-        [
-          ./amd8700
-          ../modules/hardware/audio
-          ../modules/hardware/gpu/amd.nix
-          self.nixosModules.hyprland
-          {home-manager.users.duc.imports = homeImports."gorgeos";}
-        ]
-        ++ sharedModules;
+      inherit specialArgs;
+
+      modules = [
+        ./amd8700
+
+        "${modules}/config"
+        "${modules}/programs"
+        "${modules}/security"
+        "${modules}/services"
+        "${modules}/virtualization/docker.nix"
+        "${hardware}/bluetooth.nix"
+        "${hardware}/intel.nix"
+        "${hardware}/amd.nix"
+        "${profiles}/hyprland"
+
+        {
+          home-manager = {
+            users.duc.imports = homeImports."duc@hyprland";
+            extraSpecialArgs = specialArgs;
+          };
+        }
+      ];
     };
   };
 }

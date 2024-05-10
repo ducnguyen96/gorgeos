@@ -1,37 +1,25 @@
 {pkgs, ...}: {
-  programs = {
-    ssh.startAgent = false;
-  };
+  imports = [
+    ./gnome/gnome-keyring.nix
+    ./gnome/polkit-gnome.nix
+    ./networking.nix
+    ./openssh.nix
+    ./pipewire.nix
+  ];
 
   services = {
+    accounts-daemon.enable = true;
+    devmon.enable = true;
+    gvfs.enable = true;
+    udisks2.enable = true;
+    tumbler.enable = true;
+
     dbus = {
       enable = true;
-      packages = with pkgs; [dconf udisks2];
+      implementation = "broker";
+      packages = with pkgs; [dconf gcr udisks2];
     };
 
-    openssh = {
-      enable = true;
-      settings = {
-        KbdInteractiveAuthentication = false;
-        PasswordAuthentication = false;
-        PermitRootLogin = "no";
-      };
-    };
-  };
-
-  systemd.user.services = {
-    polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
+    udev.packages = with pkgs; [gnome.gnome-settings-daemon android-udev-rules];
   };
 }
