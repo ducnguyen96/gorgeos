@@ -1,11 +1,6 @@
 {inputs, ...}: {
-  imports = [
-    inputs.nh.nixosModules.default
-  ];
-
-  environment.variables.FLAKE = "/home/duc/Documents/Code/SideProjects/gorgeos";
-
-  nh = {
+  programs.nh = {
+    package = inputs.nh.packages.x86_64-linux.default;
     enable = true;
     clean = {
       enable = true;

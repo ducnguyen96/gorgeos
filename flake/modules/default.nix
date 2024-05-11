@@ -5,7 +5,6 @@ in {
     nixosModules = {};
 
     homeManagerModules = {
-      swaync = "${flakeModules}/home-manager/swaync";
     };
   };
 }

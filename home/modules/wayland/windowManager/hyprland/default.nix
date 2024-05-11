@@ -82,8 +82,6 @@
     '';
 in {
   imports = [
-    inputs.self.homeManagerModules.swaync
-
     ./config
     ./swaync
     ./waybar
