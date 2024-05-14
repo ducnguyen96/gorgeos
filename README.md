@@ -18,8 +18,6 @@
 
 </div>
 
-**NOTE**: This is a fork from [yuki](https://github.com/rxyhn/yuki)
-
 > **Profiles:**
 >
 > - **OS:** NixOS

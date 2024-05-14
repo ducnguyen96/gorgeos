@@ -40,5 +40,7 @@
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
     pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 }

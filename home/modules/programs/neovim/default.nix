@@ -59,7 +59,7 @@ in {
     stylua
 
     #markdown
-    markdownlint-cli
+    # markdownlint-cli
 
     nodejs
   ];
