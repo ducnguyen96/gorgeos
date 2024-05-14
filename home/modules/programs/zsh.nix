@@ -66,11 +66,12 @@
       # Initialize completion system
       autoload -Uz compinit
 
-      if [[ -n ${config.home.homeDirectory}/.config/zsh/.zcompdump(#qN.mh+24) ]]; then
-       compinit;
-      else
-       compinit -C;
-      fi;
+      # if [[ -n ${config.home.homeDirectory}/.config/zsh/.zcompdump(#qN.mh+24) ]]; then
+      #  compinit;
+      # else
+      #  compinit -C;
+      # fi;
+      compinit -C;
 
       _comp_options+=(globdots)
 
