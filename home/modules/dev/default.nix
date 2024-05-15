@@ -8,5 +8,6 @@
   home.packages = with pkgs; [
     pritunl-client
     dbeaver
+    google-chrome
   ];
 }
