@@ -97,6 +97,8 @@ in {
           "SUPER, L, exec, ${pkgs.systemd}/bin/loginctl lock-session"
           "SUPER, ESCAPE, exec, wofi-power"
           "SUPER, O, exec, run-as-service wl-ocr"
+          "SUPER, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
+          "SUPERSHIFT, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw"
 
           # Screenshot
           ", Print, exec, ${screenshotarea}"
