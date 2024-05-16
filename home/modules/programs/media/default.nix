@@ -14,6 +14,7 @@
     pavucontrol
     playerctl
     pulsemixer
+    cloudflare-warp
   ];
 
   xdg.mimeApps.defaultApplications = {
