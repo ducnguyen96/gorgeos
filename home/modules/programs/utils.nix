@@ -4,6 +4,8 @@
     eza.enable = true;
     man.enable = true;
     tmux.enable = true;
+    htop.enable = true;
+    btop.enable = true;
 
     dircolors = {
       enable = true;
