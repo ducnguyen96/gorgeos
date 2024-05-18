@@ -25,7 +25,7 @@
   xdg-mime = "${pkgs.xdg-utils}/bin/xdg-mime";
   defaultApp = type: "${gtk-launch} $(${xdg-mime} query default ${type})";
   terminal = config.home.sessionVariables.TERMINAL;
-  browser = defaultApp "x-scheme-handler/https";
+  browser = "google-chrome-stable --enable-wayland-ime";
   editor = defaultApp "text/plain";
 in {
   wayland.windowManager.hyprland = {
