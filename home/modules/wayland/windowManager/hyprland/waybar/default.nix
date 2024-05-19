@@ -17,7 +17,7 @@
         margin-left = 0;
         margin-right = 0;
         modules-left = ["custom/ghost" "hyprland/workspaces" "hyprland/window"];
-        modules-center = ["custom/weather" "clock" "custom/btc"];
+        modules-center = ["custom/weather" "clock" "custom/btc" "custom/eth" "custom/link"];
         modules-right = ["tray" "custom/notification" "group/network-pulseaudio-backlight-battery" "group/powermenu"];
 
         # Ghost
@@ -58,6 +58,24 @@
           format = "₿: {}";
           interval = 60;
           exec = "curl -s https://api.binance.com/api/v1/ticker/price?symbol=BTCUSDT | jq .price | xargs | awk -F. '{print $1}'";
+          tooltip = false;
+        };
+
+        # ETH
+        "custom/eth" = {
+          format = "🇪: {}";
+          interval = 60;
+          exec = "curl -s https://api.binance.com/api/v1/ticker/price?symbol=ETHUSDT | jq .price | xargs | awk -F. '{print $1}'";
+          tooltip = false;
+        };
+
+        # LINK
+        "custom/link" = {
+          format = "🔗: {}";
+          interval = 60;
+          exec = ''
+            curl -s https://api.binance.com/api/v1/ticker/price?symbol=LINKUSDT | jq .price | xargs | awk '{printf "%.2f\n", $1}'
+          '';
           tooltip = false;
         };
 
