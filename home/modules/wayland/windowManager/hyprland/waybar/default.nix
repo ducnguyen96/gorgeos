@@ -17,7 +17,7 @@
         margin-left = 0;
         margin-right = 0;
         modules-left = ["custom/ghost" "hyprland/workspaces" "hyprland/window"];
-        modules-center = ["custom/weather" "clock"];
+        modules-center = ["custom/weather" "clock" "custom/btc"];
         modules-right = ["tray" "custom/notification" "group/network-pulseaudio-backlight-battery" "group/powermenu"];
 
         # Ghost
@@ -51,6 +51,14 @@
           interval = 3600;
           exec = "${pkgs.wttrbar}/bin/wttrbar  --hide-conditions --location Jakarta";
           return-type = "json";
+        };
+
+        # BTC
+        "custom/btc" = {
+          format = "₿: {}";
+          interval = 60;
+          exec = "curl -s https://api.binance.com/api/v1/ticker/price?symbol=BTCUSDT | jq .price | xargs | awk -F. '{print $1}'";
+          tooltip = false;
         };
 
         # Clock & Calendar

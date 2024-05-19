@@ -87,6 +87,7 @@ window#waybar {
 #custom-lock,
 #custom-suspend,
 #custom-reboot,
+#custom-btc,
 #custom-power {
   background: @background-alt;
   border: 1px solid @border;
@@ -97,6 +98,7 @@ window#waybar {
 #custom-ghost,
 #window,
 #custom-weather,
+#custom-btc,
 #tray,
 #custom-notification,
 #network-pulseaudio-backlight-battery,
