@@ -5,13 +5,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "firefox-gnome-theme";
-  version = "121.1";
+  version = "126";
 
   src = fetchFromGitHub {
     repo = pname;
     owner = "rafaelmardojai";
     rev = "v${version}";
-    sha256 = "sha256-SYp0DRkO73i8XVyOdAlcP2ZItqx9DqraIEJy6mY/2Ng=";
+    sha256 = "sha256-jVbj2JD5GRkP8s3vKBtd9PDpftf3kjLR0ZA/ND/c2+Q=";
   };
 
   dontConfigure = true;
