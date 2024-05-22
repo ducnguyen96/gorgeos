@@ -110,58 +110,74 @@ Add your host to the flake
 
 ```nix
 {
-  self,
-  inputs,
   homeImports,
-  sharedModules,
+  inputs,
+  self,
+  themes,
   ...
-}: {
-  flake.nixosConfigurations = let
-    inherit (inputs.nixpkgs.lib) nixosSystem;
-  in {
+}: let
+  inherit (inputs.nixpkgs.lib) nixosSystem;
+
+  modules = "${self}/modules/system";
+  hardware = modules + "/hardware";
+  profiles = "${self}/hosts/profiles";
+
+  specialArgs = {inherit inputs self themes;};
+in {
+  flake.nixosConfigurations = {
     8570w = nixosSystem {
-      modules =
-        [
-          ./8570w
-          ../modules/hardware/audio
-          ../modules/hardware/gpu/intel.nix
-          self.nixosModules.hyprland
-          {home-manager.users.duc.imports = homeImports."gorgeos";}
-        ]
-        ++ sharedModules;
+      inherit specialArgs;
+
+      modules = [
+        ./8570w
+
+        "${modules}/config"
+        "${modules}/programs"
+        "${modules}/security"
+        "${modules}/services"
+        "${modules}/virtualization/docker.nix"
+        "${hardware}/bluetooth.nix"
+        "${hardware}/intel.nix"
+        "${hardware}/amd.nix"
+        "${profiles}/hyprland"
+
+        {
+          home-manager = {
+            users.duc.imports = homeImports."duc@hyprland";
+            extraSpecialArgs = specialArgs;
+          };
+        }
+      ];
     };
   };
 }
-
 ```
 
 Replace the user in:
 
-- [modules/system/users/default.nix](modules/system/users/default.nix)
-- [modules/system/windowManager/hyprland.nix](modules/system/windowManager/hyprland.nix)
+- [modules/system/config/users-group.nix](modules/system/config/users-group.nix)
 - [home/default.nix](home/default.nix)
-- [home](home/programs/git.nix)
+- [home/home.nix](home/home.nix)
 
 ### Home
 
-You can modify the [existing profile](home/profiles/gorgeos) or add a new profile as follow:
+You can modify the [existing profile](home/profiles/hyprland) or add a new profile as follow:
 
 ```bash
-mkdir home/profiles/new-profile
-touch home/profiles/new-profile/default.nix
+touch home/profiles/new-profile.nix
 ```
 
 Add the profile to the flex
 
-`home/profiles/default.nix`
+`home/default.nix`
 
 ```nix
 flake = {
   homeConfigurations = withSystem "x86_64-linux" ({pkgs, ...}: {
-    "gorgeos" = homeManagerConfiguration {
-      modules = homeImports."gorgeos";
-      inherit pkgs;
-    };
+    "duc@hyprland" = homeManagerConfiguration {
+        inherit pkgs;
+        modules = homeImports."duc@hyprland";
+      };
     "new-profile" = homeManagerConfiguration {
       inherit pkgs;
     };
@@ -181,8 +197,7 @@ Then you can use the profile for your host
       ../modules/hardware/gpu/intel.nix
       self.nixosModules.hyprland
       {home-manager.users.<your-user>.imports = homeImports."new-profile";}
-    ]
-    ++ sharedModules;
+    ];
 };
 ```
 
