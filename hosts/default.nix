@@ -38,5 +38,29 @@ in {
         }
       ];
     };
+
+    e14g2 = nixosSystem {
+      inherit specialArgs;
+
+      modules = [
+        ./e14g2
+
+        "${modules}/config"
+        "${modules}/programs"
+        "${modules}/security"
+        "${modules}/services"
+        "${modules}/virtualization/docker.nix"
+        "${hardware}/bluetooth.nix"
+        "${hardware}/intel.nix"
+        "${profiles}/hyprland"
+
+        {
+          home-manager = {
+            users.duc.imports = homeImports."duc@hyprland";
+            extraSpecialArgs = specialArgs;
+          };
+        }
+      ];
+    };
   };
 }
