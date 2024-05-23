@@ -9,5 +9,6 @@
     pritunl-client
     dbeaver
     google-chrome
+    nodePackages.yarn
   ];
 }
