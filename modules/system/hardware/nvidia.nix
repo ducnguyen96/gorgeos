@@ -12,7 +12,7 @@
     then config.boot.kernelPackages.nvidiaPackages.stable
     else config.boot.kernelPackages.nvidiaPackages.beta;
 
-  pCfg = config.hardware.nvidia.prime;
+  # pCfg = config.hardware.nvidia.prime;
 
   extraEnv = {
     NVD_BACKEND = "direct";
@@ -27,17 +27,17 @@ in {
     hardware = {
       nvidia = {
         powerManagement = {
-          enable = true;
-          finegrained = true;
+          enable = false;
+          finegrained = false;
         };
 
         dynamicBoost.enable = true;
         modesetting.enable = true;
 
-        prime.offload = {
-          enable = mkIf (pCfg.nvidiaBusId != "" && (pCfg.intelBusId != "" || pCfg.amdgpuBusId != "")) true;
-          enableOffloadCmd = mkIf pCfg.offload.enable true;
-        };
+        # prime.offload = {
+        #   enable = mkIf (pCfg.nvidiaBusId != "" && (pCfg.intelBusId != "" || pCfg.amdgpuBusId != "")) true;
+        #   enableOffloadCmd = mkIf pCfg.offload.enable true;
+        # };
 
         nvidiaSettings = false;
         nvidiaPersistenced = true;

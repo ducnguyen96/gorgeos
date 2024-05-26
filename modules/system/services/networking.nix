@@ -3,10 +3,10 @@
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
-      # wifi = {
-      #   backend = "iwd";
-      #   powersave = true;
-      # };
+      wifi = {
+        backend = "iwd";
+        powersave = true;
+      };
     };
   };
 

@@ -62,5 +62,30 @@ in {
         }
       ];
     };
+
+    rtx2070 = nixosSystem {
+      inherit specialArgs;
+
+      modules = [
+        ./rtx2070
+
+        "${modules}/config"
+        "${modules}/programs"
+        "${modules}/security"
+        "${modules}/services"
+        "${modules}/virtualization/docker.nix"
+        "${hardware}/bluetooth.nix"
+        "${hardware}/intel.nix"
+        "${hardware}/nvidia.nix"
+        "${profiles}/hyprland"
+
+        {
+          home-manager = {
+            users.duc.imports = homeImports."duc@hyprland";
+            extraSpecialArgs = specialArgs;
+          };
+        }
+      ];
+    };
   };
 }
