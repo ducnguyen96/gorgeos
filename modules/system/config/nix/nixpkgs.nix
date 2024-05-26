@@ -11,7 +11,7 @@
       inputs.nix-vscode-extensions.overlays.default
       inputs.nixpkgs-wayland.overlay
       inputs.nur.overlay
-      inputs.neovim-nightly-overlay.overlay
+      inputs.neovim-nightly-overlay.overlays.default
     ];
   };
 }

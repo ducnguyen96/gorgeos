@@ -7,7 +7,7 @@
 
   home.packages = with pkgs; [
     pritunl-client
-    dbeaver
+    dbeaver-bin
     google-chrome
     nodePackages.yarn
   ];

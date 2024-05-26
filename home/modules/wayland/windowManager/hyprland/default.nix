@@ -106,7 +106,7 @@ in {
     hyprpicker
     swappy
     wl-clipboard
-    wl-screenrec
+    # wl-screenrec
     wlr-randr
     xdg-utils
     ydotool
