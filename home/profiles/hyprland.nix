@@ -74,6 +74,7 @@
         yt-dlp
         zathura
         zip
+        lshw
         ;
     };
   };
