@@ -3,6 +3,8 @@
     username = "duc";
     homeDirectory = "/home/duc";
     extraOutputsToInstall = ["doc" "devdoc"];
+
+    stateVersion = "24.05";
   };
 
   manual = {

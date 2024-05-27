@@ -4,19 +4,20 @@
   ...
 }: let
   sharedModules = [
+    ../nix
+    ../lib
     ./modules/programs/git.nix
     ./modules/programs/ssh.nix
     ./modules/programs/starship.nix
     ./modules/programs/utils.nix
     ./modules/programs/zsh.nix
-    ./modules/services/gnome-keyring.nix
   ];
 
   homeImports = {
-    "duc@hyprland" =
+    "duc@manjaro" =
       [
         ./home.nix
-        ./profiles/hyprland.nix
+        ./profiles/manjaro.nix
       ]
       ++ lib.concatLists [sharedModules];
   };
@@ -28,9 +29,9 @@ in {
 
   flake = {
     homeConfigurations = {
-      "duc@hyprland" = homeManagerConfiguration {
+      "duc@manjaro" = homeManagerConfiguration {
         inherit pkgs;
-        modules = homeImports."duc@hyprland";
+        modules = homeImports."duc@manjaro";
       };
     };
   };
