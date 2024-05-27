@@ -48,6 +48,7 @@ in {
     fd
     ripgrep
     wl-clipboard
+    tree-sitter
 
     # shell formatter
     shfmt
@@ -74,19 +75,6 @@ in {
 
   programs.lazygit = {
     enable = true;
-
-    settings = {
-      os = {
-        edit = ''
-          nvim --server /tmp/nvim-server.pipe --remote-tab $(pwd)/{{filename}}
-        '';
-        open = ''
-          nvim --server /tmp/nvim-server.pipe --remote-tab $(pwd)/{{filename}}
-        '';
-      };
-      disableStartupPopups = true;
-      promptToReturnFromSubprocess = false;
-    };
   };
 
   home.file."${config.home.homeDirectory}/.config/nvim/init.lua" = {

@@ -18,7 +18,7 @@
       dl = "$HOME/Downloads";
       docs = "$HOME/Documents";
       code = "$HOME/Documents/Code";
-      dots = "$HOME/Documents/Code/SideProjects/gorgeos";
+      dots = "$HOME/.config/home-manager";
       pics = "$HOME/Pictures";
       vids = "$HOME/Videos";
       mss = "$HOME/Music";
