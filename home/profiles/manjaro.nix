@@ -7,7 +7,6 @@
     ../modules/dev
 
     ../modules/programs/neovim
-    ../modules/programs/fcitx5.nix
     ../modules/programs/kitty.nix
     ../modules/programs/ranger.nix
     ../modules/programs/wofi.nix

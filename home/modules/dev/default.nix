@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./cli.nix
-    # ./go.nix
+    ./go.nix
     # ./python.nix
   ];
 
