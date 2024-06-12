@@ -14,10 +14,10 @@
   ];
 
   homeImports = {
-    "duc@manjaro" =
+    "duc@home" =
       [
         ./home.nix
-        ./profiles/manjaro.nix
+        ./profiles/home.nix
       ]
       ++ lib.concatLists [sharedModules];
   };
@@ -29,9 +29,9 @@ in {
 
   flake = {
     homeConfigurations = {
-      "duc@manjaro" = homeManagerConfiguration {
+      "duc@home" = homeManagerConfiguration {
         inherit pkgs;
-        modules = homeImports."duc@manjaro";
+        modules = homeImports."duc@home";
       };
     };
   };

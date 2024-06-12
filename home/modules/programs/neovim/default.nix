@@ -90,7 +90,7 @@ in {
       [Desktop Entry]
       Name=Neovim
       Comment=Edit text files
-      Exec=${config.home.sessionVariables.TERMINAL} -e nvim %F
+      Exec=kgx -e nvim %F
       Terminal=true
       Type=Application
       Icon=nvim
