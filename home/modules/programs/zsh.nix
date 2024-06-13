@@ -51,6 +51,7 @@
 
     initExtraBeforeCompInit = ''
       fpath+=(${pkgs.zsh-completions}/share/zsh/site-functions)
+      fpath+=(/usr/share/zsh/site-functions)
     '';
 
     completionInit = ''
