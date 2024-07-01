@@ -27,6 +27,7 @@
         ./home.nix
         ./modules/wayland/windowManager/hyprland
         ./modules/wayland/statusBar/waybar
+        ./modules/wayland/swaync
         ./modules/programs/wofi.nix
         ./modules/programs/wofi-power.nix
       ]

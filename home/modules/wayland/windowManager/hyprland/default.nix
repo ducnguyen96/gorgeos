@@ -79,6 +79,7 @@ in {
   home.packages = with pkgs; [
     volumectl
     lightctl
+    grimblast
   ];
 
   wayland.windowManager.hyprland.enable = true;
