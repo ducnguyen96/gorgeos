@@ -32,5 +32,6 @@
     jq
     unzip
     cloudflare-warp
+    pfetch-rs
   ];
 }
