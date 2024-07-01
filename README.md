@@ -135,6 +135,47 @@ sudo nix-collect-garbage -d
 nix-collect-garbage -d
 ```
 
-## Waydroid init: https://docs.waydro.id/faq/using-custom-waydroid-images
+## Waydroid
 
+### Init
+
+Source: https://docs.waydro.id/faq/using-custom-waydroid-images
 Noted: You can click on `Problem Downloading button to choose other mirror`
+
+### Usage
+
+Start the container
+
+```bash
+# Start the WayDroid LXC container
+sudo systemctl start waydroid-container
+
+# You'll know it worked by checking the journal You should see "Started Waydroid Container".
+sudo journalctl -u waydroid-container
+
+# Start WayDroid session
+# You'll know it is finished when you see the message "Android with user 0 is ready".
+waydroid session start
+```
+
+General usage
+
+```bash
+# Start Android UI
+waydroid show-full-ui
+
+# List Android apps
+waydroid app list
+
+# Start an Android app
+waydroid app launch <application name>
+
+# Install an Android app
+waydroid app install </path/to/app.apk>
+
+# Enter the LXC shell
+sudo waydroid shell
+
+# Overrides the full-ui width
+waydroid prop set persist.waydroid.width 608
+```
