@@ -5,8 +5,6 @@
 }: {
   environment = {
     sessionVariables = {
-      LIBVA_DRIVER_NAME = "nvidia";
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       CLUTTER_BACKEND = "wayland";
       GDK_BACKEND = "wayland,x11";
       MOZ_ENABLE_WAYLAND = "1";
