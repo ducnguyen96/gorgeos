@@ -29,7 +29,8 @@
   };
 
   home.packages = with pkgs; [
-    alejandra
     jq
+    unzip
+    cloudflare-warp
   ];
 }

@@ -11,6 +11,7 @@
     ./modules/programs/firefox.nix
     ./modules/programs/kitty.nix
     ./modules/programs/starship.nix
+    ./modules/programs/programming.nix
     ./modules/programs/utils.nix
     ./modules/programs/vscode.nix
     ./modules/programs/zsh.nix

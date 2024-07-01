@@ -49,6 +49,7 @@ in {
     ripgrep
     wl-clipboard
     tree-sitter
+    nodejs
 
     # shell formatter
     shfmt
@@ -56,8 +57,15 @@ in {
     # nix formatter
     alejandra
 
-    # lua formatter
+    # lua
+    lua-language-server
     stylua
+
+    # web-related formatter
+    nodePackages.prettier
+
+    # nix language server
+    nil
   ];
 
   programs.neovim = {
