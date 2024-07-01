@@ -75,6 +75,12 @@ in {
         bindsym ${cfg.modifier}+q kill
 
       #
+      # Apps:
+      #
+        bindsym ${cfg.modifier}+v exec kitty -e nvim
+        bindsym ${cfg.modifier}+r exec kitty -e ranger
+
+      #
       # More:
       #
         bindsym F10 exec grim -g "$(slurp -d)" - | wl-copy -t image/png
