@@ -29,7 +29,6 @@ in {
         "${profiles}/sway"
 
         "${modules}/virtualization/docker.nix"
-        "${modules}/virtualization/waydroid.nix"
         {
           home-manager = {
             users.duc.imports = homeImports."duc@sway";
