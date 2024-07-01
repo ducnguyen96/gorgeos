@@ -1,5 +1,5 @@
 {
-  programs.firefox = {
+  programs.vscode = {
     enable = true;
   };
 }

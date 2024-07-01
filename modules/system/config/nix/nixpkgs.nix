@@ -6,12 +6,6 @@
       "freeimage-unstable-2021-11-01"
     ];
 
-    overlays = [
-      inputs.catppuccin-vsc.overlays.default
-      inputs.nix-vscode-extensions.overlays.default
-      inputs.nixpkgs-wayland.overlay
-      inputs.nur.overlay
-      inputs.neovim-nightly-overlay.overlays.default
-    ];
+    overlays = [];
   };
 }

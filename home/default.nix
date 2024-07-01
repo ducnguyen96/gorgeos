@@ -4,19 +4,33 @@
   ...
 }: let
   sharedModules = [
-    ./modules/programs/git.nix
-    ./modules/programs/ssh.nix
+    ./modules/config/gtk.nix
+    ./modules/config/home-cursor.nix
+
+    ./modules/programs/fcitx5.nix
+    ./modules/programs/firefox.nix
+    ./modules/programs/kitty.nix
     ./modules/programs/starship.nix
     ./modules/programs/utils.nix
+    ./modules/programs/vscode.nix
     ./modules/programs/zsh.nix
-    ./modules/services/gnome-keyring.nix
+
+    ./modules/programs/media
+    ./modules/programs/neovim
   ];
 
   homeImports = {
     "duc@hyprland" =
       [
         ./home.nix
-        ./profiles/hyprland.nix
+        ./modules/wayland/windowManager/hyprland
+      ]
+      ++ lib.concatLists [sharedModules];
+
+    "duc@sway" =
+      [
+        ./home.nix
+        ./modules/wayland/windowManager/sway
       ]
       ++ lib.concatLists [sharedModules];
   };
@@ -31,6 +45,11 @@ in {
       "duc@hyprland" = homeManagerConfiguration {
         inherit pkgs;
         modules = homeImports."duc@hyprland";
+      };
+
+      "duc@sway" = homeManagerConfiguration {
+        inherit pkgs;
+        modules = homeImports."duc@sway";
       };
     };
   };

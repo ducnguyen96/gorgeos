@@ -6,7 +6,6 @@
     ../home
     ../hosts
     ../lib
-    ../pkgs
   ];
 
   systems = ["x86_64-linux"];
@@ -17,20 +16,13 @@
     ...
   }: {
     devShells.default = pkgs.mkShell {
-      DIRENV_LOG_FORMAT = "";
-
       packages = with pkgs; [
-        alejandra
-        deadnix
-        git
-        nil
       ];
 
+      DIRENV_LOG_FORMAT = "";
       shellHook = ''
         ${config.pre-commit.installationScript}
       '';
     };
-
-    formatter = pkgs.alejandra;
   };
 }

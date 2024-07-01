@@ -1,9 +1,8 @@
-{
+{pkgs, ...}: {
   programs = {
     bat.enable = true;
     eza.enable = true;
     man.enable = true;
-    tmux.enable = true;
     htop.enable = true;
     btop.enable = true;
 
@@ -28,4 +27,9 @@
       enableZshIntegration = true;
     };
   };
+
+  home.packages = with pkgs; [
+    alejandra
+    jq
+  ];
 }

@@ -23,7 +23,7 @@
       inode/directory) ${pkgs.eza}/bin/eza --long --icons --color=always "$1" ;;
       inode/symlink) printf "Symbolic link to: \e[34m%s\e[0m." "$(readlink "$1")" ;;
       application/json) ${pkgs.jq}/bin/jq --color-output < "$1" ;;
-      application/x-bittorrent) ${pkgs.transmission}/bin/transmission-show --unsorted "$1" ;;
+      application/x-bittorrent) ${pkgs.transmission_4}/bin/transmission-show --unsorted "$1" ;;
       application/x-executable|application/x-pie-executable|application/x-sharedlib) ${pkgs.binutils}/bin/readelf --wide --demangle=auto --all "$1" ;;
       application/zip) ${pkgs.atool}/bin/atool --list "$1" ;;
       image/*|video/*) handle_image "$mime" "$1" ;;
@@ -31,5 +31,5 @@
     esac
   '';
 in {
-  home.packages = [preview];
+  home.packages = with pkgs; [file] ++ [preview];
 }

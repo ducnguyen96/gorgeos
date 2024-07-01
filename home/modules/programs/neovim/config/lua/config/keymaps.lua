@@ -2,43 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local harpoon = require("harpoon")
 local set = vim.keymap.set
-
-harpoon:setup()
-
--- harpoon keymaps
-set("n", "<leader>ha", function()
-	harpoon:list():append()
-end, { desc = "Add current file to harpoon", silent = true })
-
-set("n", "<leader>hh", function()
-	harpoon.ui:toggle_quick_menu(harpoon:list())
-end, { desc = "Show harpoon menu", silent = true })
-
-set("n", "<leader>hq", function()
-	harpoon:list():select(1)
-end, { desc = "Select harpoon item 1", silent = true })
-
-set("n", "<leader>hw", function()
-	harpoon:list():select(2)
-end, { desc = "Select harpoon item 2", silent = true })
-
-set("n", "<leader>he", function()
-	harpoon:list():select(3)
-end, { desc = "Select harpoon item 3", silent = true })
-
-set("n", "<leader>hr", function()
-	harpoon:list():select(4)
-end, { desc = "Select harpoon item 4", silent = true })
-
-set("n", "<leader>hp", function()
-	harpoon:list():prev()
-end, { desc = "Select harpoon prev item", silent = true })
-
-set("n", "<leader>hn", function()
-	harpoon:list():next()
-end, { desc = "Select harpoon next item", silent = true })
 
 -- window keymaps
 set("n", "<leader>wv", "<C-W>v", { desc = "Split window vertically", remap = true })

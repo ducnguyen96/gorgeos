@@ -7,7 +7,5 @@
 
   programs = {
     dconf.enable = true;
-    kdeconnect.enable = true;
-    xfconf.enable = true;
   };
 }

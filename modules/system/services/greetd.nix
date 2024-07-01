@@ -4,9 +4,6 @@
   pkgs,
   ...
 }: {
-  # unlock GPG keyring on login
-  security.pam.services.greetd.enableGnomeKeyring = true;
-
   services = {
     greetd = {
       enable = true;
@@ -23,7 +20,7 @@
             "--asterisks"
             "--sessions '${base}/share/wayland-sessions:${base}/share/xsessions'"
           ];
-          user = "greeter";
+          user = "duc";
         };
       };
     };

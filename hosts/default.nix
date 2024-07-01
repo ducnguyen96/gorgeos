@@ -14,74 +14,23 @@
   specialArgs = {inherit inputs self themes;};
 in {
   flake.nixosConfigurations = {
-    amd8700 = nixosSystem {
-      inherit specialArgs;
-
-      modules = [
-        ./amd8700
-
-        "${modules}/config"
-        "${modules}/programs"
-        "${modules}/security"
-        "${modules}/services"
-        "${modules}/virtualization/docker.nix"
-        "${hardware}/bluetooth.nix"
-        "${hardware}/intel.nix"
-        "${hardware}/amd.nix"
-        "${profiles}/hyprland"
-
-        {
-          home-manager = {
-            users.duc.imports = homeImports."duc@hyprland";
-            extraSpecialArgs = specialArgs;
-          };
-        }
-      ];
-    };
-
-    e14g2 = nixosSystem {
-      inherit specialArgs;
-
-      modules = [
-        ./e14g2
-
-        "${modules}/config"
-        "${modules}/programs"
-        "${modules}/security"
-        "${modules}/services"
-        "${modules}/virtualization/docker.nix"
-        "${hardware}/bluetooth.nix"
-        "${hardware}/intel.nix"
-        "${profiles}/hyprland"
-
-        {
-          home-manager = {
-            users.duc.imports = homeImports."duc@hyprland";
-            extraSpecialArgs = specialArgs;
-          };
-        }
-      ];
-    };
-
     rtx2070 = nixosSystem {
       inherit specialArgs;
 
       modules = [
         ./rtx2070
 
+        "${modules}/hardware/nvidia.nix"
+
         "${modules}/config"
         "${modules}/programs"
         "${modules}/security"
         "${modules}/services"
-        "${modules}/virtualization/docker.nix"
-        "${hardware}/bluetooth.nix"
-        "${hardware}/intel.nix"
-        "${hardware}/nvidia.nix"
-        "${profiles}/hyprland"
+        "${profiles}/sway"
 
         {
           home-manager = {
-            users.duc.imports = homeImports."duc@hyprland";
+            users.duc.imports = homeImports."duc@sway";
             extraSpecialArgs = specialArgs;
           };
         }

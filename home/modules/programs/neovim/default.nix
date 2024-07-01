@@ -48,6 +48,7 @@ in {
     fd
     ripgrep
     wl-clipboard
+    tree-sitter
 
     # shell formatter
     shfmt
@@ -57,11 +58,6 @@ in {
 
     # lua formatter
     stylua
-
-    #markdown
-    # markdownlint-cli
-
-    nodejs
   ];
 
   programs.neovim = {
@@ -74,19 +70,6 @@ in {
 
   programs.lazygit = {
     enable = true;
-
-    settings = {
-      os = {
-        edit = ''
-          nvim --server /tmp/nvim-server.pipe --remote-tab $(pwd)/{{filename}}
-        '';
-        open = ''
-          nvim --server /tmp/nvim-server.pipe --remote-tab $(pwd)/{{filename}}
-        '';
-      };
-      disableStartupPopups = true;
-      promptToReturnFromSubprocess = false;
-    };
   };
 
   home.file."${config.home.homeDirectory}/.config/nvim/init.lua" = {
@@ -102,7 +85,7 @@ in {
       [Desktop Entry]
       Name=Neovim
       Comment=Edit text files
-      Exec=${config.home.sessionVariables.TERMINAL} -e nvim %F
+      Exec=kgx -e nvim %F
       Terminal=true
       Type=Application
       Icon=nvim
