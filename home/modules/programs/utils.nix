@@ -33,5 +33,6 @@
     unzip
     cloudflare-warp
     pfetch-rs
+    pciutils
   ];
 }
