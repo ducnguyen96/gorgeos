@@ -84,6 +84,7 @@ git clone https://ducnguyen96/gorgeos
 ### Customize host and home
 
 #### Host
+
 ```bash
 mv gorgeos /mnt
 cd /mnt/gorgeos
@@ -133,3 +134,7 @@ sudo nix-collect-garbage -d
 ```bash
 nix-collect-garbage -d
 ```
+
+## Waydroid init: https://docs.waydro.id/faq/using-custom-waydroid-images
+
+Noted: You can click on `Problem Downloading button to choose other mirror`

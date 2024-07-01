@@ -77,7 +77,10 @@ in {
       #
       # Apps:
       #
+        unbindsym ${cfg.modifier}+v
         bindsym ${cfg.modifier}+v exec kitty -e nvim
+
+        unbindsym ${cfg.modifier}+r
         bindsym ${cfg.modifier}+r exec kitty -e ranger
 
       #
