@@ -26,6 +26,9 @@
       [
         ./home.nix
         ./modules/wayland/windowManager/hyprland
+        ./modules/wayland/statusBar/waybar
+        ./modules/programs/wofi.nix
+        ./modules/programs/wofi-power.nix
       ]
       ++ lib.concatLists [sharedModules];
 

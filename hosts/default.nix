@@ -37,5 +37,26 @@ in {
         }
       ];
     };
+
+    e14g2 = nixosSystem {
+      inherit specialArgs;
+
+      modules = [
+        ./e14g2
+
+        "${modules}/config"
+        "${modules}/programs"
+        "${modules}/security"
+        "${modules}/services"
+        "${profiles}/hyprland"
+
+        {
+          home-manager = {
+            users.duc.imports = homeImports."duc@hyprland";
+            extraSpecialArgs = specialArgs;
+          };
+        }
+      ];
+    };
   };
 }
