@@ -22,16 +22,13 @@
 >
 > - **OS:** NixOS
 > - **Window Manager:**
->   - Hyprland
+>   - Sway
 > - **Shell:**:
 >   - ZSH
 > - **Terminal:**:
 >   - Kitty
 > - **Editor:**
 >   - Neovim
->   - Visual Studio Code
-> - **Shell:**
->   - Nodejs
 
 ## :package: Repository Contents
 
@@ -41,13 +38,16 @@
 - **[Lib](./lib):** Personal library and utilities.
 - **[Modules](./modules):** Shared system-wide modules.
 - **[pkgs](./pkgs):** Customized and additional packages.
-- **[shells](./shells/)** Shell templates to reuse
 
 ## :hammer: Install
 
 After boot to Nix installation.
 
 ### [Optional] Connect wifi
+
+```bash
+sudo su
+```
 
 ```bash
 systemctl start wpa_supplicant
@@ -78,17 +78,15 @@ git clone https://ducnguyen96/gorgeos
 - Modify [disko-config](./misc/disko/disko-config.nix) as you want. Full guide [here](https://github.com/nix-community/disko/blob/master/docs/quickstart.md)
 - Run
   ```bash
-  ./misc/disko/run
+  ./gorgeos/misc/disko/run
   ```
 
 ### Customize host and home
 
 #### Host
-
-You can cp [hosts/e14g2](./hosts/e14g2) to your own host for example:
-
 ```bash
-cp -r hosts/e14g2 hosts/8570w
+mv gorgeos /mnt
+cd /mnt/gorgeos
 ```
 
 Then generate your hardware config
@@ -100,115 +98,17 @@ nixos-generate-config --root /mnt
 Copy the hardware config to your host
 
 ```bash
-cp /mnt/etc/nixos/hardware-configuration.nix hosts/8570w
-```
-
-Add your host to the flake
-[!NOTE]: Replace user below with your user `home-manager.users.<your-user>.imports = ...`
-
-`hosts/default.nix`
-
-```nix
-{
-  homeImports,
-  inputs,
-  self,
-  themes,
-  ...
-}: let
-  inherit (inputs.nixpkgs.lib) nixosSystem;
-
-  modules = "${self}/modules/system";
-  hardware = modules + "/hardware";
-  profiles = "${self}/hosts/profiles";
-
-  specialArgs = {inherit inputs self themes;};
-in {
-  flake.nixosConfigurations = {
-    8570w = nixosSystem {
-      inherit specialArgs;
-
-      modules = [
-        ./8570w
-
-        "${modules}/config"
-        "${modules}/programs"
-        "${modules}/security"
-        "${modules}/services"
-        "${modules}/virtualization/docker.nix"
-        "${hardware}/bluetooth.nix"
-        "${hardware}/intel.nix"
-        "${hardware}/amd.nix"
-        "${profiles}/hyprland"
-
-        {
-          home-manager = {
-            users.duc.imports = homeImports."duc@hyprland";
-            extraSpecialArgs = specialArgs;
-          };
-        }
-      ];
-    };
-  };
-}
-```
-
-Replace the user in:
-
-- [modules/system/config/users-group.nix](modules/system/config/users-group.nix)
-- [home/default.nix](home/default.nix)
-- [home/home.nix](home/home.nix)
-
-### Home
-
-You can modify the [existing profile](home/profiles/hyprland) or add a new profile as follow:
-
-```bash
-touch home/profiles/new-profile.nix
-```
-
-Add the profile to the flex
-
-`home/default.nix`
-
-```nix
-flake = {
-  homeConfigurations = withSystem "x86_64-linux" ({pkgs, ...}: {
-    "duc@hyprland" = homeManagerConfiguration {
-        inherit pkgs;
-        modules = homeImports."duc@hyprland";
-      };
-    "new-profile" = homeManagerConfiguration {
-      inherit pkgs;
-    };
-  });
-};
-```
-
-Then you can use the profile for your host
-`hosts/default.nix`
-
-```nix
-8570w = nixosSystem {
-  modules =
-    [
-      ./8570w
-      ../modules/hardware/audio
-      ../modules/hardware/gpu/intel.nix
-      self.nixosModules.hyprland
-      {home-manager.users.<your-user>.imports = homeImports."new-profile";}
-    ];
-};
+cp /mnt/etc/nixos/hardware-configuration.nix hosts/rtx2070
 ```
 
 ### `nixos-install`
 
 After updating host and home as you like you can install the whole thing with
 
-`8570w` here is your host
+`rtx2070` here is your host
 
 ```bash
-nixos-install --flake .#8570w
+nixos-install --flake .#rtx2070
 ```
 
 It will take a while. Then after that you can reboot.
