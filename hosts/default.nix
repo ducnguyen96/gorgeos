@@ -26,12 +26,12 @@ in {
         "${modules}/programs"
         "${modules}/security"
         "${modules}/services"
-        "${profiles}/sway"
+        "${profiles}/hyprland"
 
         "${modules}/virtualization/docker.nix"
         {
           home-manager = {
-            users.duc.imports = homeImports."duc@sway";
+            users.duc.imports = homeImports."duc@hyprland";
             extraSpecialArgs = specialArgs;
           };
         }

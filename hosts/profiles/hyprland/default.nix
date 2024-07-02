@@ -11,7 +11,12 @@
       NIXOS_OZONE_WL = "1";
       SDL_VIDEODRIVER = "wayland";
       XDG_SESSION_TYPE = "wayland";
+      NVD_BACKEND = "direct";
     };
+
+    systemPackages = with pkgs; [
+      egl-wayland
+    ];
   };
 
   programs = {
