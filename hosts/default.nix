@@ -20,18 +20,19 @@ in {
       modules = [
         ./rtx2070
 
-        "${modules}/hardware/nvidia.nix"
+        "${hardware}/nvidia.nix"
+        "${hardware}/bluetooth.nix"
 
         "${modules}/config"
         "${modules}/programs"
         "${modules}/security"
         "${modules}/services"
-        "${profiles}/hyprland"
+        "${profiles}/sway"
 
         "${modules}/virtualization/docker.nix"
         {
           home-manager = {
-            users.duc.imports = homeImports."duc@hyprland";
+            users.duc.imports = homeImports."duc@sway";
             extraSpecialArgs = specialArgs;
           };
         }
