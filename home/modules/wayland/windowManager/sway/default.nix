@@ -74,6 +74,8 @@ in {
         # Kill focused window
         bindsym ${cfg.modifier}+q kill
 
+        bindsym ${cfg.modifier}+tab workspace back_and_forth
+
       #
       # Apps:
       #
