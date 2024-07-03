@@ -19,6 +19,8 @@
 
     ./modules/programs/media
     ./modules/programs/neovim
+
+    ./modules/dev/go.nix
   ];
 
   homeImports = {
