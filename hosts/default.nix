@@ -51,6 +51,8 @@ in {
         "${modules}/services"
         "${profiles}/hyprland"
 
+        "${modules}/virtualization/docker.nix"
+
         {
           home-manager = {
             users.duc.imports = homeImports."duc@hyprland";
