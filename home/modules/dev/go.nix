@@ -6,6 +6,13 @@
   home = {
     packages = with pkgs; [
       go
+      gofumpt
+      golangci-lint
+      gomodifytags
+      gopls
+      impl
+      delve
+      gotools # goimports
     ];
 
     sessionVariables = rec {
