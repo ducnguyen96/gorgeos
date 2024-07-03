@@ -3,7 +3,17 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkIf versionOlder;
+
+  nvStable = config.boot.kernelPackages.nvidiaPackages.stable.version;
+  nvBeta = config.boot.kernelPackages.nvidiaPackages.beta.version;
+
+  nvidiaPackages =
+    if (versionOlder nvBeta nvStable)
+    then config.boot.kernelPackages.nvStable.stable
+    else config.boot.kernelPackages.nvidiaPackages.beta;
+in {
   config = {
     environment = {
       sessionVariables = {
@@ -20,6 +30,8 @@
         powerManagement.finegrained = false;
         open = false;
         nvidiaSettings = true;
+
+        package = nvidiaPackages;
       };
 
       graphics = {

@@ -4,6 +4,7 @@
   networking.hostName = "rtx2070";
 
   boot = {
+    kernelParams = ["nvidia-drm.fbdev=1"];
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       efi.canTouchEfiVariables = true;
@@ -16,6 +17,11 @@
         gfxmodeEfi = "1920x1080";
       };
     };
+  };
+
+  hardware = {
+    enableAllFirmware = true;
+    enableRedistributableFirmware = true;
   };
 
   environment = {
