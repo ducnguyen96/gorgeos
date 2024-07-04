@@ -45,6 +45,8 @@ in {
       modules = [
         ./e14g2
 
+        "${hardware}/bluetooth.nix"
+
         "${modules}/config"
         "${modules}/programs"
         "${modules}/security"
