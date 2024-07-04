@@ -13,7 +13,11 @@ in {
     enable = true;
 
     settings = {
-      preload = themes.wallpaper;
+      preload = [
+        themes.wallpaper
+        themes.wallpaper2
+      ];
+
       wallpaper = [
         "${monitor_left_name}, ${themes.wallpaper}"
         "${monitor_right_name}, ${themes.wallpaper2}"
