@@ -29,9 +29,8 @@ lib: {
   };
 
   wallpaper = let
-    params = "?q=85&fm=jpg&crop=fit&cs=srgb&w=2560";
-    url = "https://images.unsplash.com/photo-1485470733090-0aae1788d5af${params}.jpg";
-    sha256 = "1ijl3rhjyg161b2zbg541l3f5nj8yqvr2vxnjjyyj4izs7y8vgdc";
+    url = "https://github.com/dharmx/walls/raw/main/anime/a_cat_lying_on_a_piano.jpg";
+    sha256 = "0hyd6m321958y5rmr1h0j0wj0w119vzxmkl3dl7dcnqc0qi3n31v";
     ext = lib.last (lib.splitString "." url);
   in
     builtins.fetchurl {
