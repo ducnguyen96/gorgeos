@@ -36,7 +36,7 @@
       touch_scroll_multiplier = "1.0";
       wheel_scroll_multiplier = "5.0";
       window_margin_width = 0;
-      window_padding_width = 15;
+      window_padding_width = 0;
 
       # The basic colors
       foreground = xcolors.white;
