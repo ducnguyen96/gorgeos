@@ -50,6 +50,8 @@ in {
     wl-clipboard
     tree-sitter
     nodejs
+    chafa
+    imagemagick
 
     # shell formatter
     shfmt
