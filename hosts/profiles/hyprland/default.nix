@@ -30,6 +30,12 @@
     xwayland.enable = true;
   };
 
+  security = {
+    pam.services.hyprlock = {
+      text = "auth include login";
+    };
+  };
+
   xdg.portal = {
     enable = true;
 

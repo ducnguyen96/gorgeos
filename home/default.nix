@@ -30,7 +30,6 @@
         ./modules/wayland/windowManager/hyprland
         ./modules/wayland/statusBar/waybar
         ./modules/wayland/swaync
-        ./modules/wayland/hyprpaper.nix
         ./modules/programs/wofi.nix
         ./modules/programs/wofi-power.nix
       ]
