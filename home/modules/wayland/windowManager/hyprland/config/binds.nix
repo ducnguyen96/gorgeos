@@ -94,7 +94,7 @@ in {
           "SUPER, R, exec, ${terminal} -e ranger"
           "SUPER, M, exec, ${terminal} -e ncmpcpp"
           "SUPER, N, exec, ${terminal} -e nvim --listen /tmp/nvim-server.pipe"
-          "SUPER, L, exec, ${pkgs.systemd}/bin/loginctl lock-session"
+          "SUPERSHIFT, L, exec, ${pkgs.systemd}/bin/loginctl lock-session"
           "SUPER, ESCAPE, exec, wofi-power"
           "SUPER, O, exec, run-as-service wl-ocr"
           "SUPER, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"

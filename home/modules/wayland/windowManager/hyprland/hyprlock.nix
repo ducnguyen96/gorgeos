@@ -1,103 +1,97 @@
-{inputs, ...}: {
+{
+  inputs,
+  themes,
+  config,
+  ...
+}: {
   programs.hyprlock = {
     enable = true;
 
+    importantPrefixes = [
+      "$"
+      "monitor"
+      "size"
+      "source"
+      "$accent"
+      "$accentAlpha"
+      "$font"
+    ];
+
     settings = {
+      source = "${config.home.homeDirectory}/.config/hypr/mocha.conf";
+      "$accent" = "$mauve";
+      "$accentAlpha" = "$mauveAlpha";
+      "$font" = "JetBrainsMono Nerd Font";
+
       general = {
-        disable_loading_bar = false;
+        disable_loading_bar = true;
         hide_cursor = true;
-        grace = 2;
-        no_fade_in = false;
       };
 
-      backgrounds = [
-        {
-          path = "";
-          color = "rgba(0, 0, 0, 0.5)";
+      background = {
+        monitor = "";
+        path = themes.lockscreenimage;
+        blur_passes = 0;
+        color = "$base";
+      };
 
-          # Blur
-          blur_passes = 3; # 0 disables blurring
-          blur_size = 10;
-          noise = 0.0117;
-          contrast = 0.8916;
-          brightness = 0.8172;
-          vibrancy = 0.1696;
-          vibrancy_darkness = 0.0;
-        }
-      ];
-
-      input-fields = [
+      label = [
         {
-          size = {
-            width = 300;
-            height = 50;
-          };
-          outline_thickness = 3;
-          dots_size = 0.33;
-          dots_spacing = 0.15;
-          dots_center = true;
-          outer_color = "rgba(255, 255, 255, 0.1)";
-          inner_color = "rgba(255, 255, 255, 0.1)";
-          font_color = "rgb(255, 255, 255)";
-          fade_on_empty = true;
-          placeholder_text = "<i>Input Password...</i>";
-          hide_input = false;
-          position = {
-            x = 0;
-            y = -90;
-          };
-          halign = "center";
-          valign = "center";
-        }
-      ];
-
-      labels = [
-        {
-          text = "<b>$TIME</b>";
-          color = "rgb(255, 255, 255)";
-          font_size = 96;
-          position = {
-            x = 0;
-            y = 0;
-          };
-          halign = "center";
+          monitor = "";
+          text = ''cmd[update:30000] echo "$(date +"%R")"'';
+          color = "$text";
+          font_size = 90;
+          font_family = "$font";
+          position = "-30, 0";
+          halign = "right";
           valign = "top";
         }
         {
-          text = ''cmd[update:1000] echo "$(date "+%a %d %b")"'';
-          color = "rgb(255, 255, 255)";
-          font_size = 24;
-          position = {
-            x = 0;
-            y = -150;
-          };
-          halign = "center";
+          monitor = "";
+          text = ''cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"'';
+          color = "$text";
+          font_size = 25;
+          font_family = "$font";
+          position = "-30, -150";
+          halign = "right";
           valign = "top";
         }
-        {
-          text = "Hi there, <i>$USER</i>!";
-          color = "rgb(255, 255, 255)";
-          font_size = 32;
-          position = {
-            x = 0;
-            y = 0;
-          };
-          halign = "center";
-          valign = "center";
-        }
-        {
-          text = "";
-          color = "rgb(255, 255, 255)";
-          font_family = "monospace";
-          font_size = 32;
-          position = {
-            x = 0;
-            y = 0;
-          };
-          halign = "center";
-          valign = "bottom";
-        }
       ];
+
+      image = {
+        monitor = "";
+        path = "~/.face";
+        size = 100;
+        border_color = "$accent";
+
+        position = "0, 75";
+        halign = "center";
+        valign = "center";
+      };
+
+      input-field = {
+        monitor = "";
+        size = "300, 60";
+        outline_thickness = 4;
+        dots_size = 0.2;
+        dots_spacing = 0.2;
+        dots_center = true;
+        outer_color = "$accent";
+        inner_color = "$surface0";
+        font_color = "$text";
+        fade_on_empty = false;
+        placeholder_text = ''
+          <span foreground="##$textAlpha"><i>󰌾 Logged in as </i><span foreground="##$accentAlpha">$USER</span></span>
+        '';
+        hide_input = false;
+        check_color = "$accent";
+        fail_color = "$red";
+        fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+        capslock_color = "$yellow";
+        position = "0, -35";
+        halign = "center";
+        valign = "center";
+      };
     };
   };
 }

@@ -74,6 +74,9 @@
 in {
   imports = [
     ./config
+
+    ./themes/mocha.nix
+
     ./hyprpaper.nix
     ./hyprlock.nix
     ./hypridle.nix

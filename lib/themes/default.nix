@@ -47,4 +47,14 @@ lib: {
       name = "wallpaper-${sha256}.${ext}";
       inherit url sha256;
     };
+
+  lockscreenimage = let
+    url = "https://github.com/dharmx/walls/raw/main/anime/cartoon_characters_in_a_blue_background.png";
+    sha256 = "1ylq8pg5x0x1n00q86mmf5jxhpbjx5ys4a7m6ag7ryj7zk3xpl8f";
+    ext = lib.last (lib.splitString "." url);
+  in
+    builtins.fetchurl {
+      name = "lockscreenimage-${sha256}.${ext}";
+      inherit url sha256;
+    };
 }
