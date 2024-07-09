@@ -33,7 +33,6 @@
 
     input = {
       "*" = {
-        xkb_options = "caps:escape";
         xkb_layout = "us";
       };
     };

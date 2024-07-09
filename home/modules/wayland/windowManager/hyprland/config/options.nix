@@ -105,7 +105,6 @@ in {
 
     input = {
       kb_layout = "us";
-      kb_options = "caps:escape";
 
       accel_profile = "flat";
       follow_mouse = 1;
