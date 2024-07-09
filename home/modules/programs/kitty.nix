@@ -125,19 +125,6 @@
       "ctrl+shift+minus" = "decrease_font_size";
       "ctrl+shift+backspace" = "restore_font_size";
       "ctrl+shift+f6" = "set_font_size 16.0";
-
-      "shift+space" = "send_key backspace";
-      "alt+space" = "send_key enter";
-      "alt+h" = "send_key left";
-      "alt+l" = "send_key right";
-      "alt+j" = "send_key down";
-      "alt+k" = "send_key up";
-      "alt+e" = "send_key equal";
-      "alt+p" = "send_key plus";
-      "alt+m" = "send_key minus";
-      "alt+b" = "send_key home";
-      "alt+n" = "send_key end";
-      "alt+shift+U" = "send_key underscore";
     };
   };
 }

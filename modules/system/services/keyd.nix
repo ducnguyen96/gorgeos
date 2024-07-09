@@ -5,17 +5,31 @@ let
       meta = "oneshot(meta)";
       control = "oneshot(control)";
       capslock = "overload(control, esc)";
-      insert = "S-insert";
-
       leftalt = "layer(leftalt)";
-      rightalt = "layer(rightalt)";
     };
 
     leftalt = {
-      j = "down";
-      k = "up";
+      space = "enter";
+      c = "backspace";
+
       h = "left";
       l = "right";
+      j = "down";
+      k = "up";
+      e = "equal";
+      p = "+";
+      m = "-";
+      b = "home";
+      n = "end";
+      u = "A-k";
+      d = "A-j";
+
+      q = "(";
+      w = ")";
+      a = "[";
+      s = "]";
+      z = "{";
+      x = "}";
     };
   };
 in {
