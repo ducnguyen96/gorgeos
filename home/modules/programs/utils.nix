@@ -33,6 +33,7 @@
     unzip
     cloudflare-warp
     pfetch-rs
+    libnotify
     pciutils
   ];
 }
