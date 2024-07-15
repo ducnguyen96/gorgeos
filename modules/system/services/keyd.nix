@@ -1,9 +1,6 @@
 let
   settings = {
     main = {
-      shift = "oneshot(shift)";
-      meta = "oneshot(meta)";
-      control = "oneshot(control)";
       capslock = "overload(control, esc)";
       leftalt = "layer(leftalt)";
     };
