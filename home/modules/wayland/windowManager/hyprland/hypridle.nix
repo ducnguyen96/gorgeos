@@ -22,7 +22,7 @@ in {
         before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
       };
 
-      listeners = [
+      listener = [
         {
           timeout = 300;
           on-timeout = suspendScript.outPath;
