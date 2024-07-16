@@ -50,8 +50,6 @@ in {
     wl-clipboard
     tree-sitter
     nodejs
-    chafa
-    imagemagick
 
     # shell formatter
     shfmt
@@ -62,9 +60,6 @@ in {
     # lua
     lua-language-server
     stylua
-
-    # web-related formatter
-    nodePackages.prettier
 
     # nix language server
     nil
