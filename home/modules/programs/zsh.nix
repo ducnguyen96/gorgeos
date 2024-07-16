@@ -266,6 +266,11 @@
         src = zsh-vi-mode;
         file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       }
+      {
+        name = "pnpm-shell-completion";
+        src = pnpm-shell-completion;
+        file = "share/zsh/site-functions/_pnpm";
+      }
     ];
   };
 }
