@@ -34,6 +34,7 @@
         ./modules/wayland/swaync
         ./modules/programs/wofi.nix
         ./modules/programs/wofi-power.nix
+        ./modules/programs/wofi-wine.nix
       ]
       ++ lib.concatLists [sharedModules];
 

@@ -96,6 +96,7 @@ in {
           "SUPER, N, exec, ${terminal} -e nvim --listen /tmp/nvim-server.pipe"
           "SUPERSHIFT, L, exec, ${pkgs.systemd}/bin/loginctl lock-session"
           "SUPER, ESCAPE, exec, wofi-power"
+          "SUPER, W, exec, wofi-wine"
           "SUPER, O, exec, run-as-service wl-ocr"
           "SUPER, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
           "SUPERSHIFT, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw"
@@ -103,7 +104,6 @@ in {
           # Screenshot
           ", Print, exec, ${screenshotarea}"
           ", F10, exec, ${screenshotarea}"
-          ", Print, exec, ${screenshotarea}"
           "CTRL, Print, exec, grimblast --notify --cursor copysave output"
           "ALT, Print, exec, grimblast --notify --cursor copysave screen"
         ]
