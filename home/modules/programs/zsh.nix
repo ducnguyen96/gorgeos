@@ -7,6 +7,7 @@
 }: {
   imports = [
     ../scripts/rebuild.nix
+    ../scripts/clean.nix
     ../scripts/preview.nix
     ../scripts/run-as-service.nix
   ];
