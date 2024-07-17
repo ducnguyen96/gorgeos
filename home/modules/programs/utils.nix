@@ -32,7 +32,7 @@
     jq
     unzip
     cloudflare-warp
-    pfetch-rs
+    neofetch
     libnotify
     pciutils
   ];
