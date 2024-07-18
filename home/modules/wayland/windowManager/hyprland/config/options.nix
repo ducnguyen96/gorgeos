@@ -80,6 +80,8 @@ in {
     ];
 
     general = {
+      layout = "master";
+
       gaps_in = 2;
       gaps_out = 4;
 
