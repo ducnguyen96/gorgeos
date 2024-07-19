@@ -29,8 +29,8 @@ lib: {
   };
 
   wallpaper = let
-    url = "https://raw.githubusercontent.com/dharmx/walls/main/anime/a_park_with_benches_and_trees_at_night.jpg";
-    sha256 = "1nd3vbjx017qhcyshz349f3c2a1yvz546jvd9lspsciscc8j3czj";
+    url = "https://github.com/dharmx/walls/raw/main/anime/a_building_with_a_light_on_the_side.jpg";
+    sha256 = "0q741ldnhyw23cxjymnjvwwh46n02dx122z2wsfs2hxzj1zf6m6y";
     ext = lib.last (lib.splitString "." url);
   in
     builtins.fetchurl {
@@ -39,8 +39,8 @@ lib: {
     };
 
   wallpaper2 = let
-    url = "https://github.com/dharmx/walls/raw/main/anime/a_building_with_a_light_on_the_side.jpg";
-    sha256 = "0q741ldnhyw23cxjymnjvwwh46n02dx122z2wsfs2hxzj1zf6m6y";
+    url = "https://raw.githubusercontent.com/dharmx/walls/main/anime/a_park_with_benches_and_trees_at_night.jpg";
+    sha256 = "1nd3vbjx017qhcyshz349f3c2a1yvz546jvd9lspsciscc8j3czj";
     ext = lib.last (lib.splitString "." url);
   in
     builtins.fetchurl {
