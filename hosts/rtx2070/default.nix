@@ -12,7 +12,7 @@
         enable = true;
         device = "nodev";
         efiSupport = true;
-        useOSProber = false;
+        useOSProber = true;
         configurationLimit = 3;
         gfxmodeEfi = "1920x1080";
       };
