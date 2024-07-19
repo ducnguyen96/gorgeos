@@ -271,8 +271,4 @@
       }
     ];
   };
-
-  home.packages = with pkgs; [
-    pnpm-shell-completion
-  ];
 }
