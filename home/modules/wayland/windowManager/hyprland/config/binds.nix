@@ -118,17 +118,14 @@ in {
         ",XF86AudioRaiseVolume, exec, volumectl up 5"
         ",XF86AudioLowerVolume, exec, volumectl down 5"
 
-        ", F3, exec, volumectl down 5"
-        ", F4, exec, volumectl up 5"
+        ", F11, exec, volumectl down 5"
+        ", F12, exec, volumectl up 5"
         "SUPER, F4, exec, ${terminal} -e pulsemixer"
 
         ",XF86AudioMute, exec, volumectl toggle-mute"
 
         ",XF86MonBrightnessUp, exec, lightctl up 5"
         ",XF86MonBrightnessDown, exec, lightctl down 5"
-
-        ", F5, exec, lightctl down 5"
-        ", F6, exec, lightctl up 5"
       ];
 
       # Mouse bindings

@@ -50,6 +50,7 @@ in {
     wl-clipboard
     tree-sitter
     nodejs
+    yarn
     python3
 
     # shell formatter

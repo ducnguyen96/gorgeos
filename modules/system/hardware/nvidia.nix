@@ -20,6 +20,7 @@ in {
         GBM_BACKEND = "nvidia";
         LIBVA_DRIVER_NAME = "nvidia";
         __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
       };
     };
 
