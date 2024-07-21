@@ -13,6 +13,7 @@
       impl
       delve
       gotools # goimports
+      air
     ];
 
     sessionVariables = rec {
