@@ -4,6 +4,8 @@
       git
       starship
       showmethekey
+      ddcutil
+      ddcui
     ];
   };
 }

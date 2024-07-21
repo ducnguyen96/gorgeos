@@ -15,6 +15,7 @@
       "plugdev"
       "video"
       "wheel"
+      "i2c"
     ];
 
     openssh.authorizedKeys.keys = [
