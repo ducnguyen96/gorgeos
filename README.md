@@ -1,34 +1,10 @@
-[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+<!-- markdownlint-disable MD041 MD033 MD013 -->
 
 <div align="center">
-
 <a href="#">
-  <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nixos.svg" width="750" height="300" alt="Banner"/>
+  <img src="./assets/2024-07-21T09:52:52,268412782+07:00.png" alt="neofetch"/>
 </a>
-
-<br>
-
-<a href="#">
-  <img src="./assets/preview.png" width="800" alt="Desktop Preview"/>
-</a>
-
-<br>
-
-<br>
-
 </div>
-
-> **Profiles:**
->
-> - **OS:** NixOS
-> - **Window Manager:**
->   - Sway
-> - **Shell:**:
->   - ZSH
-> - **Terminal:**:
->   - Kitty
-> - **Editor:**
->   - Neovim
 
 ## :package: Repository Contents
 
@@ -77,6 +53,7 @@ git clone https://ducnguyen96/gorgeos
 
 - Modify [disko-config](./misc/disko/disko-config.nix) as you want. Full guide [here](https://github.com/nix-community/disko/blob/master/docs/quickstart.md)
 - Run
+
   ```bash
   ./gorgeos/misc/disko/run
   ```
@@ -119,7 +96,7 @@ It will take a while. Then after that you can reboot.
 ### Rebuild
 
 ```bash
-# note that rebuild script assume your flake is in the same directory as this repo which is ~/Documents/Code/gorgeos
+# note that rebuild script assume your flake is in the same directory as this repo which is $HOME/gorgeos
 rebuild
 ```
 
@@ -139,7 +116,7 @@ nix-collect-garbage -d
 
 ### Init
 
-Source: https://docs.waydro.id/faq/using-custom-waydroid-images
+Source: <https://docs.waydro.id/faq/using-custom-waydroid-images>
 Noted: You can click on `Problem Downloading button to choose other mirror`
 
 ### Usage
