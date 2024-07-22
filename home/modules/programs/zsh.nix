@@ -68,7 +68,13 @@
 
       # Initialize completion system
       autoload -Uz compinit
-      compinit
+
+      if [[ $(find ~/.config/zsh/.zcompdump -mmin +1440 2>/dev/null) ]]; then
+       compinit;
+      else
+       compinit -C;
+      fi;
+
       _comp_options+=(globdots)
 
       # Load edit-command-line for ZLE
