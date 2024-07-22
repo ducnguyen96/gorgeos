@@ -35,5 +35,6 @@
     neofetch
     libnotify
     pciutils
+    unrar
   ];
 }
