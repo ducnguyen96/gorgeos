@@ -68,14 +68,7 @@
 
       # Initialize completion system
       autoload -Uz compinit
-
-      # if [[ -n ${config.home.homeDirectory}/.config/zsh/.zcompdump(#qN.mh+24) ]]; then
-      #  compinit;
-      # else
-      #  compinit -C;
-      # fi;
-      compinit -C;
-
+      compinit
       _comp_options+=(globdots)
 
       # Load edit-command-line for ZLE
