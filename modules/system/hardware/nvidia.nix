@@ -34,11 +34,6 @@ in {
 
         package = nvidiaPackages;
       };
-
-      graphics = {
-        enable = true;
-        enable32Bit = true;
-      };
     };
 
     services.xserver.videoDrivers = ["nvidia"];
