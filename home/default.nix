@@ -7,8 +7,6 @@
     ./modules/config/gtk.nix
     ./modules/config/home-cursor.nix
 
-    ./modules/programs/gaming.nix
-
     ./modules/programs/fcitx5.nix
     ./modules/programs/firefox.nix
     ./modules/programs/kitty.nix
