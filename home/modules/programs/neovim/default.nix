@@ -58,6 +58,8 @@ in {
 
     # nix language server
     nil
+
+    php
   ];
 
   programs.neovim = {
