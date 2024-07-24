@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -24,7 +23,7 @@ in {
 
       listener = [
         {
-          timeout = 300;
+          timeout = 3600;
           on-timeout = suspendScript.outPath;
         }
       ];
