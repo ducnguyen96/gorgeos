@@ -21,6 +21,7 @@
     windowrulev2 = [
       "float, class:^(wofi)$"
       "float, class:^(showmethekey)"
+      "pin, class:^(showmethekey)"
       "dimaround, class:^(gcr-prompter)$"
       "dimaround, class:^(xdg-desktop-portal-gtk)$"
       "dimaround, class:^(polkit-gnome-authentication-agent-1)$"

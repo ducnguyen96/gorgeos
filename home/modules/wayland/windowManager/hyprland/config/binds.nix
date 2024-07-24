@@ -94,7 +94,6 @@ in {
           "SUPER, R, exec, ${terminal} -e ranger"
           "SUPER, M, exec, ${terminal} -e ncmpcpp"
           "SUPER, N, exec, ${terminal} -e nvim --listen /tmp/nvim-server.pipe"
-          "SUPERSHIFT, L, exec, ${pkgs.systemd}/bin/loginctl lock-session"
           "SUPER, ESCAPE, exec, wofi-power"
           "SUPER, W, exec, wofi-wine"
           "SUPER, O, exec, run-as-service wl-ocr"
@@ -140,10 +139,16 @@ in {
       bind = SUPERSHIFT, S, submap, resize
 
       submap = resize
+
       binde = , right, resizeactive, 10 0
       binde = , left, resizeactive, -10 0
       binde = , up, resizeactive, 0 -10
       binde = , down, resizeactive, 0 10
+      binde = , l, resizeactive, 10 0
+      binde = , h, resizeactive, -10 0
+      binde = , k, resizeactive, 0 -10
+      binde = , j, resizeactive, 0 10
+
       bind = , escape, submap, reset
       submap = reset
     '';
