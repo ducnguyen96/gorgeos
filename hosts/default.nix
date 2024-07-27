@@ -68,6 +68,12 @@ in {
           ./e14g2
 
           {
+            imports = [inputs.aagl.nixosModules.default];
+            nix.settings = inputs.aagl.nixConfig; # Set up Cachix
+            programs.anime-game-launcher.enable = true;
+          }
+
+          {
             home-manager = {
               users.duc.imports = homeImports."duc@hyprland";
               extraSpecialArgs = specialArgs;
