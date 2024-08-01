@@ -36,5 +36,6 @@
     libnotify
     pciutils
     unrar
+    shotcut # video editor
   ];
 }
