@@ -72,6 +72,8 @@ in {
 
           "SUPER, bracketleft, workspace, m-1"
           "SUPER, bracketright, workspace, m+1"
+          "SUPERSHIFT, bracketleft, exec, hyprctl dispatch layoutmsg swapwithmaster master"
+          "SUPERSHIFT, bracketright, exec, hyprctl dispatch layoutmsg swapwithmaster master"
 
           # Move windows
           "SUPERSHIFT, left, movewindow, l"
