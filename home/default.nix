@@ -21,6 +21,7 @@
     ./modules/programs/neovim
 
     ./modules/dev/go.nix
+    ./modules/dev/react-native.nix
   ];
 
   homeImports = {
