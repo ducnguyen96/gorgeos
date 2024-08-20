@@ -38,6 +38,6 @@
     unrar
     shotcut # video editor
     remmina # Remote desktop client written in GTK
-    ngrok
+    telegram-desktop
   ];
 }
