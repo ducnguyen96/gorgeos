@@ -39,5 +39,17 @@
     shotcut # video editor
     remmina # Remote desktop client written in GTK
     telegram-desktop
+    google-chrome # browser
   ];
+
+  # Create the desktop entry in the appropriate directory
+  home.file.".local/share/applications/google-chrome-wayland.desktop".text = ''
+    [Desktop Entry]
+    Name=Google Chrome (Wayland)
+    Exec=${pkgs.google-chrome}/bin/google-chrome-stable --ozone-platform-hint=auto --enable-wayland-ime --wayland-text-input-version=3 %U
+    Icon=google-chrome
+    Terminal=false
+    Type=Application
+    Categories=Network;WebBrowser;
+  '';
 }
