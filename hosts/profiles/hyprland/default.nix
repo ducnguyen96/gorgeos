@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment = {
     sessionVariables = {
       CLUTTER_BACKEND = "wayland";
@@ -16,6 +12,7 @@
 
     systemPackages = with pkgs; [
       egl-wayland
+      slurp
     ];
   };
 
@@ -28,6 +25,7 @@
 
     dconf.enable = true;
     xwayland.enable = true;
+    ydotool.enable = true;
   };
 
   security = {

@@ -14,6 +14,7 @@
       "networkmanager"
       "plugdev"
       "video"
+      "ydotool"
       "wheel"
       "i2c"
     ];
