@@ -40,6 +40,7 @@
     remmina # Remote desktop client written in GTK
     telegram-desktop
     google-chrome # browser
+    gimp
   ];
 
   # Create the desktop entry in the appropriate directory
