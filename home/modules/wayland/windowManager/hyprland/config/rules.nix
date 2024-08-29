@@ -41,7 +41,6 @@
       "pin, title:^(Picture-in-Picture)$"
       "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
       "workspace special silent, title:^(Firefox — Sharing Indicator)$"
-      "move 0 0, title:^(TelegramDesktop)(.*)$"
     ];
   };
 }
