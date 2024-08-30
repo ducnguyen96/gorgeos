@@ -52,8 +52,8 @@ in {
           "SUPERSHIFT, TAB, changegroupactive, b"
 
           # Cycle through windows
-          "ALT, Tab, cyclenext"
-          "ALT, Tab, bringactivetotop"
+          # "ALT, Tab, cyclenext"
+          # "ALT, Tab, bringactivetotop"
           "ALTSHIFT, Tab, cyclenext, prev"
           "ALTSHIFT, Tab, bringactivetotop"
           "SUPER, tab, exec, hyprctl dispatch focuscurrentorlast"
@@ -68,7 +68,7 @@ in {
           "$SUPER, L, movefocus, r"
           "$SUPER, J, movefocus, u"
           "$SUPER, K, movefocus, d"
-          "ALT, Tab, movefocus, d"
+          # "ALT, Tab, movefocus, d"
 
           "SUPER, bracketleft, workspace, m-1"
           "SUPER, bracketright, workspace, m+1"

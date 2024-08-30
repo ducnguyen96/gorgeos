@@ -10,6 +10,8 @@ let
       space = "enter";
       c = "backspace";
 
+      tab = "A-tab";
+
       h = "left";
       l = "right";
       j = "down";
