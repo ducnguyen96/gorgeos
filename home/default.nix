@@ -16,7 +16,6 @@
     ./modules/programs/utils.nix
     ./modules/programs/vscode.nix
     ./modules/programs/zsh.nix
-    ./modules/programs/python.nix
 
     ./modules/programs/media
     ./modules/programs/neovim
