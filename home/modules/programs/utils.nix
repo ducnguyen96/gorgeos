@@ -41,6 +41,8 @@
     telegram-desktop
     google-chrome # browser
     gimp
+    nixos-generators
+    mov-cli
   ];
 
   # Create the desktop entry in the appropriate directory

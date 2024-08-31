@@ -51,7 +51,6 @@ in {
     tree-sitter
     nodejs
     yarn
-    python3
 
     # nix formatter
     alejandra
