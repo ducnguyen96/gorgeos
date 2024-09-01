@@ -23,6 +23,7 @@
     "${profiles}/hyprland"
 
     "${modules}/virtualization/docker.nix"
+    "${modules}/virtualization/libvirtd.nix"
 
     {
       hardware.i2c.enable = true;
