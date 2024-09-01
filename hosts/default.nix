@@ -52,7 +52,7 @@ in {
 
           {
             home-manager = {
-              users.duc.imports = homeImports."duc@hyprland";
+              users.duc.imports = homeImports."duc@rtx2070";
               extraSpecialArgs = specialArgs;
             };
           }
@@ -75,7 +75,7 @@ in {
 
           {
             home-manager = {
-              users.duc.imports = homeImports."duc@hyprland";
+              users.duc.imports = homeImports."duc@e14g2";
               extraSpecialArgs = specialArgs;
             };
           }

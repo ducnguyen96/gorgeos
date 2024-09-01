@@ -21,11 +21,23 @@
     ./modules/programs/neovim
 
     ./modules/dev/go.nix
-    ./modules/dev/react-native.nix
   ];
 
   homeImports = {
-    "duc@hyprland" =
+    "duc@rtx2070" =
+      [
+        ./home.nix
+        ./modules/wayland/windowManager/hyprland
+        ./modules/wayland/statusBar/waybar
+        ./modules/wayland/swaync
+        ./modules/programs/wofi.nix
+        ./modules/programs/wofi-power.nix
+        ./modules/programs/wofi-wine.nix
+      ]
+      ++ lib.concatLists [sharedModules]
+      ++ lib.concatLists [./modules/dev/react-native.nix];
+
+    "duc@e14g2" =
       [
         ./home.nix
         ./modules/wayland/windowManager/hyprland
@@ -52,9 +64,14 @@ in {
 
   flake = {
     homeConfigurations = {
-      "duc@hyprland" = homeManagerConfiguration {
+      "duc@rtx2070" = homeManagerConfiguration {
         inherit pkgs;
-        modules = homeImports."duc@hyprland";
+        modules = homeImports."duc@rtx2070";
+      };
+
+      "duc@e14g2" = homeManagerConfiguration {
+        inherit pkgs;
+        modules = homeImports."duc@e14g2";
       };
 
       "duc@sway" = homeManagerConfiguration {
