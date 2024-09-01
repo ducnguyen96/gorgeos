@@ -11,6 +11,7 @@
       "docker"
       "input"
       "libvirtd"
+      "qemu-libvirtd"
       "networkmanager"
       "plugdev"
       "video"
