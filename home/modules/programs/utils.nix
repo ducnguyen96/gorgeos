@@ -42,6 +42,7 @@
     google-chrome # browser
     gimp
     xfce.thunar
+    virt-viewer
   ];
 
   # Create the desktop entry in the appropriate directory
