@@ -29,3 +29,6 @@ end
 -- Define Neovim commands
 vim.api.nvim_create_user_command("GoAddTags", go_add_tags, { nargs = "?" })
 vim.api.nvim_create_user_command("GoRemoveTags", go_remove_tags, { nargs = "?" })
+
+-- * a function with signature `function(buf) -> string|string[]`
+vim.g.root_spec = { { ".git" }, "cwd" }
