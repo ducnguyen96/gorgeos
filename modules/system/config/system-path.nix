@@ -6,6 +6,8 @@
       showmethekey
       ddcutil
       ddcui
+      linux-wifi-hotspot
+      mitmproxy
     ];
   };
 }

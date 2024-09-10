@@ -1,5 +1,6 @@
 {
   networking = {
+    firewall.enable = false;
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
