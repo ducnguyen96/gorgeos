@@ -24,6 +24,7 @@
 
     "${modules}/virtualization/docker.nix"
     "${modules}/virtualization/libvirtd.nix"
+    "${modules}/virtualization/waydroid.nix"
 
     {
       hardware.i2c.enable = true;
@@ -81,6 +82,46 @@ in {
             };
           }
         ];
+    };
+
+    hetzner = nixosSystem {
+      inherit specialArgs;
+
+      modules = [
+        ./hetzner
+        {
+          # config module
+          imports = [
+            "${modules}/config/nix"
+            "${modules}/config/console.nix"
+            "${modules}/config/i18n.nix"
+            "${modules}/config/locale.nix"
+            "${modules}/config/users-groups.nix"
+            "${modules}/security"
+          ];
+        }
+        {
+          # program module
+          imports = [
+            "${modules}/programs/bash.nix"
+            "${modules}/programs/home-manager.nix"
+            "${modules}/programs/zsh.nix"
+          ];
+        }
+        {
+          # serivces module
+          imports = [
+            "${modules}/services/networking.nix"
+            "${modules}/services/openssh.nix"
+          ];
+        }
+        {
+          home-manager = {
+            users.duc.imports = homeImports."duc@hetzner";
+            extraSpecialArgs = specialArgs;
+          };
+        }
+      ];
     };
   };
 }

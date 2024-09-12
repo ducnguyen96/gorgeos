@@ -43,6 +43,8 @@
     gimp
     xfce.thunar
     virt-viewer
+    android-tools
+    openssl
   ];
 
   # Create the desktop entry in the appropriate directory

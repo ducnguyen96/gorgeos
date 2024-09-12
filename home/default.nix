@@ -55,6 +55,45 @@
         ./modules/wayland/windowManager/sway
       ]
       ++ lib.concatLists [sharedModules];
+
+    "duc@hetzner" = [
+      ./home.nix
+      ./modules/programs/starship.nix
+      ./modules/programs/zsh.nix
+      ./modules/programs/neovim
+
+      ./modules/dev/go.nix
+      {
+        programs = {
+          bat.enable = true;
+          eza.enable = true;
+          man.enable = true;
+          htop.enable = true;
+          btop.enable = true;
+
+          dircolors = {
+            enable = true;
+            enableZshIntegration = true;
+          };
+
+          direnv = {
+            enable = true;
+            nix-direnv.enable = true;
+            enableZshIntegration = true;
+          };
+
+          fzf = {
+            enable = true;
+            enableZshIntegration = true;
+          };
+
+          zoxide = {
+            enable = true;
+            enableZshIntegration = true;
+          };
+        };
+      }
+    ];
   };
 
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
@@ -77,6 +116,11 @@ in {
       "duc@sway" = homeManagerConfiguration {
         inherit pkgs;
         modules = homeImports."duc@sway";
+      };
+
+      "duc@hetzner" = homeManagerConfiguration {
+        inherit pkgs;
+        modules = homeImports."duc@hetzner";
       };
     };
   };
