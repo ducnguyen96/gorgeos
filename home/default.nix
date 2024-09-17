@@ -33,9 +33,9 @@
         ./modules/programs/wofi.nix
         ./modules/programs/wofi-power.nix
         ./modules/programs/wofi-wine.nix
+        ./modules/dev/react-native.nix
       ]
-      ++ lib.concatLists [sharedModules]
-      ++ lib.concatLists [./modules/dev/react-native.nix];
+      ++ lib.concatLists [sharedModules];
 
     "duc@e14g2" =
       [
