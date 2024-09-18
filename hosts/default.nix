@@ -24,7 +24,6 @@
 
     "${modules}/virtualization/docker.nix"
     "${modules}/virtualization/libvirtd.nix"
-    "${modules}/virtualization/waydroid.nix"
 
     {
       hardware.i2c.enable = true;
