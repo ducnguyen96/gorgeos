@@ -50,6 +50,7 @@
     sessionVariables = {
       DIRENV_LOG_FORMAT = "";
       LC_ALL = "en_US.UTF-8";
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1;
     };
 
     initExtraBeforeCompInit = ''

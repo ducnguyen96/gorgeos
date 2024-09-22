@@ -45,6 +45,8 @@
     virt-viewer
     android-tools
     openssl
+    audacity
+    chromium
   ];
 
   # Create the desktop entry in the appropriate directory
