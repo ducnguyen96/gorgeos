@@ -71,7 +71,7 @@ in {
     };
 
     env = [
-      "GDK_SCALE,2"
+      "GDK_SCALE,1"
       "WLR_DRM_NO_ATOMIC,1"
     ];
 
