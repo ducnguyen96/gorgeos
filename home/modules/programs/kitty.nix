@@ -125,6 +125,7 @@
       "ctrl+shift+minus" = "decrease_font_size";
       "ctrl+shift+backspace" = "restore_font_size";
       "ctrl+shift+f6" = "set_font_size 16.0";
+      "ctrl+f" = "launch --type=overlay --stdin-source=@screen_scrollback fzf --no-sort --no-mouse --exact -i";
     };
   };
 }

@@ -25,6 +25,7 @@
       pics = "$HOME/Pictures";
       vids = "$HOME/Videos";
       mss = "$HOME/Music";
+      mmo = "$HOME/Documents/Code/sides/mmo/mmoa";
     };
 
     autosuggestion = {
