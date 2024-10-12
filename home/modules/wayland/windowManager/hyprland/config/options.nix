@@ -124,7 +124,7 @@ in {
       disable_splash_rendering = true;
       focus_on_activate = true;
       force_default_wallpaper = 0;
-      no_direct_scanout = false;
+      # no_direct_scanout = false;
       vfr = true;
       vrr = 1;
     };
