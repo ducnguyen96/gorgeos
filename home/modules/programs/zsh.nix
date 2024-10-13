@@ -25,11 +25,12 @@
       pics = "$HOME/Pictures";
       vids = "$HOME/Videos";
       mss = "$HOME/Music";
-      mmo = "/mnt/Code/sides/mmo";
+      mmo = "$HOME/Documents/Code/sides/mmo/mmoa";
     };
 
     autosuggestion = {
       enable = true;
+      highlight = "fg=153";
     };
 
     autocd = true;
@@ -215,7 +216,6 @@
       --pointer '' \
       --marker ''
       "
-
       export ANDROID_HOME=$HOME/Android/Sdk
       export PATH=$PATH:$ANDROID_HOME/emulator
       export PATH=$PATH:$ANDROID_HOME/platform-tools
