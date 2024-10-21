@@ -34,6 +34,7 @@
         ./modules/programs/wofi-power.nix
         ./modules/programs/wofi-wine.nix
         ./modules/dev/react-native.nix
+        ./modules/programs/kubernetes.nix
       ]
       ++ lib.concatLists [sharedModules];
 
