@@ -112,6 +112,7 @@ in {
           imports = [
             "${modules}/services/networking.nix"
             "${modules}/services/openssh.nix"
+            "${modules}/services/mail-server.nix"
           ];
         }
         {
