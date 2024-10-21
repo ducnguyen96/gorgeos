@@ -14,13 +14,8 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/5741dd55-20ee-4249-b623-68d3fc2ad616";
+    { device = "/dev/disk/by-uuid/6d0da406-7da7-4deb-9d98-e7e94cdedbfb";
       fsType = "ext4";
-    };
-
-  fileSystems."/efi" =
-    { device = "systemd-1";
-      fsType = "autofs";
     };
 
   swapDevices = [ ];
