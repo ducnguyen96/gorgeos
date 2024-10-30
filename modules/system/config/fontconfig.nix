@@ -36,7 +36,7 @@
       fira-code-symbols
       material-design-icons
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
 
       (google-fonts.override {fonts = ["Inter"];})

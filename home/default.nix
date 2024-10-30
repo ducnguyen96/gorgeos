@@ -51,10 +51,7 @@
       ++ lib.concatLists [sharedModules];
 
     "duc@sway" =
-      [
-        ./home.nix
-        ./modules/wayland/windowManager/sway
-      ]
+      [./home.nix ./modules/wayland/windowManager/sway]
       ++ lib.concatLists [sharedModules];
 
     "duc@hetzner" = [

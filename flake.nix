@@ -7,7 +7,6 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager.url = "github:nix-community/home-manager";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
 
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
