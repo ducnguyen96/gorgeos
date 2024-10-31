@@ -1,10 +1,8 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: let
-  # binds SUPER + [shift +] {1..10} to [move to] workspace {1..10}
   workspaces = builtins.concatLists (builtins.genList (
       x: let
         ws = let
@@ -18,11 +16,6 @@
       ]
     )
     10);
-
-  toggle = program: service: let
-    prog = builtins.substring 0 14 program;
-    runserv = lib.optionalString service "run-as-service";
-  in "pkill ${prog} || ${runserv} ${program}";
 
   runOnce = program: "pgrep ${program} || ${program}";
 
@@ -96,6 +89,7 @@ in {
           # utilities
           "SUPER, Return, exec, run-as-service ${terminal}"
           "SUPER, B, exec, ${browser}"
+          "SUPER, C, exec, toggle-chatgpt"
           "SUPER, E, exec, ${editor}"
           "SUPER, R, exec, ${terminal} -e ranger"
           "SUPER, N, exec, ${terminal} -e nvim --listen /tmp/nvim-server.pipe"

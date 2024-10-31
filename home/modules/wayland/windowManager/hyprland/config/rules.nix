@@ -41,6 +41,11 @@
       "pin, title:^(Picture-in-Picture)$"
       "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
       "workspace special silent, title:^(Firefox — Sharing Indicator)$"
+
+      "float, class:^(brave-chatgpt.com__-Default)$"
+      "workspace 10 silent, class:^(brave-chatgpt.com__-Default)$"
+      "move 70% 3%, class:^(brave-chatgpt.com__-Default)$"
+      "size 29% 94%, class:^(brave-chatgpt.com__-Default)$"
     ];
   };
 }

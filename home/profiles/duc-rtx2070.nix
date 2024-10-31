@@ -5,6 +5,7 @@
 
     ../modules/programs/media
     ../modules/programs/neovim
+    ../modules/programs/chatgpt.nix
     ../modules/programs/fcitx5.nix
     ../modules/programs/firefox.nix
     ../modules/programs/kitty.nix
