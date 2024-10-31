@@ -1,5 +1,5 @@
 {
   imports = [
-    ./profiles/rtx2070
+    ./portal.nix
   ];
 }

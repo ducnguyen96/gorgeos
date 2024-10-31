@@ -2,7 +2,7 @@
 
 <div align="center">
 <a href="#">
-  <img src="./assets/2024-07-21T09:52:52,268412782+07:00.png" alt="neofetch"/>
+  <img src="./docs/images/2024-07-21T09:52:52,268412782+07:00.png" alt="neofetch"/>
 </a>
 </div>
 

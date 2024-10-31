@@ -1,12 +1,10 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: let
-  # Screenshot utility
-  screenshotarea = "hyprctl keyword animation 'fadeOut,0,0,default'; grimblast --notify copysave area; hyprctl keyword animation 'fadeOut,1,4,default'";
-
-  # Binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+  # binds SUPER + [shift +] {1..10} to [move to] workspace {1..10}
   workspaces = builtins.concatLists (builtins.genList (
       x: let
         ws = let
@@ -15,144 +13,132 @@
           builtins.toString (x + 1 - (c * 10));
       in [
         "SUPER, ${ws}, workspace, ${toString (x + 1)}"
-        "SUPERSHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+        "SUPER_SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+        "ALT_SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
       ]
     )
     10);
 
-  # Get default application
-  gtk-launch = "${pkgs.gtk3}/bin/gtk-launch";
-  xdg-mime = "${pkgs.xdg-utils}/bin/xdg-mime";
-  defaultApp = type: "${gtk-launch} $(${xdg-mime} query default ${type})";
+  toggle = program: service: let
+    prog = builtins.substring 0 14 program;
+    runserv = lib.optionalString service "run-as-service";
+  in "pkill ${prog} || ${runserv} ${program}";
+
+  runOnce = program: "pgrep ${program} || ${program}";
+
   terminal = config.home.sessionVariables.TERMINAL;
-  browser = "google-chrome-stable --enable-wayland-ime";
+  defaultApp = type: "${pkgs.gtk3}/bin/gtk-launch $(${pkgs.xdg-utils}/bin/xdg-mime query default ${type})";
+  browser = defaultApp "x-scheme-handler/https";
   editor = defaultApp "text/plain";
 in {
   wayland.windowManager.hyprland = {
     settings = {
-      bind = let
-        monocle = "dwindle:no_gaps_when_only";
-      in
+      bind =
         [
-          # Compositor commands
-          "SUPERSHIFT, Q, exit"
+          # compositor commands
+          "SUPERSHIFT, E, exec, pkill Hyprland"
           "SUPER, Q, killactive"
           "SUPER, S, togglesplit"
           "SUPER, F, fullscreen"
           "SUPER, P, pseudo"
           "SUPERSHIFT, P, pin"
-          "SUPER, Space, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 50% 50% && hyprctl dispatch centerwindow"
+          "SUPER, Space, togglefloating"
+          "SUPERALT, ,resizeactive,"
 
-          # Toggle "monocle" (no_gaps_when_only)
-          "SUPER, M, exec, hyprctl keyword ${monocle} $(($(hyprctl getoption ${monocle} -j | jaq -r '.int') ^ 1))"
-
-          # Grouped (tabbed) windows
+          # grouped (tabbed) windows
           "SUPER, G, togglegroup"
           "SUPER, TAB, changegroupactive, f"
           "SUPERSHIFT, TAB, changegroupactive, b"
 
-          # Cycle through windows
-          # "ALT, Tab, cyclenext"
-          # "ALT, Tab, bringactivetotop"
+          # cycle through windows
+          "ALT, Tab, cyclenext"
+          "ALT, Tab, bringactivetotop"
           "ALTSHIFT, Tab, cyclenext, prev"
           "ALTSHIFT, Tab, bringactivetotop"
           "SUPER, tab, exec, hyprctl dispatch focuscurrentorlast"
 
-          # Move focus
+          # move focus
           "SUPER, left, movefocus, l"
           "SUPER, right, movefocus, r"
           "SUPER, up, movefocus, u"
           "SUPER, down, movefocus, d"
+          "SUPER, H, movefocus, l"
+          "SUPER, L, movefocus, r"
+          "SUPER, K, movefocus, u"
+          "SUPER, J, movefocus, d"
 
-          "$SUPER, H, movefocus, l"
-          "$SUPER, L, movefocus, r"
-          "$SUPER, J, movefocus, u"
-          "$SUPER, K, movefocus, d"
-          # "ALT, Tab, movefocus, d"
-
-          "SUPER, bracketleft, workspace, m-1"
-          "SUPER, bracketright, workspace, m+1"
-          "SUPERSHIFT, bracketleft, exec, hyprctl dispatch layoutmsg swapwithmaster master"
-          "SUPERSHIFT, bracketright, exec, hyprctl dispatch layoutmsg swapwithmaster master"
-
-          # Move windows
+          # move windows
           "SUPERSHIFT, left, movewindow, l"
           "SUPERSHIFT, right, movewindow, r"
           "SUPERSHIFT, up, movewindow, u"
           "SUPERSHIFT, down, movewindow, d"
+          "SUPERSHIFT, H, movewindow, l"
+          "SUPERSHIFT, L, movewindow, r"
+          "SUPERSHIFT, K, movewindow, u"
+          "SUPERSHIFT, J, movewindow, d"
 
-          # Special workspaces
+          # special workspaces
           "SUPERSHIFT, grave, movetoworkspace, special"
           "SUPER, grave, togglespecialworkspace, eDP-1"
 
-          # Cycle through workspaces
-          "SUPERALT, up, workspace, m-1"
-          "SUPERALT, down, workspace, m+1"
+          # cycle workspaces
+          "SUPER, bracketleft, workspace, m-1"
+          "SUPER, bracketright, workspace, m+1"
 
-          # Utilities
+          # cycle monitors
+          "SUPERSHIFT, bracketleft, focusmonitor, l"
+          "SUPERSHIFT, bracketright, focusmonitor, r"
+
+          # send focused workspace to left/right monitors
+          "SUPERSHIFT ALT, bracketleft, movecurrentworkspacetomonitor, l"
+          "SUPERSHIFT ALT, bracketright, movecurrentworkspacetomonitor, r"
+
+          # utilities
           "SUPER, Return, exec, run-as-service ${terminal}"
           "SUPER, B, exec, ${browser}"
           "SUPER, E, exec, ${editor}"
           "SUPER, R, exec, ${terminal} -e ranger"
-          "SUPER, M, exec, ${terminal} -e ncmpcpp"
           "SUPER, N, exec, ${terminal} -e nvim --listen /tmp/nvim-server.pipe"
           "SUPER, ESCAPE, exec, wofi-power"
-          "SUPER, W, exec, wofi-wine"
-          "SUPER, O, exec, run-as-service wl-ocr"
+          "SUPER, F4, exec, ${terminal} -e pulsemixer"
+          "SUPER, O, exec, ${runOnce "wl-ocr"}"
+          "SUPERSHIFT ALT, L, exec, pgrep hyprlock || hyprlock"
           "SUPER, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
           "SUPERSHIFT, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw"
 
-          # Screenshot
-          ", Print, exec, ${screenshotarea}"
-          ", F10, exec, ${screenshotarea}"
-          "CTRL, Print, exec, grimblast --notify --cursor copysave output"
-          "ALT, Print, exec, grimblast --notify --cursor copysave screen"
+          # screenshot
+          ", Print, exec, ${runOnce "grimblast"} --notify copysave area"
+          ", F10, exec, ${runOnce "grimblast"} --notify copysave area"
+          "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
+          "ALT, Print, exec, ${runOnce "grimblast"} --notify --cursor copysave screen"
         ]
         ++ workspaces;
 
       bindr = [
-        # Launchers
+        # launcher
         "SUPER, D, exec, pkill wofi  || wofi -S drun"
       ];
 
-      binde = [
+      bindle = [
+        # audio
         ",XF86AudioRaiseVolume, exec, volumectl up 5"
         ",XF86AudioLowerVolume, exec, volumectl down 5"
-
+        ",XF86AudioMute, exec, volumectl toggle-mute"
+        ",XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute"
         ", F11, exec, volumectl down 5"
         ", F12, exec, volumectl up 5"
-        "SUPER, F4, exec, ${terminal} -e pulsemixer"
 
-        ",XF86AudioMute, exec, volumectl toggle-mute"
-
+        # brightness
         ",XF86MonBrightnessUp, exec, lightctl up 5"
         ",XF86MonBrightnessDown, exec, lightctl down 5"
       ];
 
-      # Mouse bindings
+      # mouse bindings
       bindm = [
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"
+        "SUPER ALT, mouse:272, resizewindow"
       ];
     };
-
-    # Configure submaps
-    extraConfig = ''
-      bind = SUPERSHIFT, S, submap, resize
-
-      submap = resize
-
-      binde = , right, resizeactive, 10 0
-      binde = , left, resizeactive, -10 0
-      binde = , up, resizeactive, 0 -10
-      binde = , down, resizeactive, 0 10
-      binde = , l, resizeactive, 10 0
-      binde = , h, resizeactive, -10 0
-      binde = , k, resizeactive, 0 -10
-      binde = , j, resizeactive, 0 10
-
-      bind = , escape, submap, reset
-      submap = reset
-    '';
   };
 }
