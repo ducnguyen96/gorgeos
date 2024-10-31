@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{
   nixpkgs = {
     config.allowUnfree = true;
     config.permittedInsecurePackages = [
@@ -6,7 +6,6 @@
     ];
 
     overlays = [
-      inputs.nixpkgs-wayland.overlay
     ];
   };
 }

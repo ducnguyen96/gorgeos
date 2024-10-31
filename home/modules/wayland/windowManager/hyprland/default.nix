@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   pkgs,
   ...
@@ -27,8 +26,7 @@ in {
   ];
 
   home.packages = with pkgs; [
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-    config.wayland.windowManager.hyprland.package
+    grimblast
   ];
 
   home.sessionVariables = {
@@ -53,8 +51,6 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-
-    package = inputs.hyprland.packages.${pkgs.system}.default;
 
     systemd = {
       variables = ["--all"];
