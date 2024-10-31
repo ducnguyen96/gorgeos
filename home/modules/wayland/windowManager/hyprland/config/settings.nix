@@ -27,7 +27,7 @@
 in {
   wayland.windowManager.hyprland.settings = {
     env = [
-      "GDK_SCALE,2"
+      "GDK_SCALE,1"
       "HYPRCURSOR_THEME,${cursorName}"
       "HYPRCURSOR_SIZE,${toString pointer.size}"
     ];
