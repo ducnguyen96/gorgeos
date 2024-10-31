@@ -3,6 +3,7 @@
     isNormalUser = true;
     initialPassword = "1";
     shell = pkgs.zsh;
+    ignoreShellProgramCheck = true;
     uid = 1000;
 
     extraGroups = [
