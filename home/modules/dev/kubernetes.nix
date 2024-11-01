@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.dev.nix;
+  cfg = config.dev.kubernetes;
 in {
   options.dev.kubernetes.enable = lib.mkEnableOption "kubernetes, enable kubernetes development toolkit";
 
