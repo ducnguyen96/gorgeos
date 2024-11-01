@@ -20,26 +20,26 @@ in {
         ../../modules/config
 
         # environment
-        ../../modules/environment
+        # ../../modules/environment
 
         # hardware
-        ../../modules/hardware/bluetooth.nix
-        ../../modules/hardware/nvidia.nix
+        # ../../modules/hardware/bluetooth.nix
+        # ../../modules/hardware/nvidia.nix
 
         # programs
-        ../../modules/programs
+        ../../modules/programs/home-manager.nix
 
         # security
         ../../modules/security
 
         # services, should have at least services/networking
-        ../../modules/services
+        ../../modules/services/networking.nix
 
         # virtualization
-        ../../modules/virtualization/docker.nix
-        ../../modules/virtualization/libvirtd.nix
+        # ../../modules/virtualization/docker.nix
+        # ../../modules/virtualization/libvirtd.nix
 
-        {programs.nix-ld.enable = true;}
+        # {programs.nix-ld.enable = true;}
 
         {
           home-manager = {
