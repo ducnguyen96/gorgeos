@@ -44,8 +44,8 @@
 
       "float, class:^(brave-chatgpt.com__-Default)$"
       "workspace 10 silent, class:^(brave-chatgpt.com__-Default)$"
-      "move 70% 3%, class:^(brave-chatgpt.com__-Default)$"
-      "size 29% 94%, class:^(brave-chatgpt.com__-Default)$"
+      "move 100%-w-5, class:^(brave-chatgpt.com__-Default)$"
+      "size 30% 95%, class:^(brave-chatgpt.com__-Default)$"
     ];
   };
 }
