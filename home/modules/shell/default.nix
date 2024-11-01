@@ -5,6 +5,7 @@
     ./programs/direnv.nix
     ./programs/eza.nix
     ./programs/fzf.nix
+    ./programs/git.nix
     ./programs/starship.nix
     ./programs/zoxide.nix
 

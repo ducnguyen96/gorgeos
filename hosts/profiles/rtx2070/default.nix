@@ -39,6 +39,8 @@ in {
         ../../modules/virtualization/docker.nix
         ../../modules/virtualization/libvirtd.nix
 
+        {programs.nix-ld.enable = true;}
+
         {
           home-manager = {
             users.duc.imports = homeImports."duc@rtx2070";

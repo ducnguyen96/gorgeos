@@ -11,10 +11,16 @@
     ../modules/programs/kitty.nix
     ../modules/programs/nix-index-db.nix
 
+    ../modules/dev/default.nix
+
     ../modules/shell
 
     ../modules/wayland/windowManager/hyprland
   ];
+
+  dev = {
+    nix.enable = true;
+  };
 
   home = {
     username = "duc";
