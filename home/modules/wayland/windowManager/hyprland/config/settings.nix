@@ -13,16 +13,16 @@
   monitor_right_name = builtins.elemAt (builtins.split "," monitor_right) 0;
 
   workspace = [
-    "1, monitor:${monitor_left_name}"
+    "1, monitor:${monitor_right_name}"
     "3, monitor:${monitor_left_name}"
     "5, monitor:${monitor_left_name}"
     "7, monitor:${monitor_left_name}"
     "9, monitor:${monitor_left_name}"
-    "2, monitor:${monitor_right_name}"
-    "4, monitor:${monitor_right_name}"
-    "6, monitor:${monitor_right_name}"
-    "8, monitor:${monitor_right_name}"
-    "0, monitor:${monitor_right_name}"
+    "2, monitor:${monitor_left_name}"
+    "4, monitor:${monitor_left_name}"
+    "6, monitor:${monitor_left_name}"
+    "8, monitor:${monitor_left_name}"
+    "0, monitor:${monitor_left_name}"
   ];
 in {
   wayland.windowManager.hyprland.settings = {

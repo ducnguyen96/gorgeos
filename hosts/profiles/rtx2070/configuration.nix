@@ -31,8 +31,8 @@
 
   environment = {
     variables = {
-      MONITOR_LEFT = "DP-3, 1920x1080@60, 0x0, 1";
-      MONITOR_RIGHT = "HDMI-A-1, 1920x1080@60, 1920x0, 1";
+      MONITOR_LEFT = "HDMI-A-1, 1920x1080@60, 0x0, 1";
+      MONITOR_RIGHT = "DP-3, 1080x1920@60, 1920x0, 1, transform, 1"; # https://wiki.hyprland.org/Configuring/Monitors/#rotating
     };
   };
 
