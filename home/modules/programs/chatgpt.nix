@@ -3,10 +3,10 @@
   config,
   ...
 }: let
-  chatgpt = "brave --class=ChatGPT --app=https://chatgpt.com --ozone-platform-hint=auto --enable-wayland-ime --wayland-text-input-version=3";
+  chatgpt = "microsoft-edge-stable --class=ChatGPT --app=https://chatgpt.com --ozone-platform-hint=auto --enable-wayland-ime --wayland-text-input-version=3";
 
   toggle-chatgpt = pkgs.writeShellScriptBin "toggle-chatgpt" ''
-    APP_CLASS="brave-chatgpt.com__-Default"
+    APP_CLASS="msedge-chatgpt.com__-Profile_1"
 
     active_workspace=$(hyprctl activeworkspace -j | jq -r ".id")
     current_workspace=$(hyprctl clients -j | jq -r ".[] | select(.class == \"$APP_CLASS\") | .workspace.id")
@@ -27,7 +27,7 @@ in {
     text = ''
       [Desktop Entry]
       Name=ChatGPT
-      Comment=ChatGPT.com via brave
+      Comment=ChatGPT.com via Microsoft Edge
       Exec=${chatgpt}
       Terminal=false
       Type=Application
@@ -38,5 +38,5 @@ in {
     target = "${config.home.homeDirectory}/.local/share/applications/chatgpt.desktop";
   };
 
-  home.packages = with pkgs; [brave toggle-chatgpt];
+  home.packages = [toggle-chatgpt];
 }

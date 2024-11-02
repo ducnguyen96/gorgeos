@@ -42,10 +42,10 @@
       "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
       "workspace special silent, title:^(Firefox — Sharing Indicator)$"
 
-      "float, class:^(brave-chatgpt.com__-Default)$"
-      "workspace 10 silent, class:^(brave-chatgpt.com__-Default)$"
-      "move 100%-w-5, class:^(brave-chatgpt.com__-Default)$"
-      "size 30% 95%, class:^(brave-chatgpt.com__-Default)$"
+      "float, class:^(msedge-chatgpt.com__-Profile_1)$"
+      "workspace 10 silent, class:^(msedge-chatgpt.com__-Profile_1)$"
+      "move 100%-w-5, class:^(msedge-chatgpt.com__-Profile_1)$"
+      "size 30% 95%, class:^(msedge-chatgpt.com__-Profile_1)$"
     ];
   };
 }
