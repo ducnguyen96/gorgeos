@@ -42,6 +42,7 @@
       # gimp # image editor
       xfce.thunar
       pritunl-client
+      ventoy-full
       # audacity
       # chromium
       # cloudflare-warp
