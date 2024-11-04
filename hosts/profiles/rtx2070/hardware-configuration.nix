@@ -18,27 +18,27 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/8d65aa5f-bfc5-441a-b8f8-40547fdd2d0c";
+    device = "/dev/disk/by-uuid/291329bc-9927-4e19-96e0-973e7b3839a3";
     fsType = "btrfs";
     options = ["subvol=root"];
   };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/2b28098f-b328-421d-af69-63d9d4430f18";
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/3d742704-f5a8-4d66-84c4-d2defc3b69ee";
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/8d65aa5f-bfc5-441a-b8f8-40547fdd2d0c";
+    device = "/dev/disk/by-uuid/291329bc-9927-4e19-96e0-973e7b3839a3";
     fsType = "btrfs";
     options = ["subvol=home"];
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/8d65aa5f-bfc5-441a-b8f8-40547fdd2d0c";
+    device = "/dev/disk/by-uuid/291329bc-9927-4e19-96e0-973e7b3839a3";
     fsType = "btrfs";
     options = ["subvol=nix"];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/EDED-B0BC";
+    device = "/dev/disk/by-uuid/671A-83A4";
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
   };
