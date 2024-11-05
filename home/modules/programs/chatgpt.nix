@@ -1,42 +1,33 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  chatgpt = "microsoft-edge-stable --class=ChatGPT --app=https://chatgpt.com --ozone-platform-hint=auto --enable-wayland-ime --wayland-text-input-version=3";
-
+{pkgs, ...}: let
   toggle-chatgpt = pkgs.writeShellScriptBin "toggle-chatgpt" ''
-    APP_CLASS="msedge-chatgpt.com__-Profile_1"
+    TITLE="ChatGPT — Mozilla Firefox"
 
     active_workspace=$(hyprctl activeworkspace -j | jq -r ".id")
-    current_workspace=$(hyprctl clients -j | jq -r ".[] | select(.class == \"$APP_CLASS\") | .workspace.id")
+    current_workspace=$(hyprctl clients -j | jq -r ".[] | select(.title == \"$TITLE\") | .workspace.id")
+
+    PID=$(hyprctl clients -j | jq -r ".[] | select(.title == \"$TITLE\") | .pid")
 
     if [ -z "$current_workspace" ]; then
-      ${chatgpt}
+      nohup firefox https://chatgpt.com -P chatgpt &
+
+      sleep 3
+
+      PID=$(hyprctl clients -j | jq -r ".[] | select(.title == \"$TITLE\") | .pid")
+
+      hyprctl dispatch movetoworkspacesilent 10,pid:$PID
       current_workspace = 10
+      hyprctl dispatch setfloating pid:$PID
+      # TODO: improve hardcoded numbers
+      hyprctl dispatch resizewindowpixel exact 30% 95%,pid:$PID
+      hyprctl dispatch movewindowpixel exact 1340 50,pid:$PID
     fi
 
     if [ "$current_workspace" -ne "$active_workspace" ]; then
-      hyprctl dispatch movetoworkspacesilent $active_workspace,class:"^($APP_CLASS)$"
-      hyprctl dispatch focuswindow class:"^($APP_CLASS)$"
+      hyprctl dispatch movetoworkspacesilent $active_workspace,pid:$PID
+      hyprctl dispatch focuswindow pid:$PID
     else
-      hyprctl dispatch movetoworkspacesilent 10,class:"^($APP_CLASS)$"
+      hyprctl dispatch movetoworkspacesilent 10,pid:$PID
     fi  '';
 in {
-  home.file."chatgpt.desktop" = {
-    text = ''
-      [Desktop Entry]
-      Name=ChatGPT
-      Comment=ChatGPT.com via Microsoft Edge
-      Exec=${chatgpt}
-      Terminal=false
-      Type=Application
-      Icon=chatgpt
-      Categories=Utility;
-    '';
-
-    target = "${config.home.homeDirectory}/.local/share/applications/chatgpt.desktop";
-  };
-
   home.packages = [toggle-chatgpt];
 }
