@@ -3,6 +3,7 @@
     ./aws.nix
     ./kubernetes.nix
     ./nix.nix
+    ./rust.nix
     ./typescript.nix
   ];
 

@@ -22,6 +22,7 @@
     nix.enable = true;
     typescript.enable = true;
     aws.enable = true;
+    rust.enable = true;
   };
 
   home = {
