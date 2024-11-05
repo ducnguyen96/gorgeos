@@ -13,6 +13,7 @@
     else "";
 
   enableNix = enableLanguage "nix";
+  enableTypescript = enableLanguage "typescript";
 in {
   # NOTE: enable nixos's nix-ld to be able to use mason packages.
   # add below config to your nixos config module(eg: hosts/profiles/rtx2070/default.nix)
@@ -55,6 +56,7 @@ in {
       		{ import = "lazyvim.plugins.extras.util.project" },
 
           ${enableNix}
+          ${enableTypescript}
       		-- import/override with your plugins
       		{ import = "plugins" },
       	},

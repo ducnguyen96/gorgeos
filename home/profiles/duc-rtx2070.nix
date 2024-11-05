@@ -20,6 +20,8 @@
 
   dev = {
     nix.enable = true;
+    typescript.enable = true;
+    aws.enable = true;
   };
 
   home = {
@@ -36,7 +38,7 @@
       ddcui
 
       # shotcut # video editor
-      # remmina # Remote desktop client written in GTK
+      remmina # Remote desktop client written in GTK
       # telegram-desktop
       # google-chrome # browser
       # gimp # image editor

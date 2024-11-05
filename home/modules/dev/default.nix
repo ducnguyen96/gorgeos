@@ -1,7 +1,9 @@
 {pkgs, ...}: {
   imports = [
-    ./nix.nix
+    ./aws.nix
     ./kubernetes.nix
+    ./nix.nix
+    ./typescript.nix
   ];
 
   home.sessionVariables = {
