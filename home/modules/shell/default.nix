@@ -10,9 +10,11 @@
     ./programs/zoxide.nix
 
     ./scripts/clean.nix
+    ./scripts/lightctl.nix
     ./scripts/preview.nix
     ./scripts/rebuild.nix
     ./scripts/run-as-service.nix
+    ./scripts/vcpctl.nix
     ./scripts/volumectl.nix
     ./scripts/wofi-power.nix
 

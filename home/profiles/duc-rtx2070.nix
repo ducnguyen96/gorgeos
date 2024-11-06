@@ -34,10 +34,6 @@
     ];
 
     packages = with pkgs; [
-      pciutils
-      ddcutil
-      ddcui
-
       # shotcut # video editor
       remmina # Remote desktop client written in GTK
       # telegram-desktop

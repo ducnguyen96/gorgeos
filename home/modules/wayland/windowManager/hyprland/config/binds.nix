@@ -123,6 +123,9 @@ in {
         ", F12, exec, volumectl up 5"
 
         # brightness
+        ",F8, exec, vcpctl up 20"
+        ",F7, exec, vcpctl down 20"
+
         ",XF86MonBrightnessUp, exec, lightctl up 5"
         ",XF86MonBrightnessDown, exec, lightctl down 5"
       ];
