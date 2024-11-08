@@ -44,7 +44,6 @@
       ventoy-full
       # audacity
       # chromium
-      # cloudflare-warp
     ];
   };
 
