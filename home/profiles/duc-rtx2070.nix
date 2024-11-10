@@ -37,7 +37,7 @@
       # shotcut # video editor
       remmina # Remote desktop client written in GTK
       # telegram-desktop
-      # google-chrome # browser
+      google-chrome # browser
       # gimp # image editor
       xfce.thunar
       pritunl-client
