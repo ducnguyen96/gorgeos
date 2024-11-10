@@ -15,7 +15,8 @@
       pics = "$HOME/Pictures";
       vids = "$HOME/Videos";
       mss = "$HOME/Music";
-      code = "$HOME/Documents/Code";
+      code = "$HOME/Documents/code";
+      sides = "$HOME/Documents/code/sides";
     };
 
     autosuggestion = {
