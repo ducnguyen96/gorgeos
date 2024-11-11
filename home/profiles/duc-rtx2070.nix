@@ -23,6 +23,7 @@
     typescript.enable = true;
     aws.enable = true;
     rust.enable = true;
+    tailwind.enable = true;
   };
 
   home = {

@@ -15,6 +15,7 @@
   enableNix = enableLanguage "nix";
   enableTypescript = enableLanguage "typescript";
   enableRust = enableLanguage "rust";
+  enableTailwind = enableLanguage "tailwind";
 in {
   # NOTE: enable nixos's nix-ld to be able to use mason packages.
   # add below config to your nixos config module(eg: hosts/profiles/rtx2070/default.nix)
@@ -60,6 +61,7 @@ in {
           ${enableNix}
           ${enableTypescript}
           ${enableRust}
+          ${enableTailwind}
       		-- import/override with your plugins
       		{ import = "plugins" },
       	},

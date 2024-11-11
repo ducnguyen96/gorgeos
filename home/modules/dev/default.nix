@@ -4,6 +4,7 @@
     ./kubernetes.nix
     ./nix.nix
     ./rust.nix
+    ./tailwind.nix
     ./typescript.nix
   ];
 
