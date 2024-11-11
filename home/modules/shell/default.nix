@@ -6,6 +6,8 @@
     ./programs/eza.nix
     ./programs/fzf.nix
     ./programs/git.nix
+    ./programs/htop.nix
+    ./programs/ranger.nix
     ./programs/starship.nix
     ./programs/zoxide.nix
 
