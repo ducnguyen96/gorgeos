@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./aws.nix
+    ./go.nix
     ./kubernetes.nix
     ./nix.nix
     ./rust.nix

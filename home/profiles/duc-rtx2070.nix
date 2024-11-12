@@ -24,6 +24,7 @@
     aws.enable = true;
     rust.enable = true;
     tailwind.enable = true;
+    go.enable = true;
   };
 
   home = {
