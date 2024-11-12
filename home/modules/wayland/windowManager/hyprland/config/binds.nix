@@ -70,6 +70,16 @@ in {
           "SUPERSHIFT, K, movewindow, u"
           "SUPERSHIFT, J, movewindow, d"
 
+          # Resize windows
+          "SUPER_CTRL, left, resizeactive, -20 0"
+          "SUPER_CTRL, H, resizeactive, -20 0"
+          "SUPER_CTRL, right, resizeactive,  20 0"
+          "SUPER_CTRL, L, resizeactive,  20 0"
+          "SUPER_CTRL, up, resizeactive,  0 -20"
+          "SUPER_CTRL, K, resizeactive,  0 -20"
+          "SUPER_CTRL, down, resizeactive,  0 20"
+          "SUPER_CTRL, J, resizeactive,  0 20"
+
           # special workspaces
           "SUPERSHIFT, grave, movetoworkspace, special"
           "SUPER, grave, togglespecialworkspace, eDP-1"
