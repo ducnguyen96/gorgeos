@@ -46,6 +46,7 @@
       ventoy-full
       # audacity
       # chromium
+      dbeaver-bin # Sql client
     ];
   };
 
