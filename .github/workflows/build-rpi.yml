@@ -1,0 +1,14 @@
+name: Cachix linux rpi
+run-name: ${{ github.actor }} building linux rpi 🚀
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
+      - uses: cachix/install-nix-action@v23
+        with:
+          extra_nix_config: "extra-platforms = aarch64-linux"
+      - run: |
+        nix build 'github:ducnguyen96/gorgeos#nixosConfigurations.rpi4.config.system.build.sdImage'
