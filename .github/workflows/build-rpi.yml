@@ -1,6 +1,9 @@
 name: Cachix linux rpi
 run-name: ${{ github.actor }} building linux rpi 🚀
-on: [push]
+on:
+  push:
+    tags:
+      - "**"
 jobs:
   build:
     runs-on: ubuntu-latest
