@@ -17,6 +17,7 @@
         gfxmodeEfi = "1920x1080";
       };
     };
+    binfmt.emulatedSystems = ["aarch64-linux"];
   };
 
   hardware = {

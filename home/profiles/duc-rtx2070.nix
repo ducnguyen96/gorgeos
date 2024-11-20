@@ -48,6 +48,7 @@
       # chromium
       dbeaver-bin # Sql client
       zstd
+      cachix
     ];
   };
 
