@@ -47,6 +47,7 @@
       # audacity
       # chromium
       dbeaver-bin # Sql client
+      zstd
     ];
   };
 

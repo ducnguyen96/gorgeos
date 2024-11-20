@@ -24,6 +24,7 @@
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINuuBrTcxqxvYyug48HCwzba2W+1veFO823Znlidbrrh levinguyen.dl@gmail"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIkLBTvYLPXgjFd05TaLFvCcBFyEBPdRsHgA+kAAHpde duc@master2"
     ];
   };
 }
