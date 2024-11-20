@@ -2,6 +2,7 @@
   networking.hostName = "rpi4";
 
   raspberry-pi-nix.board = "bcm2711";
+  raspberry-pi-nix.libcamera-overlay.enable = false;
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
   hardware.enableRedistributableFirmware = true;
