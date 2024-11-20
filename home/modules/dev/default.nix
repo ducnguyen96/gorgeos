@@ -5,7 +5,9 @@
     ./kubernetes.nix
     ./nix.nix
     ./rust.nix
+    ./sql.nix
     ./tailwind.nix
+    ./terraform.nix
     ./typescript.nix
   ];
 

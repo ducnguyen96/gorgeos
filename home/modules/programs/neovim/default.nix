@@ -12,11 +12,13 @@
     then "{ import = \"lazyvim.plugins.extras.lang.${lang}\" },"
     else "";
 
-  enableNix = enableLanguage "nix";
-  enableTypescript = enableLanguage "typescript";
-  enableRust = enableLanguage "rust";
-  enableTailwind = enableLanguage "tailwind";
   enableGo = enableLanguage "go";
+  enableNix = enableLanguage "nix";
+  enableRust = enableLanguage "rust";
+  enableSql = enableLanguage "sql";
+  enableTailwind = enableLanguage "tailwind";
+  enableTerraform = enableLanguage "terraform";
+  enableTypescript = enableLanguage "typescript";
 in {
   # NOTE: enable nixos's nix-ld to be able to use mason packages.
   # add below config to your nixos config module(eg: hosts/profiles/rtx2070/default.nix)
@@ -59,11 +61,13 @@ in {
       		{ import = "lazyvim.plugins.extras.util.project" },
           { import = "lazyvim.plugins.extras.formatting.prettier" },
 
-          ${enableNix}
-          ${enableTypescript}
-          ${enableRust}
-          ${enableTailwind}
           ${enableGo}
+          ${enableNix}
+          ${enableRust}
+          ${enableSql}
+          ${enableTailwind}
+          ${enableTerraform}
+          ${enableTypescript}
       		-- import/override with your plugins
       		{ import = "plugins" },
       	},
