@@ -6,6 +6,5 @@
     ./networking.nix
     ./openssh.nix
     ./pipewire.nix
-    ./wifi.nix
   ];
 }

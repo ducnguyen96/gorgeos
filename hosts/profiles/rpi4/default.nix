@@ -36,13 +36,6 @@ in {
 
         # services, should have at least services/networking
         ../../modules/services/networking.nix
-        ../../modules/services/wifi.nix
-        {
-          networking.wireless.networks = {
-            "Nguyen Van Phuoc_5G" = {psk = "1234567890a";};
-            "SamNgaos" = {psk = "matkhaula00";};
-          };
-        }
         ../../modules/services/openssh.nix
 
         {

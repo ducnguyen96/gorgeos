@@ -49,6 +49,7 @@
       dbeaver-bin # Sql client
       zstd
       cachix
+      linux-wifi-hotspot
     ];
   };
 
