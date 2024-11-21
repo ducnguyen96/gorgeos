@@ -62,7 +62,6 @@ in {
     decoration = {
       rounding = 16;
       blur.enabled = true;
-      drop_shadow = false;
     };
 
     animations = {
