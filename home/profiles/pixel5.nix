@@ -30,6 +30,9 @@
   home = {
     packages = with pkgs; [
       ncurses5
+      rsync
+      openssh
+      unixtools.ifconfig
     ];
 
     homeDirectory = "/data/data/com.termux.nix/files/home";
