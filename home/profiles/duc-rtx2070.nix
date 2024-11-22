@@ -50,6 +50,7 @@
       zstd
       cachix
       linux-wifi-hotspot
+      cloudflared
     ];
   };
 
