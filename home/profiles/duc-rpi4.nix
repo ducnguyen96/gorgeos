@@ -22,6 +22,10 @@
     ../modules/shell/utils.nix
   ];
 
+  dev = {
+    nix.enable = true;
+  };
+
   home = {
     username = "duc";
     homeDirectory = "/home/duc";
