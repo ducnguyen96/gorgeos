@@ -40,6 +40,24 @@ in {
         ../../modules/security
 
         # services, should have at least services/networking
+        {
+          environment.systemPackages = [inputs.nixpkgs.legacyPackages.aarch64-linux.cloudflared];
+          services.cloudflared = {
+            enable = true;
+            tunnels = {
+              # use cloudflared tunnels create to create a tunnel
+              adc7fa2a-1fc8-4f3a-b023-4f3e8289db6b = {
+                default = "http_status:404";
+                # we will migration this tunnel to remotely-managed tunnel then config ingress,... via https://one.dash.cloudflared.com
+
+                # mkdir -p /tmp/keys/cloudflared
+                # cp /root/.cloudflared/adc7fa2a-1fc8-4f3a-b023-4f3e8289db6b.json /tmp/keys/cloudflared
+                # chown -R cloudflared:cloudflared /tmp/keys/cloudflared
+                credentialsFile = "/tmp/keys/cloudflared/adc7fa2a-1fc8-4f3a-b023-4f3e8289db6b.json";
+              };
+            };
+          };
+        }
         ../../modules/services/networking.nix
         ../../modules/services/openssh.nix
         ../../modules/services/keyd.nix
