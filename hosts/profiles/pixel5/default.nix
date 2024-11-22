@@ -12,8 +12,10 @@ in {
   flake.nixOnDroidConfigurations = {
     pixel5 = nixOnDroidConfiguration {
       modules = [
-        # must have
         ./configuration.nix
+
+        ../../modules/nix-on-droid/environment.nix
+        ../../modules/nix-on-droid/nix.nix
 
         {
           home-manager = {

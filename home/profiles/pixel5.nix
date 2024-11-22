@@ -25,16 +25,18 @@
     nix.enable = true;
   };
 
-  home = {
-    homeDirectory = "/data/data/com.termux.nix/files/home";
-  };
-
-  home.sessionVariables = {
-    TERMINAL = "xterm-256color";
-    SHELL = "${pkgs.zsh}/bin/zsh";
-  };
-
   nixpkgs.config.allowUnfree = true;
 
-  home.stateVersion = "24.05";
+  home = {
+    packages = with pkgs; [
+      ncurses5
+    ];
+
+    homeDirectory = "/data/data/com.termux.nix/files/home";
+    sessionVariables = {
+      TERMINAL = "xterm-256color";
+      SHELL = "${pkgs.zsh}/bin/zsh";
+    };
+    stateVersion = "24.05";
+  };
 }
