@@ -13,9 +13,10 @@ in {
     pixel5 = nixOnDroidConfiguration {
       modules = [
         ./configuration.nix
-
         ../../modules/nix-on-droid/environment.nix
         ../../modules/nix-on-droid/nix.nix
+
+        ../../modules/nix-on-droid/services/openssh.nix
 
         {
           home-manager = {
