@@ -44,8 +44,8 @@ in {
           "SUPERSHIFT, TAB, changegroupactive, b"
 
           # cycle through windows
-          "ALT, Tab, cyclenext"
-          "ALT, Tab, bringactivetotop"
+          "SUPERALT, Tab, cyclenext"
+          "SUPERALT, Tab, bringactivetotop"
           "ALTSHIFT, Tab, cyclenext, prev"
           "ALTSHIFT, Tab, bringactivetotop"
           "SUPER, tab, exec, hyprctl dispatch focuscurrentorlast"
