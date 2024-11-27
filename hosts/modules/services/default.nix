@@ -1,6 +1,5 @@
 {
   imports = [
-    ./cloudflare-warp.nix
     ./greetd.nix
     ./keyd.nix
     ./networking.nix
