@@ -6,7 +6,23 @@ return {
 		require("neorg").setup({
 			load = {
 				["core.defaults"] = {},
-				["core.concealer"] = {}, -- We added this line!
+				["core.concealer"] = {},
+				["core.summary"] = {},
+				["core.completion"] = {
+					config = {
+						engine = "nvim-cmp",
+					},
+				},
+				["core.integrations.nvim-cmp"] = {},
+				["core.dirman"] = {
+					config = {
+						workspaces = {
+							default = "~/Documents/notes", -- Format: <name_of_workspace> = <path_to_workspace_root>
+						},
+						default_workspace = "default",
+						index = "index.norg", -- The name of the main (root) .norg file
+					},
+				},
 			},
 		})
 	end,
