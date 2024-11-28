@@ -7,6 +7,7 @@ let
     };
 
     leftalt = {
+      enter = "A-enter";
       space = "enter";
       x = "backspace";
 
@@ -23,11 +24,13 @@ let
       b = "home";
       n = "end";
 
-      e = "equal";
-      p = "+";
-      m = "-";
       q = "'";
       w = ''"'';
+      e = "equal";
+      a = "-";
+      A = "_";
+      p = "+";
+      m = "-";
 
       "1" = "(";
       "2" = "[";
