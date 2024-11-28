@@ -23,3 +23,14 @@ set("i", "<A-d>", "<Esc>:m+<CR>==gi", { desc = "move current line down", silent 
 set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below", silent = true })
 set("n", "<leader>sf", "<cmd>noautocmd w<cr>", { desc = "Save, format", silent = true })
 set("n", "<leader>snf", "<cmd>noautocmd w<cr>", { desc = "Save no format", silent = true })
+
+-- neorg
+-- navigation
+set("n", "<leader>ni", "<cmd>Neorg index<cr>", { desc = "Neorg index", silent = true })
+-- todo
+set(
+	"n",
+	"<leader>ntc",
+	"<Plug>(neorg.qol.todo-items.todo.task-cycle)",
+	{ desc = "Neorg todo task cycle", silent = true }
+)
