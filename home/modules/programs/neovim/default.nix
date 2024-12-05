@@ -19,6 +19,7 @@
   enableTailwind = enableLanguage "tailwind";
   enableTerraform = enableLanguage "terraform";
   enableTypescript = enableLanguage "typescript";
+  enableVue = enableLanguage "vue";
 in {
   # NOTE: enable nixos's nix-ld to be able to use mason packages.
   # add below config to your nixos config module(eg: hosts/profiles/rtx2070/default.nix)
@@ -69,6 +70,7 @@ in {
           ${enableTailwind}
           ${enableTerraform}
           ${enableTypescript}
+          ${enableVue}
       		-- import/override with your plugins
       		{ import = "plugins" },
       	},

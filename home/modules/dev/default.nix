@@ -9,6 +9,7 @@
     ./tailwind.nix
     ./terraform.nix
     ./typescript.nix
+    ./vue.nix
   ];
 
   home.sessionVariables = {

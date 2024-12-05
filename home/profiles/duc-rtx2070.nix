@@ -25,6 +25,7 @@
     rust.enable = true;
     tailwind.enable = true;
     go.enable = true;
+    vue.enable = true;
   };
 
   home = {
