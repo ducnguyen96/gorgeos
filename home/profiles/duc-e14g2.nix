@@ -44,6 +44,7 @@
       xfce.thunar
       # audacity
       # chromium
+      dbeaver-bin # Sql client
     ];
   };
 
