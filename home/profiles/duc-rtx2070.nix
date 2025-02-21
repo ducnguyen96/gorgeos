@@ -53,6 +53,13 @@
       linux-wifi-hotspot
       cloudflared
       postman
+      ffmpeg
+
+      python3
+      pipx # current use: pipx install open-webui
+      gollama
+      ollama-cuda
+      lmstudio
     ];
   };
 
