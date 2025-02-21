@@ -52,6 +52,7 @@
       cachix
       linux-wifi-hotspot
       cloudflared
+      postman
     ];
   };
 
