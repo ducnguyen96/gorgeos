@@ -55,11 +55,14 @@
       postman
       ffmpeg
 
-      python3
+      python313
       pipx # current use: pipx install open-webui
       gollama
       ollama-cuda
       lmstudio
+      appimage-run
+      pngquant
+      imagemagick
     ];
   };
 
