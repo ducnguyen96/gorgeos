@@ -6,6 +6,7 @@
       "duc@rpi4" = [./profiles/duc-rpi4.nix];
       "duc@rtx2070" = [./profiles/duc-rtx2070.nix];
       "pixel5" = ./profiles/pixel5.nix;
+      "wsl" = ./profiles/wsl.nix;
     };
   };
 }
