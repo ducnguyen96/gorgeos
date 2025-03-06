@@ -26,6 +26,8 @@
     tailwind.enable = true;
     go.enable = true;
     vue.enable = true;
+    clangd.enable = true;
+    python.enable = true;
   };
 
   home = {
@@ -55,7 +57,6 @@
       postman
       ffmpeg
 
-      python313
       pipx # current use: pipx install open-webui
       gollama
       ollama-cuda

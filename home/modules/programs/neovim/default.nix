@@ -20,6 +20,8 @@
   enableTerraform = enableLanguage "terraform";
   enableTypescript = enableLanguage "typescript";
   enableVue = enableLanguage "vue";
+  enableClangd = enableLanguage "clangd";
+  enablePython = enableLanguage "python";
 in {
   # NOTE: enable nixos's nix-ld to be able to use mason packages.
   # add below config to your nixos config module(eg: hosts/profiles/rtx2070/default.nix)
@@ -72,6 +74,8 @@ in {
           ${enableTerraform}
           ${enableTypescript}
           ${enableVue}
+          ${enableClangd}
+          ${enablePython}
       		-- import/override with your plugins
       		{ import = "plugins" },
       	},
