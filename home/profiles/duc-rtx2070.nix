@@ -57,10 +57,11 @@
       postman
       ffmpeg
 
-      pipx # current use: pipx install open-webui
-      gollama
-      ollama-cuda
-      lmstudio
+      # pipx # current use: pipx install open-webui
+      # gollama
+      # ollama-cuda
+      # lmstudio
+      vscode-fhs
       appimage-run
       pngquant
       imagemagick
