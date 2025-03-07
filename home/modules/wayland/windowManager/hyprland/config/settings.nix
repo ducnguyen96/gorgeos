@@ -37,8 +37,8 @@ in {
     ];
 
     general = {
-      gaps_in = 2;
-      gaps_out = 4;
+      gaps_in = 4;
+      gaps_out = 8;
 
       border_size = 1;
       "col.active_border" = "rgb(AC87C5)";

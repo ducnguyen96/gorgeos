@@ -22,7 +22,7 @@
 
       # Custom Fonts
       (google-fonts.override {fonts = ["Inter"];})
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      nerd-fonts.symbols-only
     ];
   };
 }
