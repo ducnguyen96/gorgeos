@@ -5,6 +5,7 @@
     ./go.nix
     ./kubernetes.nix
     ./nix.nix
+    ./php.nix
     ./python.nix
     ./rust.nix
     ./sql.nix

@@ -28,6 +28,7 @@
     vue.enable = true;
     clangd.enable = true;
     python.enable = true;
+    php.enable = true;
   };
 
   home = {

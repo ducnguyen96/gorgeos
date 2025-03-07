@@ -22,6 +22,7 @@
   enableVue = enableLanguage "vue";
   enableClangd = enableLanguage "clangd";
   enablePython = enableLanguage "python";
+  enablePhp = enableLanguage "php";
 in {
   # NOTE: enable nixos's nix-ld to be able to use mason packages.
   # add below config to your nixos config module(eg: hosts/profiles/rtx2070/default.nix)
@@ -65,6 +66,8 @@ in {
           { import = "lazyvim.plugins.extras.formatting.prettier" },
           { import = "lazyvim.plugins.extras.linting.eslint" },
           { import = "lazyvim.plugins.extras.util.project" },
+          { import = "lazyvim.plugins.extras.ai.copilot" },
+          { import = "lazyvim.plugins.extras.ai.copilot-chat" },
 
           ${enableGo}
           ${enableNix}
@@ -76,6 +79,8 @@ in {
           ${enableVue}
           ${enableClangd}
           ${enablePython}
+          ${enablePhp}
+
       		-- import/override with your plugins
       		{ import = "plugins" },
       	},
