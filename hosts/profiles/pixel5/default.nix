@@ -36,6 +36,11 @@ in {
 
         overlays = [
           nix-on-droid.overlays.default
+          (self: super: {
+            direnv = super.direnv.overrideAttrs (oldAttrs: {
+              doCheck = false;
+            });
+          })
           # add other overlays
         ];
       };
