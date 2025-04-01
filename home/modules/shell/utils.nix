@@ -5,5 +5,6 @@
     jq
     unzip
     unrar
+    neofetch
   ];
 }

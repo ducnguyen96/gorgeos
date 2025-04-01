@@ -25,6 +25,8 @@
     rust.enable = true;
     tailwind.enable = true;
     go.enable = true;
+    clangd.enable = true;
+    python.enable = true;
   };
 
   home = {
@@ -45,6 +47,7 @@
       # audacity
       # chromium
       dbeaver-bin # Sql client
+      showmethekey
     ];
   };
 
