@@ -35,7 +35,7 @@ in {
           "SUPER, F, fullscreen"
           "SUPER, P, pseudo"
           "SUPERSHIFT, P, pin"
-          "SUPER, Space, togglefloating"
+          "SUPER, Space, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 50% 94% && hyprctl dispatch movewindowpixel exact 25% 5%, activewindow"
           "SUPERALT, ,resizeactive,"
 
           # grouped (tabbed) windows
@@ -99,7 +99,7 @@ in {
           # utilities
           "SUPER, Return, exec, run-as-service ${terminal}"
           "SUPER, B, exec, ${browser}"
-          "SUPER, C, exec, toggle-chatgpt"
+          "SUPER, C, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 50% 94% && hyprctl dispatch movewindowpixel exact 25% 5%, activewindow"
           "SUPER, E, exec, ${editor}"
           "SUPER, R, exec, ${terminal} -e ranger"
           "SUPER, N, exec, ${terminal} -e nvim --listen /tmp/nvim-server.pipe"
