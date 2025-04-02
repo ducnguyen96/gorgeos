@@ -10,18 +10,16 @@
   extraSpecialArgs = {inherit inputs self themes;};
 in {
   flake.nixOnDroidConfigurations = {
-    pixel5 = nixOnDroidConfiguration {
+    droid = nixOnDroidConfiguration {
       modules = [
         ./configuration.nix
         ../../modules/nix-on-droid/environment.nix
         ../../modules/nix-on-droid/nix.nix
 
-        ../../modules/nix-on-droid/services/openssh.nix
-
         {
           home-manager = {
             inherit extraSpecialArgs;
-            config = homeImports."pixel5";
+            config = homeImports."droid";
             backupFileExtension = "hm-bak";
             useGlobalPkgs = true;
           };

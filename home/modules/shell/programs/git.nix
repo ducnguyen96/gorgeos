@@ -26,9 +26,6 @@
         options.dark = true;
       };
 
-      userName = "ducnguyen96";
-      userEmail = "levinguyen.dl@gmail.com";
-
       aliases = {
         a = "add";
         af = "!git add $(git ls-files -m -o --exclude-standard | sk -m)";

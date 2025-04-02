@@ -19,14 +19,41 @@
   ];
 
   dev = {
-    nix.enable = true;
-    typescript.enable = true;
-    aws.enable = true;
-    rust.enable = true;
-    tailwind.enable = true;
-    go.enable = true;
-    clangd.enable = true;
-    python.enable = true;
+    clangd = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    go = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    lua = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = false;
+    };
+    nix = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    python = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    rust = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    typescript = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
   };
 
   home = {

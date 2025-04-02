@@ -4,6 +4,7 @@
     ./clangd.nix
     ./go.nix
     ./kubernetes.nix
+    ./lua.nix
     ./nix.nix
     ./php.nix
     ./python.nix

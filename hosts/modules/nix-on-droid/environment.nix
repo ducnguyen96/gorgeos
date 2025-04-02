@@ -8,7 +8,6 @@
 
     # Root packags
     packages = with pkgs; [
-      cloudflared
     ];
   };
 }

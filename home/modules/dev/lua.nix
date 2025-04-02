@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.dev.php;
+  cfg = config.dev.nix;
 in {
-  options.dev.php = {
-    enable = lib.mkEnableOption "php, enable php development toolkit";
+  options.dev.lua = {
+    enable = lib.mkEnableOption "lua, enable lua development toolkit";
     useMasonLSP = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -23,7 +23,7 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       []
-      ++ lib.optionals (!cfg.useMasonLSP) [intelephense]
-      ++ lib.optionals (cfg.asHomePkgs) [php];
+      ++ lib.optionals (!cfg.useMasonLSP) [lua-language-server]
+      ++ lib.optionals (cfg.asHomePkgs) [lua];
   };
 }

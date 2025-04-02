@@ -19,16 +19,41 @@
   ];
 
   dev = {
-    nix.enable = true;
-    typescript.enable = true;
-    aws.enable = true;
-    rust.enable = true;
-    tailwind.enable = true;
-    go.enable = true;
-    vue.enable = true;
-    clangd.enable = true;
-    python.enable = true;
-    php.enable = true;
+    clangd = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    go = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    lua = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = false;
+    };
+    nix = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    python = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    rust = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    typescript = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
   };
 
   home = {
@@ -62,10 +87,10 @@
       # gollama
       # ollama-cuda
       # lmstudio
-      vscode-fhs
-      appimage-run
-      pngquant
-      imagemagick
+      # vscode-fhs
+      # appimage-run
+      # pngquant
+      # imagemagick
     ];
   };
 

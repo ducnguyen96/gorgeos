@@ -23,6 +23,46 @@
   enableClangd = enableLanguage "clangd";
   enablePython = enableLanguage "python";
   enablePhp = enableLanguage "php";
+
+  disableMasonClangd =
+    if config.dev.clangd.useMasonLSP
+    then ""
+    else "clangd = { mason = false },";
+
+  disableMasonGo =
+    if config.dev.go.useMasonLSP
+    then ""
+    else "gopls = { mason = false },";
+
+  disableMasonLua =
+    if config.dev.lua.useMasonLSP
+    then ""
+    else "lua_ls = { mason = false },";
+
+  disableMasonNix =
+    if config.dev.nix.useMasonLSP
+    then ""
+    else "nil_ls = { mason = false },";
+
+  disableMasonPhp =
+    if config.dev.php.useMasonLSP
+    then ""
+    else "phpactor = { mason = false }, intelephense = { mason = false },";
+
+  disableMasonPython =
+    if config.dev.python.useMasonLSP
+    then ""
+    else "ruff = { mason = false }, ruff_lsp = { mason = false },";
+
+  disableMasonRust =
+    if config.dev.rust.useMasonLSP
+    then ""
+    else "bacon_ls = { mason = false }, rust_analyzer = { mason = false },";
+
+  disableMasonTypescript =
+    if config.dev.typescript.useMasonLSP
+    then ""
+    else "vtsls = { mason = false },";
 in {
   # NOTE: enable nixos's nix-ld to be able to use mason packages.
   # add below config to your nixos config module(eg: hosts/profiles/rtx2070/default.nix)
@@ -30,7 +70,6 @@ in {
 
   home.packages = with pkgs; [
     # dependencies
-    gcc
     ripgrep
     fd
   ];
@@ -83,6 +122,7 @@ in {
 
       		-- import/override with your plugins
       		{ import = "plugins" },
+      		{ import = "nix-generated-plugins" },
       	},
       	defaults = {
       		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -114,6 +154,31 @@ in {
       		},
       	},
       })
+    '';
+  };
+
+  home.file."${nvimFolder}/lua/nix-generated-plugins/lspconfig.lua" = {
+    text = ''
+      return {
+      	{
+      		"neovim/nvim-lspconfig",
+      		opts = {
+      			servers = {
+              ${disableMasonClangd}
+              ${disableMasonGo}
+              ${disableMasonLua}
+              ${disableMasonNix}
+              ${disableMasonPhp}
+              ${disableMasonPython}
+              ${disableMasonRust}
+              ${disableMasonTypescript}
+      			},
+      			inlay_hints = {
+      				enabled = false,
+      			},
+      		},
+      	},
+      }
     '';
   };
 
