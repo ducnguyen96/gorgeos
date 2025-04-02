@@ -18,6 +18,11 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
+    typescript = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
