@@ -22,7 +22,7 @@
     lua = {
       enable = true;
       useMasonLSP = false;
-      asHomePkgs = false;
+      asHomePkgs = true;
     };
     typescript = {
       enable = true;
@@ -35,10 +35,10 @@
 
   home = {
     packages = with pkgs; [
-      ncurses5
+      # ncurses5
       # rsync
       # openssh
-      unixtools.ifconfig
+      # unixtools.ifconfig
       leetcode-cli
     ];
 
