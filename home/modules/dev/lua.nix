@@ -24,6 +24,6 @@ in {
     home.packages = with pkgs;
       []
       ++ lib.optionals (!cfg.useMasonLSP) [lua-language-server]
-      ++ lib.optionals (cfg.asHomePkgs) [lua];
+      ++ lib.optionals (cfg.asHomePkgs) [stylua lua];
   };
 }
