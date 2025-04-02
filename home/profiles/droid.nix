@@ -10,6 +10,7 @@
     ../modules/shell/programs/ranger.nix
     ../modules/shell/programs/starship.nix
     ../modules/shell/zsh.nix
+    ../modules/shell/utils.nix
   ];
 
   dev = {
