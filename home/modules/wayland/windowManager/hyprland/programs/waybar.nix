@@ -17,7 +17,7 @@
         margin-left = 0;
         margin-right = 0;
         modules-left = ["custom/ghost" "hyprland/workspaces" "hyprland/window"];
-        modules-center = ["custom/weather" "clock" "custom/btc" "custom/eth" "custom/link"];
+        modules-center = ["custom/weather" "clock" "custom/btc" "custom/eth" "custom/link" "custom/ada"];
         modules-right = ["tray" "custom/notification" "group/network-pulseaudio-backlight-battery" "group/powermenu"];
 
         # Ghost
@@ -75,6 +75,16 @@
           interval = 60;
           exec = ''
             curl -s https://api.binance.com/api/v1/ticker/price?symbol=LINKUSDT | jq .price | xargs | awk '{printf "%.2f\n", $1}'
+          '';
+          tooltip = false;
+        };
+
+        # ADA
+        "custom/ada" = {
+          format = "ADA: {}";
+          interval = 60;
+          exec = ''
+            curl -s https://api.binance.com/api/v1/ticker/price?symbol=ADAUSDT | jq .price | xargs | awk '{printf "%.2f\n", $1}'
           '';
           tooltip = false;
         };
