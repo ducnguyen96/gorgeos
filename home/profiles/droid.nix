@@ -36,6 +36,6 @@
       TERMINAL = "xterm-256color";
       SHELL = "${pkgs.zsh}/bin/zsh";
     };
-    stateVersion = "25.05";
+    stateVersion = "24.05";
   };
 }
