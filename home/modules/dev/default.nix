@@ -12,6 +12,7 @@
     ./sql.nix
     ./tailwind.nix
     ./terraform.nix
+    ./tex.nix
     ./typescript.nix
     ./vue.nix
   ];

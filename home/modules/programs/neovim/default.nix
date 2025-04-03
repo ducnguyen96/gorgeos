@@ -7,62 +7,41 @@
   configFolder = "${nvimFolder}/lua/config";
   pluginsFolder = "${nvimFolder}/lua/plugins";
 
-  enableLanguage = lang:
+  # Helper function to generate language import strings based on config
+  languageImport = lang:
     if config.dev.${lang}.enable
     then "{ import = \"lazyvim.plugins.extras.lang.${lang}\" },"
     else "";
 
-  enableGo = enableLanguage "go";
-  enableNix = enableLanguage "nix";
-  enableRust = enableLanguage "rust";
-  enableSql = enableLanguage "sql";
-  enableTailwind = enableLanguage "tailwind";
-  enableTerraform = enableLanguage "terraform";
-  enableTypescript = enableLanguage "typescript";
-  enableVue = enableLanguage "vue";
-  enableClangd = enableLanguage "clangd";
-  enablePython = enableLanguage "python";
-  enablePhp = enableLanguage "php";
-
-  disableMasonClangd =
-    if config.dev.clangd.useMasonLSP
+  # Helper function to disable Mason LSP providers based on config
+  disableMason = lang: providers:
+    if config.dev.${lang}.useMasonLSP
     then ""
-    else "clangd = { mason = false },";
+    else builtins.concatStringsSep " " (map (p: "${p} = { mason = false },") providers);
 
-  disableMasonGo =
-    if config.dev.go.useMasonLSP
-    then ""
-    else "gopls = { mason = false },";
+  # Map of languages to their LSP providers
+  languageProviders = {
+    clangd = ["clangd"];
+    go = ["gopls"];
+    lua = ["lua_ls"];
+    nix = ["nil_ls"];
+    python = ["ruff" "ruff_lsp"];
+    rust = ["bacon_ls" "rust_analyzer"];
+    typescript = ["vtsls"];
+    tex = ["texlab"];
+    php = ["phpactor" "intelephense"];
+  };
 
-  disableMasonLua =
-    if config.dev.lua.useMasonLSP
-    then ""
-    else "lua_ls = { mason = false },";
+  # Generate language imports for all supported languages
+  supportedLanguages = ["go" "nix" "rust" "sql" "tailwind" "terraform" "typescript" "vue" "clangd" "python" "php" "tex"];
+  languageImports = builtins.concatStringsSep "\n          " (map languageImport supportedLanguages);
 
-  disableMasonNix =
-    if config.dev.nix.useMasonLSP
-    then ""
-    else "nil_ls = { mason = false },";
-
-  disableMasonPhp =
-    if config.dev.php.useMasonLSP
-    then ""
-    else "phpactor = { mason = false }, intelephense = { mason = false },";
-
-  disableMasonPython =
-    if config.dev.python.useMasonLSP
-    then ""
-    else "ruff = { mason = false }, ruff_lsp = { mason = false },";
-
-  disableMasonRust =
-    if config.dev.rust.useMasonLSP
-    then ""
-    else "bacon_ls = { mason = false }, rust_analyzer = { mason = false },";
-
-  disableMasonTypescript =
-    if config.dev.typescript.useMasonLSP
-    then ""
-    else "vtsls = { mason = false },";
+  # Generate Mason LSP configurations
+  masonConfigs = builtins.concatStringsSep "\n              " (
+    map
+    (lang: disableMason lang languageProviders.${lang})
+    (builtins.filter (lang: builtins.hasAttr lang languageProviders) supportedLanguages)
+  );
 in {
   # NOTE: enable nixos's nix-ld to be able to use mason packages.
   # add below config to your nixos config module(eg: hosts/profiles/rtx2070/default.nix)
@@ -109,17 +88,7 @@ in {
           { import = "lazyvim.plugins.extras.ai.copilot" },
           { import = "lazyvim.plugins.extras.ai.copilot-chat" },
 
-          ${enableGo}
-          ${enableNix}
-          ${enableRust}
-          ${enableSql}
-          ${enableTailwind}
-          ${enableTerraform}
-          ${enableTypescript}
-          ${enableVue}
-          ${enableClangd}
-          ${enablePython}
-          ${enablePhp}
+          ${languageImports}
 
       		-- import/override with your plugins
       		{ import = "plugins" },
@@ -165,14 +134,7 @@ in {
       		"neovim/nvim-lspconfig",
       		opts = {
       			servers = {
-              ${disableMasonClangd}
-              ${disableMasonGo}
-              ${disableMasonLua}
-              ${disableMasonNix}
-              ${disableMasonPhp}
-              ${disableMasonPython}
-              ${disableMasonRust}
-              ${disableMasonTypescript}
+              ${masonConfigs}
       			},
       			inlay_hints = {
       				enabled = false,
