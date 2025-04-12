@@ -15,11 +15,30 @@ in {
       unicode_ellipsis = true;
     };
 
+    mappings = {
+      cz = "console z%space";
+      yc = "shell wl-copy < %f";
+    };
+
+    plugins = [
+      {
+        name = "zoxide";
+        src = builtins.fetchGit {
+          url = "https://github.com/jchook/ranger-zoxide.git";
+          rev = "aefff2797b8e3999f659176dc99d76f7186ccc29";
+        };
+      }
+    ];
+
     extraConfig = ''
       set preview_images true
       set preview_images_method kitty
     '';
   };
+
+  home.packages = with pkgs; [
+    xclip
+  ];
 
   home.file."${config.home.homeDirectory}/.config/ranger/rifle.conf".text = ''
     # vim: ft=cfg
