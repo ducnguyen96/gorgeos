@@ -71,17 +71,17 @@
       google-chrome # browser
       # gimp # image editor
       xfce.thunar
-      pritunl-client
-      ventoy-full
+      # pritunl-client
+      # ventoy-full
       # audacity
       # chromium
       dbeaver-bin # Sql client
-      zstd
-      cachix
-      linux-wifi-hotspot
-      cloudflared
-      postman
-      ffmpeg
+      # zstd
+      # cachix
+      # linux-wifi-hotspot
+      # cloudflared
+      # postman
+      # ffmpeg
 
       # pipx # current use: pipx install open-webui
       # gollama
