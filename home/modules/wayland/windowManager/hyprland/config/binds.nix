@@ -97,7 +97,7 @@ in {
           "SUPERSHIFT ALT, bracketright, movecurrentworkspacetomonitor, r"
 
           # utilities
-          "SUPER, Return, exec, run-as-service ${terminal}"
+          "SUPER, Return, exec, ${terminal} -e nvim +terminal --listen /tmp/nvim-server.pipe"
           "SUPER, B, exec, ${browser}"
           "SUPER, C, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 50% 94% && hyprctl dispatch movewindowpixel exact 25% 5%, activewindow"
           "SUPER, E, exec, ${editor}"
