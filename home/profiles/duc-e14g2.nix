@@ -54,6 +54,11 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
+    tex = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
   };
 
   home = {
@@ -68,13 +73,16 @@
       # shotcut # video editor
       remmina # Remote desktop client written in GTK
       # telegram-desktop
-      # google-chrome # browser
+      google-chrome # browser
       # gimp # image editor
       xfce.thunar
       # audacity
       # chromium
       dbeaver-bin # Sql client
+      vscode-fhs
       showmethekey
+      leetcode-cli
+      libnotify
     ];
   };
 
