@@ -16,6 +16,8 @@
     ../modules/shell
 
     ../modules/wayland/windowManager/hyprland
+
+    ../modules/services/kdeconnect.nix
   ];
 
   dev = {
@@ -82,6 +84,9 @@
       # cloudflared
       # postman
       # ffmpeg
+      android-tools
+      scrcpy
+      wineWowPackages.stable
 
       # pipx # current use: pipx install open-webui
       # gollama
