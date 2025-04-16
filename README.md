@@ -6,6 +6,10 @@
 </a>
 </div>
 
+## Demo
+
+[![Demo](https://i3.ytimg.com/vi/dP7b3PzNc_Y/maxresdefault.jpg)](https://www.youtube.com/watch?v=dP7b3PzNc_Y)
+
 ## :package: Repository Contents
 
 - **[Flake](./flake):** configurations for code formatting, and pre-commit hooks.
