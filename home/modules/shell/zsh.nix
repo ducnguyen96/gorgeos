@@ -58,6 +58,9 @@
       nvim = "nvim --listen /tmp/nvim-server.pipe";
 
       awsume = ". awsume";
+
+      k = "kubectl";
+      t = "terraform";
     };
 
     initExtraBeforeCompInit = ''
