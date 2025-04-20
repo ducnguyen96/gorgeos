@@ -4,6 +4,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./extra-completions
+  ];
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -55,6 +59,10 @@
 
       awsume = ". awsume";
     };
+
+    initExtraBeforeCompInit = ''
+      fpath+=("$HOME/.config/zsh/extra-completions")
+    '';
 
     antidote = {
       enable = true;
