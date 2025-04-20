@@ -10,7 +10,7 @@
 
     zsh = {
       enable = true;
-      enableCompletion = true;
+      enableGlobalCompInit = false;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
       promptInit = ''
