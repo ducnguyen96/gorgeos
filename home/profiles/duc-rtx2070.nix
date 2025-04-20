@@ -17,7 +17,7 @@
 
     ../modules/wayland/windowManager/hyprland
 
-    ../modules/services/kdeconnect.nix
+    # ../modules/services/kdeconnect.nix
   ];
 
   dev = {
@@ -56,6 +56,11 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
+    tex = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
   };
 
   home = {
@@ -87,6 +92,7 @@
       android-tools
       scrcpy
       wineWowPackages.stable
+      # devbox
 
       # pipx # current use: pipx install open-webui
       # gollama
