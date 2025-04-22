@@ -24,6 +24,6 @@ in {
     home.packages = with pkgs;
       []
       ++ lib.optionals (!cfg.useMasonLSP) [texlab]
-      ++ lib.optionals (cfg.asHomePkgs) [texliveFull];
+      ++ lib.optionals (cfg.asHomePkgs) [texliveFull zathura];
   };
 }
