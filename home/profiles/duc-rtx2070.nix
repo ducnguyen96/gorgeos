@@ -72,6 +72,7 @@
     ];
 
     packages = with pkgs; [
+      go-task
       # shotcut # video editor
       remmina # Remote desktop client written in GTK
       # telegram-desktop

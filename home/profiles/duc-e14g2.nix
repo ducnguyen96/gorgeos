@@ -70,6 +70,7 @@
     ];
 
     packages = with pkgs; [
+      go-task
       # shotcut # video editor
       remmina # Remote desktop client written in GTK
       # telegram-desktop
@@ -79,10 +80,9 @@
       # audacity
       # chromium
       dbeaver-bin # Sql client
-      vscode-fhs
-      showmethekey
-      leetcode-cli
-      libnotify
+      android-tools
+      scrcpy
+      wineWowPackages.stable
     ];
   };
 
