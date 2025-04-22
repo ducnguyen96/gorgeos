@@ -67,6 +67,22 @@
       fpath+=("$HOME/.config/zsh/extra-completions")
     '';
 
+    initExtra = ''
+      while read -r option; do
+        setopt $option
+      done <<-EOF
+      AUTO_CD
+      CDABLE_VARS
+      EOF
+
+      while read -r option; do
+        unsetopt $option
+      done <<-EOF
+      FLOW_CONTROL
+      MENU_COMPLETE
+      EOF
+    '';
+
     antidote = {
       enable = true;
       plugins = [
