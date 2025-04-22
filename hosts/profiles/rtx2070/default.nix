@@ -38,6 +38,7 @@ in {
         # virtualization
         ../../modules/virtualization/docker.nix
         ../../modules/virtualization/libvirtd.nix
+        ../../modules/virtualization/vagrant.nix
 
         {programs.nix-ld.enable = true;}
 
