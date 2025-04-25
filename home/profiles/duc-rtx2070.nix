@@ -21,6 +21,11 @@
   ];
 
   dev = {
+    angular = {
+      enable = true;
+      useMasonLSP = true;
+      asHomePkgs = false;
+    };
     clangd = {
       enable = true;
       useMasonLSP = false;

@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./angular.nix
     ./aws.nix
     ./clangd.nix
     ./go.nix

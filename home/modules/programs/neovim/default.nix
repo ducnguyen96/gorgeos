@@ -30,10 +30,11 @@
     typescript = ["vtsls"];
     tex = ["texlab"];
     php = ["phpactor" "intelephense"];
+    angular = ["angularls"];
   };
 
   # Generate language imports for all supported languages
-  supportedLanguages = ["go" "nix" "rust" "sql" "tailwind" "terraform" "typescript" "vue" "clangd" "python" "php" "tex"];
+  supportedLanguages = ["go" "nix" "rust" "sql" "tailwind" "terraform" "typescript" "vue" "clangd" "python" "php" "tex" "angular"];
   languageImports = builtins.concatStringsSep "\n          " (map languageImport supportedLanguages);
 
   # Generate Mason LSP configurations
@@ -81,7 +82,6 @@ in {
       		-- add LazyVim and import its plugins
       		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
           { import = "lazyvim.plugins.extras.coding.mini-surround" },
-          { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
           { import = "lazyvim.plugins.extras.formatting.prettier" },
           { import = "lazyvim.plugins.extras.linting.eslint" },
           { import = "lazyvim.plugins.extras.util.project" },
