@@ -52,10 +52,6 @@
       nu = "nix-update";
 
       r = "rebuild";
-      n = "nvim --listen /tmp/nvim-server.pipe";
-      v = "nvim --listen /tmp/nvim-server.pipe";
-      vim = "nvim --listen /tmp/nvim-server.pipe";
-      nvim = "nvim --listen /tmp/nvim-server.pipe";
 
       awsume = ". awsume";
 
@@ -63,11 +59,9 @@
       t = "terraform";
     };
 
-    initExtraBeforeCompInit = ''
+    initContent = lib.mkOrder 550 ''
       fpath+=("$HOME/.config/zsh/extra-completions")
-    '';
 
-    initExtra = ''
       while read -r option; do
         setopt $option
       done <<-EOF

@@ -23,7 +23,7 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       []
-      ++ lib.optionals (!cfg.useMasonLSP) [ruff ruff-lsp]
+      ++ lib.optionals (!cfg.useMasonLSP) [ruff]
       ++ lib.optionals (cfg.asHomePkgs) [python3];
   };
 }
