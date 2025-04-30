@@ -3,6 +3,7 @@ let
     main = {
       capslock = "overload(control, esc)";
       leftalt = "layer(leftalt)";
+      rightcontrol = "leftalt";
       rightalt = "leftalt";
     };
 
