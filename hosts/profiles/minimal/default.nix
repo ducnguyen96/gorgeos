@@ -1,12 +1,10 @@
 {
   homeImports,
   inputs,
-  self,
-  themes,
   ...
 }: let
   inherit (inputs.nixpkgs.lib) nixosSystem;
-  specialArgs = {inherit inputs self themes;};
+  specialArgs = {inherit inputs;};
 in {
   flake.nixosConfigurations = {
     minimal = nixosSystem {

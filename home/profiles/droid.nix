@@ -39,7 +39,7 @@
       # rsync
       # openssh
       # unixtools.ifconfig
-      leetcode-cli
+      # leetcode-cli
     ];
 
     homeDirectory = "/data/data/com.termux.nix/files/home";

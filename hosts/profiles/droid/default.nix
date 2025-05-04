@@ -1,13 +1,11 @@
 {
   homeImports,
   inputs,
-  self,
-  themes,
   ...
 }: let
   inherit (inputs) nixpkgs nix-on-droid home-manager;
   inherit (nix-on-droid.lib) nixOnDroidConfiguration;
-  extraSpecialArgs = {inherit inputs self themes;};
+  extraSpecialArgs = {inherit inputs;};
 in {
   flake.nixOnDroidConfigurations = {
     droid = nixOnDroidConfiguration {
