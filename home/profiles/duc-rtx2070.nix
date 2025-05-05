@@ -9,7 +9,6 @@
     ../modules/programs/fcitx5.nix
     ../modules/programs/firefox.nix
     ../modules/programs/kitty.nix
-    ../modules/programs/nix-index-db.nix
 
     ../modules/dev/default.nix
 
