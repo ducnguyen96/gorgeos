@@ -14,7 +14,7 @@
       columns = 3;
       gtk_dark = true;
       orientation = "vertical";
-      image_size = 48;
+      image_size = 32;
       layer = "top";
     };
     style = let
