@@ -35,7 +35,7 @@ in {
         ../../modules/services
 
         # virtualization
-        ../../modules/virtualization/podman.nix
+        ../../modules/virtualization/docker.nix
         ../../modules/virtualization/libvirtd.nix
         ../../modules/virtualization/vagrant.nix
 
