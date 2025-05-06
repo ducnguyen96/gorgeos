@@ -1,10 +1,10 @@
 {
-  config,
+  pkgs,
   osConfig,
   ...
 }: let
-  pointer = config.home.pointerCursor;
-  cursorName = "Bibata-Modern-Ice-Hyprcursor";
+  cursorName = "Bibata-Modern-Ice";
+  cursorSize = "24";
 
   monitor_left = osConfig.environment.variables."MONITOR_LEFT";
   monitor_right = osConfig.environment.variables."MONITOR_RIGHT";
@@ -25,15 +25,20 @@
     "0, monitor:${monitor_left_name}"
   ];
 in {
+  # dependencies
+  home.packages = with pkgs; [
+    bibata-cursors
+  ];
+
   wayland.windowManager.hyprland.settings = {
     env = [
       "GDK_SCALE,1"
       "HYPRCURSOR_THEME,${cursorName}"
-      "HYPRCURSOR_SIZE,${toString pointer.size}"
+      "HYPRCURSOR_SIZE,${cursorSize}"
     ];
 
     exec-once = [
-      "hyprctl setcursor ${cursorName} ${toString pointer.size}"
+      "hyprctl setcursor ${cursorName} ${cursorSize}"
     ];
 
     general = {

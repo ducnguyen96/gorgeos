@@ -4,12 +4,6 @@
 
     packages = with pkgs; [
       # System Fonts
-      corefonts
-      vistafonts
-      dm-sans
-      open-sans
-      work-sans
-      roboto
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji

@@ -1,10 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: let
-  cursor = "Bibata-Modern-Ice-Hyprcursor";
-  cursorPackage = inputs.self.packages.${pkgs.system}.bibata-hyprcursor;
+{pkgs, ...}: let
 in {
   imports = [
     ./config
@@ -61,6 +55,4 @@ in {
       ];
     };
   };
-
-  xdg.dataFile."icons/${cursor}".source = "${cursorPackage}/share/icons/${cursor}";
 }

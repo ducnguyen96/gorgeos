@@ -1,11 +1,6 @@
-{
-  config,
-  themes,
-  ...
-}: {
+{themes, ...}: {
   services.dunst = {
     enable = true;
-    inherit (config.gtk) iconTheme;
 
     settings = let
       inherit (themes.colorscheme) xcolors;

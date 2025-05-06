@@ -1,8 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ../modules/config/gtk.nix
-    ../modules/config/qt.nix
-
     ../modules/programs/media
     ../modules/programs/neovim
     ../modules/programs/fcitx5.nix
@@ -79,7 +76,6 @@
       # telegram-desktop
       google-chrome # browser
       # gimp # image editor
-      xfce.thunar
       # pritunl-client
       # ventoy-full
       # audacity
