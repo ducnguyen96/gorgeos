@@ -7,6 +7,8 @@
   themeVariant = config.custom.theme.variant;
 
   themePath = ../../../../../../lib/themes/${themeName};
+
+  terminal = config.home.sessionVariables.TERMINAL;
 in {
   home.file.".config/waybar/${themeVariant}.css".source = "${themePath}/waybar/${themeVariant}.css";
 
@@ -25,7 +27,7 @@ in {
         spacing = 8;
         modules-left = ["hyprland/workspaces"];
         modules-center = ["custom/weather" "group/crypto" "clock"];
-        modules-right = ["tray" "custom/notification" "group/network-pulseaudio-backlight-battery" "group/powermenu"];
+        modules-right = ["tray" "group/network-bluetooth-pulseaudio-backlight-battery" "custom/notification" "group/powermenu"];
 
         "hyprland/workspaces" = {
           format = "";
@@ -132,6 +134,14 @@ in {
           tooltip = true;
           escape = true;
         };
+        "bluetooth" = {
+          "format" = "";
+          "tooltip-format" = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+          "tooltip-format-connected" = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+          "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
+          "tooltip-format-enumerate-connected-battery" = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+          "on-click" = "blueman-manager";
+        };
 
         network = {
           format-wifi = "󰤨";
@@ -155,6 +165,7 @@ in {
           };
           tooltip-format = "Volume: {volume}%";
           on-click = "${pkgs.pamixer}/bin/pamixer --toggle-mute";
+          on-click-right = "${terminal} -e pulsemixer";
           on-scroll-up = "${pkgs.pamixer}/bin/pamixer --decrease 1";
           on-scroll-down = "${pkgs.pamixer}/bin/pamixer --increase 1";
         };
@@ -209,9 +220,10 @@ in {
           tooltip-format = "{timeTo}, {capacity}%";
         };
 
-        "group/network-pulseaudio-backlight-battery" = {
+        "group/network-bluetooth-pulseaudio-backlight-battery" = {
           modules = [
             "network"
+            "bluetooth"
             "group/audio-slider"
             "group/light-slider"
             "battery"
@@ -285,7 +297,7 @@ in {
       #clock,
       #tray,
       #custom-notification,
-      #network-pulseaudio-backlight-battery,
+      #network-bluetooth-pulseaudio-backlight-battery,
       #powermenu {
         padding: 0.4rem 0.5rem;
         background-color: @surface0;
@@ -374,7 +386,36 @@ in {
         color: @yellow;
       }
 
+      #bluetooth.off {
+        color: @red;
+      }
+
+      #bluetooth.on {
+        color: @blue;
+      }
+
+      #bluetooth.connected {
+        color: @green;
+      }
+
+      #bluetooth.discoverable {
+        color: @sky;
+      }
+
+      #bluetooth.discovering {
+        color: @yellow;
+      }
+
+      #bluetooth.pairable {
+        color: @lavender;
+      }
+
+      #bluetooth.no-controller {
+        color: @red;
+      }
+
       #network,
+      #bluetooth,
       #pulseaudio,
       #pulseaudio-slier,
       #backlight {
