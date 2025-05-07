@@ -1,10 +1,24 @@
 {
+  config,
+  lib,
+  ...
+}: let
+  capitalize = str: (lib.strings.toUpper (builtins.substring 0 1 str)) + (builtins.substring 1 (builtins.stringLength str) str);
+
+  themeName = config.custom.theme.name;
+  themeVariant = config.custom.theme.variant;
+
+  capitalizedThemeName = capitalize themeName;
+  capitalizedThemeVariant = capitalize themeVariant;
+
+  themeFile = "${capitalizedThemeName}-${capitalizedThemeVariant}";
+in {
   home.sessionVariables.TERMINAL = "kitty -1";
 
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;
-
+    themeFile = themeFile;
     settings = {
       active_tab_font_style = "bold";
       background_opacity = "0.8";
