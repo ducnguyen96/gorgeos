@@ -6,7 +6,7 @@
   themeName = config.custom.theme.name;
   themeVariant = config.custom.theme.variant;
 
-  themePath = ../../../../../../lib/themes/${themeName};
+  themePath = ../../../../theme/themes/${themeName};
 
   terminal = config.home.sessionVariables.TERMINAL;
 in {

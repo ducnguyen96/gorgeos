@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   imports = [
+    ../modules/theme
+
     ../modules/programs/media
     ../modules/programs/neovim
     ../modules/programs/fcitx5.nix
@@ -59,6 +61,11 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
+  };
+
+  custom.theme = {
+    name = "catppuccin";
+    variant = "mocha";
   };
 
   home = {

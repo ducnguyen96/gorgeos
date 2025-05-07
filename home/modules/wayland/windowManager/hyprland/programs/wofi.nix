@@ -2,7 +2,7 @@
   themeName = config.custom.theme.name;
   themeVariant = config.custom.theme.variant;
 
-  themePath = ../../../../../../lib/themes/${themeName};
+  themePath = ../../../../theme/themes/${themeName};
 in {
   programs.wofi = {
     enable = true;

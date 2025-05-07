@@ -8,7 +8,6 @@
       imports = [
         ./home
         ./hosts
-        ./pkgs
         pre-commit-hooks.flakeModule
       ];
 
