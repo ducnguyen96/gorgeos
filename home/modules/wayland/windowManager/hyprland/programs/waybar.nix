@@ -305,10 +305,11 @@ in {
       }
 
       #workspaces button {
-        background: @subtext0;
+        background: @text;
+        border: 2px solid @surface0;
         border-radius: 100%;
         min-width: 1rem;
-        margin-right: 0.75rem;
+        margin-right: 0.35rem;
         transition: 200ms linear;
       }
 
@@ -317,7 +318,7 @@ in {
       }
 
       #workspaces button:hover {
-        background: lighter(@white);
+        background: @lavender;
       }
 
       #workspaces button.empty {
@@ -325,7 +326,7 @@ in {
       }
 
       #workspaces button.empty:hover {
-        background: lighter(@gray);
+        background: @lavender;
       }
 
       #workspaces button.urgent {
@@ -345,11 +346,11 @@ in {
       }
 
       #workspaces button.active {
-        background: @blue;
+        background: @mauve;
       }
 
       #workspaces button.active:hover {
-        background: lighter(@blue);
+        background: @lavender;
       }
 
       #custom-weather {

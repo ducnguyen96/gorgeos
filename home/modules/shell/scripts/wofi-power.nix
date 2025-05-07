@@ -3,7 +3,7 @@
     #!/usr/bin/env bash
     # Wofi window config (in %)
     WOFI_WIDTH=50
-    WOFI_HEIGHT=10
+    WOFI_HEIGHT=11
     WOFI_COLUMNS=5
     wofi_command="wofi --show dmenu \
     	--prompt choose... \
