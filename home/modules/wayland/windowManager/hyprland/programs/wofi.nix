@@ -1,4 +1,4 @@
-{themes, ...}: {
+{
   programs.wofi = {
     enable = true;
     settings = {
@@ -17,9 +17,7 @@
       image_size = 32;
       layer = "top";
     };
-    style = let
-      inherit (themes.colorscheme) xcolors;
-    in ''
+    style = ''
       * {
         all: initial;
         font-family: Dosis;
@@ -28,14 +26,11 @@
       }
 
       #window {
-        background-color: ${xcolors.black0};
         border-radius: 12px;
       }
 
       #input {
         border-radius: 12px;
-        border: 1px solid ${xcolors.mauve};
-        background-color: ${xcolors.black3};
         padding: 0.75em;
         margin-bottom: 1.5em;
       }
@@ -46,7 +41,6 @@
 
       #text {
         margin: 0.25em;
-        color: ${xcolors.white};
       }
 
       #img {
@@ -60,7 +54,6 @@
       }
 
       #entry:selected {
-        background-color: ${xcolors.black3};
         font-weight: bold;
       }
     '';

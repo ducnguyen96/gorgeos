@@ -1,6 +1,4 @@
-{themes, ...}: let
-  inherit (themes.colorscheme) colors;
-in {
+{
   programs.hyprlock = {
     enable = true;
 
@@ -26,11 +24,6 @@ in {
           monitor = "";
           size = "300, 50";
           outline_thickness = 2;
-          outer_color = "rgb(${colors.gray0})";
-          inner_color = "rgb(${colors.black0})";
-          font_color = "rgb(${colors.white})";
-          check_color = "rgb(${colors.blue})";
-          fail_color = "rgb(${colors.red})";
           fade_on_empty = false;
           placeholder_text = "<i>Enter Password</i>";
           dots_spacing = 0.2;
@@ -47,7 +40,6 @@ in {
           text = "cmd[update:3600000] date +'%A, %B %d'";
           font_family = "Inter Display";
           font_size = 36;
-          color = "rgb(${colors.white})";
           position = "0, -150";
           valign = "top";
           halign = "center";
@@ -57,7 +49,6 @@ in {
           text = "$TIME";
           font_family = "Inter Display Bold";
           font_size = 132;
-          color = "rgb(${colors.white})";
           position = "0, -200";
           valign = "top";
           halign = "center";
@@ -67,7 +58,6 @@ in {
           text = "   $USER";
           font_family = "Inter Display Medium";
           font_size = 24;
-          color = "rgb(${colors.white})";
           position = "0, 200";
           valign = "bottom";
           halign = "center";

@@ -1,0 +1,260 @@
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "margin": "10 10 0 10",
+    "spacing": 8,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["custom/weather", "group/crypto", "clock"],
+    "modules-right": ["tray", "custom/notification", "group/network-pulseaudio-backlight-battery", "group/powermenu"],
+
+    "hyprland/workspaces": {
+      "all-outputs": true,
+      "disable-scroll": true,
+      "format": "",
+      "on-click": "activate",
+      "persistent-workspaces": {
+        "*": 5
+      },
+      "show-special": true
+    },
+
+    "custom/weather": {
+      "exec": "/nix/store/fg648qypaxjik04628grnfa000rwb4gr-wttrbar-0.12.0/bin/wttrbar  --hide-conditions --location Jakarta",
+      "format": "{}°",
+      "interval": 3600,
+      "return-type": "json",
+      "tooltip": true
+    },
+
+    "custom/btc": {
+      "exec": "curl -s https://api.binance.com/api/v1/ticker/price?symbol=BTCUSDT | jq .price | xargs | awk -F. '{print $1}'",
+      "format": "󰠓: {}",
+      "interval": 60,
+      "tooltip": false
+    },
+    "custom/eth": {
+      "exec": "curl -s https://api.binance.com/api/v1/ticker/price?symbol=ETHUSDT | jq .price | xargs | awk -F. '{print $1}'",
+      "format": "󰡪: {}",
+      "interval": 60,
+      "tooltip": false
+    },
+    "custom/link": {
+      "exec": "curl -s https://api.binance.com/api/v1/ticker/price?symbol=LINKUSDT | jq .price | xargs | awk '{printf \"%.2f\\n\", $1}'\n",
+      "format": "Ł: {}",
+      "interval": 60,
+      "tooltip": false
+    },
+    "custom/ada": {
+      "exec": "curl -s https://api.binance.com/api/v1/ticker/price?symbol=ADAUSDT | jq .price | xargs | awk '{printf \"%.2f\\n\", $1}'\n",
+      "format": "₳: {}",
+      "interval": 60,
+      "tooltip": false
+    },
+    "group/crypto": {
+      "modules": [
+        "custom/btc",
+        "custom/eth",
+        "custom/link",
+        "custom/ada"
+      ],
+      "orientation": "inherit"
+    },
+
+    "clock": {
+      "actions": {
+        "on-scroll-down": "shift_down",
+        "on-scroll-up": "shift_up"
+      },
+      "calendar": {
+        "format": {
+          "days": "<span color='#98989d'><b>{}</b></span>",
+          "months": "<span color='#ffffff'><b>{}</b></span>",
+          "today": "<span color='#ffffff'><b><u>{}</u></b></span>",
+          "weekdays": "<span color='#0a84ff'><b>{}</b></span>"
+        },
+        "mode": "month",
+        "on-scroll": 1
+      },
+      "format": "{:%b %d %H:%M}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "tray": {
+      "icon-size": 16,
+      "show-passive-items": true,
+      "spacing": 8
+    },
+    "custom/notification": {
+      "escape": true,
+      "exec": "/nix/store/z3qxkn95jkl49y92mnpa9br6v230vzv4-SwayNotificationCenter-0.10.1/bin/swaync-client -swb",
+      "format": "{icon}",
+      "format-icons": {
+        "dnd-inhibited-none": "󰪑",
+        "dnd-inhibited-notification": "󰂛",
+        "dnd-none": "󰪑",
+        "dnd-notification": "󰂛",
+        "inhibited-none": "󰪑",
+        "inhibited-notification": "󰂛",
+        "none": "󰂜",
+        "notification": "󰂚"
+      },
+      "on-click": "/nix/store/z3qxkn95jkl49y92mnpa9br6v230vzv4-SwayNotificationCenter-0.10.1/bin/swaync-client -t -sw",
+      "on-click-right": "/nix/store/z3qxkn95jkl49y92mnpa9br6v230vzv4-SwayNotificationCenter-0.10.1/bin/swaync-client -d -sw",
+      "return-type": "json",
+      "tooltip": true
+    },
+
+    "network": {
+      "format-disconnected": "",
+      "format-ethernet": "󰈀",
+      "format-wifi": "󰤨",
+      "on-click": "/nix/store/9015j19392y7c1yqqrz0g0bg1vjg8g1z-network-manager-applet-1.36.0/bin/nm-connection-editor",
+      "tooltip-format-disconnected": "Disconnected",
+      "tooltip-format-ethernet": "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+      "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}"
+    },
+
+    "pulseaudio": {
+      "format": "{icon}",
+      "format-bluetooth": "󰂯",
+      "format-icons": {
+        "default": [
+          "󰕿",
+          "󰖀",
+          "󰕾"
+        ],
+        "hands-free": "󱡏",
+        "headphone": "󰋋",
+        "headset": "󰋎"
+      },
+      "format-muted": "󰖁",
+      "on-click": "/nix/store/ackpl8li8l74mmqanpq40s6yxggdx9pk-pamixer-1.6/bin/pamixer --toggle-mute",
+      "on-scroll-down": "/nix/store/ackpl8li8l74mmqanpq40s6yxggdx9pk-pamixer-1.6/bin/pamixer --increase 1",
+      "on-scroll-up": "/nix/store/ackpl8li8l74mmqanpq40s6yxggdx9pk-pamixer-1.6/bin/pamixer --decrease 1",
+      "tooltip-format": "Volume: {volume}%"
+    },
+    "pulseaudio/slider": {
+      "max": 100,
+      "min": 0,
+      "orientation": "horizontal"
+    },
+    "group/audio-slider": {
+      "drawer": {
+        "children-class": "audio-slider-child",
+        "transition-duration": 300,
+        "transition-left-to-right": true
+      },
+      "modules": [
+        "pulseaudio",
+        "pulseaudio/slider"
+      ],
+      "orientation": "inherit"
+    },
+    "backlight": {
+      "format": "{icon}",
+      "format-icons": [
+        "󰝦",
+        "󰪞",
+        "󰪟",
+        "󰪠",
+        "󰪡",
+        "󰪢",
+        "󰪣",
+        "󰪤",
+        "󰪥"
+      ],
+      "on-scroll-down": "/nix/store/s7g1vbx1kfn7j49gh7sw431sbq0gfsbl-brightnessctl-0.5.1/bin/brightnessctl set +1%",
+      "on-scroll-up": "/nix/store/s7g1vbx1kfn7j49gh7sw431sbq0gfsbl-brightnessctl-0.5.1/bin/brightnessctl set 1%-",
+      "tooltip-format": "Backlight: {percent}%"
+    },
+    "backlight/slider": {
+      "max": 100,
+      "min": 0,
+      "orientation": "horizontal"
+    },
+    "group/light-slider": {
+      "drawer": {
+        "children-class": "light-slider-child",
+        "transition-duration": 300,
+        "transition-left-to-right": true
+      },
+      "modules": [
+        "backlight",
+        "backlight/slider"
+      ],
+      "orientation": "inherit"
+    },
+    "battery": {
+      "format": "{icon}",
+      "format-charging": "󱐋",
+      "format-icons": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "format-plugged": "󰚥",
+      "states": {
+        "critical": 20,
+        "warning": 30
+      },
+      "tooltip-format": "{timeTo}, {capacity}%"
+    },
+    "group/network-pulseaudio-backlight-battery": {
+      "modules": [
+        "network",
+        "group/audio-slider",
+        "group/light-slider",
+        "battery"
+      ],
+      "orientation": "inherit"
+    },
+    "custom/power": {
+      "format": "󰐥",
+      "on-click": "/nix/store/dzh1b0f5x3jypzn78hmhl0p4q296z6z8-systemd-257.3/bin/systemctl poweroff",
+      "tooltip": false
+    },
+    "custom/reboot": {
+      "format": "󰜉",
+      "on-click": "/nix/store/dzh1b0f5x3jypzn78hmhl0p4q296z6z8-systemd-257.3/bin/systemctl reboot",
+      "tooltip": false
+    },
+    "custom/suspend": {
+      "format": "󰤄",
+      "on-click": "/nix/store/dzh1b0f5x3jypzn78hmhl0p4q296z6z8-systemd-257.3/bin/systemctl suspend",
+      "tooltip": false
+    },
+    "custom/exit": {
+      "format": "󰈆",
+      "on-click": "/nix/store/dzh1b0f5x3jypzn78hmhl0p4q296z6z8-systemd-257.3/bin/loginctl terminate-user $USER",
+      "tooltip": false
+    },
+    "custom/lock": {
+      "format": "󰌾",
+      "on-click": "/nix/store/dzh1b0f5x3jypzn78hmhl0p4q296z6z8-systemd-257.3/bin/loginctl lock-session",
+      "tooltip": false
+    },
+    "group/powermenu": {
+      "drawer": {
+        "children-class": "powermenu-child",
+        "transition-duration": 300,
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "custom/power",
+        "custom/exit",
+        "custom/lock",
+        "custom/suspend",
+        "custom/reboot"
+      ],
+      "orientation": "inherit"
+    },
+  }
+]

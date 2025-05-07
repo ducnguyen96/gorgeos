@@ -2,11 +2,10 @@
   homeImports,
   inputs,
   self,
-  themes,
   ...
 }: let
   inherit (inputs.nixpkgs.lib) nixosSystem;
-  specialArgs = {inherit inputs self themes;};
+  specialArgs = {inherit inputs self;};
 in {
   flake.nixosConfigurations = {
     rtx2070 = nixosSystem {
