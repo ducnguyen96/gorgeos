@@ -10,6 +10,8 @@
 in {
   home.file.".config/waybar/${themeVariant}.css".source = "${themePath}/waybar/${themeVariant}.css";
 
+  home.packages = with pkgs; [papirus-icon-theme];
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;
