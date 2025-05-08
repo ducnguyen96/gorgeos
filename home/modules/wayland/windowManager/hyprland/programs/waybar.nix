@@ -27,7 +27,7 @@ in {
         spacing = 8;
         modules-left = ["hyprland/workspaces"];
         modules-center = ["custom/weather" "group/crypto" "clock"];
-        modules-right = ["tray" "group/network-bluetooth-pulseaudio-backlight-battery" "custom/notification" "group/powermenu"];
+        modules-right = ["group/cpu-temperature-memory" "group/network-bluetooth-pulseaudio-backlight-battery" "group/tray-notification" "group/powermenu"];
 
         "hyprland/workspaces" = {
           format = "";
@@ -109,6 +109,42 @@ in {
           };
         };
 
+        cpu = {
+          interval = 1;
+          format = "{}%  {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}";
+          "format-icons" = [
+            "<span color='#a6e3a1'>▁</span>"
+            "<span color='#b4dd9c'>▂</span>"
+            "<span color='#d5db95'>▃</span>"
+            "<span color='#f9e2af'>▄</span>"
+            "<span color='#fab387'>▅</span>"
+            "<span color='#f59ca5'>▆</span>"
+            "<span color='#f38ba8'>▇</span>"
+            "<span color='#eba0ac'>█</span>"
+          ];
+        };
+
+        "memory" = {
+          "interval" = 30;
+          "format" = "{used:0.1f}Gb ";
+        };
+
+        "temperature" = {
+          "critical-threshold" = 80;
+          "hwmon-path" = "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon4/temp1_input";
+          "format-critical" = "{temperatureC}°C ";
+          "format" = "{temperatureC}°C ";
+        };
+
+        "group/cpu-temperature-memory" = {
+          "modules" = [
+            "cpu"
+            "temperature"
+            "memory"
+          ];
+          "orientation" = "inherit";
+        };
+
         tray = {
           icon-size = 16;
           show-passive-items = true;
@@ -134,6 +170,15 @@ in {
           tooltip = true;
           escape = true;
         };
+
+        "group/tray-notification" = {
+          "modules" = [
+            "tray"
+            "custom/notification"
+          ];
+          "orientation" = "inherit";
+        };
+
         "bluetooth" = {
           "format" = "";
           "tooltip-format" = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
@@ -295,8 +340,8 @@ in {
       #custom-weather,
       #crypto,
       #clock,
-      #tray,
-      #custom-notification,
+      #cpu-temperature-memory,
+      #tray-notification,
       #network-bluetooth-pulseaudio-backlight-battery,
       #powermenu {
         padding: 0.4rem 0.5rem;
@@ -381,6 +426,31 @@ in {
 
       #clock {
         color: @sky;
+      }
+
+      #cpu,
+      #temperature {
+        margin-right: 0.5rem;
+      }
+
+      #cpu {
+        color: @mauve;
+      }
+
+      #temperature {
+        color: @blue;
+      }
+
+      #temperature.critical {
+        color: @blue;
+      }
+
+      #memory {
+        color: @pink;
+      }
+
+      #tray {
+        margin-right: 0.35rem;
       }
 
       #custom-notification {
