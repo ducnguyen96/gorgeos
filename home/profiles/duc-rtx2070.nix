@@ -97,6 +97,7 @@
       android-tools
       scrcpy
       wineWowPackages.stable
+      cloudflare-warp
       # devbox
 
       # pipx # current use: pipx install open-webui

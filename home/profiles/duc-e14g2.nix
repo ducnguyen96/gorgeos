@@ -90,6 +90,7 @@
       android-tools
       scrcpy
       wineWowPackages.stable
+      cloudflare-warp
     ];
   };
 
