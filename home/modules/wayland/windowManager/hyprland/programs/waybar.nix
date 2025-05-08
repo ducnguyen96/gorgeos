@@ -72,7 +72,7 @@ in {
         };
 
         "custom/ada" = {
-          format = "₳:: {}";
+          format = "₳: {}";
           interval = 60;
           exec = ''
             curl -s https://api.binance.com/api/v1/ticker/price?symbol=ADAUSDT | jq .price | xargs | awk '{printf "%.2f\n", $1}'
