@@ -28,6 +28,7 @@ in {
         nodejs_22
         pnpm
         yarn
+        nest-cli
       ];
   };
 }
