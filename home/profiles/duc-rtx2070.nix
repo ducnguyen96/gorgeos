@@ -106,7 +106,7 @@
 
       # pipx # current use: pipx install open-webui
       # gollama
-      # ollama-cuda
+      ollama-cuda
       # lmstudio
       # vscode-fhs
       # appimage-run
