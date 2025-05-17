@@ -61,12 +61,15 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
+    tailwind.enable = true;
   };
 
   custom.theme = {
     name = "catppuccin";
     variant = "mocha";
   };
+
+  gtk.enable = true;
 
   home = {
     username = "duc";
@@ -99,6 +102,7 @@
       wineWowPackages.stable
       cloudflare-warp
       # devbox
+      sshfs
 
       # pipx # current use: pipx install open-webui
       # gollama

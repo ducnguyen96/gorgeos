@@ -1,8 +1,24 @@
-{lib, ...}:
+{
+  lib,
+  inputs,
+  ...
+}:
 with lib; let
   themesPath = ./themes;
   availableThemes = builtins.attrNames (builtins.readDir themesPath);
 in {
+  imports = [
+    inputs.catppuccin.homeModules.catppuccin
+  ];
+
+  config.catppuccin = {
+    enable = true;
+
+    nvim.enable = false;
+    kitty.enable = false;
+    waybar.enable = false;
+  };
+
   options.custom.theme = {
     name = mkOption {
       type = types.enum availableThemes;
