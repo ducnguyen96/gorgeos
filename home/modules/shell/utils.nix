@@ -6,5 +6,6 @@
     unzip
     unrar
     neofetch
+    bemoji
   ];
 }

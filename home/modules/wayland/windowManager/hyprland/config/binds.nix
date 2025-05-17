@@ -101,7 +101,7 @@ in {
           "SUPER, A, exec, scrcpy --turn-screen-off"
           "SUPER, B, exec, ${browser}"
           "SUPER, C, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 50% 94% && hyprctl dispatch movewindowpixel exact 25% 5%, activewindow"
-          "SUPER, E, exec, ${editor}"
+          "SUPER, E, exec, bemoji"
           "SUPER, R, exec, ${terminal} -e ranger"
           "SUPER, N, exec, ${terminal} -e nvim"
           "SUPER, ESCAPE, exec, wofi-power"
