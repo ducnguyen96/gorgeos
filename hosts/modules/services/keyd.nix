@@ -10,32 +10,38 @@ let
     leftalt = {
       enter = "A-enter";
       space = "enter";
-      x = "backspace";
-
       tab = "A-tab";
-      u = "A-k";
-      d = "A-j";
-      s = "/";
-      c = "\\";
 
-      h = "left";
-      l = "right";
-      j = "down";
-      k = "up";
+      h = "A-h";
+      l = "A-l";
+      j = "A-j";
+      k = "A-k";
       b = "home";
       n = "end";
+      R = "@";
 
       q = "'";
-      w = ''"'';
+      Q = ''"'';
       e = "equal";
-      a = "-";
-      A = "_";
       p = "+";
       m = "-";
+      u = "_";
 
       "1" = "(";
       "2" = "[";
       "3" = "{";
+      "!" = ")";
+      "@" = "]";
+      "#" = "}";
+
+      a = "left";
+      w = "up";
+      d = "right";
+      s = "down";
+
+      x = "backspace";
+      z = "/";
+      c = "\\";
     };
   };
 in {
