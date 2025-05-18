@@ -9,6 +9,18 @@
   themePath = ../../../../theme/themes/${themeName};
 
   terminal = config.home.sessionVariables.TERMINAL;
+
+  fetchCryptoPrice = {
+    symbol,
+    format,
+  }: {
+    format = format;
+    interval = 60;
+    exec = ''
+      curl -s https://api.binance.com/api/v1/ticker/price?symbol=${symbol} | jq .price | xargs | awk '{printf "%.2f\n", $1}'
+    '';
+    tooltip = false;
+  };
 in {
   home.file.".config/waybar/${themeVariant}.css".source = "${themePath}/waybar/${themeVariant}.css";
 
@@ -48,36 +60,24 @@ in {
           return-type = "json";
         };
 
-        "custom/btc" = {
+        "custom/btc" = fetchCryptoPrice {
+          symbol = "BTCUSDT";
           format = "󰠓: {}";
-          interval = 60;
-          exec = "curl -s https://api.binance.com/api/v1/ticker/price?symbol=BTCUSDT | jq .price | xargs | awk -F. '{print $1}'";
-          tooltip = false;
         };
 
-        "custom/eth" = {
+        "custom/eth" = fetchCryptoPrice {
+          symbol = "ETHUSDT";
           format = "󰡪: {}";
-          interval = 60;
-          exec = "curl -s https://api.binance.com/api/v1/ticker/price?symbol=ETHUSDT | jq .price | xargs | awk -F. '{print $1}'";
-          tooltip = false;
         };
 
-        "custom/link" = {
+        "custom/link" = fetchCryptoPrice {
+          symbol = "LINKUSDT";
           format = "Ł: {}";
-          interval = 60;
-          exec = ''
-            curl -s https://api.binance.com/api/v1/ticker/price?symbol=LINKUSDT | jq .price | xargs | awk '{printf "%.2f\n", $1}'
-          '';
-          tooltip = false;
         };
 
-        "custom/ada" = {
+        "custom/ada" = fetchCryptoPrice {
+          symbol = "ADAUSDT";
           format = "₳: {}";
-          interval = 60;
-          exec = ''
-            curl -s https://api.binance.com/api/v1/ticker/price?symbol=ADAUSDT | jq .price | xargs | awk '{printf "%.2f\n", $1}'
-          '';
-          tooltip = false;
         };
 
         "group/crypto" = {
@@ -124,11 +124,6 @@ in {
           ];
         };
 
-        "memory" = {
-          "interval" = 30;
-          "format" = "{used:0.1f}Gb ";
-        };
-
         "temperature" = {
           "critical-threshold" = 80;
           "hwmon-path" = "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon4/temp1_input";
@@ -136,11 +131,23 @@ in {
           "format" = "{temperatureC}°C ";
         };
 
+        "memory" = {
+          "interval" = 5;
+          "format" = "{used:0.1f}Gb ";
+        };
+
+        "custom/nvidia" = {
+          exec = "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1%  \\2°C /g'";
+          format = "{}";
+          interval = 5;
+        };
+
         "group/cpu-temperature-memory" = {
           "modules" = [
             "cpu"
             "temperature"
             "memory"
+            "custom/nvidia"
           ];
           "orientation" = "inherit";
         };
@@ -429,7 +436,8 @@ in {
       }
 
       #cpu,
-      #temperature {
+      #temperature,
+      #memory {
         margin-right: 0.5rem;
       }
 
@@ -447,6 +455,10 @@ in {
 
       #memory {
         color: @pink;
+      }
+
+      #custom-nvidia {
+        color: @blue;
       }
 
       #tray {
