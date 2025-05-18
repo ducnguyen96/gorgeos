@@ -56,6 +56,7 @@
 
       k = "kubectl";
       t = "terraform";
+      o = "ollama";
     };
 
     initContent = lib.mkOrder 550 ''

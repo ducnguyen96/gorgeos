@@ -7,5 +7,6 @@
     unrar
     neofetch
     bemoji
+    libnotify
   ];
 }

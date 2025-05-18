@@ -19,6 +19,7 @@
     ./scripts/vcpctl.nix
     ./scripts/volumectl.nix
     ./scripts/wofi-power.nix
+    ./scripts/wofi-ollama.nix
 
     ./services/ssh.nix
 
