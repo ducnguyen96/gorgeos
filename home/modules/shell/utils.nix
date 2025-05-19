@@ -8,5 +8,11 @@
     neofetch
     bemoji
     libnotify
+    # pass-wayland
+    # gnupg
+    # gpg-tui
+    # ncurses
+    # pinentry-curses
+    aider-chat
   ];
 }
