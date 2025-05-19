@@ -6,23 +6,24 @@
   cursorName = "Bibata-Modern-Ice";
   cursorSize = "24";
 
-  monitor_left = osConfig.environment.variables."MONITOR_LEFT";
-  monitor_right = osConfig.environment.variables."MONITOR_RIGHT";
+  monitor_one = osConfig.environment.variables."MONITOR_ONE";
+  monitor_two = osConfig.environment.variables."MONITOR_TWO";
 
-  monitor_left_name = builtins.elemAt (builtins.split "," monitor_left) 0;
-  monitor_right_name = builtins.elemAt (builtins.split "," monitor_right) 0;
+  monitor_one_name = builtins.elemAt (builtins.split "," monitor_one) 0;
+  monitor_two_name = builtins.elemAt (builtins.split "," monitor_two) 0;
 
   workspace = [
-    "1, monitor:${monitor_right_name}"
-    "3, monitor:${monitor_left_name}"
-    "5, monitor:${monitor_left_name}"
-    "7, monitor:${monitor_left_name}"
-    "9, monitor:${monitor_left_name}"
-    "2, monitor:${monitor_left_name}"
-    "4, monitor:${monitor_left_name}"
-    "6, monitor:${monitor_left_name}"
-    "8, monitor:${monitor_left_name}"
-    "0, monitor:${monitor_left_name}"
+    "1, monitor:${monitor_one_name}"
+    "3, monitor:${monitor_one_name}"
+    "5, monitor:${monitor_one_name}"
+    "7, monitor:${monitor_one_name}"
+    "9, monitor:${monitor_one_name}"
+
+    "2, monitor:${monitor_two_name}"
+    "4, monitor:${monitor_two_name}"
+    "6, monitor:${monitor_two_name}"
+    "8, monitor:${monitor_two_name}"
+    "0, monitor:${monitor_two_name}"
   ];
 in {
   # dependencies
@@ -124,8 +125,8 @@ in {
     workspace = workspace;
 
     monitor = [
-      monitor_left
-      monitor_right
+      monitor_one
+      monitor_two
     ];
 
     cursor.no_hardware_cursors = true;

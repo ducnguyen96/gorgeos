@@ -12,10 +12,10 @@ let
       space = "enter";
       tab = "A-tab";
 
-      h = "A-h";
-      l = "A-l";
-      j = "A-j";
-      k = "A-k";
+      h = "left";
+      l = "right";
+      j = "down";
+      k = "up";
       b = "home";
       n = "end";
       R = "@";
@@ -23,6 +23,7 @@ let
       q = "'";
       Q = ''"'';
       e = "equal";
+      E = "+";
       p = "+";
       m = "-";
       u = "_";
@@ -34,14 +35,20 @@ let
       "@" = "]";
       "#" = "}";
 
-      a = "left";
-      w = "up";
-      d = "right";
-      s = "down";
+      f = "-";
+      F = "_";
+      a = ",";
+      A = "<";
+      d = ".";
+      D = ">";
+      s = ";";
+      S = ":";
 
       x = "backspace";
       z = "/";
+      Z = "?";
       c = "\\";
+      C = "|";
     };
   };
 in {
