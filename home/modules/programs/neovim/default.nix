@@ -53,6 +53,8 @@ in {
     ripgrep
     fd
     gnumake
+    mermaid-cli
+    ghostscript
   ];
 
   programs.neovim = {
