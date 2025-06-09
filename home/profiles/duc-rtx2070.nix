@@ -80,6 +80,7 @@
     ];
 
     packages = with pkgs; [
+      slack
       go-task
       # shotcut # video editor
       remmina # Remote desktop client written in GTK
@@ -112,6 +113,7 @@
       # appimage-run
       # pngquant
       # imagemagick
+      p7zip
     ];
   };
 
