@@ -10,7 +10,7 @@
       terminal.vt = 1;
       default_session = {
         command = lib.concatStringsSep " " [
-          (lib.getExe pkgs.greetd.tuigreet)
+          (lib.getExe pkgs.tuigreet)
           "--cmd '${lib.getExe config.programs.hyprland.package}'"
           "--remember"
           "--remember-session"

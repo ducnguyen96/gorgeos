@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -11,7 +12,7 @@
     enable = true;
     enableCompletion = true;
     defaultKeymap = "viins";
-    dotDir = ".config/zsh";
+    dotDir = config.xdg.configHome + "/zsh";
 
     dirHashes = {
       dl = "$HOME/Downloads";
