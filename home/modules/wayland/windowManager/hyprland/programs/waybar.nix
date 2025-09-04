@@ -24,7 +24,7 @@
 in {
   home.file.".config/waybar/${themeVariant}.css".source = "${themePath}/waybar/${themeVariant}.css";
 
-  home.packages = with pkgs; [papirus-icon-theme];
+  home.packages = with pkgs; [];
 
   programs.waybar = {
     enable = true;

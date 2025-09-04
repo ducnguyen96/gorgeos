@@ -96,7 +96,7 @@
       # cachix
       # linux-wifi-hotspot
       # cloudflared
-      # postman
+      postman
       # ffmpeg
       android-tools
       scrcpy
@@ -104,6 +104,10 @@
       cloudflare-warp
       # devbox
       sshfs
+      postgresql
+      heroku
+      cemu
+      networkmanagerapplet
 
       # pipx # current use: pipx install open-webui
       # gollama
@@ -114,6 +118,8 @@
       # pngquant
       # imagemagick
       p7zip
+      chromium
+      code-cursor
     ];
   };
 

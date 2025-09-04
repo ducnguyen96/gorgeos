@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     # lefthook
     # zsh-forgit
+    git-filter-repo
   ];
 
   programs = {

@@ -32,8 +32,8 @@
 
   environment = {
     variables = {
-      MONITOR_ONE = "DP-3, highres, 0x0, 1, transform, 1"; # https://wiki.hyprland.org/Configuring/Monitors/#rotating
-      MONITOR_TWO = "HDMI-A-1, 1920x1080@60, 1920x0, 1";
+      MONITOR_ONE = "DP-2, highres, 0x0, 1";
+      MONITOR_TWO = "HDMI-A-1, highres, 1920x0, 1";
     };
   };
 

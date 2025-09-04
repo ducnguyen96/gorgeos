@@ -115,7 +115,9 @@ in {
 
           # screenshot
           ", Print, exec, ${runOnce "grimblast"} --notify copysave area"
+          "CTRL, Print, exec, ${runOnce "grimblast"} --wait 2 --notify copysave area"
           ", F10, exec, ${runOnce "grimblast"} --notify copysave area"
+          "CTRL, F10, exec, ${runOnce "grimblast"} --wait 2 --notify copysave area"
           "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
           "ALT, Print, exec, ${runOnce "grimblast"} --notify --cursor copysave screen"
         ]

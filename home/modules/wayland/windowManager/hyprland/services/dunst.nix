@@ -45,7 +45,7 @@
         stack_duplicates = true;
         text_icon_padding = 12;
         vertical_alignment = "center";
-        width = 300;
+        width = 800;
         word_wrap = true;
       };
 
