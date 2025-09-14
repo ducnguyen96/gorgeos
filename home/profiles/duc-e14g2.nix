@@ -92,6 +92,11 @@
       scrcpy
       wineWowPackages.stable
       cloudflare-warp
+      slack
+      heroku
+      postman
+      code-cursor
+      copier
     ];
   };
 
