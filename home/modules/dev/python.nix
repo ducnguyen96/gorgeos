@@ -22,8 +22,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
-      []
+      [python312 python312Packages.uv]
       ++ lib.optionals (!cfg.useMasonLSP) [ruff]
-      ++ lib.optionals (cfg.asHomePkgs) [python3];
+      ++ lib.optionals (cfg.asHomePkgs) [];
   };
 }
