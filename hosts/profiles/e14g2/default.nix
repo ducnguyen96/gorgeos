@@ -34,9 +34,9 @@ in {
         ../../modules/services
 
         # virtualization
-        ../../modules/virtualization/podman.nix
+        ../../modules/virtualization/docker.nix
         ../../modules/virtualization/libvirtd.nix
-        ../../modules/virtualization/vagrant.nix
+        # ../../modules/virtualization/vagrant.nix
 
         {programs.nix-ld.enable = true;}
 
