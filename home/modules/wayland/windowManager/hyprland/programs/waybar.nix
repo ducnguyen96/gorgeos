@@ -147,7 +147,7 @@ in {
             "cpu"
             "temperature"
             "memory"
-            "custom/nvidia"
+            # "custom/nvidia"
           ];
           "orientation" = "inherit";
         };

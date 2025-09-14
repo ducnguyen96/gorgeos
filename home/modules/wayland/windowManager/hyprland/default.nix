@@ -10,7 +10,7 @@ in {
     ./programs/waybar.nix
 
     # notifications daemon
-    ./services/dunst.nix
+    # ./services/dunst.nix
     ./services/swaync.nix
 
     # hypr utils
