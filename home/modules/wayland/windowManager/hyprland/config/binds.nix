@@ -1,5 +1,6 @@
 {
   config,
+  osConfig,
   pkgs,
   ...
 }: let
@@ -23,6 +24,11 @@
   defaultApp = type: "${pkgs.gtk3}/bin/gtk-launch $(${pkgs.xdg-utils}/bin/xdg-mime query default ${type})";
   browser = defaultApp "x-scheme-handler/https";
   editor = defaultApp "text/plain";
+
+  monitor_one = osConfig.environment.variables."MONITOR_ONE";
+  monitor_one_disabled = osConfig.environment.variables."MONITOR_ONE_DISABLED";
+  monitor_two = osConfig.environment.variables."MONITOR_TWO";
+  monitor_two_disabled = osConfig.environment.variables."MONITOR_TWO_DISABLED";
 in {
   wayland.windowManager.hyprland = {
     settings = {
@@ -150,6 +156,11 @@ in {
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"
         "SUPER ALT, mouse:272, resizewindow"
+      ];
+
+      bindl = [
+        ",switch:on:Lid Switch, exec, hyprctl keyword monitor ${monitor_one_disabled}"
+        ",switch:off:Lid Switch, exec, hyprctl keyword monitor ${monitor_one}"
       ];
     };
   };

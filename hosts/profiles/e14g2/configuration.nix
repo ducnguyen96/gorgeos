@@ -20,8 +20,10 @@
 
   environment = {
     variables = {
-      MONITOR_TWO = "eDP-1, 1920x1080@60, 0x0, 1";
-      MONITOR_ONE = "HDMI-A-1, 1920x1080@60, -1920x0, 1";
+      MONITOR_ONE = "eDP-1, 1920x1080@60, 0x0, 1";
+      MONITOR_ONE_DISABLED = "eDP-1, disable";
+      MONITOR_TWO = "HDMI-A-1, 1920x1080@60, -1920x0, 1";
+      MONITOR_TWO_DISABLED = "HDMI-A-1, disable";
     };
   };
   # This option defines the first version of NixOS you have installed on this particular machine,

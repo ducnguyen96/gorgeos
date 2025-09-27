@@ -33,19 +33,21 @@
 
       # Notification settings
 
-      # positionX = "center";
-
       positionY = "bottom";
+
+      positionX = "center";
 
       notification-2fa-action = true;
 
       notification-inline-replies = false;
 
-      notification-icon-size = 64;
+      notification-icon-size = 24;
 
-      notification-body-image-height = 100;
+      notification-body-image-height = 25;
 
-      notification-body-image-width = 200;
+      notification-body-image-width = 25;
+
+      notification-window-height = 200;
 
       notification-window-width = 300;
 
