@@ -90,13 +90,13 @@
       dbeaver-bin # Sql client
       android-tools
       scrcpy
-      wineWowPackages.stable
       cloudflare-warp
       slack
       heroku
       postman
       code-cursor
       copier
+      zip
     ];
   };
 

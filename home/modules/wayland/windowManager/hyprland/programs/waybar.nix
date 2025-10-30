@@ -17,7 +17,7 @@
     format = format;
     interval = 60;
     exec = ''
-      curl -s https://api.binance.com/api/v1/ticker/price?symbol=${symbol} | jq .price | xargs | awk '{printf "%.2f\n", $1}'
+      curl -s https://api.binance.com/api/v3/ticker/price?symbol=${symbol} | jq .price | xargs | awk '{printf "%.2f\n", $1}'
     '';
     tooltip = false;
   };
