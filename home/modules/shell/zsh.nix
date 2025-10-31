@@ -37,7 +37,7 @@
       ls = "${getExe eza} -h --git --icons --color=auto --group-directories-first -s extension";
       tree = "${getExe eza} --tree --icons --tree";
 
-      du = getExe du-dust;
+      du = getExe dust;
       grep = getExe ripgrep;
       ps = getExe procs;
 

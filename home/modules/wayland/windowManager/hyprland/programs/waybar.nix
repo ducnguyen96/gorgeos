@@ -21,6 +21,18 @@
     '';
     tooltip = false;
   };
+
+  fetchAlphaPrice = {
+    symbol,
+    format,
+  }: {
+    format = format;
+    interval = 60;
+    exec = ''
+      curl -s https://www.binance.com/bapi/defi/v1/public/alpha-trade/agg-trades?limit=1&symbol=${symbol}' | jq '.data[0].p' | xargs | awk '{printf "%.5f\n", $1}'
+    '';
+    tooltip = false;
+  };
 in {
   home.file.".config/waybar/${themeVariant}.css".source = "${themePath}/waybar/${themeVariant}.css";
 
@@ -70,6 +82,11 @@ in {
           format = "󰡪: {}";
         };
 
+        "custom/bnb" = fetchCryptoPrice {
+          symbol = "BNBUSDT";
+          format = "🔶: {}";
+        };
+
         "custom/link" = fetchCryptoPrice {
           symbol = "LINKUSDT";
           format = "Ł: {}";
@@ -80,12 +97,19 @@ in {
           format = "₳: {}";
         };
 
+        "custom/cdl" = fetchAlphaPrice {
+          symbol = "ALPHA_423USDT";
+          format = "CDL: {}";
+        };
+
         "group/crypto" = {
           modules = [
             "custom/btc"
             "custom/eth"
+            "custom/bnb"
             "custom/link"
             "custom/ada"
+            "custom/cdl"
           ];
           orientation = "inherit";
         };
@@ -411,7 +435,9 @@ in {
 
       #custom-btc,
       #custom-eth,
-      #custom-link {
+      #custom-bnb,
+      #custom-link,
+      #custom-ada {
         margin-right: 0.35rem;
       }
 
@@ -423,12 +449,20 @@ in {
         color: @lavender;
       }
 
+      #custom-bnb {
+        color: @yellow;
+      }
+
       #custom-link {
         color: @blue;
       }
 
       #custom-ada {
         color: @sapphire;
+      }
+
+      #custom-cdl {
+        color: @blue;
       }
 
       #clock {
