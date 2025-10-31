@@ -29,7 +29,7 @@
     format = format;
     interval = 60;
     exec = ''
-      curl -s https://www.binance.com/bapi/defi/v1/public/alpha-trade/agg-trades?limit=1&symbol=${symbol}' | jq '.data[0].p' | xargs | awk '{printf "%.5f\n", $1}'
+      curl -s 'https://www.binance.com/bapi/defi/v1/public/alpha-trade/agg-trades?limit=1&symbol=${symbol}' | jq '.data[0].p' | xargs | awk '{printf "%.5f\n", $1}'
     '';
     tooltip = false;
   };
@@ -84,7 +84,7 @@ in {
 
         "custom/bnb" = fetchCryptoPrice {
           symbol = "BNBUSDT";
-          format = "🔶: {}";
+          format = "❖: {}";
         };
 
         "custom/link" = fetchCryptoPrice {
