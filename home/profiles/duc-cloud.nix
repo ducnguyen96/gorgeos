@@ -13,7 +13,7 @@
       asHomePkgs = false;
     };
     clangd = {
-      enable = false;
+      enable = true;
       useMasonLSP = false;
       asHomePkgs = true;
     };
@@ -23,7 +23,7 @@
       asHomePkgs = true;
     };
     lua = {
-      enable = false;
+      enable = true;
       useMasonLSP = false;
       asHomePkgs = false;
     };
@@ -43,7 +43,7 @@
       asHomePkgs = true;
     };
     typescript = {
-      enable = false;
+      enable = true;
       useMasonLSP = false;
       asHomePkgs = true;
     };

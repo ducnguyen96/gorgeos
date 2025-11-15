@@ -7,7 +7,7 @@
   specialArgs = {inherit inputs;};
 in {
   flake.nixosConfigurations = {
-    minimal = nixosSystem {
+    cloud = nixosSystem {
       inherit specialArgs;
 
       modules = [
@@ -31,6 +31,7 @@ in {
         ../../modules/services/networking.nix
         ../../modules/services/openssh.nix
 
+        ../../common/nginx.nix
         {
           home-manager = {
             users.duc.imports = homeImports."duc@cloud";
