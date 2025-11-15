@@ -102,6 +102,17 @@ in {
       };
     };
 
+    # Custom gestures
+    gesture = [
+      "3, horizontal, workspace" # Swipe horizontally with 3 fingers to switch workspaces
+      "3, down, mod: SUPER, close" # Swipe down with 3 fingers + ALT to close the active window
+      "3, up, mod: SUPER, scale: 1.5, fullscreen" # Swipe up with 3 fingers + SUPER to toggle fullscreen
+      "4, up, move" # Swipe up with 4 fingers to move the active window up
+      "4, down, move" # Swipe down with 4 fingers to move the active window down
+      "4, left, move" # Swipe left with 4 fingers to move the active window left
+      "4, right, move" # Swipe right with 4 fingers to move the active window right
+    ];
+
     group = {
       groupbar = {
         font_size = 16;

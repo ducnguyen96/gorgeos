@@ -33,9 +33,9 @@
 
       # Notification settings
 
-      positionY = "bottom";
+      positionY = "top";
 
-      positionX = "center";
+      positionX = "right";
 
       notification-2fa-action = true;
 
@@ -47,9 +47,9 @@
 
       notification-body-image-width = 25;
 
-      notification-window-height = 200;
+      notification-window-height = 500;
 
-      notification-window-width = 300;
+      notification-window-width = 500;
 
       # Control center settings
 
