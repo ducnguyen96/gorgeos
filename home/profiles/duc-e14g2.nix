@@ -17,7 +17,7 @@
 
   dev = {
     angular = {
-      enable = true;
+      enable = false;
       useMasonLSP = true;
       asHomePkgs = false;
     };
@@ -32,7 +32,7 @@
       asHomePkgs = true;
     };
     lua = {
-      enable = true;
+      enable = false;
       useMasonLSP = false;
       asHomePkgs = false;
     };
@@ -42,7 +42,7 @@
       asHomePkgs = true;
     };
     python = {
-      enable = true;
+      enable = false;
       useMasonLSP = false;
       asHomePkgs = true;
     };
@@ -57,7 +57,7 @@
       asHomePkgs = true;
     };
     tex = {
-      enable = true;
+      enable = false;
       useMasonLSP = false;
       asHomePkgs = true;
     };
