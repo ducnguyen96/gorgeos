@@ -12,6 +12,7 @@
 
     ../modules/shell
 
+    ../modules/wayland/wayland.nix
     ../modules/wayland/windowManager/hyprland
   ];
 

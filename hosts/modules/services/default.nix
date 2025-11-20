@@ -1,6 +1,5 @@
 {
   imports = [
-    ./greetd.nix
     ./keyd.nix
     ./networking.nix
     ./openssh.nix

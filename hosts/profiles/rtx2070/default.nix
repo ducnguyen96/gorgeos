@@ -27,12 +27,14 @@ in {
 
         # programs
         ../../modules/programs
+        ../../modules/programs/hyprland.nix
 
         # security
         ../../modules/security
 
         # services, should have at least services/networking
         ../../modules/services
+        ../../modules/services/greetd.nix
 
         # virtualization
         ../../modules/virtualization/podman.nix

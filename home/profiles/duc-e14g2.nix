@@ -12,6 +12,7 @@
 
     ../modules/shell
 
+    ../modules/wayland/wayland.nix
     ../modules/wayland/windowManager/hyprland
   ];
 
@@ -97,6 +98,7 @@
       code-cursor
       copier
       zip
+      ngrok
     ];
   };
 
