@@ -24,6 +24,6 @@ in {
     home.packages = with pkgs;
       []
       ++ lib.optionals (!cfg.useMasonLSP) [nil]
-      ++ lib.optionals (cfg.asHomePkgs) [alejandra];
+      ++ lib.optionals (cfg.asHomePkgs) [alejandra statix];
   };
 }

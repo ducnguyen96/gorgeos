@@ -99,6 +99,7 @@
       copier
       zip
       ngrok
+      bootdev-cli
     ];
   };
 

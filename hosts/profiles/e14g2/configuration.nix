@@ -18,6 +18,10 @@
     };
   };
 
+  hardware = {
+    i2c.enable = true;
+  };
+
   environment = {
     variables = {
       MONITOR_ONE = "eDP-1, 1920x1080@60, 0x0, 1";

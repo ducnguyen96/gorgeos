@@ -34,6 +34,7 @@ in {
         # services, should have at least services/networking
         ../../modules/services
         ../../modules/services/greetd.nix
+        ../../modules/services/fprintd.nix
 
         # virtualization
         ../../modules/virtualization/docker.nix
