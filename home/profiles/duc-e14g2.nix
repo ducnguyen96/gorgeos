@@ -23,7 +23,7 @@
       asHomePkgs = false;
     };
     clangd = {
-      enable = true;
+      enable = false;
       useMasonLSP = false;
       asHomePkgs = true;
     };

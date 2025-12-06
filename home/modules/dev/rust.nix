@@ -24,6 +24,6 @@ in {
     home.packages = with pkgs;
       []
       ++ lib.optionals (!cfg.useMasonLSP) [rust-analyzer]
-      ++ lib.optionals (cfg.asHomePkgs) [cargo rustc lld rustfmt];
+      ++ lib.optionals (cfg.asHomePkgs) [cargo rustc lld rustfmt cargo-generate];
   };
 }

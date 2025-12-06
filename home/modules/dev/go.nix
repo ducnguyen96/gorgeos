@@ -24,6 +24,6 @@ in {
     home.packages = with pkgs;
       []
       ++ lib.optionals (!cfg.useMasonLSP) [gopls]
-      ++ lib.optionals (cfg.asHomePkgs) [go air];
+      ++ lib.optionals (cfg.asHomePkgs) [go air gcc15];
   };
 }
