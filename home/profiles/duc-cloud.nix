@@ -4,6 +4,9 @@
     ../modules/dev/default.nix
 
     ../modules/shell
+
+    # i3 window manager for xrdp
+    ../modules/x11/i3
   ];
 
   dev = {
