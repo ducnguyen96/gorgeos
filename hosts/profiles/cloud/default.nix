@@ -30,8 +30,16 @@ in {
         # services, should have at least services/networking
         ../../modules/services/networking.nix
         ../../modules/services/openssh.nix
+        ../../modules/services/xrdp.nix
 
         ../../common/nginx.nix
+
+        {programs.nix-ld.enable = true;}
+
+        # XRDP with XFCE4 (port 3389)
+        {services.xrdp.enable = true;}
+
+
         {
           home-manager = {
             users.duc.imports = homeImports."duc@cloud";

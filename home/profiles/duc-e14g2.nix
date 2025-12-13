@@ -96,10 +96,8 @@
       heroku
       postman
       code-cursor
-      copier
       zip
-      ngrok
-      bootdev-cli
+      wineWowPackages.stable
     ];
   };
 
