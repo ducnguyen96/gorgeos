@@ -14,6 +14,7 @@
 
     ../modules/wayland/wayland.nix
     ../modules/wayland/windowManager/hyprland
+    ../modules/x11/i3
   ];
 
   dev = {

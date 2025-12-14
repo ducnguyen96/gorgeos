@@ -15,6 +15,7 @@ in {
     services.xrdp = {
       defaultWindowManager = "i3";
       openFirewall = true;
+      audio.enable = true;
     };
   };
 }

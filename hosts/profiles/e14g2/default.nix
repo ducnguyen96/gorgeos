@@ -34,6 +34,8 @@ in {
         # services, should have at least services/networking
         ../../modules/services
         ../../modules/services/greetd.nix
+        ../../modules/services/cloudflared.nix
+        ../../modules/services/xrdp.nix
 
         # virtualization
         ../../modules/virtualization/docker.nix
@@ -41,6 +43,7 @@ in {
         # ../../modules/virtualization/vagrant.nix
 
         {programs.nix-ld.enable = true;}
+        {services.xrdp.enable = true;}
 
         {
           home-manager = {
