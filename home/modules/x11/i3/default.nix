@@ -205,6 +205,7 @@ in {
   };
 
   home.packages = with pkgs; [
+    kitty
     rofi
     rofi-power-menu
     feh

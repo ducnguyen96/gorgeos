@@ -1,21 +1,20 @@
 {pkgs, ...}: {
-  imports = [./hardware-configuration.nix];
-
   networking.hostName = "e14g2";
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
+
     loader = {
+      # Disable GRUB
+      grub.enable = false;
+
+      # Enable systemd-boot (UEFI only)
+      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true;
-        configurationLimit = 3;
-        gfxmodeEfi = "1920x1080";
-      };
     };
+
+    initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "uas" "usbhid" "sd_mod"];
+    kernelModules = ["kvm-intel"];
   };
 
   hardware = {

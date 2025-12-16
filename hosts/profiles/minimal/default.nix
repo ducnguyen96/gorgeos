@@ -21,6 +21,8 @@ in {
         # environment
 
         # hardware
+        inputs.disko.nixosModules.disko
+        ./disko.nix
 
         # programs, must have at least programs/home-manager
         ../../modules/programs/home-manager.nix

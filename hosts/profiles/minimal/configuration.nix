@@ -1,19 +1,20 @@
 {pkgs, ...}: {
-  imports = [./hardware-configuration.nix];
-
   networking.hostName = "minimal";
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
+
     loader = {
+      # Disable GRUB
+      grub.enable = false;
+
+      # Enable systemd-boot (UEFI only)
+      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        configurationLimit = 3;
-      };
     };
+
+    initrd.availableKernelModules = ["ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk"];
+    kernelModules = ["kvm-intel"];
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

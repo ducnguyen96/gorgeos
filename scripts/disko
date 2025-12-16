@@ -1,0 +1,11 @@
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 <profile>"
+  echo "Example: $0 minimal"
+  exit 1
+fi
+
+PROFILE="$1"
+
+nix run --extra-experimental-features 'nix-command flakes' nixpkgs#disko -- --mode 'destroy,format,mount' "hosts/profiles/${PROFILE}/disko.nix"

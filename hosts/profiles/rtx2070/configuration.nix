@@ -33,7 +33,9 @@
   environment = {
     variables = {
       MONITOR_ONE = "DP-2, highres, 0x0, 1";
+      MONITOR_ONE_DISABLED = "eDP-1, disable";
       MONITOR_TWO = "HDMI-A-1, highres, 1920x0, 1";
+      MONITOR_TWO_DISABLED = "HDMI-A-1, disable";
     };
   };
 

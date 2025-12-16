@@ -1,0 +1,12 @@
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 <profile> [target]"
+  echo "Example: $0 minimal nixos@localhost"
+  exit 1
+fi
+
+PROFILE="$1"
+TARGET="${2:-nixos@localhost}"
+
+nix run --extra-experimental-features 'nix-command flakes' nixpkgs#nixos-anywhere -- --flake ".#${PROFILE}" --generate-hardware-config nixos-generate-config "hosts/profiles/${PROFILE}/hardware-configuration.nix" "$TARGET"
