@@ -112,6 +112,7 @@ in {
           "SUPER, R, exec, ${terminal} -e ranger"
           "SUPER, N, exec, ${terminal} -e nvim"
           "SUPER, ESCAPE, exec, wofi-power"
+          "SUPERSHIFT, R, exec, wofi-remmina"
           "SUPER, F4, exec, ${terminal} -e pulsemixer"
           "SUPER, O, exec, notify-send \"Ollama\" \"Starting...\" && OLLAMA_HOST=0.0.0.0 ollama serve"
           "SUPERSHIFT, O, exec, notify-send \"Ollama\" \"Stopping...\" &&  pkill ollama"

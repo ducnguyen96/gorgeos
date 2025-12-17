@@ -75,7 +75,7 @@
     username = "duc";
     homeDirectory = "/home/duc";
     sessionVariables = {
-      XDG_SCREENSHOTS_DIR = "/home/duc/Pictures/Screenshots";
+      XDG_SCREENSHOTS_DIR = "/home/duc/Screenshots";
       LD_LIBRARY_PATH = "${pkgs.gcc15.cc.lib}/lib:/run/opengl-driver/lib:LD_LIBRARY_PATH";
     };
 

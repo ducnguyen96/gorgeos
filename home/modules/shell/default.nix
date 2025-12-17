@@ -20,6 +20,7 @@
     ./scripts/volumectl.nix
     ./scripts/wofi-power.nix
     ./scripts/wofi-ollama.nix
+    ./scripts/wofi-remmina.nix
 
     ./services/ssh.nix
 
