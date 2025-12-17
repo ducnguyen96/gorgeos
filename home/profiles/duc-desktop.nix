@@ -84,7 +84,7 @@
       # shotcut # video editor
       remmina # Remote desktop client written in GTK
       # telegram-desktop
-      google-chrome # browser
+      # google-chrome # browser
       # gimp # image editor
       xfce.thunar
       # audacity
@@ -100,7 +100,6 @@
       zip
       wineWowPackages.stable
       virt-manager
-      microsoft-edge
     ];
   };
 

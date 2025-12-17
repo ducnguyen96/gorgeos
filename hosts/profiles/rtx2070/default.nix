@@ -22,6 +22,10 @@ in {
         ../../modules/environment
 
         # hardware
+        ../../modules/hardware/intel.nix
+        inputs.disko.nixosModules.disko
+        ./disko.nix
+
         ../../modules/hardware/bluetooth.nix
         ../../modules/hardware/nvidia.nix
 
@@ -37,15 +41,14 @@ in {
         ../../modules/services/greetd.nix
 
         # virtualization
-        ../../modules/virtualization/podman.nix
+        ../../modules/virtualization/docker.nix
         ../../modules/virtualization/libvirtd.nix
-        ../../modules/virtualization/vagrant.nix
 
         {programs.nix-ld.enable = true;}
 
         {
           home-manager = {
-            users.duc.imports = homeImports."duc@rtx2070";
+            users.duc.imports = homeImports."duc@desktop";
             extraSpecialArgs = specialArgs;
           };
         }

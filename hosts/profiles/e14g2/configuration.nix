@@ -1,4 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
+
   networking.hostName = "e14g2";
 
   boot = {

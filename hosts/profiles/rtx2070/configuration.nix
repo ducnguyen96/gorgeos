@@ -1,28 +1,32 @@
-{pkgs, ...}: {
-  imports = [./hardware-configuration.nix];
+{
+  pkgs,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
   networking.hostName = "rtx2070";
 
   boot = {
     kernelParams = ["nvidia-drm.fbdev=1"];
+    kernelModules = ["kvm-intel"];
     kernelPackages = pkgs.linuxPackages_latest;
+    initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
+
     loader = {
+      # Disable GRUB
+      grub.enable = false;
+
+      # Enable systemd-boot (UEFI only)
+      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true;
-        configurationLimit = 5;
-        gfxmodeEfi = "1920x1080";
-      };
     };
-    binfmt.emulatedSystems = ["aarch64-linux"];
   };
 
   hardware = {
     enableAllFirmware = true;
-
     i2c.enable = true;
     graphics = {
       enable = true;
@@ -33,9 +37,9 @@
   environment = {
     variables = {
       MONITOR_ONE = "DP-2, highres, 0x0, 1";
-      MONITOR_ONE_DISABLED = "eDP-1, disable";
+      MONITOR_ONE_DISABLED = "HDMI-A-1, disable";
       MONITOR_TWO = "HDMI-A-1, highres, 1920x0, 1";
-      MONITOR_TWO_DISABLED = "HDMI-A-1, disable";
+      MONITOR_TWO_DISABLED = "DP-2, disable";
     };
   };
 
