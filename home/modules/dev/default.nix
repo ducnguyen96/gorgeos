@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./angular.nix
     ./aws.nix
@@ -17,8 +17,4 @@
     ./typescript.nix
     ./vue.nix
   ];
-
-  home.sessionVariables = {
-    LD_LIBRARY_PATH = "${pkgs.gcc15.cc.lib}/lib:/run/opengl-driver/lib:LD_LIBRARY_PATH";
-  };
 }

@@ -74,10 +74,10 @@
   home = {
     username = "duc";
     homeDirectory = "/home/duc";
-    extraOutputsToInstall = [
-      "doc"
-      "devdoc"
-    ];
+    sessionVariables = {
+      XDG_SCREENSHOTS_DIR = "/home/duc/Pictures/Screenshots";
+      LD_LIBRARY_PATH = "${pkgs.gcc15.cc.lib}/lib:/run/opengl-driver/lib:LD_LIBRARY_PATH";
+    };
 
     packages = with pkgs; [
       go-task
