@@ -18,9 +18,10 @@
     ./scripts/run-as-service.nix
     ./scripts/vcpctl.nix
     ./scripts/volumectl.nix
+    ./scripts/winrdp.nix
+    ./scripts/wofi-firefox.nix
     ./scripts/wofi-power.nix
-    ./scripts/wofi-ollama.nix
-    ./scripts/wofi-remmina.nix
+    ./scripts/xrdp.nix
 
     ./services/ssh.nix
 

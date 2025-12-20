@@ -1,12 +1,15 @@
-{
+{lib, config, ...}: let
+  hostname = config.networking.hostName;
+in {
   services.cloudflared = {
     enable = true;
     tunnels = {
-      "e14g2" = {
-        credentialsFile = "/root/e14g2-credentials.json";
+      "${hostname}" = {
+        credentialsFile = "/root/${hostname}-credentials.json";
         default = "http_status:404";
         warp-routing.enabled = true;
       };
     };
   };
+  systemd.services."cloudflared-tunnel-${hostname}".wantedBy = lib.mkForce [];
 }

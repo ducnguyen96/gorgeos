@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
@@ -11,4 +11,6 @@
     openFirewall = true;
     audio.enable = true;
   };
+
+  systemd.services.xrdp.wantedBy = lib.mkForce [];
 }
