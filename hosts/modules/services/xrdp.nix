@@ -1,9 +1,4 @@
 {lib, ...}: {
-  services.xserver = {
-    enable = true;
-    windowManager.i3.enable = true;
-  };
-
   services.xrdp = {
     enable = true;
     port = 3390;

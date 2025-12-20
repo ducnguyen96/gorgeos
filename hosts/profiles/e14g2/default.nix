@@ -38,6 +38,7 @@ in {
         # services, should have at least services/networking
         ../../modules/services
         ../../modules/services/greetd.nix
+        ../../modules/services/i3.nix
         ../../modules/services/xrdp.nix
         ../../modules/services/cloudflared.nix
 
