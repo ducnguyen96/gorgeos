@@ -12,6 +12,7 @@ in {
     # notifications daemon
     # ./services/dunst.nix
     ./services/swaync.nix
+    ./services/wayvnc.nix
 
     # hypr utils
     ./services/hypridle.nix
