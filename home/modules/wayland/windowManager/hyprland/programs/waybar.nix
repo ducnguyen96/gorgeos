@@ -54,14 +54,11 @@ in {
         modules-right = ["group/cpu-temperature-memory" "group/network-bluetooth-pulseaudio-backlight-battery" "group/tray-notification" "group/powermenu"];
 
         "hyprland/workspaces" = {
-          format = "";
+          format = "{id}";
           on-click = "activate";
           disable-scroll = true;
-          all-outputs = true;
+          all-outputs = false;
           show-special = true;
-          persistent-workspaces = {
-            "*" = 5;
-          };
         };
 
         "custom/weather" = {
@@ -381,10 +378,9 @@ in {
       }
 
       #workspaces button {
-        background: @text;
-        border: 2px solid @surface0;
+        background: @overlay0;
         border-radius: 100%;
-        min-width: 1rem;
+        min-width: 1.25rem;
         margin-right: 0.35rem;
         transition: 200ms linear;
       }
