@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    numbat
     curl
     wget
     jq
@@ -13,6 +14,5 @@
     # gpg-tui
     # ncurses
     # pinentry-curses
-    aider-chat
   ];
 }

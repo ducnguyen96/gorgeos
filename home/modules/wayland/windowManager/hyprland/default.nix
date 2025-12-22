@@ -20,11 +20,6 @@ in {
     ./services/hyprpaper.nix
   ];
 
-  home.packages = with pkgs; [
-    grimblast
-    hyprpicker
-  ];
-
   wayland.windowManager.hyprland = {
     enable = true;
 

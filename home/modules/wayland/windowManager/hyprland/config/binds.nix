@@ -21,14 +21,9 @@
   runOnce = program: "pgrep ${program} || ${program}";
 
   terminal = config.home.sessionVariables.TERMINAL;
-  defaultApp = type: "${pkgs.gtk3}/bin/gtk-launch $(${pkgs.xdg-utils}/bin/xdg-mime query default ${type})";
-  browser = defaultApp "x-scheme-handler/https";
-  editor = defaultApp "text/plain";
 
   monitor_one = osConfig.environment.variables."MONITOR_ONE";
   monitor_one_disabled = osConfig.environment.variables."MONITOR_ONE_DISABLED";
-  monitor_two = osConfig.environment.variables."MONITOR_TWO";
-  monitor_two_disabled = osConfig.environment.variables."MONITOR_TWO_DISABLED";
 in {
   wayland.windowManager.hyprland = {
     settings = {
@@ -39,10 +34,8 @@ in {
           "SUPER, Q, killactive"
           "SUPER, S, togglesplit"
           "SUPER, F, fullscreen"
-          "SUPER, P, pseudo"
+          "SUPERSHIFT, F, togglefloating"
           "SUPERSHIFT, P, pin"
-          "SUPER, Space, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 50% 94% && hyprctl dispatch movewindowpixel exact 25% 5%, activewindow"
-          "SUPERALT, ,resizeactive,"
 
           # grouped (tabbed) windows
           "SUPER, G, togglegroup"
@@ -107,18 +100,18 @@ in {
           "SUPERSHIFT, Return, exec, ${terminal} -e nvim -c 'terminal' -c 'startinsert'"
           "SUPER, A, exec, scrcpy --turn-screen-off"
           "SUPER, B, exec, wofi-firefox"
-          "SUPER, C, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 50% 94% && hyprctl dispatch movewindowpixel exact 25% 5%, activewindow"
+          "SUPER, C, exec, ${terminal} --class numbat -e numbat --intro-banner off"
           "SUPER, E, exec, bemoji"
-          "SUPER, R, exec, ${terminal} -e ranger"
-          "SUPER, N, exec, ${terminal} -e nvim"
+          "SUPER, R, exec, ${terminal} --class ranger -e ranger"
+          "SUPER, N, exec, ${terminal} --class nvim -e nvim"
           "SUPER, W, exec, winrdp"
           "SUPER, X, exec, xrdp"
           "SUPER, ESCAPE, exec, wofi-power"
           "SUPER, F4, exec, ${terminal} -e pulsemixer"
-          "SUPER, O, exec, notify-send \"Ollama\" \"Starting...\" && OLLAMA_HOST=0.0.0.0 ollama serve"
           "SUPERSHIFT ALT, L, exec, pgrep hyprlock || hyprlock"
           "SUPER, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
           "SUPERSHIFT, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw"
+          "SUPER, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
 
           # screenshot
           ", Print, exec, ${runOnce "grimblast"} --notify copysave area"
@@ -133,6 +126,7 @@ in {
       bindr = [
         # launcher
         "SUPER, D, exec, pkill wofi  || wofi -S drun"
+        "SUPER, Space, exec, pkill wofi  || wofi -S run"
       ];
 
       bindle = [
@@ -165,4 +159,11 @@ in {
       ];
     };
   };
+
+  home.packages = with pkgs; [
+    grimblast
+    hyprpicker
+    pamixer
+    numbat
+  ];
 }
