@@ -99,7 +99,6 @@
       code-cursor
       zip
       wineWowPackages.stable
-      virt-manager
     ];
   };
 
