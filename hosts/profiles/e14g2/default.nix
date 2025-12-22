@@ -22,25 +22,29 @@ in {
         ../../modules/environment
 
         # hardware
-        ../../modules/hardware/intel.nix
+        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-intel-gen2
         inputs.disko.nixosModules.disko
         ./disko.nix
 
-        ../../modules/hardware/bluetooth.nix
-
         # programs
-        ../../modules/programs
+        ../../modules/programs/bash.nix
+        ../../modules/programs/home-manager.nix
         ../../modules/programs/hyprland.nix
+        ../../modules/programs/zsh.nix
 
         # security
         ../../modules/security
 
         # services, should have at least services/networking
-        ../../modules/services
+        ../../modules/services/blueman.nix
+        ../../modules/services/cloudflared.nix
         ../../modules/services/greetd.nix
         ../../modules/services/i3.nix
+        ../../modules/services/keyd.nix
+        ../../modules/services/networking.nix
+        ../../modules/services/openssh.nix
+        ../../modules/services/pipewire.nix
         ../../modules/services/xrdp.nix
-        ../../modules/services/cloudflared.nix
 
         # virtualization
         ../../modules/virtualization/docker.nix

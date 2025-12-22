@@ -20,17 +20,6 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-
-    initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "uas" "usbhid" "sd_mod"];
-    kernelModules = ["kvm-intel"];
-  };
-
-  hardware = {
-    i2c.enable = true;
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
   };
 
   environment = {

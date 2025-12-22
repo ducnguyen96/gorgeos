@@ -117,6 +117,22 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1766371342,
+        "narHash": "sha256-scgr+DhV5K+ZLc/2Dt5WJu+SG7rbCGQqpiRei7INmBg=",
+        "owner": "ducnguyen96",
+        "repo": "nixos-hardware",
+        "rev": "fdbadf62731b62bd8d7a15d43e777670e75b1670",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ducnguyen96",
+        "ref": "master",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1766070988,
@@ -161,6 +177,7 @@
         "disko": "disko",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks"
       }
