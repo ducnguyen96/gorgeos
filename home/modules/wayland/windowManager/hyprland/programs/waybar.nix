@@ -373,12 +373,12 @@ in {
       #network-bluetooth-pulseaudio-backlight-battery,
       #powermenu {
         padding: 0.4rem 0.5rem;
-        background-color: @surface0;
+        background-color: #243063;
         border-radius: 1rem;
       }
 
       #workspaces button {
-        background: @overlay0;
+        background: #1c5a83;
         border-radius: 100%;
         min-width: 1.25rem;
         margin-right: 0.35rem;
