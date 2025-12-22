@@ -80,8 +80,8 @@ in {
           "SUPER_CTRL, J, resizeactive,  0 20"
 
           # special workspaces
-          "SUPERSHIFT, grave, movetoworkspace, special"
-          "SUPER, grave, togglespecialworkspace, eDP-1"
+          "SUPER, grave, exec, wofi-workspace-swap"
+          "SUPERSHIFT, grave, exec, wofi-workspace-swap --force"
 
           # cycle workspaces
           "SUPER, bracketleft, workspace, m-1"
