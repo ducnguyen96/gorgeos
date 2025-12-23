@@ -82,6 +82,10 @@
         # Resize and move window
         hyprctl dispatch resizewindowpixel "exact $window_width $window_height,address:$new_window"
         hyprctl dispatch movewindowpixel "exact $pos_x $pos_y,address:$new_window"
+
+        # Focus and bring to top
+        hyprctl dispatch focuswindow "address:$new_window"
+        hyprctl dispatch bringactivetotop
       fi
     else
       # App found, get its info
@@ -92,9 +96,14 @@
         # App is in different workspace, move it here
         hyprctl dispatch movetoworkspacesilent "$current_workspace,address:$app_address"
         hyprctl dispatch focuswindow "address:$app_address"
+        hyprctl dispatch bringactivetotop
       else
         # App is in current workspace, move it to workspace 8
         hyprctl dispatch movetoworkspacesilent "8,address:$app_address"
+
+        # Focus to another client
+        another_client=$(hyprctl clients -j | jq -r ".[] | select(.workspace.id == $current_workspace)" | jq -r '.address' | head -n 1)
+        hyprctl dispatch focuswindow "address:$another_client"
       fi
     fi
   '';

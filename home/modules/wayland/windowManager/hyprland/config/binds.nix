@@ -128,7 +128,6 @@ in {
       bindr = [
         # launcher
         "SUPER, D, exec, pkill wofi  || wofi -S drun"
-        "SUPER, Space, exec, pkill wofi  || wofi -S run"
       ];
 
       bindle = [
