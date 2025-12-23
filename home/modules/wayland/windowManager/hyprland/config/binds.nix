@@ -105,12 +105,14 @@ in {
           "SUPER, R, exec, ${terminal} --class ranger -e ranger"
           "SUPER, N, exec, ${terminal} --class nvim -e nvim"
           "SUPER, W, exec, winrdp"
+          "SUPER, Z, exec, side-app-toggle --app Zalo"
+          "SUPER, Y, exec, side-app-toggle --app Youtube"
           "SUPER, X, exec, xrdp"
           "SUPER, ESCAPE, exec, wofi-power"
           "SUPER, F4, exec, ${terminal} -e pulsemixer"
           "SUPERSHIFT ALT, L, exec, pgrep hyprlock || hyprlock"
-          "SUPER, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
-          "SUPERSHIFT, Z, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw"
+          "SUPER, M, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
+          "SUPERSHIFT, M, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw"
           "SUPER, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
 
           # screenshot

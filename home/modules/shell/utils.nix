@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    numbat
+    bc
     curl
+    numbat
     wget
     jq
     unzip
