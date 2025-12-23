@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   osConfig,
   ...
 }: let
@@ -36,6 +37,7 @@ in {
       "GDK_SCALE,1"
       "HYPRCURSOR_THEME,${cursorName}"
       "HYPRCURSOR_SIZE,${cursorSize}"
+      "XDG_SCREENSHOTS_DIR,${config.home.homeDirectory}/Pictures/Screenshots"
     ];
 
     exec-once = [
