@@ -41,9 +41,11 @@
       "pin, title:^(Picture-in-Picture)$"
       "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
       "workspace special silent, title:^(Firefox — Sharing Indicator)$"
-      "float, size 500 200, class:^(numbat)$"
-      "float, size 70% 50%, class:^(ranger)$"
-      "float, size 70% 90%, class:^(nvim)$"
+      "float, center, size 500 200, class:^(numbat)$"
+      "float, center, size 70% 50%, class:^(ranger)$"
+      "float, center, size 70% 90%, class:^(nvim)$"
+      "float, center, size 70% 90%, class:^(terminal)$"
+      "float, center, size 70% 90%, class:^(doxx)$"
     ];
   };
 }

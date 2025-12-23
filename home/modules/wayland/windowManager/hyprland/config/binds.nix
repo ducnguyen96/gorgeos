@@ -96,7 +96,7 @@ in {
           "SUPERSHIFT ALT, bracketright, movecurrentworkspacetomonitor, r"
 
           # utilities
-          "SUPER, Return, exec, ${terminal}"
+          "SUPER, Return, exec, ${terminal} --class terminal"
           "SUPERSHIFT, Return, exec, ${terminal} -e nvim -c 'terminal' -c 'startinsert'"
           "SUPER, A, exec, scrcpy --turn-screen-off"
           "SUPER, B, exec, wofi-firefox"

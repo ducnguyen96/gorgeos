@@ -99,6 +99,7 @@
       code-cursor
       zip
       wineWowPackages.stable
+      doxx
     ];
   };
 
