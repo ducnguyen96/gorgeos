@@ -97,7 +97,7 @@ in {
 
           # utilities
           "SUPER, Return, exec, ${terminal} --class terminal"
-          "SUPERSHIFT, Return, exec, ${terminal} -e nvim -c 'terminal' -c 'startinsert'"
+          "SUPERSHIFT, Return, exec, ${terminal} --class terminal -e nvim -c 'terminal' -c 'startinsert'"
           "SUPER, A, exec, scrcpy --turn-screen-off"
           "SUPER, B, exec, wofi-firefox"
           "SUPER, C, exec, ${terminal} --class numbat -e numbat --intro-banner off"
@@ -109,7 +109,7 @@ in {
           "SUPER, Y, exec, side-app-toggle --app Youtube"
           "SUPER, X, exec, xrdp"
           "SUPER, ESCAPE, exec, wofi-power"
-          "SUPER, F4, exec, ${terminal} -e pulsemixer"
+          "SUPER, F4, exec, ${terminal} --class terminal -e pulsemixer"
           "SUPERSHIFT ALT, L, exec, pgrep hyprlock || hyprlock"
           "SUPER, M, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
           "SUPERSHIFT, M, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw"
