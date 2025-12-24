@@ -36,8 +36,6 @@
 in {
   home.file.".config/waybar/${themeVariant}.css".source = "${themePath}/waybar/${themeVariant}.css";
 
-  home.packages = with pkgs; [];
-
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -373,12 +371,11 @@ in {
       #network-bluetooth-pulseaudio-backlight-battery,
       #powermenu {
         padding: 0.4rem 0.5rem;
-        background-color: #243063;
+        background-color: rgba(36, 49, 99, 0.45);
         border-radius: 1rem;
       }
 
       #workspaces button {
-        background: #1c5a83;
         border-radius: 100%;
         min-width: 1.25rem;
         margin-right: 0.35rem;
