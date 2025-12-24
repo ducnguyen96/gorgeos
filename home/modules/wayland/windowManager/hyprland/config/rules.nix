@@ -46,6 +46,7 @@
       "float, center, size 70% 90%, class:^(nvim)$"
       "float, center, size 70% 90%, class:^(terminal)$"
       "float, center, size 70% 90%, class:^(doxx)$"
+      "float, size 570 256, pin, move 1400 -139, title:^(Pixel 5)$"
     ];
   };
 }

@@ -98,7 +98,8 @@ in {
           # utilities
           "SUPER, Return, exec, ${terminal} --class terminal"
           "SUPERSHIFT, Return, exec, ${terminal} --class terminal -e nvim -c 'terminal' -c 'startinsert'"
-          "SUPER, A, exec, scrcpy --turn-screen-off"
+          # make sure adb connect ip(eg:192.168.0.100) first. you might also need to adb kill-server. start-server
+          "SUPER, A, exec, scrcpy --turn-screen-off --render-driver=opengles2"
           "SUPER, B, exec, wofi-firefox"
           "SUPER, C, exec, ${terminal} --class numbat -e numbat --intro-banner off"
           "SUPER, E, exec, bemoji"
