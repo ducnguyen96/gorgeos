@@ -23,7 +23,7 @@
     ./scripts/wofi-power.nix
     ./scripts/wofi-workspace-swap.nix
     ./scripts/xrdp.nix
-    ./scripts/side-app-toggle.nix
+    ./scripts/show-and-hide.nix
 
     ./services/ssh.nix
 
