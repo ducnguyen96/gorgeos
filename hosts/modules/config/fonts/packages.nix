@@ -1,22 +1,15 @@
 {pkgs, ...}: {
   fonts = {
-    enableDefaultPackages = false;
+    enableDefaultPackages = true;
 
     packages = with pkgs; [
-      # System Fonts
+      corefonts
+      geist-font
+      nerd-fonts.geist-mono
       noto-fonts
+      noto-fonts-cjk-serif
       noto-fonts-cjk-sans
-      noto-fonts-color-emoji
-
-      # Monospace
-      jetbrains-mono
-
-      # Icon Fonts
-      material-design-icons
-
-      # Custom Fonts
-      (google-fonts.override {fonts = ["Inter"];})
-      nerd-fonts.symbols-only
+      vistafonts
     ];
   };
 }

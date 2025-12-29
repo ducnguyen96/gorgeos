@@ -4,9 +4,6 @@
   osConfig,
   ...
 }: let
-  cursorName = "Bibata-Modern-Ice";
-  cursorSize = "24";
-
   monitor_one = osConfig.environment.variables."MONITOR_ONE";
   monitor_two = osConfig.environment.variables."MONITOR_TWO";
 
@@ -27,17 +24,9 @@
     "0, monitor:${monitor_two_name}"
   ];
 in {
-  # dependencies
-  home.packages = with pkgs; [
-    bibata-cursors
-  ];
-
   wayland.windowManager.hyprland.settings = {
     env = [
       "GDK_SCALE,1"
-      "HYPRCURSOR_THEME,${cursorName}"
-      "HYPRCURSOR_SIZE,${cursorSize}"
-      "XDG_SCREENSHOTS_DIR,${config.home.homeDirectory}/Pictures/Screenshots"
     ];
 
     exec-once = [
