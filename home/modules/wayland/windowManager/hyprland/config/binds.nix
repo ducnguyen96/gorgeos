@@ -39,7 +39,6 @@ in {
 
           # grouped (tabbed) windows
           "SUPER, G, togglegroup"
-          "SUPER, TAB, changegroupactive, f"
           "SUPERSHIFT, TAB, changegroupactive, b"
 
           # cycle through windows
@@ -47,7 +46,7 @@ in {
           "SUPERALT, Tab, bringactivetotop"
           "ALTSHIFT, Tab, cyclenext, prev"
           "ALTSHIFT, Tab, bringactivetotop"
-          "SUPER, tab, exec, hyprctl dispatch focuscurrentorlast"
+          "SUPER, Tab, exec, hyprctl --batch 'dispatch focuscurrentorlast f; dispatch bringactivetotop'"
 
           # move focus
           "SUPER, left, movefocus, l"
@@ -80,8 +79,8 @@ in {
           "SUPER_CTRL, J, resizeactive,  0 20"
 
           # special workspaces
-          "SUPER, grave, exec, wofi-workspace-swap"
-          "SUPERSHIFT, grave, exec, wofi-workspace-swap --force"
+          "SUPER, grave, exec, wofi-workspace-swap && hyprctl dispatch bringactivetotop"
+          "SUPERSHIFT, grave, exec, wofi-workspace-swap --force && hyprctl dispatch bringactivetotop"
 
           # cycle workspaces
           "SUPER, bracketleft, workspace, m-1"

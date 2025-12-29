@@ -81,12 +81,24 @@
       else
         # Window is visible and focused -> Hide it below monitor
         position_window "$addr" "hide"
-        another_client=$(hyprctl clients -j | jq -r ".[] | select(.workspace.id == $current_workspace and .address != \"$addr\")" | jq -r '.address' | head -n 1)
+        another_client=$(
+          hyprctl clients -j | jq -r "
+            .[]
+            | select(
+                .workspace.id == $current_workspace
+                and .address != \"$addr\"
+                and .mapped == true
+                and .at[1] <= $hidden_threshold
+              )
+            | .address
+          " | head -n 1
+        )
         if [ -n "$another_client" ]; then
           hyprctl dispatch focuswindow "address:$another_client"
         fi
       fi
     fi
+    hyprctl dispatch bringactivetotop
   '';
 in {
   home.packages = [show-and-hide];

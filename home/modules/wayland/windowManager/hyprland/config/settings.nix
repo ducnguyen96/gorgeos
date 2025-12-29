@@ -69,6 +69,11 @@ in {
 
     decoration = {
       rounding = 16;
+
+      active_opacity = 0.85;
+      inactive_opacity = 0.5;
+      fullscreen_opacity = 1.0;
+
       blur.enabled = true;
     };
 
