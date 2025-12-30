@@ -25,6 +25,7 @@ in {
         {
           hardware.i2c.enable = true;
           hardware.graphics.enable = true;
+          hardware.graphics.enable32Bit = true;
         }
         inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-intel-gen2
         inputs.disko.nixosModules.disko

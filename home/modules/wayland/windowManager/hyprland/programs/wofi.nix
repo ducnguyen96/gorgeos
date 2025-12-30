@@ -23,5 +23,9 @@ in {
       layer = "top";
     };
   };
-  home.file.".config/wofi/style.css".source = "${themePath}/wofi/${themeVariant}.css";
+
+  home.file.".config/wofi/style.css".text = ''
+    @import "${themePath}/wofi/${themeVariant}.css";
+    @define-color base rgba(30, 30, 46, 0.85);
+  '';
 }

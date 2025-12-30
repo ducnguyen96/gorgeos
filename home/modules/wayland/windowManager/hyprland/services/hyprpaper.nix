@@ -15,7 +15,7 @@ in {
       ];
 
       wallpaper = [
-        "${monitor_one_name},~/Pictures/Wallpapers/Clearnight.jpg"
+        "${monitor_one_name},~/Pictures/Wallpapers/tropic_island_night.jpg"
         "${monitor_two_name},~/Pictures/Wallpapers/tropic_island_night.jpg"
       ];
     };
