@@ -5,6 +5,7 @@
   ...
 }: let
   mod = "Mod4"; # Super key
+  alt = "Mod1"; # Alt key
   terminal = config.home.sessionVariables.TERMINAL or "${pkgs.kitty}/bin/kitty";
 in {
   xsession.windowManager.i3 = {
@@ -79,8 +80,11 @@ in {
       keybindings = lib.mkOptionDefault {
         # ===== Window Management =====
         "${mod}+q" = "kill";
+        "${alt}+q" = "kill";
         "${mod}+f" = "fullscreen toggle";
+        "${alt}+f" = "fullscreen toggle";
         "${mod}+space" = "floating toggle";
+        "${alt}+space" = "floating toggle";
         "${mod}+Shift+space" = "focus mode_toggle";
 
         # Layout
@@ -92,9 +96,13 @@ in {
 
         # ===== Focus (vim-style + arrows) =====
         "${mod}+h" = "focus left";
+        "${alt}+h" = "focus left";
         "${mod}+j" = "focus down";
+        "${alt}+j" = "focus down";
         "${mod}+k" = "focus up";
+        "${alt}+k" = "focus up";
         "${mod}+l" = "focus right";
+        "${alt}+l" = "focus right";
         "${mod}+Left" = "focus left";
         "${mod}+Down" = "focus down";
         "${mod}+Up" = "focus up";
@@ -148,9 +156,11 @@ in {
         "${mod}+bracketleft" = "workspace prev";
         "${mod}+bracketright" = "workspace next";
         "${mod}+Tab" = "workspace back_and_forth";
+        "${alt}+Tab" = "workspace back_and_forth";
 
         # ===== Applications =====
         "${mod}+Return" = "exec ${terminal}";
+        "${alt}+Return" = "exec ${terminal}";
         "${mod}+Shift+Return" = "exec ${terminal} -e nvim -c 'terminal' -c 'startinsert'";
         "${mod}+d" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show drun";
         "${mod}+n" = "exec ${terminal} -e nvim";

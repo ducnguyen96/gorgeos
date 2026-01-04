@@ -46,3 +46,7 @@ set("v", "<leader>tc", wrap_visual_text("`", "`"), { desc = "Text Inline Code", 
 set("v", "<leader>ts", wrap_visual_text("~~", "~~"), { desc = "Text Strikethrough", noremap = true, silent = true })
 set("v", "<leader>tl", wrap_visual_text("[", "](<++>)"), { desc = "Text Markdown Link", noremap = true, silent = true })
 ----------------------------------------------------------------
+
+-- Remap Ctrl+j to toggle comments (mimicking Ctrl+/)
+vim.keymap.set({ "n", "i", "v" }, "<C-j>", "<C-/>", { remap = true, desc = "Comment toggle" })
+vim.keymap.set({ "n", "i", "v" }, "<C-j>", "<C-_>", { remap = true, desc = "Comment toggle" })
