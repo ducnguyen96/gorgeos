@@ -7,5 +7,5 @@
     audio.enable = true;
   };
 
-  systemd.services.xrdp.wantedBy = lib.mkForce [];
+  # systemd.services.xrdp.wantedBy = lib.mkForce [];
 }
