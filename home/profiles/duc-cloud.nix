@@ -54,7 +54,7 @@
       asHomePkgs = true;
     };
     typescript = {
-      enable = false;
+      enable = true;
       useMasonLSP = false;
       asHomePkgs = true;
     };

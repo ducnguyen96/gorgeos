@@ -6,9 +6,9 @@
     efiInstallAsRemovable = true;
     device = "nodev";
   };
-  fileSystems."/boot" = { device = "/dev/disk/by-uuid/E533-5F3D"; fsType = "vfat"; };
+  fileSystems."/boot" = { device = "/dev/disk/by-uuid/8B30-AC50"; fsType = "vfat"; };
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "xen_blkfront" "vmw_pvscsi" ];
   boot.initrd.kernelModules = [ "nvme" ];
-  fileSystems."/" = { device = "/dev/sda1"; fsType = "ext4"; };
+  fileSystems."/" = { device = "/dev/nvme0n1p1"; fsType = "ext4"; };
   
 }
