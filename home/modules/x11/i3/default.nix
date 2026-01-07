@@ -5,6 +5,7 @@
   ...
 }: let
   mod = "Mod4"; # Super key
+  alt = "Mod1"; # Alt key
   terminal = config.home.sessionVariables.TERMINAL or "${pkgs.kitty}/bin/kitty";
 in {
   xsession.windowManager.i3 = {
@@ -156,6 +157,8 @@ in {
         "${mod}+n" = "exec ${terminal} -e nvim";
         "${mod}+r" = "exec ${terminal} -e ranger";
         "${mod}+Escape" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show power-menu -modi power-menu:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
+        "${mod}+p" = "exec maim | xclip -selection clipboard -t image/png";
+        "${alt}+p" = "exec maim | xclip -selection clipboard -t image/png";
 
         # ===== Session =====
         "${mod}+Shift+e" = "exec i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'";
@@ -209,5 +212,6 @@ in {
     feh
     i3status
     dunst
+    maim
   ];
 }

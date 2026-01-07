@@ -23,6 +23,6 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       []
-      ++ lib.optionals (cfg.asHomePkgs) [clang clang-tools];
+      ++ lib.optionals (cfg.asHomePkgs) [gcc15 bear clang-tools];
   };
 }

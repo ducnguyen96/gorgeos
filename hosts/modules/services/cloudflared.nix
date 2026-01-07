@@ -1,4 +1,4 @@
-{lib, config, ...}: let
+{config, ...}: let
   hostname = config.networking.hostName;
 in {
   services.cloudflared = {
@@ -11,5 +11,5 @@ in {
       };
     };
   };
-  systemd.services."cloudflared-tunnel-${hostname}".wantedBy = lib.mkForce [];
+  # systemd.services."cloudflared-tunnel-${hostname}".wantedBy = lib.mkForce [];
 }

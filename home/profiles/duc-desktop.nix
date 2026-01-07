@@ -24,7 +24,7 @@
       asHomePkgs = false;
     };
     clangd = {
-      enable = false;
+      enable = true;
       useMasonLSP = false;
       asHomePkgs = true;
     };
@@ -100,6 +100,7 @@
       zip
       wineWowPackages.stable
       doxx
+      cloudflared
     ];
   };
 
