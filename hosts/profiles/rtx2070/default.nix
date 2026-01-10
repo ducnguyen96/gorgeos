@@ -8,7 +8,7 @@
   specialArgs = {inherit inputs self;};
 in {
   flake.nixosConfigurations = {
-    e14g2 = nixosSystem {
+    rtx2070 = nixosSystem {
       inherit specialArgs;
 
       modules = [
@@ -35,14 +35,11 @@ in {
 
         # services, should have at least services/networking
         ../../modules/services/blueman.nix
-        ../../modules/services/cloudflared.nix
         ../../modules/services/greetd.nix
-        ../../modules/services/i3.nix
         ../../modules/services/keyd.nix
         ../../modules/services/networking.nix
         ../../modules/services/openssh.nix
         ../../modules/services/pipewire.nix
-        ../../modules/services/xrdp.nix
 
         # virtualization
         ../../modules/virtualization/docker.nix

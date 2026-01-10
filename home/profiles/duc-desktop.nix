@@ -14,7 +14,6 @@
 
     ../modules/wayland/wayland.nix
     ../modules/wayland/windowManager/hyprland
-    ../modules/x11/i3
   ];
 
   dev = {
@@ -80,13 +79,11 @@
     };
 
     packages = with pkgs; [
-      go-task
       # shotcut # video editor
       remmina # Remote desktop client written in GTK
       # telegram-desktop
       # google-chrome # browser
       # gimp # image editor
-      xfce.thunar
       # audacity
       # chromium
       dbeaver-bin # Sql client
@@ -98,8 +95,6 @@
       postman
       code-cursor
       zip
-      wineWowPackages.stable
-      doxx
       cloudflared
     ];
   };

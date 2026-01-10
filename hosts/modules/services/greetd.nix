@@ -11,7 +11,7 @@
       default_session = {
         command = lib.concatStringsSep " " [
           (lib.getExe pkgs.tuigreet)
-          "--cmd '${lib.getExe config.programs.hyprland.package}'"
+          "--cmd '${config.programs.hyprland.package}/bin/start-hyprland'"
           "--remember"
           "--remember-session"
           "--asterisks"
