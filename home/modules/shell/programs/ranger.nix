@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   editor = "nvim";
 in {
   programs.ranger = {
@@ -16,8 +20,8 @@ in {
     mappings = {
       cz = "console z%space";
       yc = "shell wl-copy < %f";
-      "<C-f>" = "fzf_select";
-      "<C-d>" = "fzf_select_dir";
+      ff = "fzf_select";
+      fd = "fzf_select_dir";
     };
 
     plugins = [
@@ -31,38 +35,8 @@ in {
     ];
 
     extraConfig = ''
-      # Custom fzf commands
-      import subprocess
-      import os
-      from ranger.api.commands import Command
-
-      class fzf_select(Command):
-          """
-          :fzf_select
-          Find a file using fzf.
-          """
-          def execute(self):
-              command = "fd --type f --follow --hidden --exclude .git | fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
-              fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
-              stdout, stderr = fzf.communicate()
-              if fzf.returncode == 0:
-                  fzf_file = os.path.abspath(stdout.strip())
-                  if os.path.isfile(fzf_file):
-                      self.fm.select_file(fzf_file)
-
-      class fzf_select_dir(Command):
-          """
-          :fzf_select_dir
-          Find a directory using fzf.
-          """
-          def execute(self):
-              command = "fd --type d --follow --hidden --exclude .git | fzf --preview 'eza -la --color=always --icons --tree --level=2 --git-ignore {}'"
-              fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
-              stdout, stderr = fzf.communicate()
-              if fzf.returncode == 0:
-                  fzf_dir = os.path.abspath(stdout.strip())
-                  if os.path.isdir(fzf_dir):
-                      self.fm.cd(fzf_dir)
+      set preview_images true
+      set preview_images_method kitty
     '';
 
     rifle = [
@@ -240,4 +214,39 @@ in {
     bat
     eza
   ];
+
+  # Create custom commands.py for ranger
+  home.file."${config.home.homeDirectory}/.config/ranger/commands.py".text = ''
+    import subprocess
+    import os
+    from ranger.api.commands import Command
+
+    class fzf_select(Command):
+        """
+        :fzf_select
+        Find a file using fzf.
+        """
+        def execute(self):
+            command = "fd --type f --follow | fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+            fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+            stdout, stderr = fzf.communicate()
+            if fzf.returncode == 0:
+                fzf_file = os.path.abspath(stdout.strip())
+                if os.path.isfile(fzf_file):
+                    self.fm.select_file(fzf_file)
+
+    class fzf_select_dir(Command):
+        """
+        :fzf_select_dir
+        Find a directory using fzf.
+        """
+        def execute(self):
+            command = "fd --type d --follow | fzf --preview 'eza -la --color=always --icons --tree --level=2 --git-ignore {}'"
+            fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+            stdout, stderr = fzf.communicate()
+            if fzf.returncode == 0:
+                fzf_dir = os.path.abspath(stdout.strip())
+                if os.path.isdir(fzf_dir):
+                    self.fm.cd(fzf_dir)
+  '';
 }
