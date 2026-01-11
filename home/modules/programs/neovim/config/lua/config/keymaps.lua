@@ -30,7 +30,7 @@ set("n", "<leader>o", "<cmd>Oil<cr>")
 -- programs
 set("n", "<leader>pr", function()
 	local current_dir = vim.fn.expand("%:p:h") -- Get the absolute path of the current file's directory
-	vim.api.nvim_command("silent !kitty -1 -e ranger " .. current_dir)
+	vim.api.nvim_command("silent !kitty -1 --class ranger -e ranger " .. current_dir)
 end, { desc = "Open Kitty with Ranger at current directory" })
 ----------------------------------------------------------------
 

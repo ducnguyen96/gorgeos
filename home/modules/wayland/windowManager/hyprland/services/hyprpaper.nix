@@ -9,14 +9,22 @@ in {
     enable = true;
 
     settings = {
+      splash = false;
+
       preload = [
         "~/Pictures/Wallpapers/Clearnight.jpg"
         "~/Pictures/Wallpapers/tropic_island_night.jpg"
       ];
 
       wallpaper = [
-        "${monitor_one_name},~/Pictures/Wallpapers/tropic_island_night.jpg"
-        "${monitor_two_name},~/Pictures/Wallpapers/tropic_island_night.jpg"
+        {
+          monitor = "${monitor_one_name}";
+          path = "~/Pictures/Wallpapers/tropic_island_night.jpg";
+        }
+        {
+          monitor = "${monitor_two_name}";
+          path = "~/Pictures/Wallpapers/tropic_island_night.jpg";
+        }
       ];
     };
   };
