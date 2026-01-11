@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -11,7 +10,7 @@
       default_session = {
         command = lib.concatStringsSep " " [
           (lib.getExe pkgs.tuigreet)
-          "--cmd '${config.programs.hyprland.package}/bin/start-hyprland'"
+          "--cmd '${lib.getExe pkgs.zsh}'"
           "--remember"
           "--remember-session"
           "--asterisks"
