@@ -95,7 +95,6 @@
       postman
       code-cursor
       zip
-      cloudflared
     ];
   };
 

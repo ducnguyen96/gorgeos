@@ -22,14 +22,7 @@ in {
         ../../modules/environment
 
         # hardware
-        {
-          hardware.i2c.enable = true;
-          hardware.graphics.enable = true;
-          hardware.graphics.enable32Bit = true;
-        }
-        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-intel-gen2
-        inputs.disko.nixosModules.disko
-        ./disko.nix
+        ./hardware.nix
 
         # programs
         ../../modules/programs/bash.nix
@@ -42,14 +35,11 @@ in {
 
         # services, should have at least services/networking
         ../../modules/services/blueman.nix
-        ../../modules/services/cloudflared.nix
         ../../modules/services/greetd.nix
-        ../../modules/services/i3.nix
         ../../modules/services/keyd.nix
         ../../modules/services/networking.nix
         ../../modules/services/openssh.nix
         ../../modules/services/pipewire.nix
-        ../../modules/services/xrdp.nix
 
         # virtualization
         ../../modules/virtualization/docker.nix
