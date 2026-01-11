@@ -94,6 +94,7 @@
       heroku
       postman
       code-cursor
+      ollama
       zip
     ];
   };

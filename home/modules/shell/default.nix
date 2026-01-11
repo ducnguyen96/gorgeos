@@ -20,6 +20,7 @@
     ./scripts/volumectl.nix
     ./scripts/winrdp.nix
     ./scripts/wofi-firefox.nix
+    ./scripts/wofi-ollama.nix
     ./scripts/wofi-power.nix
     ./scripts/wofi-workspace-swap.nix
     ./scripts/xrdp.nix
