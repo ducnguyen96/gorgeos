@@ -87,7 +87,6 @@ in {
           { import = "lazyvim.plugins.extras.linting.eslint" },
           { import = "lazyvim.plugins.extras.formatting.prettier" },
           { import = "lazyvim.plugins.extras.ai.copilot" },
-          { import = "lazyvim.plugins.extras.ai.avante" },
           { import = "lazyvim.plugins.extras.util.rest" },
 
           ${languageImports}
