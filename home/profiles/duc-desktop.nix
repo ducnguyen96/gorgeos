@@ -8,6 +8,8 @@
     ../modules/programs/firefox.nix
     ../modules/programs/kitty.nix
 
+    ../modules/services/ollama.nix
+
     ../modules/dev/default.nix
 
     ../modules/shell
@@ -94,7 +96,6 @@
       heroku
       postman
       code-cursor
-      ollama
       zip
     ];
   };

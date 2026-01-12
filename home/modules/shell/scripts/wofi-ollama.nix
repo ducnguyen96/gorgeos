@@ -63,13 +63,13 @@
     case "$choice" in
         " Start Ollama")
             # Start ollama serve in background
-            nohup ollama serve &>/dev/null &
+            systemctl --user start ollama.service
             sleep 1
             notify-send "Ollama" "Started"
             ;;
 
         " Stop Ollama")
-            pkill ollama
+            systemctl --user stop ollama.service
             notify-send "Ollama" "Stopped"
             ;;
 
