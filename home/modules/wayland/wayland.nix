@@ -23,5 +23,8 @@
 
     # Firefox
     MOZ_ENABLE_WAYLAND = "1";
+
+    # Electron
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 }
