@@ -11,9 +11,6 @@
       # Monospace
       jetbrains-mono
 
-      # Icon Fonts
-      material-design-icons
-
       # Custom Fonts
       (google-fonts.override {fonts = ["Inter"];})
       nerd-fonts.symbols-only

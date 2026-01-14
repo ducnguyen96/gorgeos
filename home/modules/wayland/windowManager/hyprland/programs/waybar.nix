@@ -43,9 +43,9 @@ in {
 
     settings = [
       {
-        layer = "top";
-        position = "top";
-        margin = "10 10 0 10";
+        layer = "bottom";
+        position = "bottom";
+        margin = "0 10 5 10";
         spacing = 8;
         modules-left = ["hyprland/workspaces"];
         modules-center = ["custom/weather" "group/crypto" "clock"];
@@ -178,7 +178,7 @@ in {
         };
 
         "custom/notification" = {
-          exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
+          exec = "swaync-client -swb";
           return-type = "json";
           format = "{icon}";
           format-icons = {
@@ -191,8 +191,8 @@ in {
             dnd-inhibited-notification = "󰂛";
             dnd-inhibited-none = "󰪑";
           };
-          on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
-          on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
+          on-click = "swaync-client -t -sw";
+          on-click-right = "swaync-client -d -sw";
           tooltip = true;
           escape = true;
         };
@@ -353,7 +353,7 @@ in {
         all: unset;
         color: @white;
         font:
-          11pt "Material Design Icons",
+          11pt "Inter",
           Inter,
           sans-serif;
       }

@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ../modules/theme
+    ../modules/config
 
     ../modules/programs/media
     ../modules/programs/neovim

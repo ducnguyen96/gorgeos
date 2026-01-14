@@ -4,11 +4,6 @@
     elements = lib.concatStringsSep "|" list;
   in "^(${elements})$";
 
-  # Helper to generate window rules for a class/title
-  mkFloatRule = matcher: value: [
-    "float on, ${matcher} ${value}"
-  ];
-
   mkFloatCenterSizeRule = matcher: value: size: [
     "float on, ${matcher} ${value}"
     "center on, ${matcher} ${value}"
@@ -42,19 +37,6 @@
   ];
 in {
   wayland.windowManager.hyprland.settings = {
-    # Layer rules
-    layerrule = let
-      layers = [
-        "gtk-layer-shell"
-        "swaync-control-center"
-        "swaync-notification-window"
-        "waybar"
-      ];
-    in [
-      "blur on, match:class ${toRegex layers}"
-      "ignore_alpha 0.5, match:class ${toRegex layers}"
-    ];
-
     # Window rules (v0.53+ syntax)
     windowrule =
       # Floating windows by class
@@ -85,7 +67,6 @@ in {
       # Floating windows with custom size and center
       ++ (mkFloatCenterSizeRule "match:class" "^(numbat)$" "500 200")
       ++ (mkFloatCenterSizeRule "match:class" "^(ranger)$" "monitor_w*0.7 monitor_h*0.9")
-      ++ (mkFloatCenterSizeRule "match:class" "^(terminal)$" "monitor_w*0.7 monitor_h*0.9")
       ++ (mkFloatCenterSizeRule "match:class" "^(doxx)$" "monitor_w*0.7 monitor_h*0.9")
       # Pixel 5 (special positioning)
       ++ [

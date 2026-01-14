@@ -17,6 +17,7 @@ in {
     nvim.enable = false;
     kitty.enable = false;
     waybar.enable = false;
+    cursors.enable = true;
   };
 
   options.custom.theme = {

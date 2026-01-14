@@ -106,14 +106,14 @@ in {
           "SUPER, N, exec, ${terminal} --class nvim -e nvim"
           "SUPER, O, exec, wofi-ollama"
           "SUPERSHIFT, W, exec, winrdp"
-          "SUPER, Z, exec, show-and-hide --app Zalo"
-          "SUPER, W, exec, show-and-hide --app Youtube"
+          # "SUPER, Z, exec, show-and-hide --app Zalo"
+          # "SUPER, W, exec, show-and-hide --app Youtube"
           "SUPERSHIFT, X, exec, xrdp"
           "SUPER, ESCAPE, exec, wofi-power"
           "SUPER, F4, exec, ${terminal} --class terminal -e pulsemixer"
           "SUPERSHIFT ALT, L, exec, pgrep hyprlock || hyprlock"
-          "SUPER, M, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
-          "SUPERSHIFT, M, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw"
+          "SUPER, Z, exec, swaync-client -t -sw"
+          "SUPERSHIFT, Z, exec, swaync-client -d -sw"
           "SUPER, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
 
           # screenshot
