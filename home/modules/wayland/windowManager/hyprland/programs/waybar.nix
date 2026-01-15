@@ -3,11 +3,6 @@
   config,
   ...
 }: let
-  themeName = config.custom.theme.name;
-  themeVariant = config.custom.theme.variant;
-
-  themePath = ../../../../theme/themes/${themeName};
-
   terminal = config.home.sessionVariables.TERMINAL;
 
   fetchCryptoPrice = {
@@ -34,8 +29,6 @@
     tooltip = false;
   };
 in {
-  home.file.".config/waybar/${themeVariant}.css".source = "${themePath}/waybar/${themeVariant}.css";
-
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -347,8 +340,6 @@ in {
     ];
 
     style = ''
-      @import "${themeVariant}.css";
-
       * {
         all: unset;
         color: @white;
@@ -371,7 +362,7 @@ in {
       #network-bluetooth-pulseaudio-backlight-battery,
       #powermenu {
         padding: 0.4rem 0.5rem;
-        background-color: rgba(36, 49, 99, 0.45);
+        background-color: rgba(36, 49, 99, 0.85);
         border-radius: 1rem;
       }
 

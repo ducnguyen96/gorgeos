@@ -4,7 +4,7 @@ in {
     ./config
 
     # launcher
-    ./programs/wofi.nix
+    # ./programs/wofi.nix
 
     # bar
     ./programs/waybar.nix

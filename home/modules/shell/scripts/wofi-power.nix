@@ -1,26 +1,35 @@
 {pkgs, ...}: let
   wofi-power = pkgs.writeShellScriptBin "wofi-power" ''
     #!/usr/bin/env bash
-    # Wofi window config (in %)
-    WOFI_WIDTH=50
-    WOFI_HEIGHT=11
+    WOFI_HEIGHT=130px
     WOFI_COLUMNS=5
-    wofi_command="wofi --show dmenu \
-    	--prompt choose... \
-    	--width=$WOFI_WIDTH% --height=$WOFI_HEIGHT% --columns=$WOFI_COLUMNS \
-    	--cache-file=/dev/null \
-    	--hide-scroll --no-actions \
-    	--matching=fuzzy"
-    entries=$(echo -e " Poweroff\n Reboot\n Suspend\n Lock\n Logout" | $wofi_command -i --dmenu | awk '{print tolower($2)}')
-    case $entries in
-    	poweroff|reboot|suspend)
-    		systemctl $entries
-    		;;
+    WOFI_LINES=1
+
+    # Rofi config to mimic your Wofi settings
+    # We use -theme-str to inject layout changes on the fly
+    rofi_command="rofi -dmenu \
+            -p Menus \
+            -i \
+            -theme-str window{height:$WOFI_HEIGHT;} \
+            -theme-str listview{columns:$WOFI_COLUMNS;lines:$WOFI_LINES;} \
+            -matching fuzzy"
+
+    # Input entries
+    entries=" Poweroff\n Reboot\n Suspend\n Lock\n Logout"
+
+    # Execute
+    selected=$(echo -e "$entries" | $rofi_command | awk '{print tolower($2)}')
+
+    case $selected in
+    poweroff | reboot | suspend)
+      systemctl $selected
+      ;;
     lock)
-    	;;
+      # Add your lock command here, e.g., swaylock or hyprlock
+      ;;
     logout)
-    	hyprctl dispatch exit 0
-    	;;
+      hyprctl dispatch exit 0
+      ;;
     esac
   '';
 in {

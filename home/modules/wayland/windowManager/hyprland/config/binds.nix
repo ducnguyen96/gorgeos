@@ -100,7 +100,7 @@ in {
           # make sure adb connect ip(eg:192.168.0.100) first. you might also need to adb kill-server. start-server
           "SUPER, A, exec, scrcpy --turn-screen-off --render-driver=opengles2"
           "SUPER, B, exec, wofi-firefox"
-          "SUPER, C, exec, ${terminal} --class numbat -e numbat --intro-banner off"
+          "SUPER, C, exec, rofi -show calc -modi calc -no-show-match -no-sort"
           "SUPER, E, exec, bemoji"
           "SUPER, R, exec, ${terminal} --class ranger -e ranger"
           "SUPER, N, exec, ${terminal} --class nvim -e nvim"
@@ -128,7 +128,7 @@ in {
 
       bindr = [
         # launcher
-        "SUPER, D, exec, pkill wofi  || wofi -S drun"
+        "SUPER, D, exec, pkill rofi  || rofi -show drun -show-icons"
       ];
 
       bindle = [

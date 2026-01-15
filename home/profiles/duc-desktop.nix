@@ -1,13 +1,14 @@
 {pkgs, ...}: {
   imports = [
-    ../modules/theme
     ../modules/config
+    ../modules/themes
 
     ../modules/programs/media
     ../modules/programs/neovim
     ../modules/programs/fcitx5.nix
     ../modules/programs/firefox.nix
     ../modules/programs/kitty.nix
+    ../modules/programs/rofi
 
     ../modules/services/ollama.nix
 
@@ -66,11 +67,6 @@
       asHomePkgs = true;
     };
     tailwind.enable = true;
-  };
-
-  custom.theme = {
-    name = "catppuccin";
-    variant = "mocha";
   };
 
   home = {
