@@ -84,12 +84,10 @@ in {
       		-- add LazyVim and import its plugins
       		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
           { import = "lazyvim.plugins.extras.editor.inc-rename" },
-          { import = "lazyvim.plugins.extras.editor.fzf" },
-          { import = "lazyvim.plugins.extras.editor.mini-diff" },
-          { import = "lazyvim.plugins.extras.editor.navic" },
+          { import = "lazyvim.plugins.extras.editor.snacks_picker" },
+          { import = "lazyvim.plugins.extras.editor.refactoring" },
           { import = "lazyvim.plugins.extras.test.core" },
           { import = "lazyvim.plugins.extras.dap.core" },
-          { import = "lazyvim.plugins.extras.ai.copilot" },
 
           ${languageImports}
 
