@@ -61,7 +61,7 @@ in {
 
       "entry" = {
         padding = mkLiteral "6px";
-        margin = mkLiteral "20px 0px 0px 10px";
+        margin = mkLiteral "20px 10px 0px 15px";
         text-color = mkLiteral "@text";
         placeholder = "Search...";
         background-color = mkLiteral "@base";

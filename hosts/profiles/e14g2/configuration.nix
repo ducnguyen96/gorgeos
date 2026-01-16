@@ -7,12 +7,15 @@
 
   boot = {
     loader = {
-      # Disable GRUB
-      grub.enable = false;
-
-      # Enable systemd-boot (UEFI only)
-      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+        configurationLimit = 5;
+        gfxmodeEfi = "1920x1080";
+      };
     };
   };
 
