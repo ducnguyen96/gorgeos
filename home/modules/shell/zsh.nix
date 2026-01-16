@@ -20,8 +20,6 @@
       pics = "$HOME/Pictures";
       vids = "$HOME/Videos";
       mss = "$HOME/Music";
-      code = "$HOME/Documents/code";
-      sides = "$HOME/Documents/code/sides";
     };
 
     sessionVariables = {
@@ -50,15 +48,9 @@
       nr = "nix run";
       ns = "nix-shell";
       nu = "nix-update";
-
-      r = "rebuild";
+      hm = "home-manager";
 
       awsume = ". awsume";
-
-      k = "kubectl";
-      t = "terraform";
-      o = "ollama";
-      a = "aider";
     };
 
     initContent = lib.mkOrder 550 ''
