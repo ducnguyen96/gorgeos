@@ -5,6 +5,7 @@
 }: let
   modules = [
     ./configuration.nix
+    ../../modules/gtk.nix
 
     ../../modules/themes
 
@@ -25,7 +26,7 @@
   ];
 in {
   flake.homeConfigurations = {
-    "duc@e14g2" = let
+    "desktop@e14g2" = let
       inherit (self.nixosConfigurations.e14g2) pkgs config;
     in
       inputs.home-manager.lib.homeManagerConfiguration {
@@ -37,7 +38,7 @@ in {
         inherit pkgs modules;
       };
 
-    "duc@rtx2070" = let
+    "desktop@rtx2070" = let
       inherit (self.nixosConfigurations.rtx2070) pkgs config;
     in
       inputs.home-manager.lib.homeManagerConfiguration {
