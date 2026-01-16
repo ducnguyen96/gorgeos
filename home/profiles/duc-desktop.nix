@@ -37,9 +37,9 @@
       asHomePkgs = true;
     };
     lua = {
-      enable = false;
+      enable = true;
       useMasonLSP = false;
-      asHomePkgs = false;
+      asHomePkgs = true;
     };
     nix = {
       enable = true;
@@ -66,7 +66,7 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
-    tailwind.enable = true;
+    tailwind.enable = false;
   };
 
   home = {
@@ -94,6 +94,9 @@
       postman
       code-cursor
       zip
+
+      wineWowPackages.stable
+      winetricks
     ];
   };
 

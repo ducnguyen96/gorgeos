@@ -40,12 +40,19 @@ in {
         margin = mkLiteral "0px 10px 0px 0px";
       };
 
-      "prompt" = {
+      "prompt, message" = {
         background-color = mkLiteral "@mauve";
         padding = mkLiteral "6px";
         text-color = mkLiteral "@crust";
         border-radius = mkLiteral "3px";
+      };
+
+      "prompt" = {
         margin = mkLiteral "20px 0px 0px 20px";
+      };
+
+      "message" = {
+        margin = mkLiteral "10px 20px 0px 20px";
       };
 
       /*
@@ -88,7 +95,7 @@ in {
       /*
       4. Transparent Containers
       */
-      "mainbox, inputbar, listview, element" = {
+      "mainbox, inputbar, listview, element, textbox" = {
         background-color = mkLiteral "transparent";
       };
 

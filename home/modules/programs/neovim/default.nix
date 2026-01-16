@@ -31,28 +31,27 @@
     tex = ["texlab"];
     php = ["phpactor" "intelephense"];
     angular = ["angularls"];
+    tailwindcss = ["tailwindcss-language-server"];
   };
 
-  # Generate language imports for all supported languages
   supportedLanguages = ["go" "nix" "rust" "sql" "tailwind" "terraform" "typescript" "vue" "clangd" "python" "php" "tex" "angular"];
+
+  # Generate language imports for all supported languages
   languageImports = builtins.concatStringsSep "\n          " (map languageImport supportedLanguages);
 
   # Generate Mason LSP configurations
   masonConfigs = builtins.concatStringsSep "\n              " (
     map
     (lang: disableMason lang languageProviders.${lang})
-    (builtins.filter (lang: builtins.hasAttr lang languageProviders) supportedLanguages)
+    (builtins.attrNames languageProviders)
   );
 in {
-  # NOTE: enable nixos's nix-ld to be able to use mason packages.
-  # add below config to your nixos config module(eg: hosts/profiles/rtx2070/default.nix)
-  # programs.nix-ld.enable = true;
-
   home.packages = with pkgs; [
     # dependencies
     ripgrep
     fd
     gnumake
+    tree-sitter
     # mermaid-cli
     # ghostscript
   ];
@@ -84,10 +83,13 @@ in {
       	spec = {
       		-- add LazyVim and import its plugins
       		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
-          { import = "lazyvim.plugins.extras.linting.eslint" },
-          { import = "lazyvim.plugins.extras.formatting.prettier" },
+          { import = "lazyvim.plugins.extras.editor.inc-rename" },
+          { import = "lazyvim.plugins.extras.editor.fzf" },
+          { import = "lazyvim.plugins.extras.editor.mini-diff" },
+          { import = "lazyvim.plugins.extras.editor.navic" },
+          { import = "lazyvim.plugins.extras.test.core" },
+          { import = "lazyvim.plugins.extras.dap.core" },
           { import = "lazyvim.plugins.extras.ai.copilot" },
-          { import = "lazyvim.plugins.extras.util.rest" },
 
           ${languageImports}
 

@@ -26,9 +26,10 @@ in {
       ++ lib.optionals (!cfg.useMasonLSP) [vtsls]
       ++ lib.optionals (cfg.asHomePkgs) [
         nodejs_22
-        pnpm
         yarn
-        nest-cli
+        prettier
+        eslint
+        eslint_d
       ];
   };
 }

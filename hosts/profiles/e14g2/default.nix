@@ -44,8 +44,6 @@ in {
         # virtualization
         ../../modules/virtualization/docker.nix
 
-        {programs.nix-ld.enable = true;}
-
         {
           home-manager = {
             users.duc.imports = homeImports."duc@desktop";
