@@ -31,7 +31,7 @@
     tex = ["texlab"];
     php = ["phpactor" "intelephense"];
     angular = ["angularls"];
-    tailwindcss = ["tailwindcss-language-server"];
+    tailwind = ["tailwindcss-language-server"];
   };
 
   supportedLanguages = ["go" "nix" "rust" "sql" "tailwind" "terraform" "typescript" "vue" "clangd" "python" "php" "tex" "angular"];

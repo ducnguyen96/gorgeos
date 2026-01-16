@@ -1,5 +1,4 @@
 {
-  homeImports,
   inputs,
   self,
   ...
@@ -43,12 +42,6 @@ in {
 
         # virtualization
         ../../modules/virtualization/docker.nix
-        {
-          home-manager = {
-            users.duc.imports = homeImports."duc@desktop";
-            extraSpecialArgs = specialArgs;
-          };
-        }
       ];
     };
   };
