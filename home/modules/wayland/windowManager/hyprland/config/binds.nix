@@ -123,6 +123,9 @@ in {
           "CTRL, F10, exec, ${runOnce "grimblast"} --wait 2 --notify copysave area"
           "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
           "ALT, Print, exec, ${runOnce "grimblast"} --notify --cursor copysave screen"
+
+          ",mouse:275, workspace, e-1"
+          ",mouse:276, workspace, e+1"
         ]
         ++ workspaces;
 

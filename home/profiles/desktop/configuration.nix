@@ -24,9 +24,6 @@
       postman
       code-cursor
       zip
-
-      wineWowPackages.stable
-      winetricks
     ];
   };
 
