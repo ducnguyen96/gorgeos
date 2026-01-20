@@ -124,6 +124,10 @@ in {
           "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
           "ALT, Print, exec, ${runOnce "grimblast"} --notify --cursor copysave screen"
 
+          # clipboard
+          "SUPER, V, exec, cliphist list | rofi -dmenu -display-columns 2 | cliphist decode | wl-copy"
+
+          # mouse
           ",mouse:275, workspace, e-1"
           ",mouse:276, workspace, e+1"
         ]

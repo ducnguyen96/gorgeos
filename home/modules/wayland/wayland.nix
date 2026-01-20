@@ -1,11 +1,7 @@
-{pkgs, ...}: {
+{
   # Common Wayland configuration shared by all Wayland desktop environments
   # Desktop-specific variables (like XDG_CURRENT_DESKTOP) should be set
   # in the respective desktop environment modules
-
-  home.packages = with pkgs; [
-    wl-clipboard
-  ];
 
   home.sessionVariables = {
     # Toolkit backend

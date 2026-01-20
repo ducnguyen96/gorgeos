@@ -18,6 +18,7 @@ in {
     ./services/hypridle.nix
     ./services/hyprlock.nix
     ./services/hyprpaper.nix
+    ./services/cliphist.nix
   ];
 
   wayland.windowManager.hyprland = {
