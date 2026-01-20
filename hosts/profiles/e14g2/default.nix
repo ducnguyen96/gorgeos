@@ -28,6 +28,9 @@ in {
         ../../modules/programs/home-manager.nix
         ../../modules/programs/hyprland.nix
         ../../modules/programs/zsh.nix
+        {
+          programs.nix-ld.enable = true;
+        }
 
         # security
         ../../modules/security
