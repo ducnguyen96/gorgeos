@@ -46,3 +46,9 @@ set("v", "<leader>tc", wrap_visual_text("`", "`"), { desc = "Text Inline Code", 
 set("v", "<leader>ts", wrap_visual_text("~~", "~~"), { desc = "Text Strikethrough", noremap = true, silent = true })
 set("v", "<leader>tl", wrap_visual_text("[", "](<++>)"), { desc = "Text Markdown Link", noremap = true, silent = true })
 ----------------------------------------------------------------
+
+----------------------------------------------------------------
+----- Snacks.picker
+set("n", "<leader>sz", function()
+	Snacks.picker.zoxide()
+end, { desc = "Snacks.pickers.zoxide" })
