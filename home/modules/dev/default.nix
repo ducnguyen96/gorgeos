@@ -16,7 +16,6 @@
     ./tex.nix
     ./typescript.nix
     ./vue.nix
-    ./vscode.nix
   ];
 
   dev = {

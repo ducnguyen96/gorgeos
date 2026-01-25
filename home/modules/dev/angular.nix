@@ -4,25 +4,14 @@
   pkgs,
   ...
 }: let
+  devLib = import ./mkDevOptions.nix {inherit lib;};
   cfg = config.dev.angular;
 in {
-  options.dev.angular = {
-    enable = lib.mkEnableOption "angular, enable angular development toolkit";
-    useMasonLSP = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "Whether to use Mason to install lsp package";
-    };
-    asHomePkgs = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Install development pkgs as home pkgs so that it can be reused anywhere without a dev shell";
-    };
-  };
+  options.dev.angular = devLib.mkDevOptions "angular" {};
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
-      []
-      ++ lib.optionals (cfg.asHomePkgs) [];
+      lib.optionals (!cfg.useMasonLSP) []
+      ++ lib.optionals cfg.asHomePkgs [];
   };
 }

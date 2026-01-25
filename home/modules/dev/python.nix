@@ -4,26 +4,14 @@
   pkgs,
   ...
 }: let
+  devLib = import ./mkDevOptions.nix {inherit lib;};
   cfg = config.dev.python;
 in {
-  options.dev.python = {
-    enable = lib.mkEnableOption "python, enable python development toolkit";
-    useMasonLSP = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "Whether to use Mason to install lsp package";
-    };
-    asHomePkgs = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Install development pkgs as home pkgs so that it can be reused anywhere without a dev shell";
-    };
-  };
+  options.dev.python = devLib.mkDevOptions "python" {};
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
-      [python312 python312Packages.uv]
-      ++ lib.optionals (!cfg.useMasonLSP) [ruff]
-      ++ lib.optionals (cfg.asHomePkgs) [];
+      lib.optionals (!cfg.useMasonLSP) [ruff]
+      ++ lib.optionals cfg.asHomePkgs [];
   };
 }

@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./extra-completions
+    ../extra-completions
   ];
 
   programs.zsh = {

@@ -4,25 +4,13 @@
   pkgs,
   ...
 }: let
+  devLib = import ./mkDevOptions.nix {inherit lib;};
   cfg = config.dev.clangd;
 in {
-  options.dev.clangd = {
-    enable = lib.mkEnableOption "c, enable c development toolkit";
-    useMasonLSP = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "Whether to use Mason to install lsp package";
-    };
-    asHomePkgs = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Install development pkgs as home pkgs so that it can be reused anywhere without a dev shell";
-    };
-  };
-
+  options.dev.clangd = devLib.mkDevOptions "clangd" {};
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
-      []
-      ++ lib.optionals (cfg.asHomePkgs) [gcc15 bear clang-tools];
+      lib.optionals (!cfg.useMasonLSP) []
+      ++ lib.optionals cfg.asHomePkgs [gcc15 bear clang-tools];
   };
 }

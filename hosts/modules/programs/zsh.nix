@@ -3,8 +3,6 @@
   pkgs,
   ...
 }: {
-  environment.pathsToLink = ["/share/zsh"];
-
   programs = {
     less.enable = true;
 

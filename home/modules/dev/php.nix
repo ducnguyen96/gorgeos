@@ -4,26 +4,14 @@
   pkgs,
   ...
 }: let
+  devLib = import ./mkDevOptions.nix {inherit lib;};
   cfg = config.dev.php;
 in {
-  options.dev.php = {
-    enable = lib.mkEnableOption "php, enable php development toolkit";
-    useMasonLSP = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "Whether to use Mason to install lsp package";
-    };
-    asHomePkgs = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Install development pkgs as home pkgs so that it can be reused anywhere without a dev shell";
-    };
-  };
+  options.dev.php = devLib.mkDevOptions "php" {};
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
-      []
-      ++ lib.optionals (!cfg.useMasonLSP) [intelephense]
-      ++ lib.optionals (cfg.asHomePkgs) [php];
+      lib.optionals (!cfg.useMasonLSP) [intelephense]
+      ++ lib.optionals cfg.asHomePkgs [php];
   };
 }

@@ -5,5 +5,6 @@
 
   environment = {
     localBinInPath = true;
+    pathsToLink = ["/share/zsh"];
   };
 }
