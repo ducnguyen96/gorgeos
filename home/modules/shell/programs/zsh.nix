@@ -11,6 +11,8 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
     defaultKeymap = "viins";
     dotDir = config.xdg.configHome + "/zsh";
 
@@ -54,6 +56,7 @@
     };
 
     initContent = lib.mkOrder 550 ''
+      eval "$(${pkgs.starship}/bin/starship init zsh)"
       fpath+=("$HOME/.config/zsh/extra-completions")
 
       while read -r option; do
