@@ -45,6 +45,10 @@ in {
 
         # virtualization
         ../../modules/virtualization/docker.nix
+        ../../modules/virtualization/libvirtd.nix
+        {
+          programs.virt-manager.enable = true;
+        }
       ];
     };
   };

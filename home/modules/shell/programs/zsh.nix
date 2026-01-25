@@ -50,6 +50,7 @@
       nr = "nix run";
       ns = "nix-shell";
       nu = "nix-update";
+      nod = "nix-on-droid";
       hm = "home-manager";
 
       awsume = ". awsume";

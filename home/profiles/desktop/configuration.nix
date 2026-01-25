@@ -24,6 +24,7 @@
       postman
       code-cursor
       zip
+      posting
     ];
   };
 

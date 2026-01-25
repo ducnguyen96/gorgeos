@@ -22,7 +22,7 @@
       };
 
       home = {
-        packages = with pkgs; [gawk ncurses5];
+        packages = with pkgs; [gawk ncurses5 posting];
         stateVersion = "24.05";
       };
     };
