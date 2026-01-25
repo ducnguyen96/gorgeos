@@ -16,9 +16,9 @@
         clangd.enable = lib.mkForce false;
         go.enable = lib.mkForce false;
         lua.enable = lib.mkForce false;
-        nix.enable = lib.mkForce false;
+        nix.enable = lib.mkForce true;
         rust.enable = lib.mkForce false;
-        typescript.enable = lib.mkForce false;
+        typescript.enable = lib.mkForce true;
       };
 
       home = {

@@ -52,6 +52,10 @@ in {
     fd
     gnumake
     tree-sitter
+    curl
+    gnutar
+    gcc15
+    gzip
     # mermaid-cli
     # ghostscript
   ];
