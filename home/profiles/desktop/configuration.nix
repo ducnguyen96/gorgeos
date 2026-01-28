@@ -25,6 +25,7 @@
       code-cursor
       zip
       posting
+      bruno
     ];
   };
 

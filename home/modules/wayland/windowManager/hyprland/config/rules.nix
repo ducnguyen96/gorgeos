@@ -67,6 +67,7 @@ in {
       # Floating windows with custom size and center
       ++ (mkFloatCenterSizeRule "match:class" "^(numbat)$" "500 200")
       ++ (mkFloatCenterSizeRule "match:class" "^(ranger)$" "monitor_w*0.7 monitor_h*0.9")
+      ++ (mkFloatCenterSizeRule "match:class" "^(posting)$" "monitor_w*0.9 monitor_h*0.9")
       ++ (mkFloatCenterSizeRule "match:class" "^(doxx)$" "monitor_w*0.7 monitor_h*0.9")
       # Pixel 5 (special positioning)
       ++ [
