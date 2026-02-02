@@ -21,4 +21,6 @@
       };
     };
   };
+
+  security.pam.services.greetd.enableGnomeKeyring = lib.mkIf config.services.gnome.gnome-keyring.enable true;
 }

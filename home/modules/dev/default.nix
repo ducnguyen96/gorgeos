@@ -64,6 +64,6 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
-    tailwind.enable = false;
+    tailwind.enable = true;
   };
 }

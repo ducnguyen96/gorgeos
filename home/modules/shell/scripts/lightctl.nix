@@ -15,7 +15,7 @@
       esac
 
       brightness_percentage=$((($(${brightnessctl}/bin/brightnessctl g) * 100) / $(${brightnessctl}/bin/brightnessctl m)))
-      ${libnotify}/bin/notify-send -u normal -a "LIGHTCTL" "Brightness: $brightness_percentage%"  \
+      ${libnotify}/bin/notify-send -u normal -a "lightctl" "Brightness: $brightness_percentage%"  \
         -h string:x-canonical-private-synchronous:lightctl \
         -h int:value:"$brightness_percentage" \
         -i display-brightness-symbolic

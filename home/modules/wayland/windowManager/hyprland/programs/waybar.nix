@@ -85,11 +85,6 @@ in {
           format = "₳: {}";
         };
 
-        "custom/cdl" = fetchAlphaPrice {
-          symbol = "ALPHA_423USDT";
-          format = "CDL: {}";
-        };
-
         "group/crypto" = {
           modules = [
             "custom/btc"
@@ -97,7 +92,6 @@ in {
             "custom/bnb"
             "custom/link"
             "custom/ada"
-            "custom/cdl"
           ];
           orientation = "inherit";
         };
@@ -443,10 +437,6 @@ in {
 
       #custom-ada {
         color: @sapphire;
-      }
-
-      #custom-cdl {
-        color: @blue;
       }
 
       #clock {

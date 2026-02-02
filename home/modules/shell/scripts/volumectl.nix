@@ -29,17 +29,17 @@
       if [ "$isMuted" = "true" ]; then
         ${libnotify}/bin/notify-send --transient \
           -u normal \
-          -a "VOLUMECTL" \
+          -a "volumectl" \
           -i audio-volume-muted-symbolic \
-          "VOLUMECTL" "Volume Muted"
+          "Volume Muted"
       else
         ${libnotify}/bin/notify-send --transient \
           -u normal \
-          -a "VOLUMECTL" \
+          -a "volumectl" \
           -h string:x-canonical-private-synchronous:volumectl \
           -h int:value:"$volume_percentage" \
           -i audio-volume-high-symbolic \
-          "VOLUMECTL" "Volume: $volume_percentage%"
+          "Volume: $volume_percentage%"
 
         ${libcanberra-gtk3}/bin/canberra-gtk-play -i audio-volume-change -d "volumectl"
       fi

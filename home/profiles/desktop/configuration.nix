@@ -24,8 +24,8 @@
       postman
       code-cursor
       zip
-      posting
-      bruno
+      lazysql
+      authenticator
     ];
   };
 
