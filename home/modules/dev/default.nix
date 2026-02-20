@@ -65,5 +65,10 @@
       asHomePkgs = true;
     };
     tailwind.enable = true;
+    sql = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
   };
 }

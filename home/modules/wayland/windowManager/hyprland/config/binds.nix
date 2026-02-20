@@ -104,6 +104,7 @@ in {
           "SUPER, E, exec, bemoji"
           "SUPER, R, exec, ${terminal} --class ranger -e ranger"
           "SUPER, N, exec, ${terminal} --class nvim -e nvim"
+          "SUPER, F1, exec, ${terminal} --class nvim -e lazysql"
           "SUPER, O, exec, wofi-ollama"
           "SUPERSHIFT, W, exec, winrdp"
           # "SUPER, Z, exec, show-and-hide --app Zalo"

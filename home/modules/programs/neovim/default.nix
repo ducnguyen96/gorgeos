@@ -32,6 +32,7 @@
     php = ["phpactor" "intelephense"];
     angular = ["angularls"];
     tailwind = ["tailwindcss-language-server"];
+    sql = ["sqlfluff"];
   };
 
   supportedLanguages = ["go" "nix" "rust" "sql" "tailwind" "terraform" "typescript" "vue" "clangd" "python" "php" "tex" "angular"];

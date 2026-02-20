@@ -6,6 +6,7 @@ return {
 			fish = { "fish_indent" },
 			sh = { "shfmt" },
 			nix = { "alejandra" },
+			sql = { "sqlfluff" },
 
 			css = { "prettier" },
 			html = { "prettier" },
@@ -17,6 +18,11 @@ return {
 			typescript = { "prettier" },
 			tsx = { "prettier" },
 			jsx = { "prettier" },
+		},
+		formatters = {
+			sqlfluff = {
+				args = { "format", "--dialect=ansi", "-" },
+			},
 		},
 	},
 }
