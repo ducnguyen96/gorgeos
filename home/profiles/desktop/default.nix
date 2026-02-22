@@ -13,6 +13,7 @@
     ../../modules/programs/kitty.nix
     ../../modules/dev
     ../../modules/programs/neovim
+    ../../modules/programs/chess.nix
     ../../modules/programs/fcitx5.nix
     ../../modules/programs/firefox.nix
     ../../modules/programs/rofi

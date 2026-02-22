@@ -26,6 +26,8 @@
       zip
       lazysql
       authenticator
+      wineWow64Packages.staging
+      winetricks
     ];
   };
 
