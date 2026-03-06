@@ -28,6 +28,9 @@
       authenticator
       wineWow64Packages.staging
       winetricks
+      postgresql
+      godot
+      antigravity
     ];
   };
 
