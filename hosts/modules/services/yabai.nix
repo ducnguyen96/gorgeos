@@ -4,40 +4,40 @@
     enableScriptingAddition = true;
     config = {
       # ── Layout ──────────────────────────────────────────────────────────────
-      layout                   = "bsp";          # dwindle ≈ bsp
+      layout = "bsp"; # dwindle ≈ bsp
 
       # ── Gaps & padding ───────────────────────────────────────────────────────
-      window_gap               = 4;
-      top_padding              = 8;
-      bottom_padding           = 8;
-      left_padding             = 8;
-      right_padding            = 8;
+      window_gap = 4;
+      top_padding = 8;
+      bottom_padding = 8;
+      left_padding = 8;
+      right_padding = 8;
 
       # ── Borders ──────────────────────────────────────────────────────────────
-      window_border            = "on";
-      window_border_width      = 1;
-      window_border_radius     = 16;
-      active_window_border_color  = "0xffac87c5";   # purple, like Hyprland active
-      normal_window_border_color  = "0x88000000";
+      window_border = "on";
+      window_border_width = 1;
+      window_border_radius = 16;
+      active_window_border_color = "0xffac87c5"; # purple, like Hyprland active
+      normal_window_border_color = "0x88000000";
 
       # ── Opacity ───────────────────────────────────────────────────────────────
-      window_opacity           = "on";
-      active_window_opacity    = 1;
-      normal_window_opacity    = 0.85;
+      window_opacity = "on";
+      active_window_opacity = 0.85;
+      normal_window_opacity = 0.7;
 
       # ── Mouse ─────────────────────────────────────────────────────────────────
       # follow_mouse = 1  →  autofocus (focus on hover, don't raise)
-      focus_follows_mouse      = "autofocus";
-      mouse_follows_focus      = "off";
+      focus_follows_mouse = "autofocus";
+      mouse_follows_focus = "off";
       # SUPER+LMB drag = move, SUPER+RMB drag = resize  (set in skhd via bindm)
-      mouse_modifier           = "cmd";
-      mouse_action1            = "move";
-      mouse_action2            = "resize";
-      mouse_drop_action        = "swap";          # drop onto another window → swap
+      mouse_modifier = "cmd";
+      mouse_action1 = "move";
+      mouse_action2 = "resize";
+      mouse_drop_action = "swap"; # drop onto another window → swap
 
       # ── Animations ────────────────────────────────────────────────────────────
       window_animation_duration = 0.2;
-      window_animation_easing   = "ease_out_quint";  # smooth feel like Hyprland
+      window_animation_easing = "ease_out_quint"; # smooth feel like Hyprland
     };
 
     extraConfig = ''

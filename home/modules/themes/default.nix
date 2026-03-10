@@ -7,7 +7,7 @@
     enable = true;
 
     nvim.enable = false;
-    kitty.enable = true;
+    kitty.enable = false;
     cursors = {
       enable = true;
       accent = "light";

@@ -14,6 +14,7 @@ in {
         ./nix.nix
         ./environment.nix
         ./programs.nix
+        ./homebrew.nix
 
         ../../modules/services/skhd.nix
         ../../modules/services/yabai.nix
