@@ -46,7 +46,6 @@
       alt - v : skhd -k "cmd - v"
       ctrl - a : skhd -k "cmd - a"
       ctrl - b : skhd -k "cmd - b"
-      ctrl - w : skhd -k "cmd - w"
       ctrl - t : skhd -k "cmd - t"
 
       # ── Compositor / WM commands ──────────────────────────────────────────────────────────────
@@ -128,6 +127,8 @@
       cmd + shift - return : open -na kitty --args nvim --args 'terminal' -c 'startinsert'
       cmd - b              : open -na "Firefox"
       cmd - n              : open -na kitty --args nvim
+      cmd - r              : open -na kitty --args ranger
+      cmd - f10            : open -na kitty --args lazysql
 
       # ── Screenshots ──────────────────────────────────────────────────────────────
       cmd - f10       : screencapture -i -c

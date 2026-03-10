@@ -15,6 +15,10 @@
       heroku
       code-cursor
       lazysql
+      code-cursor
+
+      # utils
+      iproute2mac
     ];
   };
 
