@@ -175,5 +175,6 @@ in {
     hyprpicker
     pamixer
     numbat
+    wl-clipboard
   ];
 }

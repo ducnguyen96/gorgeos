@@ -25,6 +25,7 @@
     ../../modules/wayland/wayland.nix
     ../../modules/wayland/windowManager/hyprland
   ];
+  filteredInputs = builtins.removeAttrs inputs ["nix-on-droid" "nix-darwin"];
 in {
   flake.homeConfigurations = {
     "desktop@e14g2" = let
@@ -32,7 +33,8 @@ in {
     in
       inputs.home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
-          inherit inputs self;
+          inputs = filteredInputs;
+          inherit self;
           osConfig = config;
         };
 
@@ -44,7 +46,8 @@ in {
     in
       inputs.home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
-          inherit inputs self;
+          inputs = filteredInputs;
+          inherit self;
           osConfig = config;
         };
 

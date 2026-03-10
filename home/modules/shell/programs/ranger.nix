@@ -208,7 +208,6 @@ in {
 
   home.packages = with pkgs; [
     xclip
-    wl-clipboard
     fd
     fzf
     bat

@@ -12,6 +12,8 @@ local set = vim.keymap.set
 -- code keymaps
 set("n", "<leader>rn", ":IncRename ")
 set("n", "<leader>o", "<cmd>Oil<cr>")
+set("n", "¨", "<cmd>m .+1<cr>==", { desc = "Move line down" })
+set("n", "ˆ", "<cmd>m .-2<cr>==", { desc = "Move line up" })
 ----------------------------------------------------------------
 
 ----------------------------------------------------------------

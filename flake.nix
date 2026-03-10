@@ -6,12 +6,13 @@
   }:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        ./home
-        ./hosts
+        ./hosts/profiles/mac
+        ./home/profiles/mac
+
         pre-commit-hooks.flakeModule
       ];
 
-      systems = ["x86_64-linux"];
+      systems = ["x86_64-linux" "aarch64-darwin"];
 
       perSystem = {
         config,
@@ -83,6 +84,11 @@
 
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

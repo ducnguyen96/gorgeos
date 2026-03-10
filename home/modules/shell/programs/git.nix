@@ -26,6 +26,11 @@
       lfs.enable = true;
 
       settings = {
+        user = {
+          name = "ducnguyen96";
+          email = "levinguyen.dl@gmail.com";
+        };
+
         aliases = {
           a = "add";
           af = "!git add $(git ls-files -m -o --exclude-standard | sk -m)";

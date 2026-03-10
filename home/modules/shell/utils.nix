@@ -7,7 +7,7 @@
     jq
     unzip
     unrar
-    neofetch
+    fastfetch
     bemoji
     libnotify
     # pass-wayland
