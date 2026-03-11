@@ -53,17 +53,18 @@
       cmd + shift - f  : yabai -m window --toggle zoom-fullscreen
 
       # ── Focus ──────────────────────────────────────────────────────────────
+      cmd - g     : si=$(yabai -m query --windows --window | jq '.["stack-index"]'); if [ "$si" -gt 0 ]; then yabai -m window --warp east 2>/dev/null || yabai -m window --warp west 2>/dev/null || yabai -m window --warp south 2>/dev/null || yabai -m window --warp north 2>/dev/null; else yabai -m window --stack east 2>/dev/null || yabai -m window --stack west 2>/dev/null || yabai -m window --stack south 2>/dev/null || yabai -m window --stack north 2>/dev/null; fi
       cmd - h     : yabai -m window --focus west  || yabai -m display --focus west
-      # cmd - l     : yabai -m window --focus east  || yabai -m display --focus east
+      # cmd - l   : yabai -m window --focus east  || yabai -m display --focus east
       cmd - k     : yabai -m window --focus north || yabai -m display --focus north
-      # cmd - j     : yabai -m window --focus south || yabai -m display --focus south
+      # cmd - j   : yabai -m window --focus south || yabai -m display --focus south
       cmd - left  : yabai -m window --focus west  || yabai -m display --focus west
       cmd - right : yabai -m window --focus east  || yabai -m display --focus east
       cmd - up    : yabai -m window --focus north || yabai -m display --focus north
       cmd - down  : yabai -m window --focus south || yabai -m display --focus south
 
       # ── Tab cycling ──────────────────────────────────────────────────────────────
-      cmd - tab  : yabai -m window --focus next || yabai -m window --focus first
+      cmd - tab  : yabai -m window --focus stack.next  || yabai -m window --focus stack.first || yabai -m window --focus next || yabai -m window --focus first
 
       # ── Workspaces cycling ──────────────────────────────────────────────────────────────
       cmd + shift - tab : yabai -m space --focus next || yabai -m space --focus first
@@ -125,10 +126,10 @@
       # ── App launchers ──────────────────────────────────────────────────────────────
       cmd - return         : open -na kitty
       cmd + shift - return : open -na kitty --args nvim --args 'terminal' -c 'startinsert'
-      cmd - b              : open -na "Firefox"
+      cmd - b              : open -na Firefox --args -P
       cmd - n              : open -na kitty --args nvim
       cmd - r              : open -na kitty --args ranger
-      cmd - f10            : open -na kitty --args lazysql
+      cmd - f1             : open -na kitty --args lazysql
 
       # ── Screenshots ──────────────────────────────────────────────────────────────
       cmd - f10       : screencapture -i -c

@@ -41,6 +41,14 @@
     };
 
     extraConfig = ''
+      # Create rules to group applications
+      yabai -m rule --add app="kitty" space=1
+      yabai -m rule --add app="Cursor" space=1
+      yabai -m rule --add app="Terminal" space=1
+      yabai -m rule --add app="Firefox" space=2
+      yabai -m rule --add app="Dbeaver" space=3
+      yabai -m rule --add app="lazysql" space=3
+
       # ── Unmanaged apps ────────────────────────────────────────────────────────
       yabai -m rule --add app="^System Settings$"    manage=off
       yabai -m rule --add app="^System Preferences$" manage=off
