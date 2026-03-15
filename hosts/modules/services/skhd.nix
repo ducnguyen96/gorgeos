@@ -5,7 +5,9 @@
     skhdConfig = ''
       # ── Navigation ──────────────────────────────────────────────────────────────
       alt - h : skhd -k "left"
+      ctrl + alt - h : skhd -k "ctrl - left"
       alt - l : skhd -k "right"
+      ctrl + alt - l : skhd -k "ctrl - right"
       alt - j : skhd -k "down"
       alt - k : skhd -k "up"
       alt - b : skhd -k "home"
@@ -14,6 +16,7 @@
       alt - return : skhd -k "alt - return"
       alt - space  : skhd -k "return"
       alt - x      : skhd -k "backspace"
+      ctrl + alt - x : skhd -k "alt - backspace"
 
       alt - r : skhd -k "shift - 2"             # @
       alt - q : skhd -k "0x27"                  # '
@@ -37,7 +40,6 @@
       ctrl - left : skhd -k "alt - left"
       ctrl - right : skhd -k "alt - right"
       ctrl - x : skhd -k "cmd - x"
-      ctrl + alt - x : skhd -k "alt - backspace"
       ctrl + shift - c : skhd -k "cmd - c"
       ctrl + shift - v : skhd -k "cmd - v"
       ctrl - z : skhd -k "cmd - z"
@@ -126,10 +128,11 @@
       # ── App launchers ──────────────────────────────────────────────────────────────
       cmd - return         : open -na kitty
       cmd + shift - return : open -na kitty --args nvim --args 'terminal' -c 'startinsert'
-      cmd - b              : open -na Firefox --args -P
-      cmd - n              : open -na kitty --args nvim
-      cmd - r              : open -na kitty --args ranger
-      cmd - f1             : open -na kitty --args lazysql
+      cmd - b              : open -na Firefox --args -P; sleep 1; yabai -m query --windows \
+        | jq '.[] | select(.app=="Firefox" and .space!=2) | .id' \
+        | xargs -I{} yabai -m window {} --space 2
+            cmd - n              : open -na kitty --args nvim
+            cmd - f1             : open -na kitty --args lazysql
 
       # ── Screenshots ──────────────────────────────────────────────────────────────
       cmd - f10       : screencapture -i -c

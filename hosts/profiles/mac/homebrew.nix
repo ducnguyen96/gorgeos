@@ -4,6 +4,7 @@
 
     casks = [
       {name = "font-jetbrains-mono";}
+      {name = "slack";}
     ];
   };
 }

@@ -22,7 +22,7 @@
 
       # ── Opacity ───────────────────────────────────────────────────────────────
       window_opacity = "on";
-      active_window_opacity = 0.85;
+      active_window_opacity = 0.95;
       normal_window_opacity = 0.7;
 
       # ── Mouse ─────────────────────────────────────────────────────────────────
@@ -41,13 +41,21 @@
     };
 
     extraConfig = ''
-      # Create rules to group applications
+      # Editors
       yabai -m rule --add app="kitty" space=1
       yabai -m rule --add app="Cursor" space=1
       yabai -m rule --add app="Terminal" space=1
+
+      # Web
       yabai -m rule --add app="Firefox" space=2
+
+      # Dev tools
       yabai -m rule --add app="Dbeaver" space=3
       yabai -m rule --add app="lazysql" space=3
+      yabai -m rule --add app="Bruno" space=3
+
+      # Others
+      yabai -m rule --add app="Zalo" space=4
 
       # ── Unmanaged apps ────────────────────────────────────────────────────────
       yabai -m rule --add app="^System Settings$"    manage=off

@@ -16,6 +16,8 @@
       code-cursor
       lazysql
       code-cursor
+      bruno
+      postgresql
 
       # utils
       iproute2mac
