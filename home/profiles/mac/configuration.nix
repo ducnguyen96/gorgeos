@@ -18,6 +18,7 @@
       code-cursor
       bruno
       postgresql
+      antigravity
 
       # utils
       iproute2mac
