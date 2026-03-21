@@ -128,11 +128,8 @@
       # ── App launchers ──────────────────────────────────────────────────────────────
       cmd - return         : open -na kitty
       cmd + shift - return : open -na kitty --args nvim --args 'terminal' -c 'startinsert'
-      cmd - b              : open -na Firefox --args -P; sleep 1; yabai -m query --windows \
-        | jq '.[] | select(.app=="Firefox" and .space!=2) | .id' \
-        | xargs -I{} yabai -m window {} --space 2
-            cmd - n              : open -na kitty --args nvim
-            cmd - f1             : open -na kitty --args lazysql
+      cmd - n              : open -na kitty --args nvim
+      cmd - f1             : open -na kitty --args lazysql
 
       # ── Screenshots ──────────────────────────────────────────────────────────────
       cmd - f10       : screencapture -i -c

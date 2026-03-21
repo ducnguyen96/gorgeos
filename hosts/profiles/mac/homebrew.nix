@@ -12,6 +12,7 @@
       {name = "font-jetbrains-mono";}
       {name = "slack";}
       {name = "godot";}
+      {name = "alt-tab";}
     ];
   };
 }
