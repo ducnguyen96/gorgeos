@@ -4,24 +4,6 @@
     homeDirectory = "/Users/duc";
 
     packages = with pkgs; [
-      # shotcut # video editor
-      remmina # Remote desktop client written in GTK
-
-      # virtualization
-      docker
-      colima
-
-      # dev tools
-      heroku
-      code-cursor
-      lazysql
-      code-cursor
-      bruno
-      postgresql
-      antigravity
-
-      # utils
-      iproute2mac
     ];
   };
 

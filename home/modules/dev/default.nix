@@ -30,12 +30,12 @@
       asHomePkgs = true;
     };
     go = {
-      enable = true;
+      enable = false;
       useMasonLSP = false;
       asHomePkgs = true;
     };
     lua = {
-      enable = true;
+      enable = false;
       useMasonLSP = false;
       asHomePkgs = true;
     };
@@ -50,7 +50,7 @@
       asHomePkgs = true;
     };
     rust = {
-      enable = true;
+      enable = false;
       useMasonLSP = false;
       asHomePkgs = true;
     };
@@ -66,7 +66,7 @@
     };
     tailwind.enable = true;
     sql = {
-      enable = true;
+      enable = false;
       useMasonLSP = false;
       asHomePkgs = true;
     };
