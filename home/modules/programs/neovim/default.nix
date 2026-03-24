@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   nvimFolder = "${config.home.homeDirectory}/.config/nvim";
@@ -47,19 +48,20 @@
     (builtins.attrNames languageProviders)
   );
 in {
-  home.packages = with pkgs; [
-    # dependencies
-    ripgrep
-    fd
-    gnumake
-    tree-sitter
-    curl
-    gnutar
-    gcc15
-    gzip
-    # mermaid-cli
-    # ghostscript
-  ];
+  home.packages = with pkgs;
+    [
+      # dependencies
+      ripgrep
+      fd
+      gnumake
+      tree-sitter
+      curl
+      gnutar
+      gzip
+      # mermaid-cli
+      # ghostscript
+    ]
+    ++ lib.optionals pkgs.stdenv.isLinux [gcc15];
 
   programs.neovim = {
     enable = true;

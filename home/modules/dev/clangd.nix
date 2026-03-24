@@ -11,6 +11,6 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       lib.optionals (!cfg.useMasonLSP) []
-      ++ lib.optionals cfg.asHomePkgs [gcc15 bear clang-tools];
+      ++ lib.optionals cfg.asHomePkgs [bear clang-tools] ++ lib.optionals pkgs.stdenv.isLinux [gcc15];
   };
 }
