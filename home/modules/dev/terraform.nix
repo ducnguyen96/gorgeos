@@ -12,6 +12,6 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       lib.optionals (!cfg.useMasonLSP) []
-      ++ lib.optionals cfg.asHomePkgs [];
+      ++ lib.optionals cfg.asHomePkgs [terraform];
   };
 }

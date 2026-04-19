@@ -15,21 +15,19 @@
       # gimp # image editor
       # audacity
       # chromium
-      dbeaver-bin # Sql client
-      android-tools
+      # dbeaver-bin # Sql client
+      # android-tools
       scrcpy
       cloudflare-warp
       slack
       heroku
-      postman
+      # postman
       code-cursor
       zip
       lazysql
       authenticator
-      wineWow64Packages.staging
-      winetricks
-      postgresql
-      godot
+      # godot
+      bruno
       antigravity
     ];
   };

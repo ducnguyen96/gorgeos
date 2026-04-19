@@ -64,8 +64,18 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
-    tailwind.enable = true;
+    tailwind.enable = false;
     sql = {
+      enable = false;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    aws = {
+      enable = false;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    terraform = {
       enable = false;
       useMasonLSP = false;
       asHomePkgs = true;
