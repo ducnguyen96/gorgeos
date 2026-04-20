@@ -70,5 +70,15 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
+    aws = {
+      enable = false;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    terraform = {
+      enable = false;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
   };
 }

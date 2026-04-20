@@ -6,8 +6,8 @@
   }:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        ./hosts/profiles/mac
-        ./home/profiles/mac
+        ./hosts/profiles/e14g2
+        ./home/profiles/desktop
 
         pre-commit-hooks.flakeModule
       ];
@@ -79,7 +79,6 @@
 
     nixos-hardware = {
       url = "github:nixos/nixos-hardware";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-on-droid = {

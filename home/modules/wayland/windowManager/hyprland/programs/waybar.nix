@@ -32,7 +32,7 @@ in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    systemd.target = "graphical-session.target";
+    systemd.targets = [ "graphical-session.target" ];
 
     settings = [
       {
