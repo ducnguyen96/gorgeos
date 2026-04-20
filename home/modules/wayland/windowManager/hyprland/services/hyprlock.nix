@@ -2,6 +2,10 @@
   programs.hyprlock = {
     enable = true;
 
+    settings = {
+      auth.fingerprint.enabled = true;
+    };
+
     # settings = {
     #   general = {
     #     disable_loading_bar = true;
