@@ -152,7 +152,7 @@ in {
     '';
   };
 
-  home.file."${nvimFolder}/init.lua".source = ./config/init.lua;
+  home.file."${nvimFolder}/init.lua".source = lib.mkForce ./config/init.lua;
 
   home.file."${configFolder}/autocmds.lua".source = ./config/lua/config/autocmds.lua;
   home.file."${configFolder}/keymaps.lua".source = ./config/lua/config/keymaps.lua;
