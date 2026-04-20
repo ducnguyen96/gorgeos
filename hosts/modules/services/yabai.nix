@@ -21,7 +21,7 @@
       normal_window_border_color = "0x88000000";
 
       # ── Opacity ───────────────────────────────────────────────────────────────
-      window_opacity = "on";
+      window_opacity = "off";
       active_window_opacity = 0.95;
       normal_window_opacity = 0.7;
 
@@ -41,21 +41,21 @@
     };
 
     extraConfig = ''
-      # Editors
-      yabai -m rule --add app="kitty" space=^1
-      yabai -m rule --add app="Cursor" space=^1
-      yabai -m rule --add app="Terminal" space=^1
-
-      # Web
-      yabai -m rule --add app="Firefox" space=^2
-
-      # Dev tools
-      yabai -m rule --add app="Dbeaver" space=^3
-      yabai -m rule --add app="lazysql" space=^3
-      yabai -m rule --add app="Bruno" space=^3
-
-      # Others
-      yabai -m rule --add app="Zalo" space=^4
+      # # Editors
+      # yabai -m rule --add app="kitty" space=^1
+      # yabai -m rule --add app="Cursor" space=^1
+      # yabai -m rule --add app="Terminal" space=^1
+      #
+      # # Web
+      # yabai -m rule --add app="Firefox" space=^2
+      #
+      # # Dev tools
+      # yabai -m rule --add app="Dbeaver" space=^3
+      # yabai -m rule --add app="lazysql" space=^3
+      # yabai -m rule --add app="Bruno" space=^3
+      #
+      # # Others
+      # yabai -m rule --add app="Zalo" space=^4
 
       # ── Unmanaged apps ────────────────────────────────────────────────────────
       yabai -m rule --add app="^System Settings$"    manage=off
@@ -66,6 +66,8 @@
       yabai -m rule --add app="^Finder$"             manage=off sticky=on layer=above
       yabai -m rule --add app="^Alfred$"             manage=off
       yabai -m rule --add app="^Raycast$"            manage=off
+      yabai -m rule --add app="^Godot$"            manage=off
+      yabai -m rule --add app="^Blender$"            manage=off
 
       # Float dialog / utility windows
       yabai -m rule --add type="dialog"  manage=off

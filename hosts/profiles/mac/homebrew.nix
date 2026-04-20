@@ -10,11 +10,15 @@
 
     brews = [
       "docker"
+      "docker-compose"
       "colima"
-      "heroku"
       "lazysql"
       "postgresql@18"
       "iproute2mac"
+
+      # aseprite build dependencies
+      "ninja"
+      "cmake"
     ];
 
     casks = [
@@ -24,6 +28,9 @@
       {name = "godot";}
       {name = "alt-tab";}
       {name = "bruno";}
+      {name = "blender";}
+      {name = "antigravity";}
+      {name = "monitorcontrol";}
     ];
   };
 }

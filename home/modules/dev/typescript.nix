@@ -13,7 +13,7 @@ in {
     home.packages = with pkgs;
       lib.optionals (!cfg.useMasonLSP) [vtsls]
       ++ lib.optionals cfg.asHomePkgs [
-        nodejs_22
+        fnm
         yarn
         prettier
         eslint

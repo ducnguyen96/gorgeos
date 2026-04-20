@@ -4,6 +4,7 @@
     homeDirectory = "/Users/duc";
 
     packages = with pkgs; [
+      heroku
     ];
   };
 

@@ -62,3 +62,21 @@ set("v", "<leader>tl", wrap_visual_text("[", "](<++>)"), { desc = "Text Markdown
 set("n", "<leader>sz", function()
 	Snacks.picker.zoxide()
 end, { desc = "Snacks.pickers.zoxide" })
+set("n", "<leader>f.", function()
+	Snacks.picker.files({
+		cmd = "fd",
+		args = {
+			"--hidden",
+			"--no-ignore",
+			"--exclude",
+			".git",
+			"--exclude",
+			"node_modules",
+			"--glob",
+			".*",
+			"--glob",
+			".env*",
+			".",
+		},
+	})
+end, { desc = "Find Hidden and Env Files" })

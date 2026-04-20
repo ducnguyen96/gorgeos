@@ -58,6 +58,7 @@
 
     initContent = lib.mkOrder 550 ''
       eval "$(${pkgs.starship}/bin/starship init zsh)"
+      eval "$(fnm env --use-on-cd --shell zsh)"
       fpath+=("$HOME/.config/zsh/extra-completions")
 
       while read -r option; do
@@ -77,6 +78,7 @@
       if [ -d "/opt/homebrew/bin" ]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"
       fi
+      export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
     '';
 
     antidote = {
