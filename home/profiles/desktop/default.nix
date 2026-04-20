@@ -41,6 +41,19 @@ in {
         inherit pkgs modules;
       };
 
+    "desktop@5560" = let
+      inherit (self.nixosConfigurations."5560") pkgs config;
+    in
+      inputs.home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = {
+          inputs = filteredInputs;
+          inherit self;
+          osConfig = config;
+        };
+
+        inherit pkgs modules;
+      };
+
     "desktop@rtx2070" = let
       inherit (self.nixosConfigurations.rtx2070) pkgs config;
     in
