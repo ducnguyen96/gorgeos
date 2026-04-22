@@ -6,8 +6,8 @@
   }:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        ./hosts/profiles/5560
-        ./home/profiles/desktop
+        ./hosts/profiles/mac
+        ./home/profiles/mac
 
         pre-commit-hooks.flakeModule
       ];

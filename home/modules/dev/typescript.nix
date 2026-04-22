@@ -14,10 +14,6 @@ in {
       lib.optionals (!cfg.useMasonLSP) [vtsls]
       ++ lib.optionals cfg.asHomePkgs [
         fnm
-        yarn
-        prettier
-        eslint
-        eslint_d
       ];
   };
 }
