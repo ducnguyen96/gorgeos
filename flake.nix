@@ -6,13 +6,13 @@
   }:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        ./hosts/profiles/5560
-        ./home/profiles/desktop
+        ./hosts/profiles/utm
+        ./home/profiles/utm
 
         pre-commit-hooks.flakeModule
       ];
 
-      systems = ["x86_64-linux" "aarch64-darwin"];
+      systems = ["x86_64-linux" "aarch64-darwin" "aarch64-linux"];
 
       perSystem = {
         config,
