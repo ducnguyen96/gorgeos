@@ -80,6 +80,11 @@
         eval "$(/opt/homebrew/bin/brew shellenv)"
       fi
       export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
+
+      export PATH="$HOME/.opencode/bin:$PATH"
+      export PATH="$HOME/.local/bin:$PATH"
+      export ANTHROPIC_AUTH_TOKEN=ollama
+      export ANTHROPIC_BASE_URL=http://localhost:8000
     '';
 
     antidote = {

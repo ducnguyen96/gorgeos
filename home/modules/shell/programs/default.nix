@@ -2,7 +2,7 @@
   imports = [
     ./bat.nix
     ./dircolors.nix
-    ./direnv.nix
+    # ./direnv.nix
     ./eza.nix
     ./fzf.nix
     ./git.nix

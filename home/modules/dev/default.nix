@@ -45,7 +45,7 @@
       asHomePkgs = true;
     };
     python = {
-      enable = true;
+      enable = false;
       useMasonLSP = false;
       asHomePkgs = true;
     };

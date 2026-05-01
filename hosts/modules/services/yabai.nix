@@ -58,16 +58,16 @@
       # yabai -m rule --add app="Zalo" space=^4
 
       # ── Unmanaged apps ────────────────────────────────────────────────────────
-      yabai -m rule --add app="^System Settings$"    manage=off
-      yabai -m rule --add app="^System Preferences$" manage=off
-      yabai -m rule --add app="^Calculator$"         manage=off
-      yabai -m rule --add app="^Archive Utility$"    manage=off
-      yabai -m rule --add app="^Activity Monitor$"   manage=off
-      yabai -m rule --add app="^Finder$"             manage=off sticky=on layer=above
-      yabai -m rule --add app="^Alfred$"             manage=off
-      yabai -m rule --add app="^Raycast$"            manage=off
-      yabai -m rule --add app="^Godot$"            manage=off
-      yabai -m rule --add app="^Blender$"            manage=off
+      # yabai -m rule --add app="^System Settings$"    manage=off
+      # yabai -m rule --add app="^System Preferences$" manage=off
+      # yabai -m rule --add app="^Calculator$"         manage=off
+      # yabai -m rule --add app="^Archive Utility$"    manage=off
+      # yabai -m rule --add app="^Activity Monitor$"   manage=off
+      # yabai -m rule --add app="^Finder$"             manage=off sticky=on layer=above
+      # yabai -m rule --add app="^Alfred$"             manage=off
+      # yabai -m rule --add app="^Raycast$"            manage=off
+      # yabai -m rule --add app="^Godot$"            manage=off
+      # yabai -m rule --add app="^Blender$"            manage=off
 
       # Float dialog / utility windows
       yabai -m rule --add type="dialog"  manage=off

@@ -15,6 +15,8 @@
       "lazysql"
       "postgresql@18"
       "iproute2mac"
+      "railway"
+      "ollama"
 
       # aseprite build dependencies
       "ninja"
