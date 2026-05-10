@@ -2,7 +2,6 @@
   imports = [
     ./clean.nix
     ./lightctl.nix
-    ./preview.nix
     ./run-as-service.nix
     ./vcpctl.nix
     ./volumectl.nix

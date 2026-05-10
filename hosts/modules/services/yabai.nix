@@ -66,7 +66,7 @@
       # yabai -m rule --add app="^Finder$"             manage=off sticky=on layer=above
       # yabai -m rule --add app="^Alfred$"             manage=off
       # yabai -m rule --add app="^Raycast$"            manage=off
-      # yabai -m rule --add app="^Godot$"            manage=off
+      yabai -m rule --add app="^Godot$"              manage=off
       # yabai -m rule --add app="^Blender$"            manage=off
 
       # Float dialog / utility windows

@@ -2,13 +2,11 @@
   outputs = inputs @ {
     flake-parts,
     pre-commit-hooks,
+    self,
     ...
   }:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        ./hosts/profiles/utm
-        ./home/profiles/utm
-
         pre-commit-hooks.flakeModule
       ];
 
@@ -22,7 +20,7 @@
         pre-commit = {
           check.enable = true;
 
-          settings.excludes = ["flake.lock"];
+          settings.excludes = ["flake.lock" "hardware-configuration\\.nix"];
 
           settings.hooks = {
             alejandra.enable = true;
@@ -46,6 +44,13 @@
         };
 
         formatter = pkgs.alejandra;
+      };
+
+      flake = {
+        nixosConfigurations = import ./hosts/profiles/nixos.nix {inherit inputs;};
+        darwinConfigurations = import ./hosts/profiles/darwin {inherit inputs;};
+        nixOnDroidConfigurations = import ./hosts/profiles/droid {inherit inputs;};
+        homeConfigurations = import ./home/profiles {inherit inputs self;};
       };
     };
 

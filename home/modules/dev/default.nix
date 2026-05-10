@@ -30,7 +30,7 @@
       asHomePkgs = true;
     };
     go = {
-      enable = false;
+      enable = true;
       useMasonLSP = false;
       asHomePkgs = true;
     };
@@ -50,7 +50,7 @@
       asHomePkgs = true;
     };
     rust = {
-      enable = false;
+      enable = true;
       useMasonLSP = false;
       asHomePkgs = true;
     };

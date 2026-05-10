@@ -21,6 +21,9 @@
       # aseprite build dependencies
       "ninja"
       "cmake"
+
+      "zbar"
+      "gauth"
     ];
 
     casks = [
@@ -33,6 +36,7 @@
       {name = "blender";}
       {name = "antigravity";}
       {name = "monitorcontrol";}
+      {name = "whisky";}
     ];
   };
 }

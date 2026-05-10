@@ -19,10 +19,16 @@
     };
   };
 
+  fileSystems."/mnt/share" = {
+    device = "share";
+    fsType = "9p";
+    options = ["trans=virtio" "version=9p2000.L" "msize=1048576" "rw"];
+  };
+
   environment = {
     variables = {
-      MONITOR_ONE = "eDP-1, 1920x1080@60, 0x0, 1";
-      MONITOR_ONE_DISABLED = "eDP-1, disable";
+      MONITOR_ONE = "Virtual-1, 1920x1080@60, 0x0, 1";
+      MONITOR_ONE_DISABLED = "Virtual-1, disable";
       MONITOR_TWO = "HDMI-A-1, 1920x1080@60, 1920x0, 1";
       MONITOR_TWO_DISABLED = "HDMI-A-1, disable";
     };

@@ -9,7 +9,7 @@
 
     packages = with pkgs; [
       # shotcut # video editor
-      remmina # Remote desktop client written in GTK
+      # remmina # Remote desktop client written in GTK
       # telegram-desktop
       # google-chrome # browser
       # gimp # image editor
@@ -17,18 +17,17 @@
       # chromium
       # dbeaver-bin # Sql client
       # android-tools
-      scrcpy
-      cloudflare-warp
-      slack
-      heroku
+      # scrcpy
+      # cloudflare-warp
+      # slack
+      # heroku
       # postman
-      code-cursor
-      zip
-      lazysql
-      authenticator
+      # code-cursor
+      # lazysql
+      # authenticator
       # godot
-      bruno
-      antigravity
+      # bruno
+      # antigravity
     ];
   };
 
@@ -57,5 +56,5 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  home.stateVersion = "25.05"; # Did you read the comment?
+  home.stateVersion = "26.05"; # Did you read the comment?
 }

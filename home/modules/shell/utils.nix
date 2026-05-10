@@ -5,6 +5,7 @@
     numbat
     wget
     jq
+    zip
     unzip
     unrar
     fastfetch
