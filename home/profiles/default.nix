@@ -87,5 +87,5 @@ in {
   "desktop@rtx2070" = mkDesktop "rtx2070";
   "desktop@utm" = mkDesktop "utm";
 
-  droid = mkDroid "droid";
+  droid = mkDroid "default";
 }
