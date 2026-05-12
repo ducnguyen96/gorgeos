@@ -48,14 +48,13 @@
     hostname,
     modules,
     systemConfigurations,
+    homeManagerInput ? inputs.home-manager,
+    osConfig ? systemConfigurations.${hostname}.config,
   }: let
-    inherit (systemConfigurations.${hostname}) pkgs config;
+    inherit (systemConfigurations.${hostname}) pkgs;
   in
-    inputs.home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = {
-        inherit inputs self;
-        osConfig = config;
-      };
+    homeManagerInput.lib.homeManagerConfiguration {
+      extraSpecialArgs = {inherit osConfig inputs self;};
       inherit pkgs modules;
     };
 
@@ -78,6 +77,7 @@
       inherit hostname;
       modules = droidModules;
       systemConfigurations = self.nixOnDroidConfigurations;
+      osConfig = {};
     };
 in {
   mac = mkMac "silicon";

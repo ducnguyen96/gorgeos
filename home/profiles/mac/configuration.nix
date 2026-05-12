@@ -5,6 +5,7 @@
 
     packages = with pkgs; [
       heroku
+      scrcpy
 
       gdscript-formatter
     ];

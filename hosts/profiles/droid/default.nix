@@ -1,7 +1,7 @@
 {inputs, ...}: let
   inherit (inputs.nix-on-droid.lib) nixOnDroidConfiguration;
 in {
-  droid = nixOnDroidConfiguration {
+  default = nixOnDroidConfiguration {
     pkgs = import inputs.nixpkgs {
       system = "aarch64-linux";
 
