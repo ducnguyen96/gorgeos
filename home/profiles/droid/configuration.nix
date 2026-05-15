@@ -4,6 +4,9 @@
   ...
 }: {
   home = {
+    username = "nix-on-droid";
+    homeDirectory = "/data/data/com.termux.nix/files/home";
+
     packages = with pkgs; [gawk ncurses5 posting];
   };
 
@@ -14,7 +17,7 @@
     lua.enable = lib.mkForce false;
     python.enable = lib.mkForce false;
     rust.enable = lib.mkForce false;
-    typescript.enable = lib.mkForce false;
+    typescript.enable = lib.mkForce true;
     tex.enable = lib.mkForce false;
     tailwind.enable = lib.mkForce false;
     sql.enable = lib.mkForce false;
@@ -30,5 +33,5 @@
 
   programs.home-manager.enable = true;
 
-  home.stateVersion = "26.05";
+  home.stateVersion = "25.11";
 }
