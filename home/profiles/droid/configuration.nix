@@ -4,9 +4,6 @@
   ...
 }: {
   home = {
-    username = "nix-on-droid";
-    homeDirectory = "/data/data/com.termux.nix/files/home";
-
     packages = with pkgs; [gawk ncurses5 posting];
   };
 
