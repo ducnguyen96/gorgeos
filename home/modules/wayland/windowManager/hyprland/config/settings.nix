@@ -24,6 +24,7 @@
     "0, monitor:${monitor_two_name}"
   ];
 in {
+  wayland.windowManager.hyprland.configType = "hyprlang";
   wayland.windowManager.hyprland.settings = {
     env = [
       "GDK_SCALE,1"
