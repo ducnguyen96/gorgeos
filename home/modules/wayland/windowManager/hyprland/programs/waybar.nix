@@ -5,594 +5,377 @@
 }: let
   terminal = config.home.sessionVariables.TERMINAL;
 
-  fetchCryptoPrice = {
-    symbol,
-    format,
-  }: {
-    format = format;
-    interval = 60;
-    exec = ''
-      curl -s https://api.binance.com/api/v3/ticker/price?symbol=${symbol} | jq .price | xargs | awk '{printf "%.2f\n", $1}'
-    '';
-    tooltip = false;
-  };
-
-  fetchAlphaPrice = {
-    symbol,
-    format,
-  }: {
-    format = format;
-    interval = 60;
-    exec = ''
-      curl -s 'https://www.binance.com/bapi/defi/v1/public/alpha-trade/agg-trades?limit=1&symbol=${symbol}' | jq '.data[0].p' | xargs | awk '{printf "%.5f\n", $1}'
+  fetchCryptoPrice = symbol: icon: {
+    interval = 300;
+    format = "{}";
+    return-type = "plain";
+    exec = pkgs.writeShellScript "crypto-${symbol}" ''
+      ${pkgs.curl}/bin/curl -Lsf --max-time 5 \
+        "https://api.binance.com/api/v3/ticker/price?symbol=${symbol}" \
+        | ${pkgs.jq}/bin/jq -r '"${icon} " + (.price | tonumber | floor | tostring)' \
+        || echo "${icon} N/A"
     '';
     tooltip = false;
   };
 in {
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
-    systemd.targets = ["graphical-session.target"];
+
+    systemd = {
+      enable = true;
+      target = "graphical-session.target";
+    };
 
     settings = [
       {
         layer = "bottom";
         position = "bottom";
+
         margin = "0 10 5 10";
-        spacing = 8;
-        modules-left = ["hyprland/workspaces"];
-        modules-center = ["custom/weather" "group/crypto" "clock"];
-        modules-right = ["group/cpu-temperature-memory" "group/network-bluetooth-pulseaudio-backlight-battery" "group/tray-notification" "group/powermenu"];
+        spacing = 6;
+
+        modules-left = [
+          "hyprland/workspaces"
+        ];
+
+        modules-center = [
+          "clock"
+          "group/crypto"
+        ];
+
+        modules-right = [
+          "cpu"
+          "memory"
+          "temperature"
+          "network"
+          "bluetooth"
+          "pulseaudio"
+          "backlight"
+          "battery"
+          "tray"
+          "custom/notification"
+          "group/powermenu"
+        ];
+
+        ########################################
+        # WORKSPACES
+        ########################################
 
         "hyprland/workspaces" = {
           format = "{id}";
-          on-click = "activate";
           disable-scroll = true;
           all-outputs = false;
-          show-special = true;
+          show-special = false;
         };
 
-        "custom/weather" = {
-          format = "{}°";
-          tooltip = true;
-          interval = 3600;
-          exec = "${pkgs.wttrbar}/bin/wttrbar  --hide-conditions --location Hanoi";
-          return-type = "json";
+        ########################################
+        # CLOCK
+        ########################################
+
+        clock = {
+          interval = 60;
+          format = "{:%b %d %H:%M}";
+          tooltip-format = "{:%A, %d %B %Y}";
         };
 
-        "custom/btc" = fetchCryptoPrice {
-          symbol = "BTCUSDT";
-          format = "󰠓: {}";
-        };
+        ########################################
+        # CRYPTO
+        ########################################
 
-        "custom/eth" = fetchCryptoPrice {
-          symbol = "ETHUSDT";
-          format = "󰡪: {}";
-        };
-
-        "custom/bnb" = fetchCryptoPrice {
-          symbol = "BNBUSDT";
-          format = "❖: {}";
-        };
-
-        "custom/link" = fetchCryptoPrice {
-          symbol = "LINKUSDT";
-          format = "Ł: {}";
-        };
-
-        "custom/ada" = fetchCryptoPrice {
-          symbol = "ADAUSDT";
-          format = "₳: {}";
-        };
+        "custom/btc" = fetchCryptoPrice "BTCUSDT" "󰠓";
+        "custom/eth" = fetchCryptoPrice "ETHUSDT" "󰡪";
+        "custom/bnb" = fetchCryptoPrice "BNBUSDT" "❖";
 
         "group/crypto" = {
+          orientation = "horizontal";
           modules = [
             "custom/btc"
             "custom/eth"
             "custom/bnb"
-            "custom/link"
-            "custom/ada"
           ];
-          orientation = "inherit";
         };
 
-        clock = {
-          format = "{:%b %d %H:%M}";
-          actions = {
-            on-scroll-down = "shift_down";
-            on-scroll-up = "shift_up";
-          };
-          tooltip-format = "<tt><small>{calendar}</small></tt>";
-          calendar = {
-            format = {
-              days = "<span color='#98989d'><b>{}</b></span>";
-              months = "<span color='#ffffff'><b>{}</b></span>";
-              today = "<span color='#ffffff'><b><u>{}</u></b></span>";
-              weekdays = "<span color='#0a84ff'><b>{}</b></span>";
-            };
-            mode = "month";
-            on-scroll = 1;
-          };
-        };
+        ########################################
+        # CPU / MEMORY / TEMP
+        ########################################
 
         cpu = {
-          interval = 1;
-          format = "{}%  {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}";
-          "format-icons" = [
-            "<span color='#a6e3a1'>▁</span>"
-            "<span color='#b4dd9c'>▂</span>"
-            "<span color='#d5db95'>▃</span>"
-            "<span color='#f9e2af'>▄</span>"
-            "<span color='#fab387'>▅</span>"
-            "<span color='#f59ca5'>▆</span>"
-            "<span color='#f38ba8'>▇</span>"
-            "<span color='#eba0ac'>█</span>"
-          ];
-        };
-
-        "temperature" = {
-          "critical-threshold" = 80;
-          "hwmon-path" = "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon4/temp1_input";
-          "format-critical" = "{temperatureC}°C ";
-          "format" = "{temperatureC}°C ";
-        };
-
-        "memory" = {
-          "interval" = 5;
-          "format" = "{used:0.1f}Gb ";
-        };
-
-        "custom/nvidia" = {
-          exec = "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1%  \\2°C /g'";
-          format = "{}";
           interval = 5;
+          format = " {usage}%";
+          tooltip = false;
         };
 
-        "group/cpu-temperature-memory" = {
-          "modules" = [
-            "cpu"
-            "temperature"
-            "memory"
-            # "custom/nvidia"
-          ];
-          "orientation" = "inherit";
+        memory = {
+          interval = 10;
+          format = " {}%";
+          tooltip-format = "{used:0.1f}G / {total:0.1f}G";
         };
 
-        tray = {
-          icon-size = 16;
-          show-passive-items = true;
-          spacing = 8;
+        temperature = {
+          critical-threshold = 85;
+          format = " {temperatureC}°C";
+          format-critical = "󰸁 {temperatureC}°C";
         };
 
-        "custom/notification" = {
-          exec = "swaync-client -swb";
-          return-type = "json";
-          format = "{icon}";
-          format-icons = {
-            notification = "󰂚";
-            none = "󰂜";
-            dnd-notification = "󰂛";
-            dnd-none = "󰪑";
-            inhibited-notification = "󰂛";
-            inhibited-none = "󰪑";
-            dnd-inhibited-notification = "󰂛";
-            dnd-inhibited-none = "󰪑";
-          };
-          on-click = "swaync-client -t -sw";
-          on-click-right = "swaync-client -d -sw";
-          tooltip = true;
-          escape = true;
-        };
-
-        "group/tray-notification" = {
-          "modules" = [
-            "tray"
-            "custom/notification"
-          ];
-          "orientation" = "inherit";
-        };
-
-        "bluetooth" = {
-          "format" = "";
-          "tooltip-format" = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
-          "tooltip-format-connected" = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
-          "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
-          "tooltip-format-enumerate-connected-battery" = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
-          "on-click" = "blueman-manager";
-        };
+        ########################################
+        # NETWORK
+        ########################################
 
         network = {
+          interval = 5;
+
           format-wifi = "󰤨";
           format-ethernet = "󰈀";
-          format-disconnected = "";
-          tooltip-format-wifi = "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}";
-          tooltip-format-ethernet = "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}";
+          format-disconnected = "󰤭";
+
+          tooltip-format-wifi = "{essid} ({signalStrength}%)";
+          tooltip-format-ethernet = "{ifname}";
           tooltip-format-disconnected = "Disconnected";
+
           on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
         };
 
+        ########################################
+        # BLUETOOTH
+        ########################################
+
+        bluetooth = {
+          format = "";
+          tooltip = false;
+          on-click = "blueman-manager";
+        };
+
+        ########################################
+        # AUDIO
+        ########################################
+
         pulseaudio = {
+          scroll-step = 2;
+
           format = "{icon}";
-          format-bluetooth = "󰂯";
           format-muted = "󰖁";
+
           format-icons = {
-            hands-free = "󱡏";
-            headphone = "󰋋";
-            headset = "󰋎";
-            default = ["󰕿" "󰖀" "󰕾"];
+            default = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
+            ];
           };
-          tooltip-format = "Volume: {volume}%";
+
+          tooltip-format = "{volume}%";
+
           on-click = "${pkgs.pamixer}/bin/pamixer --toggle-mute";
           on-click-right = "${terminal} -e pulsemixer";
-          on-scroll-up = "${pkgs.pamixer}/bin/pamixer --decrease 1";
-          on-scroll-down = "${pkgs.pamixer}/bin/pamixer --increase 1";
+
+          on-scroll-up = "${pkgs.pamixer}/bin/pamixer -i 2";
+          on-scroll-down = "${pkgs.pamixer}/bin/pamixer -d 2";
         };
-        "pulseaudio/slider" = {
-          min = 0;
-          max = 100;
-          orientation = "horizontal";
-        };
-        "group/audio-slider" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 300;
-            children-class = "audio-slider-child";
-            transition-left-to-right = true;
-          };
-          modules = ["pulseaudio" "pulseaudio/slider"];
-        };
+
+        ########################################
+        # BACKLIGHT
+        ########################################
 
         backlight = {
           format = "{icon}";
-          format-icons = ["󰝦" "󰪞" "󰪟" "󰪠" "󰪡" "󰪢" "󰪣" "󰪤" "󰪥"];
-          tooltip-format = "Backlight: {percent}%";
-          on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set 1%-";
-          on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set +1%";
+          format-icons = [
+            "󰃞"
+            "󰃟"
+            "󰃠"
+          ];
+
+          tooltip-format = "{percent}%";
+
+          on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set +2%";
+          on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 2%-";
         };
 
-        "backlight/slider" = {
-          min = 0;
-          max = 100;
-          orientation = "horizontal";
-        };
-
-        "group/light-slider" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 300;
-            children-class = "light-slider-child";
-            transition-left-to-right = true;
-          };
-          modules = ["backlight" "backlight/slider"];
-        };
+        ########################################
+        # BATTERY
+        ########################################
 
         battery = {
-          format = "{icon}";
-          format-charging = "󱐋";
-          format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-          format-plugged = "󰚥";
+          interval = 30;
+
           states = {
             warning = 30;
-            critical = 20;
+            critical = 15;
           };
-          tooltip-format = "{timeTo}, {capacity}%";
+
+          format = "{icon}";
+          format-charging = "󰂄";
+          format-plugged = "󱘖";
+
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
+
+          tooltip-format = "{capacity}%";
         };
 
-        "group/network-bluetooth-pulseaudio-backlight-battery" = {
-          modules = [
-            "network"
-            "bluetooth"
-            "group/audio-slider"
-            "group/light-slider"
-            "battery"
-          ];
-          orientation = "inherit";
+        ########################################
+        # TRAY
+        ########################################
+
+        tray = {
+          icon-size = 14;
+          spacing = 6;
+          show-passive-items = false;
+        };
+
+        ########################################
+        # NOTIFICATIONS
+        ########################################
+
+        "custom/notification" = {
+          interval = 10;
+          exec = "swaync-client -D";
+          format = "";
+          tooltip = false;
+          on-click = "swaync-client -t";
+        };
+
+        ########################################
+        # POWERMENU
+        ########################################
+
+        "custom/lock" = {
+          format = "󰌾";
+          tooltip = false;
+          on-click = "${pkgs.systemd}/bin/loginctl lock-session";
+        };
+
+        "custom/suspend" = {
+          format = "󰤄";
+          tooltip = false;
+          on-click = "${pkgs.systemd}/bin/systemctl suspend";
+        };
+
+        "custom/reboot" = {
+          format = "󰜉";
+          tooltip = false;
+          on-click = "${pkgs.systemd}/bin/systemctl reboot";
         };
 
         "custom/power" = {
           format = "󰐥";
+          tooltip = false;
           on-click = "${pkgs.systemd}/bin/systemctl poweroff";
-          tooltip = false;
-        };
-        "custom/exit" = {
-          format = "󰈆";
-          on-click = "${pkgs.systemd}/bin/loginctl terminate-user $USER";
-          tooltip = false;
-        };
-        "custom/lock" = {
-          format = "󰌾";
-          on-click = "${pkgs.systemd}/bin/loginctl lock-session";
-          tooltip = false;
-        };
-        "custom/suspend" = {
-          format = "󰤄";
-          on-click = "${pkgs.systemd}/bin/systemctl suspend";
-          tooltip = false;
-        };
-        "custom/reboot" = {
-          format = "󰜉";
-          on-click = "${pkgs.systemd}/bin/systemctl reboot";
-          tooltip = false;
         };
 
         "group/powermenu" = {
-          drawer = {
-            children-class = "powermenu-child";
-            transition-duration = 300;
-            transition-left-to-right = false;
-          };
+          orientation = "horizontal";
+
           modules = [
-            "custom/power"
-            "custom/exit"
             "custom/lock"
             "custom/suspend"
             "custom/reboot"
+            "custom/power"
           ];
-          orientation = "inherit";
         };
       }
     ];
 
     style = ''
       * {
-        all: unset;
-        color: @white;
-        font:
-          11pt "Inter",
-          Inter,
-          sans-serif;
+        border: none;
+        border-radius: 10px;
+        min-height: 0;
+        font-family: Inter, sans-serif;
+        font-size: 11pt;
       }
 
-      #waybar {
+      window#waybar {
         background: transparent;
       }
 
       #workspaces,
-      #custom-weather,
-      #crypto,
       #clock,
-      #cpu-temperature-memory,
-      #tray-notification,
-      #network-bluetooth-pulseaudio-backlight-battery,
-      #powermenu {
-        padding: 0.4rem 0.5rem;
-        background-color: rgba(36, 49, 99, 0.85);
-        border-radius: 1rem;
-      }
-
-      #workspaces button {
-        border-radius: 100%;
-        min-width: 1.25rem;
-        margin-right: 0.35rem;
-        transition: 200ms linear;
-      }
-
-      #workspaces button:last-child {
-        margin-right: 0;
-      }
-
-      #workspaces button:hover {
-        background: @lavender;
-      }
-
-      #workspaces button.empty {
-        background: @surface2;
-      }
-
-      #workspaces button.empty:hover {
-        background: @lavender;
-      }
-
-      #workspaces button.urgent {
-        background: @red;
-      }
-
-      #workspaces button.urgent:hover {
-        background: lighter(@red);
-      }
-
-      #workspaces button.special {
-        background: @yellow;
-      }
-
-      #workspaces button.special:hover {
-        background: lighter(@yellow);
-      }
-
-      #workspaces button.active {
-        background: @mauve;
-      }
-
-      #workspaces button.active:hover {
-        background: @lavender;
-      }
-
-      #custom-weather {
-        color: @sky;
-      }
-
-      #custom-btc,
-      #custom-eth,
-      #custom-bnb,
-      #custom-link,
-      #custom-ada {
-        margin-right: 0.35rem;
-      }
-
-      #custom-btc {
-        color: @yellow;
-      }
-
-      #custom-eth {
-        color: @lavender;
-      }
-
-      #custom-bnb {
-        color: @yellow;
-      }
-
-      #custom-link {
-        color: @blue;
-      }
-
-      #custom-ada {
-        color: @sapphire;
-      }
-
-      #clock {
-        color: @sky;
-      }
-
+      #crypto,
       #cpu,
+      #memory,
       #temperature,
-      #memory {
-        margin-right: 0.5rem;
-      }
-
-      #cpu {
-        color: @mauve;
-      }
-
-      #temperature {
-        color: @blue;
-      }
-
-      #temperature.critical {
-        color: @blue;
-      }
-
-      #memory {
-        color: @pink;
-      }
-
-      #custom-nvidia {
-        color: @blue;
-      }
-
-      #tray {
-        margin-right: 0.35rem;
-      }
-
-      #custom-notification {
-        color: @yellow;
-      }
-
-      #bluetooth.off {
-        color: @red;
-      }
-
-      #bluetooth.on {
-        color: @blue;
-      }
-
-      #bluetooth.connected {
-        color: @green;
-      }
-
-      #bluetooth.discoverable {
-        color: @sky;
-      }
-
-      #bluetooth.discovering {
-        color: @yellow;
-      }
-
-      #bluetooth.pairable {
-        color: @lavender;
-      }
-
-      #bluetooth.no-controller {
-        color: @red;
-      }
-
       #network,
       #bluetooth,
       #pulseaudio,
-      #pulseaudio-slier,
-      #backlight {
-        margin-right: 0.35rem;
+      #backlight,
+      #battery,
+      #tray,
+      #custom-notification,
+      #powermenu {
+        background: rgba(36, 49, 99, 0.85);
+        padding: 0.35rem 0.6rem;
+        margin: 0 2px;
+      }
+
+      #workspaces button {
+        padding: 0 6px;
+        min-width: 18px;
+      }
+
+      #workspaces button.active {
+        background: rgba(255,255,255,0.15);
+      }
+
+      #custom-btc {
+        color: #f9e2af;
+      }
+
+      #custom-eth {
+        color: #cba6f7;
+      }
+
+      #custom-bnb {
+        color: #fcd34d;
+      }
+
+      #cpu {
+        color: #cba6f7;
+      }
+
+      #memory {
+        color: #f5c2e7;
+      }
+
+      #temperature {
+        color: #89b4fa;
       }
 
       #network {
-        color: @blue;
+        color: #89dceb;
       }
 
-      #network.disconnected {
-        color: @red;
+      #bluetooth {
+        color: #94e2d5;
       }
 
       #pulseaudio {
-        color: @mauve;
-      }
-
-      #pulseaudio.muted {
-        color: @red;
-      }
-
-      #pulseaudio-slider trough {
-        min-height: 8px;
-        min-width: 80px;
-        border-radius: 5px;
-        background-color: black;
-        margin-right: 0.35rem;
-      }
-      #pulseaudio-slider highlight {
-        min-width: 10px;
-        border-radius: 5px;
-        background-color: @mauve;
-      }
-
-      #backlight {
-        color: @rosewater;
-      }
-
-      #backlight-slider trough {
-        min-height: 8px;
-        min-width: 80px;
-        border-radius: 5px;
-        background-color: black;
-        margin-right: 0.35rem;
-      }
-      #backlight-slider highlight {
-        min-width: 10px;
-        border-radius: 5px;
-        background-color: @rosewater;
+        color: #fab387;
       }
 
       #battery {
-        color: @green;
+        color: #a6e3a1;
       }
 
-      #battery.critical:not(.charging) {
-        color: @red;
-        animation: blink 0.5s steps(12) infinite alternate;
+      #battery.warning {
+        color: #f9e2af;
       }
 
-      #custom-exit,
-      #custom-lock,
-      #custom-suspend,
-      #custom-reboot {
-        margin-right: 0.35rem;
-      }
-
-      #custom-exit {
-        color: @blue;
-      }
-
-      #custom-lock {
-        color: @green;
-      }
-
-      #custom-suspend {
-        color: @yellow;
-      }
-
-      #custom-reboot {
-        color: @orange;
+      #battery.critical {
+        color: #f38ba8;
       }
 
       #custom-power {
-        color: @red;
+        color: #f38ba8;
       }
     '';
   };

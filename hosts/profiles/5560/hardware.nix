@@ -10,4 +10,5 @@
       enable32Bit = true;
     };
   };
+  powerManagement.enable = true;
 }

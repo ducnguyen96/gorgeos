@@ -9,7 +9,7 @@
 
     packages = with pkgs; [
       # shotcut # video editor
-      # remmina # Remote desktop client written in GTK
+      remmina # Remote desktop client written in GTK
       # telegram-desktop
       # google-chrome # browser
       # gimp # image editor
@@ -23,10 +23,11 @@
       # heroku
       # postman
       # code-cursor
-      # lazysql
+      lazysql
       # authenticator
       # godot
-      # bruno
+      bruno
+      codex
       # antigravity
     ];
   };
