@@ -7,7 +7,7 @@ in {
     # ./programs/wofi.nix
 
     # bar
-    #./programs/waybar
+    ./programs/waybar.nix
 
     # notifications daemon
     # ./services/dunst.nix

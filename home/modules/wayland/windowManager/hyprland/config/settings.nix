@@ -46,7 +46,6 @@ in {
     };
 
     dwindle = {
-      pseudotile = true;
       preserve_split = true;
     };
 
@@ -120,7 +119,6 @@ in {
       disable_autoreload = true;
       disable_hyprland_logo = true;
       force_default_wallpaper = 0;
-      vfr = true;
       vrr = 1;
     };
 

@@ -32,7 +32,7 @@ in {
           # compositor commands
           "SUPERSHIFT, E, exec, pkill Hyprland"
           "SUPER, Q, killactive"
-          "SUPER, S, togglesplit"
+          "SUPER, S, layoutmsg, togglesplit"
           "SUPER, F, fullscreen"
           "SUPERSHIFT, F, togglefloating"
           "SUPERSHIFT, P, pin"
