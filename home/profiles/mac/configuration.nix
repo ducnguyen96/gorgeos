@@ -7,6 +7,7 @@
       heroku
       scrcpy
 
+      codex
       gdscript-formatter
     ];
   };

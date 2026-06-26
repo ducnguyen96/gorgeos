@@ -6,6 +6,7 @@
     ./go.nix
     ./kubernetes.nix
     ./lua.nix
+    ./markdown.nix
     ./nix.nix
     ./php.nix
     ./python.nix
@@ -39,13 +40,18 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
+    markdown = {
+      enable = true;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
     nix = {
       enable = true;
       useMasonLSP = false;
       asHomePkgs = true;
     };
     python = {
-      enable = false;
+      enable = true;
       useMasonLSP = false;
       asHomePkgs = true;
     };

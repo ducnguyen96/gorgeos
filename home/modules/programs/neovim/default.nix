@@ -34,9 +34,10 @@
     angular = ["angularls"];
     tailwind = ["tailwindcss-language-server"];
     sql = ["sqlfluff"];
+    markdown = ["marksman"];
   };
 
-  supportedLanguages = ["go" "nix" "rust" "sql" "tailwind" "terraform" "typescript" "vue" "clangd" "python" "php" "tex" "angular"];
+  supportedLanguages = ["go" "nix" "rust" "sql" "tailwind" "terraform" "typescript" "vue" "clangd" "python" "php" "tex" "angular" "markdown"];
 
   # Generate language imports for all supported languages
   languageImports = builtins.concatStringsSep "\n          " (map languageImport supportedLanguages);

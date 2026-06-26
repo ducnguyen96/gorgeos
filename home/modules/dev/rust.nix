@@ -13,5 +13,6 @@ in {
     home.packages = with pkgs;
       lib.optionals (!cfg.useMasonLSP) [rust-analyzer]
       ++ lib.optionals cfg.asHomePkgs [cargo rustc lld rustfmt cargo-generate];
+    home.sessionVariables.RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
   };
 }

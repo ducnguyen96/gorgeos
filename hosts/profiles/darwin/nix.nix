@@ -41,7 +41,14 @@
   nixpkgs = {
     config.allowUnfree = true;
     hostPlatform = "aarch64-darwin";
-    overlays = [];
+    overlays = [
+      (final: prev: {
+        lix = prev.lix.overrideAttrs (old: {
+          doCheck = false;
+          doInstallCheck = false;
+        });
+      })
+    ];
   };
 
   system = {
