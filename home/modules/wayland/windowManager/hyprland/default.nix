@@ -1,5 +1,4 @@
-{pkgs, ...}: let
-in {
+{
   imports = [
     ./config
 

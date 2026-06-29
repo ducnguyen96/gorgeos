@@ -52,10 +52,15 @@
     osConfig ? systemConfigurations.${hostname}.config,
   }: let
     inherit (systemConfigurations.${hostname}) pkgs;
+
+    nixConfigModule = {
+      nix.package = pkgs.nix;
+    };
   in
     homeManagerInput.lib.homeManagerConfiguration {
       extraSpecialArgs = {inherit osConfig inputs self;};
-      inherit pkgs modules;
+      modules = [nixConfigModule] ++ modules;
+      inherit pkgs;
     };
 
   mkDesktop = hostname:

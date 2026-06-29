@@ -5,6 +5,7 @@
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
+      "https://cache.nixos.org"
     ];
 
     trusted-public-keys = [

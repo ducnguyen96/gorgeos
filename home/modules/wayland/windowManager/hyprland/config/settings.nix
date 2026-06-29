@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   osConfig,
   ...
@@ -122,7 +121,7 @@ in {
       vrr = 1;
     };
 
-    workspace = workspace;
+    inherit workspace;
 
     monitor = [
       monitor_one
