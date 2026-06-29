@@ -54,7 +54,7 @@
     inherit (systemConfigurations.${hostname}) pkgs;
 
     nixConfigModule = {
-      nix.package = pkgs.nix;
+      nix.package = osConfig.nix.package;
     };
   in
     homeManagerInput.lib.homeManagerConfiguration {

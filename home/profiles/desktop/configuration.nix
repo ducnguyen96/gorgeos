@@ -22,7 +22,7 @@
       # slack
       # heroku
       # postman
-      # code-cursor
+      code-cursor
       lazysql
       # authenticator
       # godot
