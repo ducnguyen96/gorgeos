@@ -90,6 +90,7 @@ in {
   "desktop@e14g2" = mkDesktop "e14g2";
   "desktop@5560" = mkDesktop "5560";
   "desktop@rtx2070" = mkDesktop "rtx2070";
+  "desktop@mac" = mkDesktop "mac";
   "desktop@utm" = mkDesktop "utm";
 
   droid = mkDroid "default";

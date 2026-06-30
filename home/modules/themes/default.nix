@@ -10,10 +10,10 @@
 
     nvim.enable = false;
     kitty.enable = false;
-    # cursors = {
-    #   enable = true;
-    #   accent = "light";
-    # };
+    cursors = {
+      enable = true;
+      accent = "light";
+    };
     waybar.enable = true;
     rofi.enable = true;
   };

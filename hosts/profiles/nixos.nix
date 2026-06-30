@@ -51,10 +51,10 @@ in {
     modules = [./rtx2070/configuration.nix ./rtx2070/hardware.nix ../modules/services/blueman.nix] ++ defaultModules;
   };
 
-  "utm" = nixosSystem {
+  "mac" = nixosSystem {
     inherit specialArgs;
     system = "aarch64-linux";
 
-    modules = [./utm/configuration.nix ./utm/hardware.nix {services.spice-vdagentd.enable = true;}] ++ defaultModules;
+    modules = [./mac/configuration.nix ./mac/hardware.nix] ++ defaultModules;
   };
 }

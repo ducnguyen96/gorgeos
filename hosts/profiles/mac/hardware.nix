@@ -4,7 +4,7 @@
   ];
 
   hardware = {
-    i2c.enable = true;
     graphics.enable = true;
+    parallels.enable = true;
   };
 }

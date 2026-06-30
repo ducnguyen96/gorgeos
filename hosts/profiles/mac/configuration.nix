@@ -3,7 +3,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  networking.hostName = "utm";
+  networking.hostName = "mac";
 
   boot = {
     loader = {
@@ -17,12 +17,6 @@
         gfxmodeEfi = "1920x1080";
       };
     };
-  };
-
-  fileSystems."/mnt/share" = {
-    device = "share";
-    fsType = "9p";
-    options = ["trans=virtio" "version=9p2000.L" "msize=1048576" "rw"];
   };
 
   environment = {
