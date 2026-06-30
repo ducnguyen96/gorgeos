@@ -59,6 +59,8 @@
     initContent = lib.mkOrder 550 ''
       eval "$(${pkgs.starship}/bin/starship init zsh)"
       export PATH="$HOME/.local/share/fnm:$PATH"
+      export GOPATH=$HOME/go
+      export PATH=$PATH:$GOPATH/bin
       eval "$(fnm env --use-on-cd --shell zsh)"
       fpath+=("$HOME/.config/zsh/extra-completions")
 
