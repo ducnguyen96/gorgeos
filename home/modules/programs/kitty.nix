@@ -7,7 +7,7 @@
     shellIntegration.enableZshIntegration = true;
     settings = {
       active_tab_font_style = "bold";
-      # background_opacity = "0.8";
+      background_opacity = "0.8";
       bold_font = "auto";
       bold_italic_font = "auto";
       confirm_os_window_close = 0;

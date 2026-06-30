@@ -47,6 +47,7 @@ in {
           "ALTSHIFT, Tab, cyclenext, prev"
           "ALTSHIFT, Tab, bringactivetotop"
           "SUPER, Tab, exec, hyprctl --batch 'dispatch focuscurrentorlast f; dispatch bringactivetotop'"
+          "ALT, Tab, exec, hyprctl --batch 'dispatch focuscurrentorlast f; dispatch bringactivetotop'"
 
           # move focus
           "SUPER, left, movefocus, l"
