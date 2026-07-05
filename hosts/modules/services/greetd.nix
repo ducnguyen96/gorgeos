@@ -11,7 +11,7 @@
       default_session = {
         command = lib.concatStringsSep " " [
           (lib.getExe pkgs.tuigreet)
-          "--cmd '${config.programs.hyprland.package}/bin/start-hyprland'"
+          "--cmd 'uwsm start hyprland-session.desktop'" # Sử dụng UWSM thay vì gọi trực tiếp start-hyprland
           "--remember"
           "--remember-session"
           "--asterisks"

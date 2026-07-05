@@ -20,7 +20,7 @@ in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    systemd.targets = ["graphical-session.target"];
+    systemd.targets = ["hyprland-session.target"];
 
     settings = [
       {

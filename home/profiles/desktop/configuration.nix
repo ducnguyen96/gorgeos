@@ -31,6 +31,8 @@
       localsend
       railway
       gh
+      cursor-cli
+      sqlite
       # antigravity
     ];
   };

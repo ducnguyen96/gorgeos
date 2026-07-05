@@ -27,6 +27,7 @@
       variables = ["--all"];
       extraCommands = [
         "systemctl --user stop graphical-session.target"
+        "sleep 1"
         "systemctl --user start hyprland-session.target"
       ];
     };
