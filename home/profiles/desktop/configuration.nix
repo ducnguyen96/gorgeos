@@ -11,15 +11,15 @@
       # shotcut # video editor
       remmina # Remote desktop client written in GTK
       # telegram-desktop
-      # google-chrome # browser
+      google-chrome # browser
       # gimp # image editor
       # audacity
       # chromium
       # dbeaver-bin # Sql client
       # android-tools
       # scrcpy
-      # cloudflare-warp
-      # slack
+      cloudflare-warp
+      slack
       # heroku
       # postman
       code-cursor
@@ -28,6 +28,9 @@
       # godot
       bruno
       codex
+      localsend
+      railway
+      gh
       # antigravity
     ];
   };

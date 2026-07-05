@@ -16,5 +16,9 @@
     };
     waybar.enable = true;
     rofi.enable = true;
+    swaync.enable = true;
+    gtk = {
+      icon.enable = true;
+    };
   };
 }
