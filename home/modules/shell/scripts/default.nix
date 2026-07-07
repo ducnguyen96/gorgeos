@@ -12,5 +12,6 @@
     ./wofi-workspace-swap.nix
     ./xrdp.nix
     ./show-and-hide.nix
+    ./toggle-touchpad.nix
   ];
 }

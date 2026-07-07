@@ -24,7 +24,7 @@
     ../modules/services/networking.nix
     ../modules/services/openssh.nix
     ../modules/services/pipewire.nix
-    ../modules/services/gnome-keyring.nix
+    # ../modules/services/gnome-keyring.nix
 
     # virtualization
     ../modules/virtualization/docker.nix

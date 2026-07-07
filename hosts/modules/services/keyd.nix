@@ -12,36 +12,34 @@ let
       space = "enter";
       tab = "A-tab";
 
-      h = "left";
-      l = "right";
-      j = "down";
-      k = "up";
+      h = "A-h";
+      l = "A-l";
+      j = "A-j";
+      k = "A-k";
       b = "home";
       n = "end";
       r = "@";
 
       q = "'";
-      w = ''"'';
+      a = "left";
+      w = "up";
+      s = "down";
+      d = "right";
       e = "equal";
       p = "+";
       m = "-";
-      u = "A-j";
-      i = "A-k";
+      u = "A-u";
+      i = "A-i";
+      c = "C-S-c";
       v = "C-S-v";
 
       "1" = "(";
-      "2" = ")";
+      "2" = "[";
       "3" = "{";
-      "4" = "}";
 
       f = "-";
-      a = "[";
-      d = "]";
 
-      s = "/";
       x = "backspace";
-      z = "{";
-      c = "}";
     };
   };
 in {
