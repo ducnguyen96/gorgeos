@@ -24,14 +24,14 @@
       alt - e : skhd -k "0x18"                  # =
       alt - p : skhd -k "shift - 0x18"          # +
       alt - m : skhd -k "0x1B"                  # -
-      alt - f : skhd -k "0x1B"                  # -
+      alt - f : skhd -k "alt - f"                  # -
       alt + shift - f : skhd -k "shift - 0x1B"  # _
 
       alt - 1 : skhd -k "shift - 9"    # (
       alt - 2 : skhd -k "shift - 0"    # )
       alt - 3 : skhd -k "shift - 0x21"    # {
       alt - 4 : skhd -k "shift - 0x1E"    # }
-      alt - a : skhd -k "0x21"            # [
+      alt - a : skhd -k "alt - a"            # [
       alt - d : skhd -k "0x1E"            # ]
       alt - s : skhd -k "0x2C"            # /
 
@@ -128,7 +128,7 @@
       # ── App launchers ──────────────────────────────────────────────────────────────
       cmd - return         : open -na kitty
       cmd + shift - return : open -na kitty --args nvim --args 'terminal' -c 'startinsert'
-      cmd - n              : open -na kitty --args nvim
+      cmd - n              : open -na kitty --args zsh -i -c nvim
       cmd - f1             : open -na kitty --args lazysql
 
       # ── Screenshots ──────────────────────────────────────────────────────────────

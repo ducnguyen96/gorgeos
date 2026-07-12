@@ -105,7 +105,7 @@ in {
           "SUPER, C, exec, rofi -show calc -modi calc -no-show-match -no-sort"
           "SUPER, E, exec, bemoji"
           "SUPER, R, exec, ${terminal} --class ranger -e ranger"
-          "SUPER, N, exec, ${terminal} --class nvim -e nvim"
+          "SUPER, N, exec, ${terminal} --class nvim -e zsh -c nvim"
           "SUPER, F1, exec, ${terminal} --class nvim -e lazysql"
           "SUPER, O, exec, wofi-ollama"
           "SUPERSHIFT, W, exec, winrdp"

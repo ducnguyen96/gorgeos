@@ -69,7 +69,9 @@
       yabai -m rule --add app="^Godot$"              manage=off
       yabai -m rule --add app="wine"                 manage=off
       yabai -m rule --add app="^Blender$"            manage=off
-      yabai -m rule --add app="^Ki"           manage=off
+      yabai -m rule --add app="^Ki"                  manage=off
+      yabai -m rule --add app="^Imou"                manage=off
+      yabai -m rule --add app="^csgo"                manage=off
 
       # Float dialog / utility windows
       yabai -m rule --add type="dialog"  manage=off
