@@ -12,7 +12,7 @@
       jetbrains-mono
 
       # Custom Fonts
-      (google-fonts.override {fonts = ["Inter"];})
+      inter
       nerd-fonts.symbols-only
     ];
   };
