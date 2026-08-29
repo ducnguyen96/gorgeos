@@ -4,6 +4,8 @@
     config.permittedInsecurePackages = [
       "ventoy-1.1.10"
     ];
-    overlays = [];
+    overlays = [
+      (import ./overlays/bun.nix)
+    ];
   };
 }
