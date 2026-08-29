@@ -2,6 +2,7 @@
   # Common Wayland configuration shared by all Wayland desktop environments
   # Desktop-specific variables (like XDG_CURRENT_DESKTOP) should be set
   # in the respective desktop environment modules
+  home.pointerCursor.enable = true;
 
   home.sessionVariables = {
     # Toolkit backend
