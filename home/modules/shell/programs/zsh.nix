@@ -85,8 +85,6 @@
 
       export PATH="$HOME/.opencode/bin:$PATH"
       export PATH="$HOME/.local/bin:$PATH"
-      export ANTHROPIC_AUTH_TOKEN=ollama
-      export ANTHROPIC_BASE_URL=http://localhost:8000
 
       [ -f "$HOME/.config/.keys" ] && source "$HOME/.config/.keys"
     '';

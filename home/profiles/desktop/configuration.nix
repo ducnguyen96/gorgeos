@@ -34,6 +34,7 @@
       cursor-cli
       sqlite
       # antigravity
+      claude-code
     ];
   };
 

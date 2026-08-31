@@ -1,4 +1,4 @@
-{
+{inputs, ...}: {
   nixpkgs = {
     config.allowUnfree = true;
     config.permittedInsecurePackages = [
@@ -6,6 +6,7 @@
     ];
     overlays = [
       (import ./overlays/bun.nix)
+      inputs.claude-code-overlay.overlays.default
     ];
   };
 }
