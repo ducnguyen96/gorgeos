@@ -3,3 +3,4 @@
 -- Add any additional options here
 vim.g.root_spec = { { ".git" }, "cwd" }
 vim.env.PATH = "/opt/homebrew/bin:" .. vim.env.PATH
+vim.g.lazyvim_inlay_hints = { enabled = false }
