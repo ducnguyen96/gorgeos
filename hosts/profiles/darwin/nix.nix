@@ -42,6 +42,8 @@
     config.allowUnfree = true;
     hostPlatform = "aarch64-darwin";
     overlays = [
+      (import ../../modules/config/nix/overlays/bun.nix)
+      inputs.claude-code-overlay.overlays.default
       (final: prev: {
         lix = prev.lix.overrideAttrs (old: {
           doCheck = false;

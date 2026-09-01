@@ -9,6 +9,7 @@
 
       codex
       gdscript-formatter
+      claude-code
     ];
   };
 

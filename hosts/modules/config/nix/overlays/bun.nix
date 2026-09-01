@@ -20,6 +20,14 @@ final: prev: let
     }.${
       prev.stdenv.hostPlatform.system
     };
+
+  bunHash =
+    {
+      "x86_64-linux" = "sha256-LQP7X7g6yLVnrKCigbLOGhoZ1Ij1bClo2Iw/Jekv5FI=";
+      "aarch64-darwin" = "sha256-xmnpf2Fk4cluBwF0jbmN+ndJKQjL2DlMdVcTSnNd44E=";
+    }.${
+      prev.stdenv.hostPlatform.system
+    };
 in {
   bun = prev.stdenv.mkDerivation {
     pname = "bun";
@@ -27,7 +35,7 @@ in {
 
     src = prev.fetchurl {
       url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-${bunOs}-${bunArch}.zip";
-      hash = "sha256-LQP7X7g6yLVnrKCigbLOGhoZ1Ij1bClo2Iw/Jekv5FI=";
+      hash = bunHash;
     };
 
     nativeBuildInputs = [prev.unzip];

@@ -13,10 +13,9 @@
       "docker-compose"
       "colima"
       "lazysql"
-      "postgresql@18"
       "iproute2mac"
       "railway"
-      "ollama"
+      "ffmpeg"
 
       # aseprite build dependencies
       "ninja"
@@ -36,7 +35,8 @@
       {name = "blender";}
       {name = "antigravity";}
       {name = "monitorcontrol";}
-      {name = "whisky";}
+      {name = "ngrok";}
+      {name = "google-chrome";}
     ];
   };
 }

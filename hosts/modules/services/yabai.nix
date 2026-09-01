@@ -72,6 +72,7 @@
       yabai -m rule --add app="^Ki"                  manage=off
       yabai -m rule --add app="^Imou"                manage=off
       yabai -m rule --add app="^csgo"                manage=off
+      yabai -m rule --add app="^Legend of Darkness"                manage=off
 
       # Float dialog / utility windows
       yabai -m rule --add type="dialog"  manage=off
