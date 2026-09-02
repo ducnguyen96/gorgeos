@@ -57,6 +57,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # php74 was dropped after 22.05; kept unpinned to `nixpkgs` on purpose.
+    nixpkgs-php74.url = "github:NixOS/nixpkgs/nixos-22.05";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

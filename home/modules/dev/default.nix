@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./angular.nix
     ./aws.nix
@@ -70,7 +70,7 @@
       useMasonLSP = false;
       asHomePkgs = true;
     };
-    tailwind.enable = false;
+    tailwind.enable = true;
     sql = {
       enable = false;
       useMasonLSP = false;
@@ -83,6 +83,12 @@
     };
     terraform = {
       enable = false;
+      useMasonLSP = false;
+      asHomePkgs = true;
+    };
+    php = {
+      enable = true;
+      package = pkgs.php74;
       useMasonLSP = false;
       asHomePkgs = true;
     };

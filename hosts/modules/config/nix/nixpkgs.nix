@@ -6,6 +6,7 @@
     ];
     overlays = [
       (import ./overlays/bun.nix)
+      (import ./overlays/php74.nix {inherit inputs;})
       inputs.claude-code-overlay.overlays.default
     ];
   };

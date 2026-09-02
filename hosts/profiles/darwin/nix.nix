@@ -43,6 +43,7 @@
     hostPlatform = "aarch64-darwin";
     overlays = [
       (import ../../modules/config/nix/overlays/bun.nix)
+      (import ../../modules/config/nix/overlays/php74.nix {inherit inputs;})
       inputs.claude-code-overlay.overlays.default
       (final: prev: {
         lix = prev.lix.overrideAttrs (old: {
