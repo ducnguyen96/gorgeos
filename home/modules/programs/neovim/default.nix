@@ -97,7 +97,8 @@ in {
           { import = "lazyvim.plugins.extras.editor.snacks_picker" },
           { import = "lazyvim.plugins.extras.editor.refactoring" },
           { import = "lazyvim.plugins.extras.test.core" },
-          { import = "lazyvim.plugins.extras.dap.core" },
+          { import = "lazyvim.plugins.extras.ai.claudecode" },
+          { import = "lazyvim.plugins.extras.ai.supermaven" },
 
           ${languageImports}
 
