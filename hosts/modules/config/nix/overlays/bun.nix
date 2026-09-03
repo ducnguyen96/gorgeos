@@ -46,7 +46,7 @@ in {
       chmod +x $out/bin/bun
     '';
 
-    postFixup = prev.lib.optionalString prev.stdenv.isLinux ''
+    postFixup = prev.lib.optionalString prev.stdenv.hostPlatform.isLinux ''
       patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" $out/bin/bun
     '';
   };

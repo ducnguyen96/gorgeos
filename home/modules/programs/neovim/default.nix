@@ -62,7 +62,7 @@ in {
       # mermaid-cli
       # ghostscript
     ]
-    ++ lib.optionals pkgs.stdenv.isLinux [gcc15];
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [gcc15];
 
   programs.neovim = {
     enable = true;

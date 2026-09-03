@@ -7,10 +7,10 @@
       heroku
       scrcpy
 
-      codex
       gdscript-formatter
-      claude-code
       codex
+      claude-code
+      antigravity-cli
     ];
   };
 

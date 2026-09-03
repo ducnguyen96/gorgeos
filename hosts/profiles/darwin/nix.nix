@@ -21,6 +21,13 @@
       trusted-users = ["root" "@wheel"];
       experimental-features = ["nix-command" "flakes"];
 
+      deprecated-features = [
+        "or-as-identifier"
+        "broken-string-indentation"
+        "broken-string-escape"
+        "rec-set-dynamic-attrs"
+      ];
+
       substituters = [
         "https://cache.nixos.org?priority=10"
         "https://nix-community.cachix.org"
