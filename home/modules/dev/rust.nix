@@ -12,7 +12,7 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       lib.optionals (!cfg.useMasonLSP) [rust-analyzer]
-      ++ lib.optionals cfg.asHomePkgs [cargo rustc lld rustfmt cargo-generate];
+      ++ lib.optionals cfg.asHomePkgs [cargo rustc lld rustfmt cargo-generate clippy];
     home.sessionVariables.RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
   };
 }
