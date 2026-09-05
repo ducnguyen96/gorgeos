@@ -87,7 +87,7 @@
       asHomePkgs = true;
     };
     php = {
-      enable = true;
+      enable = false;
       package = pkgs.php74;
       useMasonLSP = false;
       asHomePkgs = true;

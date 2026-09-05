@@ -4,7 +4,6 @@
     homeDirectory = "/home/duc";
     sessionVariables = {
       XDG_SCREENSHOTS_DIR = "/home/duc/Screenshots";
-      LD_LIBRARY_PATH = "${pkgs.gcc15.cc.lib}/lib:/run/opengl-driver/lib:LD_LIBRARY_PATH";
     };
 
     packages = with pkgs; [
@@ -12,6 +11,7 @@
       remmina # Remote desktop client written in GTK
       # telegram-desktop
       google-chrome # browser
+      hyprshade
       # gimp # image editor
       # audacity
       # chromium

@@ -119,6 +119,10 @@ in {
           "SUPERSHIFT, Z, exec, swaync-client -d -sw"
           "SUPER, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
 
+          # shaders
+          "SUPERSHIFT, Up, exec, hyprshade toggle ~/.config/hypr/shaders/brightness-boost.glsl"
+          "SUPERSHIFT, Down, exec, hyprshade off"
+
           # screenshot
           ", Print, exec, ${runOnce "grimblast"} --notify copysave area"
           "CTRL, Print, exec, ${runOnce "grimblast"} --wait 2 --notify copysave area"
