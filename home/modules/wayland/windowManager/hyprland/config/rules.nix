@@ -4,11 +4,12 @@
     elements = lib.concatStringsSep "|" list;
   in "^(${elements})$";
 
-  mkFloatCenterSizeRule = matcher: value: size: [
-    "float on, ${matcher} ${value}"
-    "center on, ${matcher} ${value}"
-    "size ${size}, ${matcher} ${value}"
-  ];
+  mkFloatCenterSizeRule = class: size: {
+    match.class = "^(${class})$";
+    float = true;
+    center = true;
+    size = size;
+  };
 
   # Lists of applications
   floatingApps = [
@@ -38,43 +39,84 @@
 in {
   wayland.windowManager.hyprland.settings = {
     # Window rules (v0.53+ syntax)
-    windowrule =
+    window_rule =
       # Floating windows by class
-      (map (app: "float on, match:class ^(${app})$") floatingApps)
+      (map (app: {
+          match.class = "^(${app})$";
+          float = true;
+        })
+        floatingApps)
       # Floating windows by title
       ++ [
-        "float on, match:title ^(Media viewer)$"
-        "float on, match:title ^(Picture-in-Picture)$"
+        {
+          match.title = "^(Media viewer)$";
+          float = true;
+        }
+        {
+          match.title = "^(Picture-in-Picture)$";
+          float = true;
+        }
       ]
       # Pin rules
       ++ [
-        "pin on, match:class ^(showmethekey)$"
-        "pin on, match:title ^(Picture-in-Picture)$"
+        {
+          match.class = "^(showmethekey)$";
+          pin = true;
+        }
+        {
+          match.title = "^(Picture-in-Picture)$";
+          pin = true;
+        }
       ]
       # Dim around (authentication dialogs)
-      ++ (map (app: "dim_around on, match:class ^(${app})$") dimAroundApps)
+      ++ (map (app: {
+          match.class = "^(${app})$";
+          dim_around = true;
+        })
+        dimAroundApps)
       # Idle inhibit rules
       ++ [
-        "idle_inhibit focus, match:class ${toRegex idleInhibitApps}"
-        "idle_inhibit focus, match:class ^(firefox)$, match:title ^(.*YouTube.*)$"
-        "idle_inhibit fullscreen, match:class ^(firefox)$"
+        {
+          match.class = toRegex idleInhibitApps;
+          idle_inhibit = "focus";
+        }
+        {
+          match.class = "^(firefox)$";
+          match.title = "^(.*YouTube.*)$";
+          idle_inhibit = "focus";
+        }
+        {
+          match.class = "^(firefox)$";
+          idle_inhibit = "fullscreen";
+        }
       ]
       # Workspace rules for sharing indicators
       ++ [
-        "workspace special:silent, match:title ^(.*is sharing (your screen|a window)\\.)$"
-        "workspace special:silent, match:title ^(Firefox — Sharing Indicator)$"
+        {
+          match.title = "^(.*is sharing (your screen|a window)\\.)$";
+          workspace = "special:silent";
+        }
+        {
+          match.title = "^(Firefox — Sharing Indicator)$";
+          workspace = "special:silent";
+        }
       ]
       # Floating windows with custom size and center
-      ++ (mkFloatCenterSizeRule "match:class" "^(numbat)$" "500 200")
-      ++ (mkFloatCenterSizeRule "match:class" "^(ranger)$" "monitor_w*0.7 monitor_h*0.9")
-      ++ (mkFloatCenterSizeRule "match:class" "^(posting)$" "monitor_w*0.9 monitor_h*0.9")
-      ++ (mkFloatCenterSizeRule "match:class" "^(doxx)$" "monitor_w*0.7 monitor_h*0.9")
+      ++ [
+        (mkFloatCenterSizeRule "numbat" "500 200")
+        (mkFloatCenterSizeRule "ranger" "monitor_w*0.7 monitor_h*0.9")
+        (mkFloatCenterSizeRule "posting" "monitor_w*0.9 monitor_h*0.9")
+        (mkFloatCenterSizeRule "doxx" "monitor_w*0.7 monitor_h*0.9")
+      ]
       # Pixel 5 (special positioning)
       ++ [
-        "float on, match:title ^(Pixel 5)$"
-        "size 570 256, match:title ^(Pixel 5)$"
-        "pin on, match:title ^(Pixel 5)$"
-        "move 1400 -139, match:title ^(Pixel 5)$"
+        {
+          match.title = "^(Pixel 5)$";
+          float = true;
+          size = "570 256";
+          pin = true;
+          move = "1400 -139";
+        }
       ];
   };
 }

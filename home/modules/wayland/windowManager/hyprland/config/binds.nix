@@ -1,19 +1,31 @@
 {
   config,
+  lib,
   osConfig,
   pkgs,
   ...
 }: let
-  workspaces = builtins.concatLists (builtins.genList (
+  inline = lib.generators.mkLuaInline;
+
+  # All classic bind/binde/bindr/bindl/bindle/bindm variants collapse into a
+  # single hl.bind(keys, dispatcher, opts) call in Lua config; the variant is
+  # expressed via opts (repeating/locked/release/mouse) instead of a
+  # different top-level function.
+  mkBind = keys: dispatcher: opts: {
+    _args = [keys (inline dispatcher)] ++ lib.optional (opts != {}) opts;
+  };
+
+  workspaceBinds = builtins.concatLists (builtins.genList (
       x: let
         ws = let
           c = (x + 1) / 10;
         in
           builtins.toString (x + 1 - (c * 10));
+        n = toString (x + 1);
       in [
-        "SUPER, ${ws}, workspace, ${toString (x + 1)}"
-        "SUPER_SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-        "ALT_SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+        (mkBind "SUPER + ${ws}" "hl.dsp.focus({ workspace = ${n} })" {})
+        (mkBind "SUPER + SHIFT + ${ws}" "hl.dsp.window.move({ workspace = ${n} })" {})
+        (mkBind "ALT + SHIFT + ${ws}" "hl.dsp.window.move({ workspace = ${n}, follow = false })" {})
       ]
     )
     10);
@@ -30,149 +42,170 @@ in {
       bind =
         [
           # compositor commands
-          "SUPERSHIFT, E, exec, pkill Hyprland"
-          "SUPER, Q, killactive"
-          "SUPER, S, layoutmsg, togglesplit"
-          "SUPER, F, fullscreen"
-          "SUPERSHIFT, F, togglefloating"
-          "SUPERSHIFT, P, pin"
+          (mkBind "SUPER + SHIFT + E" ''hl.dsp.exec_cmd("pkill Hyprland")'' {})
+          (mkBind "SUPER + Q" "hl.dsp.window.close()" {})
+          (mkBind "SUPER + S" ''hl.dsp.layout("togglesplit")'' {})
+          (mkBind "SUPER + F" "hl.dsp.window.fullscreen()" {})
+          (mkBind "SUPER + SHIFT + F" "hl.dsp.window.float()" {})
+          (mkBind "SUPER + SHIFT + P" "hl.dsp.window.pin()" {})
 
           # grouped (tabbed) windows
-          "SUPER, G, togglegroup"
-          "SUPERSHIFT, TAB, changegroupactive, b"
+          (mkBind "SUPER + G" "hl.dsp.group.toggle()" {})
+          (mkBind "SUPER + SHIFT + TAB" "hl.dsp.group.prev()" {})
 
           # cycle through windows
-          "SUPERALT, Tab, cyclenext"
-          "SUPERALT, Tab, bringactivetotop"
-          "ALTSHIFT, Tab, cyclenext, prev"
-          "ALTSHIFT, Tab, bringactivetotop"
-          "SUPER, Tab, exec, hyprctl --batch 'dispatch focuscurrentorlast f; dispatch bringactivetotop'"
-          "ALT, Tab, exec, hyprctl --batch 'dispatch focuscurrentorlast f; dispatch bringactivetotop'"
+          (mkBind "SUPER + ALT + Tab" "hl.dsp.window.cycle_next()" {})
+          (mkBind "SUPER + ALT + Tab" "hl.dsp.window.bring_to_top()" {})
+          (mkBind "ALT + SHIFT + Tab" "hl.dsp.window.cycle_next({ next = false })" {})
+          (mkBind "ALT + SHIFT + Tab" "hl.dsp.window.bring_to_top()" {})
+          (mkBind "SUPER + Tab" ''hl.dsp.exec_cmd("hyprctl --batch 'dispatch focuscurrentorlast f; dispatch bringactivetotop'")'' {})
+          (mkBind "ALT + Tab" ''hl.dsp.exec_cmd("hyprctl --batch 'dispatch focuscurrentorlast f; dispatch bringactivetotop'")'' {})
 
           # move focus
-          "SUPER, left, movefocus, l"
-          "SUPER, right, movefocus, r"
-          "SUPER, up, movefocus, u"
-          "SUPER, down, movefocus, d"
-          "SUPER, H, movefocus, l"
-          "SUPER, L, movefocus, r"
-          "SUPER, K, movefocus, u"
-          "SUPER, J, movefocus, d"
+          (mkBind "SUPER + left" ''hl.dsp.focus({ direction = "left" })'' {})
+          (mkBind "SUPER + right" ''hl.dsp.focus({ direction = "right" })'' {})
+          (mkBind "SUPER + up" ''hl.dsp.focus({ direction = "up" })'' {})
+          (mkBind "SUPER + down" ''hl.dsp.focus({ direction = "down" })'' {})
+          (mkBind "SUPER + H" ''hl.dsp.focus({ direction = "left" })'' {})
+          (mkBind "SUPER + L" ''hl.dsp.focus({ direction = "right" })'' {})
+          (mkBind "SUPER + K" ''hl.dsp.focus({ direction = "up" })'' {})
+          (mkBind "SUPER + J" ''hl.dsp.focus({ direction = "down" })'' {})
 
           # move windows
-          "SUPERSHIFT, left, movewindow, l"
-          "SUPERSHIFT, right, movewindow, r"
-          "SUPERSHIFT, up, movewindow, u"
-          "SUPERSHIFT, down, movewindow, d"
-          "SUPERSHIFT, H, movewindow, l"
-          "SUPERSHIFT, L, movewindow, r"
-          "SUPERSHIFT, K, movewindow, u"
-          "SUPERSHIFT, J, movewindow, d"
+          (mkBind "SUPER + SHIFT + left" ''hl.dsp.window.move({ direction = "left" })'' {})
+          (mkBind "SUPER + SHIFT + right" ''hl.dsp.window.move({ direction = "right" })'' {})
+          (mkBind "SUPER + SHIFT + up" ''hl.dsp.window.move({ direction = "up" })'' {})
+          (mkBind "SUPER + SHIFT + down" ''hl.dsp.window.move({ direction = "down" })'' {})
+          (mkBind "SUPER + SHIFT + H" ''hl.dsp.window.move({ direction = "left" })'' {})
+          (mkBind "SUPER + SHIFT + L" ''hl.dsp.window.move({ direction = "right" })'' {})
+          (mkBind "SUPER + SHIFT + K" ''hl.dsp.window.move({ direction = "up" })'' {})
+          (mkBind "SUPER + SHIFT + J" ''hl.dsp.window.move({ direction = "down" })'' {})
 
           # Resize windows
-          "SUPER_CTRL, left, resizeactive, -20 0"
-          "SUPER_CTRL, H, resizeactive, -20 0"
-          "SUPER_CTRL, right, resizeactive,  20 0"
-          "SUPER_CTRL, L, resizeactive,  20 0"
-          "SUPER_CTRL, up, resizeactive,  0 -20"
-          "SUPER_CTRL, K, resizeactive,  0 -20"
-          "SUPER_CTRL, down, resizeactive,  0 20"
-          "SUPER_CTRL, J, resizeactive,  0 20"
+          (mkBind "SUPER + CTRL + left" "hl.dsp.window.resize({ x = -20, y = 0, relative = true })" {})
+          (mkBind "SUPER + CTRL + H" "hl.dsp.window.resize({ x = -20, y = 0, relative = true })" {})
+          (mkBind "SUPER + CTRL + right" "hl.dsp.window.resize({ x = 20, y = 0, relative = true })" {})
+          (mkBind "SUPER + CTRL + L" "hl.dsp.window.resize({ x = 20, y = 0, relative = true })" {})
+          (mkBind "SUPER + CTRL + up" "hl.dsp.window.resize({ x = 0, y = -20, relative = true })" {})
+          (mkBind "SUPER + CTRL + K" "hl.dsp.window.resize({ x = 0, y = -20, relative = true })" {})
+          (mkBind "SUPER + CTRL + down" "hl.dsp.window.resize({ x = 0, y = 20, relative = true })" {})
+          (mkBind "SUPER + CTRL + J" "hl.dsp.window.resize({ x = 0, y = 20, relative = true })" {})
 
           # special workspaces
-          "SUPER, grave, exec, wofi-workspace-swap && hyprctl dispatch bringactivetotop"
-          "SUPERSHIFT, grave, exec, wofi-workspace-swap --force && hyprctl dispatch bringactivetotop"
+          (mkBind "SUPER + grave" ''hl.dsp.exec_cmd("wofi-workspace-swap && hyprctl dispatch bringactivetotop")'' {})
+          (mkBind "SUPER + SHIFT + grave" ''hl.dsp.exec_cmd("wofi-workspace-swap --force && hyprctl dispatch bringactivetotop")'' {})
 
           # cycle workspaces
-          "SUPER, bracketleft, workspace, m-1"
-          "SUPER, bracketright, workspace, m+1"
+          (mkBind "SUPER + bracketleft" ''hl.dsp.focus({ workspace = "m-1" })'' {})
+          (mkBind "SUPER + bracketright" ''hl.dsp.focus({ workspace = "m+1" })'' {})
 
           # cycle monitors
-          "SUPERSHIFT, bracketleft, focusmonitor, l"
-          "SUPERSHIFT, bracketright, focusmonitor, r"
+          (mkBind "SUPER + SHIFT + bracketleft" ''hl.dsp.focus({ monitor = "l" })'' {})
+          (mkBind "SUPER + SHIFT + bracketright" ''hl.dsp.focus({ monitor = "r" })'' {})
 
           # send focused workspace to left/right monitors
-          "SUPERSHIFT ALT, bracketleft, movecurrentworkspacetomonitor, l"
-          "SUPERSHIFT ALT, bracketright, movecurrentworkspacetomonitor, r"
+          (mkBind "SUPER + SHIFT + ALT + bracketleft" ''hl.dsp.workspace.move({ monitor = "l" })'' {})
+          (mkBind "SUPER + SHIFT + ALT + bracketright" ''hl.dsp.workspace.move({ monitor = "r" })'' {})
 
           # utilities
-          "SUPER, Return, exec, ${terminal} --class terminal"
-          "SUPERSHIFT, Return, exec, ${terminal} --class terminal -e nvim -c 'terminal' -c 'startinsert'"
-          "SUPERSHIFT, T, exec, toggle-touchpad"
+          (mkBind "SUPER + Return" ''hl.dsp.exec_cmd("${terminal} --class terminal")'' {})
+          (mkBind "SUPER + SHIFT + Return" ''hl.dsp.exec_cmd("${terminal} --class terminal -e nvim -c 'terminal' -c 'startinsert'")'' {})
+          (mkBind "SUPER + SHIFT + T" ''hl.dsp.exec_cmd("toggle-touchpad")'' {})
           # make sure adb connect ip(eg:192.168.0.100) first. you might also need to adb kill-server. start-server
-          "SUPER, A, exec, scrcpy --turn-screen-off --render-driver=opengles2"
-          "SUPER, B, exec, wofi-firefox"
-          "SUPER, C, exec, rofi -show calc -modi calc -no-show-match -no-sort"
-          "SUPER, E, exec, bemoji"
-          "SUPER, R, exec, ${terminal} --class ranger -e ranger"
-          "SUPER, N, exec, ${terminal} --class nvim -e zsh -c nvim"
-          "SUPER, F1, exec, ${terminal} --class nvim -e lazysql"
-          "SUPER, O, exec, wofi-ollama"
-          "SUPERSHIFT, W, exec, winrdp"
-          # "SUPER, Z, exec, show-and-hide --app Zalo"
-          # "SUPER, W, exec, show-and-hide --app Youtube"
-          "SUPERSHIFT, X, exec, xrdp"
-          "SUPER, ESCAPE, exec, wofi-power"
-          "SUPER, F4, exec, ${terminal} --class terminal -e pulsemixer"
-          "SUPERSHIFT ALT, L, exec, pgrep hyprlock || hyprlock"
-          "SUPER, Z, exec, swaync-client -t -sw"
-          "SUPERSHIFT, Z, exec, swaync-client -d -sw"
-          "SUPER, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
+          (mkBind "SUPER + A" ''hl.dsp.exec_cmd("scrcpy --turn-screen-off --render-driver=opengles2")'' {})
+          (mkBind "SUPER + B" ''hl.dsp.exec_cmd("wofi-firefox")'' {})
+          (mkBind "SUPER + C" ''hl.dsp.exec_cmd("rofi -show calc -modi calc -no-show-match -no-sort")'' {})
+          (mkBind "SUPER + E" ''hl.dsp.exec_cmd("bemoji")'' {})
+          (mkBind "SUPER + R" ''hl.dsp.exec_cmd("${terminal} --class ranger -e ranger")'' {})
+          (mkBind "SUPER + N" ''hl.dsp.exec_cmd("${terminal} --class nvim -e zsh -c nvim")'' {})
+          (mkBind "SUPER + F1" ''hl.dsp.exec_cmd("${terminal} --class nvim -e lazysql")'' {})
+          (mkBind "SUPER + O" ''hl.dsp.exec_cmd("wofi-ollama")'' {})
+          (mkBind "SUPER + SHIFT + W" ''hl.dsp.exec_cmd("winrdp")'' {})
+          # (mkBind "SUPER + Z" ''hl.dsp.exec_cmd("show-and-hide --app Zalo")'' {})
+          # (mkBind "SUPER + W" ''hl.dsp.exec_cmd("show-and-hide --app Youtube")'' {})
+          (mkBind "SUPER + SHIFT + X" ''hl.dsp.exec_cmd("xrdp")'' {})
+          (mkBind "SUPER + ESCAPE" ''hl.dsp.exec_cmd("wofi-power")'' {})
+          (mkBind "SUPER + F4" ''hl.dsp.exec_cmd("${terminal} --class terminal -e pulsemixer")'' {})
+          (mkBind "SUPER + SHIFT + ALT + L" ''hl.dsp.exec_cmd("pgrep hyprlock || hyprlock")'' {})
+          (mkBind "SUPER + Z" ''hl.dsp.exec_cmd("swaync-client -t -sw")'' {})
+          (mkBind "SUPER + SHIFT + Z" ''hl.dsp.exec_cmd("swaync-client -d -sw")'' {})
+          (mkBind "SUPER + P" ''hl.dsp.exec_cmd("${pkgs.hyprpicker}/bin/hyprpicker -a")'' {})
 
           # shaders
-          "SUPERSHIFT, Up, exec, hyprshade toggle ~/.config/hypr/shaders/brightness-boost.glsl"
-          "SUPERSHIFT, Down, exec, hyprshade off"
+          (mkBind "SUPER + SHIFT + Up" ''hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/brightness-boost.glsl")'' {})
+          (mkBind "SUPER + SHIFT + Down" ''hl.dsp.exec_cmd("hyprshade off")'' {})
 
           # screenshot
-          ", Print, exec, ${runOnce "grimblast"} --notify copysave area"
-          "CTRL, Print, exec, ${runOnce "grimblast"} --wait 2 --notify copysave area"
-          ", F10, exec, ${runOnce "grimblast"} --notify copysave area"
-          "CTRL, F10, exec, ${runOnce "grimblast"} --wait 2 --notify copysave area"
-          "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
-          "ALT, Print, exec, ${runOnce "grimblast"} --notify --cursor copysave screen"
+          (mkBind "Print" ''hl.dsp.exec_cmd("${runOnce "grimblast"} --notify copysave area")'' {})
+          (mkBind "CTRL + Print" ''hl.dsp.exec_cmd("${runOnce "grimblast"} --wait 2 --notify copysave area")'' {})
+          (mkBind "F10" ''hl.dsp.exec_cmd("${runOnce "grimblast"} --notify copysave area")'' {})
+          (mkBind "CTRL + F10" ''hl.dsp.exec_cmd("${runOnce "grimblast"} --wait 2 --notify copysave area")'' {})
+          (mkBind "CTRL + Print" ''hl.dsp.exec_cmd("${runOnce "grimblast"} --notify --cursor copysave output")'' {})
+          (mkBind "ALT + Print" ''hl.dsp.exec_cmd("${runOnce "grimblast"} --notify --cursor copysave screen")'' {})
 
           # clipboard
-          "SUPER, V, exec, cliphist list | rofi -dmenu -display-columns 2 | cliphist decode | wl-copy"
+          (mkBind "SUPER + V" ''hl.dsp.exec_cmd("cliphist list | rofi -dmenu -display-columns 2 | cliphist decode | wl-copy")'' {})
 
           # mouse
-          ",mouse:275, workspace, e-1"
-          ",mouse:276, workspace, e+1"
+          (mkBind "mouse:275" ''hl.dsp.focus({ workspace = "e-1" })'' {})
+          (mkBind "mouse:276" ''hl.dsp.focus({ workspace = "e+1" })'' {})
         ]
-        ++ workspaces;
-
-      bindr = [
-        # launcher
-        "SUPER, D, exec, pkill rofi  || rofi -show drun -show-icons"
-      ];
-
-      bindle = [
-        # audio
-        ",XF86AudioRaiseVolume, exec, volumectl up 5"
-        ",XF86AudioLowerVolume, exec, volumectl down 5"
-        ",XF86AudioMute, exec, volumectl toggle-mute"
-        ",XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute"
-        ", F11, exec, volumectl down 5"
-        ", F12, exec, volumectl up 5"
-
-        # brightness
-        ",F8, exec, vcpctl up 5"
-        ",F7, exec, vcpctl down 5"
-
-        ",XF86MonBrightnessUp, exec, lightctl up 5"
-        ",XF86MonBrightnessDown, exec, lightctl down 5"
-      ];
-
-      # mouse bindings
-      bindm = [
-        "SUPER, mouse:272, movewindow"
-        "SUPER, mouse:273, resizewindow"
-        "SUPER ALT, mouse:272, resizewindow"
-      ];
-
-      bindl = [
-        ",switch:on:Lid Switch, exec, hyprctl keyword monitor ${monitor_one_disabled}"
-        ",switch:off:Lid Switch, exec, hyprctl keyword monitor ${monitor_one}"
-      ];
+        ++ workspaceBinds
+        # launcher (fires on key release)
+        ++ [(mkBind "SUPER + D" ''hl.dsp.exec_cmd("pkill rofi || rofi -show drun -show-icons")'' {release = true;})]
+        # audio / brightness (fire while locked, and repeat while held)
+        ++ [
+          (mkBind "XF86AudioRaiseVolume" ''hl.dsp.exec_cmd("volumectl up 5")'' {
+            locked = true;
+            repeating = true;
+          })
+          (mkBind "XF86AudioLowerVolume" ''hl.dsp.exec_cmd("volumectl down 5")'' {
+            locked = true;
+            repeating = true;
+          })
+          (mkBind "XF86AudioMute" ''hl.dsp.exec_cmd("volumectl toggle-mute")'' {
+            locked = true;
+            repeating = true;
+          })
+          (mkBind "XF86AudioMicMute" ''hl.dsp.exec_cmd("${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute")'' {
+            locked = true;
+            repeating = true;
+          })
+          (mkBind "F11" ''hl.dsp.exec_cmd("volumectl down 5")'' {
+            locked = true;
+            repeating = true;
+          })
+          (mkBind "F12" ''hl.dsp.exec_cmd("volumectl up 5")'' {
+            locked = true;
+            repeating = true;
+          })
+          (mkBind "F8" ''hl.dsp.exec_cmd("vcpctl up 5")'' {
+            locked = true;
+            repeating = true;
+          })
+          (mkBind "F7" ''hl.dsp.exec_cmd("vcpctl down 5")'' {
+            locked = true;
+            repeating = true;
+          })
+          (mkBind "XF86MonBrightnessUp" ''hl.dsp.exec_cmd("lightctl up 5")'' {
+            locked = true;
+            repeating = true;
+          })
+          (mkBind "XF86MonBrightnessDown" ''hl.dsp.exec_cmd("lightctl down 5")'' {
+            locked = true;
+            repeating = true;
+          })
+        ]
+        # mouse bindings
+        ++ [
+          (mkBind "SUPER + mouse:272" "hl.dsp.window.drag()" {mouse = true;})
+          (mkBind "SUPER + mouse:273" "hl.dsp.window.resize()" {mouse = true;})
+          (mkBind "SUPER + ALT + mouse:272" "hl.dsp.window.resize()" {mouse = true;})
+        ]
+        ++ [
+          (mkBind "switch:on:Lid Switch" ''hl.dsp.exec_cmd("hyprctl keyword monitor ${monitor_one_disabled}")'' {locked = true;})
+          (mkBind "switch:off:Lid Switch" ''hl.dsp.exec_cmd("hyprctl keyword monitor ${monitor_one}")'' {locked = true;})
+        ];
     };
   };
 
