@@ -137,6 +137,26 @@
         "type": "github"
       }
     },
+    "lazysql": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788927166,
+        "narHash": "sha256-pXIe1urei2QBrCaSZbJ87YG+ONxXIwqkkwvdksc6u/w=",
+        "owner": "ducnguyen96",
+        "repo": "lazysql",
+        "rev": "f454411c42ba4dd77ec878f7ba2a50c1d3f64030",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ducnguyen96",
+        "repo": "lazysql",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -371,6 +391,7 @@
         "disko": "disko",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
+        "lazysql": "lazysql",
         "nix-darwin": "nix-darwin",
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",

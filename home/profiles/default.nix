@@ -7,6 +7,7 @@
     ../modules/dev
 
     ../modules/programs/kitty.nix
+    ../modules/programs/lazysql.nix
     ../modules/programs/neovim
     ../modules/programs/firefox.nix
 

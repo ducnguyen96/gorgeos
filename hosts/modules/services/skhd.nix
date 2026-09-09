@@ -127,7 +127,7 @@
 
       # ── App launchers ──────────────────────────────────────────────────────────────
       cmd - return         : open -na kitty
-      cmd + shift - return : open -na kitty --args nvim --args 'terminal' -c 'startinsert'
+      cmd + shift - return : open -na kitty --args nvim -c 'terminal' -c 'startinsert'
       cmd - n              : open -na kitty --args zsh -i -c nvim
       cmd - f1             : open -na kitty --args lazysql
 

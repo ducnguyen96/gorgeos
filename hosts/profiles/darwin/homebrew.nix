@@ -12,7 +12,6 @@
       "docker"
       "docker-compose"
       "colima"
-      "lazysql"
       "iproute2mac"
       "railway"
       "ffmpeg"

@@ -23,7 +23,6 @@
       # heroku
       # postman
       code-cursor
-      lazysql
       # authenticator
       # godot
       bruno

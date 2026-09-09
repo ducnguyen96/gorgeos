@@ -103,5 +103,10 @@
       url = "github:ryoppippi/claude-code-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lazysql = {
+      url = "github:ducnguyen96/lazysql";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
