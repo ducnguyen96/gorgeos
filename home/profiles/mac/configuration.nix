@@ -1,16 +1,15 @@
 {pkgs, ...}: {
+  imports = [
+    ../../modules/services/skhd.nix
+  ];
+
   home = {
     username = "duc";
     homeDirectory = "/Users/duc";
 
     packages = with pkgs; [
-      heroku
-      scrcpy
-
-      gdscript-formatter
-      codex
       claude-code
-      antigravity-cli
+      google-cloud-sdk
     ];
   };
 

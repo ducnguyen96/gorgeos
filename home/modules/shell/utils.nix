@@ -11,6 +11,7 @@
     fastfetch
     bemoji
     libnotify
+    dotenv-cli
     # pass-wayland
     # gnupg
     # gpg-tui
