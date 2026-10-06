@@ -24,6 +24,8 @@
       inactive_text_alpha = "1.0";
       italic_font = "auto";
       placement_strategy = "center";
+      # skhd's kitty launcher sizes and positions new OS windows itself
+      remember_window_size = "no";
       resize_in_steps = "yes";
       scrollback_lines = 10000;
       tab_bar_edge = "bottom";
@@ -90,6 +92,15 @@
       "ctrl+shift+." = "move_tab_forward";
       "ctrl+shift+," = "move_tab_backward";
       "ctrl+shift+alt+t" = "set_tab_title";
+      "cmd+1" = "goto_tab 1";
+      "cmd+2" = "goto_tab 2";
+      "cmd+3" = "goto_tab 3";
+      "cmd+4" = "goto_tab 4";
+      "cmd+5" = "goto_tab 5";
+      "cmd+6" = "goto_tab 6";
+      "cmd+7" = "goto_tab 7";
+      "cmd+8" = "goto_tab 8";
+      "cmd+9" = "goto_tab 9";
 
       "ctrl+shift+equal" = "increase_font_size";
       "ctrl+shift+minus" = "decrease_font_size";

@@ -1,6 +1,35 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  # Single kitty process (like Safari): new terminals open as OS windows of the
+  # running instance, so cmd+` cycles them and cmd+1..9 switches tabs.
+  # The first launch goes through `open` so LaunchServices (not skhd) owns kitty.
+  # New windows take half the focused screen's width, centered, at full height
+  # (below the menu bar). kitty only takes pixel sizes/positions, so compute them here.
+  kitty1 = pkgs.writeShellScript "kitty1" ''
+    geom=$(osascript -l JavaScript -e '
+      ObjC.import("AppKit");
+      const primary = $.NSScreen.screens.objectAtIndex(0).frame;
+      const v = $.NSScreen.mainScreen.visibleFrame;
+      const w = Math.round(v.size.width / 2), h = Math.round(v.size.height);
+      const x = Math.round(v.origin.x + (v.size.width - w) / 2);
+      const y = Math.round(primary.size.height - (v.origin.y + v.size.height));
+      `-o initial_window_width=''${w} -o initial_window_height=''${h} --position ''${x}x''${y}`;
+    ')
+    if pgrep -qx kitty; then
+      exec kitty -1 -d ~ $geom "$@"
+    else
+      exec open -na kitty --args -1 -d ~ $geom "$@"
+    fi
+  '';
+in {
   # launchd starts skhd with a minimal PATH, so `skhd -k` and other nix-installed tools aren't found
   launchd.agents.skhd.config.EnvironmentVariables.PATH = "${config.home.profileDirectory}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+
+  # skhd watches the resolved store path of skhdrc, so it never notices a switch on its own
+  xdg.configFile."skhd/skhdrc".onChange = "${config.services.skhd.package}/bin/skhd --reload || true";
 
   services.skhd = {
     enable = true;
@@ -97,16 +126,16 @@
       # cmd - 0 : yabai -m space --focus 10
 
       # ── Move window to space (follow) ──────────────────────────────────────────────────────────────
-      cmd + shift - 1 : yabai -m window --space 1;  yabai -m space --focus 1
-      cmd + shift - 2 : yabai -m window --space 2;  yabai -m space --focus 2
-      cmd + shift - 3 : yabai -m window --space 3;  yabai -m space --focus 3
-      cmd + shift - 4 : yabai -m window --space 4;  yabai -m space --focus 4
-      cmd + shift - 5 : yabai -m window --space 5;  yabai -m space --focus 5
-      cmd + shift - 6 : yabai -m window --space 6;  yabai -m space --focus 6
-      cmd + shift - 7 : yabai -m window --space 7;  yabai -m space --focus 7
-      cmd + shift - 8 : yabai -m window --space 8;  yabai -m space --focus 8
-      cmd + shift - 9 : yabai -m window --space 9;  yabai -m space --focus 9
-      cmd + shift - 0 : yabai -m window --space 10; yabai -m space --focus 10
+      # cmd + shift - 1 : yabai -m window --space 1;  yabai -m space --focus 1
+      # cmd + shift - 2 : yabai -m window --space 2;  yabai -m space --focus 2
+      # cmd + shift - 3 : yabai -m window --space 3;  yabai -m space --focus 3
+      # cmd + shift - 4 : yabai -m window --space 4;  yabai -m space --focus 4
+      # cmd + shift - 5 : yabai -m window --space 5;  yabai -m space --focus 5
+      # cmd + shift - 6 : yabai -m window --space 6;  yabai -m space --focus 6
+      # cmd + shift - 7 : yabai -m window --space 7;  yabai -m space --focus 7
+      # cmd + shift - 8 : yabai -m window --space 8;  yabai -m space --focus 8
+      # cmd + shift - 9 : yabai -m window --space 9;  yabai -m space --focus 9
+      # cmd + shift - 0 : yabai -m window --space 10; yabai -m space --focus 10
 
       # ── Move window to space (silent) ──────────────────────────────────────────────────────────────
       shift + alt - 1 : yabai -m window --space 1
@@ -129,10 +158,10 @@
       cmd + shift - g : yabai -m window --toggle sticky
 
       # ── App launchers ──────────────────────────────────────────────────────────────
-      cmd - return         : open -na kitty
-      cmd + shift - return : open -na kitty --args nvim -c 'terminal' -c 'startinsert'
-      cmd - n              : open -na kitty --args zsh -i -c nvim
-      cmd - f1             : open -na kitty --args lazysql
+      cmd - return         : ${kitty1}
+      cmd + shift - return : ${kitty1} nvim -c 'terminal' -c 'startinsert'
+      cmd - n              : ${kitty1} zsh -i -c nvim
+      cmd - f1             : ${kitty1} lazysql
 
       # ── Screenshots ──────────────────────────────────────────────────────────────
       cmd - f10       : screencapture -i -c
